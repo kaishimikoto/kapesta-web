@@ -1,0 +1,340 @@
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("images/sign-in-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* SIGN UP BOX */
+
+.signupform-box {
+    width: 70%;
+    max-width: 1000px;
+    height: 500px;
+
+    background: #ffffff;
+    border-radius: 24px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+}
+
+
+/* FORM */
+
+form {
+    width: 100%;
+    padding: 28px 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+}
+
+
+/* HEADER */
+
+header {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+header h1 {
+    margin: 0 0 7px;
+
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: bold;
+    color: #403329;
+}
+
+header p {
+    margin: 0;
+
+    font-size: clamp(10px, 1vw, 12px);
+    color: #222222;
+}
+
+/* GOOGLE BUTTON */
+
+.google-btn {
+    width: 100%;
+    height: 34px;
+
+    border: solid 1px #a5a5a5;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #000000;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+
+    cursor: pointer;
+}
+
+.google-btn:hover {
+    background: #483524;
+    color: #ffffff;
+}
+
+/* OR DIVIDER */
+
+.divider {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 5px 0;
+}
+
+.divider hr {
+    flex: 1;
+
+    border: none;
+    border-top: 1px solid #d0d0d0;
+}
+
+.divider span {
+    font-size: clamp(10px, 1vw, 12px);
+    color: #333333;
+}
+
+/* LABELS */
+
+label {
+    margin-bottom: 4px;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+    font-weight: bold;
+    color: #222222;
+}
+
+
+/* INPUT FIELDS */
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    height: 34px;
+
+    margin-bottom: 8px;
+
+    padding: 0 9px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #e5e0db;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+}
+
+input::placeholder {
+    color: #222222;
+}
+
+input:focus {
+    outline: 1px solid #777777;
+}
+
+
+/* CREATE ACCOUNT BUTTON */
+
+input[type="submit"] {
+    width: 100%;
+    height: 34px;
+
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #483524;
+    color: #ffffff;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #3b2b1d;
+}
+
+.terms {
+    font-size: 9px;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.terms a {
+    font-size: 9px;
+    color: #483524;
+    font-weight: bold;
+}
+
+
+/* LOGIN */
+
+.login {
+    margin-top: 10px;
+    text-align: center;
+
+    font-size: clamp(9px, 1vw, 12px);
+    color: #222222;
+}
+
+.login a {
+    color: #222222;
+    text-decoration: underline;
+}
+
+
+/* RIGHT SIDE IMAGE */
+
+.signup-image {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    background-color: #ffffff;
+
+    padding: 8px;
+}
+
+.signup-image img {
+    width: 100%;
+    height: 77%;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    display: block;
+}
+
+/* MOBILE RWD */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+        margin-top: 20px;
+        justify-content: center;
+        /* Allows the page to scroll if the form is taller
+           than the phone screen */
+        align-items: flex-start;
+    }
+
+    .signupform-box {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+
+        grid-template-columns: 1fr;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+    }
+
+    /* Form comes first */
+    form {
+        padding: 25px 20px;
+    }
+
+    header {
+        margin-bottom: 18px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    input[type="email"],
+    input[type="password"]
+    input[type="uname"] {
+        height: 45px;
+        margin-bottom: 16px;
+
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        height: 45px;
+        margin-top: 6px;
+
+        font-size: 14px;
+    }
+
+    .divider {
+        margin: 9px 0;
+    }
+
+    .divider span {
+        font-size: 11px;
+    }
+
+    .google-btn {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .login {
+        margin-top: 25px;
+        font-size: 11px;
+    }
+
+    /* Image becomes a smaller section */
+    .signup-image {
+        height: 180px;
+        padding: 8px;
+    }
+
+    .signup-image img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        border-radius: 10px;
+    }
+}
