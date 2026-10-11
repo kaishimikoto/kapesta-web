@@ -4,23 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/icon" href="images/icons/kapesta-favicon.png">
-        <link rel="stylesheet" type="text/css" href="styles/test.css">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
         <title>About Us | Kapesta</title>
     </head>
     <body>
         <header>
             <div class="header-layout">
-                <!-- Website Logo -->
-                <a href="#" class="header-logo"><img src="images/icons/kapesta-logo.svg" alt="Kapesta"></a>
+                <!-- Website Logo / Mobile Menu -->
+                <div class="header-brand">
+                    <a href="#" class="header-logo"><img src="images/icons/kapesta-logo.svg" alt="Kapesta"></a>
+                    <button type="button" class="header-menu-toggle" onclick="toggleHeaderMenu()">
+                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
+                    </button>
+                </div>
                 
                 <!-- Main Navigation -->
-                <nav class="header-links">
-                    <ul>
+                <nav class="header-navigation" id="header-navigation">
+                    <ul class="header-main-links">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Explore</a></li>
-                        <li><a href="contact_us.html">Contact</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="#">Profile</a></li>
+                    </ul>
+
+                    <ul class="header-auth-links">
+                        <li><a href="login.html" class="header-login-link">Log in</a></li>
+                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
                     </ul>
                 </nav>
             </div>
@@ -46,7 +56,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
                 </div>
                 <div class="about-story-image">
-                    <img src="images/photos/test-member-pic.png" alt="storypic">
+                    <img src="images/photos/about-us-story-image.jpg" alt="storypic">
                 </div>
             </section>
 
@@ -58,51 +68,51 @@
                 </div>
             </section>
 
-            <!-- Kapesta Differences -->
-            <section class="container about-differences">
-                <h2>What Makes Us Different</h2>
+            <!-- Kapesta Features -->
+            <section class="container about-features">
+                <h2>How Kapesta Works</h2>
                 
-                <div class="difference-grid">
-                    <!-- Difference 1 -->
-                    <div class="difference-card">
-                        <img src="images/logo-placeholder-36px.png" alt="">
-                        <h3>Point 1</h3>
+                <div class="feature-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <img src="images/icons/browse-cafe-icon.svg" alt="">
+                        <h3>1. Browse</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                     </div>
 
-                    <!-- Difference 2 -->
-                    <div class="difference-card">
-                        <img src="images/logo-placeholder-36px.png" alt="">
-                        <h3>Point 2</h3>
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <img src="images/icons/filter-icon.svg" alt="">
+                        <h3>2. Filter</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                     </div>
 
-                    <!-- Difference 3 -->
-                    <div class="difference-card">
-                        <img src="images/logo-placeholder-36px.png" alt="">
-                        <h3>Point 3</h3>
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <img src="images/icons/information-icon.svg" alt="">
+                        <h3>3. See Details</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                     </div>
 
-                    <!-- Difference 4 -->
-                    <div class="difference-card">
-                        <img src="images/logo-placeholder-36px.png" alt="">
-                        <h3>Point 4</h3>
+                    <!-- Feature 4 -->
+                    <div class="feature-card">
+                        <img src="images/icons/review-feature-icon.svg" alt="">
+                        <h3>4. Review</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Kapesta Tagline -->
-            <section class="container about-tagline">
-                <div class="about-tagline-content">
+            <!-- Kapesta Brand -->
+            <section class="container about-brand">
+                <div class="about-brand-content">
                     <h2>The Meaning Behind Our Name</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
                     <br />
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
                 </div>
-                <div class="about-tagline-image">
-                    <img src="images/photos/test-member-pic.png" alt="taglinepic">
+                <div class="about-brand-image">
+                    <img src="images/photos/about-us-brand-image.jpg" alt="taglinepic">
                 </div>
             </section>
 
@@ -121,7 +131,7 @@
 
                     <!-- Member 2 -->
                     <div class="team-card">
-                        <img src="images/photos/test-member-pic.png" alt="member1">
+                        <img src="images/photos/test-member-pic2.png" alt="member1">
                         <h3>Irish S. Villanueva</h3>
                         <p>Developer</p>
                         <p>2nd Year BSIT Student</p>
@@ -178,20 +188,20 @@
                         <h3 class="footer-nav-title">Platform</h3>
                         <a href="#">Home</a>
                         <a href="#">Explore Cafes</a>
-                        <a href="#">About Us</a>
-                        <a href="contact_us.html">Contact Us</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
                     </div>
 
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Support</h3>
                         <a href="#">FAQs</a>
-                        <a href="report_issue.html">Report an Issue</a>
+                        <a href="report.html">Report an Issue</a>
                     </div>
 
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Legal</h3>
-                        <a href="privacy_policy.html">Privacy Policy</a>
-                        <a href="terms_and_conditions.html">Terms and Conditions</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms and Conditions</a>
                     </div>
                 </nav>
             </div>
@@ -202,5 +212,7 @@
                 <small>&copy; 2026 Kapesta. All rights reserved.</small>
             </div>
         </footer>
+
+        <script src="scripts/script.js"></script>
     </body>
 </html>
