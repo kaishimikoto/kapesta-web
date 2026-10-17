@@ -12,14 +12,16 @@
             <div class="header-layout">
                 <!-- Website Logo / Mobile Menu -->
                 <div class="header-brand">
-                    <a href="#" class="header-logo"><img src="images/icons/kapesta-logo.svg" alt="Kapesta"></a>
-                    <button type="button" class="header-menu-toggle" onclick="toggleHeaderMenu()">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
                         <img src="images/icons/hamburger-menu-icon.svg" alt="">
                     </button>
                 </div>
-                
+
                 <!-- Main Navigation -->
-                <nav class="header-navigation" id="header-navigation">
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
                     <ul class="header-main-links">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Explore</a></li>
@@ -37,27 +39,34 @@
         </header>
 
         <main>
-            <!-- Report Form -->
-            <section class="container report-layout">
-                <div class="form-style report-form">
-                    
-                    <!-- Introduction -->
-                    <div class="report-introduction">
+            <!-- Hero Section -->
+            <div class="hero-background">
+                <section class="container page-hero hero-center">
+                    <div class="hero-title hero-title-spaced">
                         <h1>Report a Problem</h1>
-                        <p>Let us know by submitting a report. Please provide as much detail as possible so we can understand and resolve the issue.</p>
+                        <p>Something not working as it should? Let us know! We're here to help identify issues and make your Kapesta experience better.</p>
                     </div>
-                    
+                </section>
+            </div>
+
+            <!-- Report Form -->
+            <section class="container">
+                <div class="box-style form-style report-form">
+                    <h2 class="form-heading">Tell Us What Happened</h2>
+                    <p class="form-description">Help us understand what went wrong. Share the details below, and include a screenshot if it helps show the issue.</p>
+
                     <form action="#" method="post">
                         <!-- Email -->
                         <div class="form-field">
                             <label for="email">Email<span aria-hidden="true">*</span></label>
                             <input type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" placeholder="you@example.com" title="Enter a valid email address (e.g., user@gmail.com)" required>
+                            <p class="form-error">Please enter a valid email address (e.g., juan@example.com).</p>
                         </div>
 
                         <!-- Report Category -->
                         <div class="form-field">
                             <label for="category">Category<span aria-hidden="true">*</span></label>
-                            <select id="category" name="category" title="Select the reason for reporting" required>
+                            <select id="category" name="category" title="Select the category that best describes the issue." required>
                                 <option value="" selected disabled>-- Select the type of issue --</option>
                                 <option value="technical">Technical Problem</option>
                                 <option value="incorrect-information">Incorrect or Outdated Information</option>
@@ -66,41 +75,52 @@
                                 <option value="inappropriate-content">Inappropriate Content</option>
                                 <option value="other">Other</option>
                             </select>
+                            <p class="form-error">Please select a category for your report.</p>
                         </div>
 
                         <!-- Report Description -->
                         <div class="form-field">
                             <label for="description">Description<span aria-hidden="true">*</span></label>
-                            <textarea id="description" name="description" rows="7" minlength="50" maxlength="2000"  placeholder="What went wrong?" title="Describe the issue with at least 50 and no more than 2,000 characters." required></textarea>
+                            <textarea id="description" name="description" rows="7" minlength="20" maxlength="2000"  placeholder="What went wrong?" title="Describe the issue in 20 to 2,000 characters." required></textarea>
+                            <p class="form-error">Please enter a description between 20 and 2,000 characters.</p>
                         </div>
 
                         <!-- Report Attachment -->
                         <div class="form-attachment">
                             <label for="attachment">Attachments (Optional)</label>
-                            <p class="attachment-description">You may attach a screenshot or other relevant file to help us better understand and investigate the issue.</p>
+                            <p class="attachment-description">Have a screenshot or file that shows the issue? Attach it here to help us understand what happened. This step is optional.</p>
                             <input type="file" id="attachment" name="attachment" accept=".png, .jpg, .jpeg, .webp, .pdf, .docx" multiple>
                         </div>
 
                         <!-- Report Confirmation -->
-                        <fieldset>
+                        <fieldset aria-describedby="confirmation-description">
                             <legend>Confirmation<span aria-hidden="true">*</span></legend>
-                            <p class="confirmation-description">Please review your report and confirm the following before submitting it.</p>
+                            <p class="confirmation-description">Before sending your report, please review the following statements.</p>
 
+                            <!-- Confirmation Options -->
                             <div class="confirmation-option">
                                 <input type="checkbox" id="confirm1" name="accuracy-confirmation" value="agree1" required>
-                                <label for="confirm1">I confirm that the information provided in this report is accurate and truthful to the best of my knowledge.</label>
+                                <label for="confirm1">I confirm that the information in this report is accurate to the best of my knowledge.</label>
                             </div>
 
                             <div class="confirmation-option">
                                 <input type="checkbox" id="confirm2" name="privacy-confirmation" value="agree2" required>
-                                <label for="confirm2">By submitting this report, you agree that the information provided may be used to investigate and resolve the reported issue. See our <a href="privacy_policy.html" target="_blank" title="Go to Privacy Policy">Privacy Policy</a> for more information.</label>
+                                <label for="confirm2">By submitting this report, you agree that the information provided may be used to investigate and resolve the reported issue. See our <a href="privacy.html" target="_blank" title="Go to Privacy Policy">Privacy Policy</a> for more information.</label>
                             </div>
+                            <p class="form-error">Please confirm both statements before submitting your report.</p>
                         </fieldset>
 
                         <!-- Submit Button -->
-                        <button type="submit" onclick="submitSuccess()">Submit Report</button>
+                        <button type="submit">Submit Report</button>
                     </form>
                 </div>
+            </section>
+
+            <!-- Additional Assistance Section -->
+            <section class="container cta-section">
+                <h2>Still Need Help?</h2>
+                <p class="cta-description">Have another question or need help with something else? Reach out to us through our Contact Us page. We're happy to hear from you!</p>
+                <a href="contact.html">Contact Us</a>
             </section>
         </main>
 
@@ -111,7 +131,7 @@
                     <div class="footer-information-logo">
                         <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>We're here to help you discover cafés that match your study style, preferences, and budget. Find your timpla with Kapesta!</p>
 
                     <hr />
                     

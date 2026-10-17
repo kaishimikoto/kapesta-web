@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +12,16 @@
             <div class="header-layout">
                 <!-- Website Logo / Mobile Menu -->
                 <div class="header-brand">
-                    <a href="#" class="header-logo"><img src="images/icons/kapesta-logo.svg" alt="Kapesta"></a>
-                    <button type="button" class="header-menu-toggle" onclick="toggleHeaderMenu()">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
                         <img src="images/icons/hamburger-menu-icon.svg" alt="">
                     </button>
                 </div>
-                
+
                 <!-- Main Navigation -->
-                <nav class="header-navigation" id="header-navigation">
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
                     <ul class="header-main-links">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Explore</a></li>
@@ -35,66 +37,97 @@
                 </nav>
             </div>
         </header>
-
+        
         <main>
             <!-- Hero Section -->
-            <section class="container policy-hero">
-                <h1>Privacy Policy</h1>
-                <p>Effective August 29, 2026</p>
-            </section>
+            <div class="hero-background">
+                <section class="container page-hero hero-center">
+                    <div class="hero-title hero-title-spaced">
+                        <h1>Privacy Policy</h1>
+                        <p>Effective August 29, 2026</p>
+                    </div>
+                </section>
+            </div>
 
-            <!-- Table of Contents and Policy Content -->
-            <div class="container policy-grid">
-                <!-- Table of Contents -->
-                <nav class="policy-navigation">
-                    <h2>Table of Contents</h2>
-                    
-                    <ol>
-                        <li><a href="#introduction">Introduction</a></li>
-                        <li><a href="#policy-1">Policy 1</a></li>
-                        <li><a href="#policy-2">Policy 2</a></li>
-                        <li><a href="#policy-3">Policy 3</a></li>
-                    </ol>
-                </nav>
+            <!-- Privacy Policy Contents -->
+            <div class="container">
+                <!-- Introduction -->
+                <section class="policy-section policy-heading">
+                    <h2>Introduction</h2>
+                    <p>Kapesta is a student-developed café finder and recommendation website designed to help users discover cafés in Cabanatuan City, Nueva Ecija.</p>
+                </section>
                 
-                <!-- Policy Content -->
-                <div class="policy-content">
-                    <!-- Introduction -->
-                    <section class="policy-introduction" id="introduction">
-                        <h2>Introduction</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </section>
+                <hr />
 
-                    <hr />
+                <!-- Policy 1 -->
+                <section class="policy-section policy-heading">
+                    <h2>1. Information We Collect</h2>
+                    <p>If our website's forms are functional, we may collect information you voluntarily provide, such as your name, email address, contact number, inquiries, feedback, and problem reports.</p>
+                    <br />
+                    <p>Please avoid submitting sensitive personal information that is unnecessary for your inquiry.</p>
+                </section>
 
-                    <!-- Policy 1 -->
-                    <section class="policy-section" id="policy-1">
-                        <h2>Policy 1</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <br />
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                    </section>
+                <hr />
 
-                    <hr />
+                <!-- Policy 2 -->
+                <section class="policy-section policy-heading">
+                    <h2>2. How We Use Your Information</h2>
+                    <p>Information provided through our website may be used to respond to inquiries, review feedback, address reported issues, and improve the website.</p>
+                    <br />
+                    <p>We do not sell personal information.</p>
+                </section>
 
-                    <!-- Policy 2 -->
-                    <section class="policy-section" id="policy-2">
-                        <h2>Policy 2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <br />
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                    </section>
+                <hr />
 
-                    <hr />
+                <!-- Policy 3 -->
+                <section class="policy-section policy-heading">
+                    <h2>3. Data Protection</h2>
+                    <p>We will take reasonable steps to protect personal information against unauthorized access, use, or disclosure. Access to submitted information should be limited to authorized project members who need it for the purposes stated above.</p>
+                </section>
 
-                    <!-- Policy 3 -->
-                    <section class="policy-section" id="policy-3">
-                        <h2>Policy 3</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <br />
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                    </section>
-                </div>
+                <hr />
+
+                <!-- Policy 4 -->
+                <section class="policy-section policy-heading">
+                    <h2>4. Data Retention</h2>
+                    <p>Personal information should only be kept for as long as necessary to address its intended purpose and applicable requirements. Information that is no longer needed should be securely deleted or disposed of.</p>
+                </section>
+
+                <hr />
+
+                <!-- Policy 5 -->
+                <section class="policy-section policy-heading">
+                    <h2>5. Third-Party Links</h2>
+                    <p>Our website may contain links to external café websites, maps, or other services. These services have their own privacy practices, which are outside our control.</p>
+                </section>
+
+                <hr />
+
+                <!-- Policy 6 -->
+                <section class="policy-section policy-heading">
+                    <h2>6. Your Privacy Rights</h2>
+                    <p>Under the Philippine Data Privacy Act of 2012 (Republic Act No. 10173), you may have rights concerning your personal information, including the right to be informed, access or correct your information, and exercise other applicable rights under the law.</p>
+                </section>
+
+                <hr />
+
+                <!-- Policy 7 -->
+                <section class="policy-section policy-heading">
+                    <h2>7. Contact Us</h2>
+                    <p>For privacy-related questions or concerns, please contact us at:</p>
+                    <br />
+                    <p>Email: <a href="mailto:kapesta@gmail.com">kapesta@gmail.com</a></p>
+                </section>
+
+                <hr />
+
+                <!-- Policy 8 -->
+                <section class="policy-section policy-heading">
+                    <h2>8. Updates to This Policy</h2>
+                    <p>We may update this Privacy Policy when necessary. Any revisions will be posted on this page.</p>
+                    <br />
+                    <p>This policy is intended to reflect Kapesta's actual data collection and handling practices and should be updated whenever those practices change.</p>
+                </section>
             </div>
         </main>
 
@@ -110,23 +143,23 @@
                     <hr />
                     
                     <!-- Social Media -->
-                    <div class="footer-social">
+                    <nav class="footer-social" aria-label="Social media links">
                         <a href="#" target="_blank" title="Visit Kapesta on Facebook">
-                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook">
+                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
                         </a>
 
-                        <a href="#" target="_blank" title="Follow Kapesta on Instagram">
-                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram">
+                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
                         </a>
 
-                        <a href="#" target="_blank" title="Follow Kapesta on Twitter">
-                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter">
+                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
                         </a>
-                    </div>
+                    </nav>
                 </div>
 
                 <!-- Footer Navigation -->
-                <nav class="footer-links">
+                <nav class="footer-links" aria-label="Footer navigation">
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Platform</h3>
                         <a href="#">Home</a>

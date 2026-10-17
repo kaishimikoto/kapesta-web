@@ -12,14 +12,16 @@
             <div class="header-layout">
                 <!-- Website Logo / Mobile Menu -->
                 <div class="header-brand">
-                    <a href="#" class="header-logo"><img src="images/icons/kapesta-logo.svg" alt="Kapesta"></a>
-                    <button type="button" class="header-menu-toggle" onclick="toggleHeaderMenu()">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
                         <img src="images/icons/hamburger-menu-icon.svg" alt="">
                     </button>
                 </div>
-                
+
                 <!-- Main Navigation -->
-                <nav class="header-navigation" id="header-navigation">
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
                     <ul class="header-main-links">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Explore</a></li>
@@ -38,9 +40,9 @@
 
         <main>
             <!-- Hero Section -->
-            <section class="about-hero">
+            <section class="hero-center about-hero">
                 <img src="images/photos/about-hero-pic.jpg" alt="">
-                <div class="container about-hero-content">
+                <div class="container hero-title hero-title-spaced about-hero-content">
                     <h1>About Kapesta</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Consequat accusamus incididunt et cupidatat et.</p>
                     <a href="#story" class="about-hero-link">Learn more about us</a>
@@ -49,82 +51,88 @@
 
             <!-- Kapesta Story -->
             <section class="container about-story" id="story">
-                <div class="about-story-content">
-                    <h2>Why We Built Kapesta</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
+                <div>
+                    <h2 class="content-heading">Why We Built Kapesta</h2>
+                    <p>Finding a café to study in isn't always as simple as picking the nearest one. We want to know if the Wi-Fi is reliable, the space is comfortable, and the prices fit our budget.</p>
                     <br />
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
+                    <p>That's why we created Kapesta! We're bringing café information together in one place, helping us explore study-friendly spots around Cabanatuan City and choose one that suits our needs.</p>
                 </div>
                 <div class="about-story-image">
-                    <img src="images/photos/about-us-story-image.jpg" alt="storypic">
+                    <img src="images/photos/about-us-story-image.jpg" alt="">
                 </div>
             </section>
-
+            
             <!-- Kapesta Mission -->
-            <section class="container about-mission">
-                <h2>Our Mission</h2>
-                <div class="mission-card">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-            </section>
+            <div class="section-background"> 
+                <section class="container">
+                    <h2 class="section-heading">Our Mission</h2>
+                    <div class="box-style box-opacity-effect mission-card">
+                        <p>We make café hunting easier by bringing the details that matter closer to us. From Wi-Fi and power outlets to noise levels, amenities, and budget, we help you find a spot that feels right for studying, working, or enjoying a cup of coffee.</p>
+                    </div>
+                </section>
+            </div>
 
             <!-- Kapesta Features -->
-            <section class="container about-features">
-                <h2>How Kapesta Works</h2>
-                
+            <section class="container">
+                <h2 class="section-heading">How Kapesta Works</h2>
+
+                <!-- Feature Cards -->
                 <div class="feature-grid">
                     <!-- Feature 1 -->
-                    <div class="feature-card">
+                    <div class="box-style box-opacity-effect">
                         <img src="images/icons/browse-cafe-icon.svg" alt="">
-                        <h3>1. Browse</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <h3>1. Explore Cafés</h3>
+                        <p>Let's discover cafés around Cabanatuan City and find new spots worth checking out.</p>
                     </div>
 
                     <!-- Feature 2 -->
-                    <div class="feature-card">
+                    <div class="box-style box-opacity-effect">
                         <img src="images/icons/filter-icon.svg" alt="">
-                        <h3>2. Filter</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <h3>2. Find Your Fit</h3>
+                        <p>We can narrow down our choices based on needs, preferred amenities, and budget.</p>
                     </div>
 
                     <!-- Feature 3 -->
-                    <div class="feature-card">
+                    <div class="box-style box-opacity-effect">
                         <img src="images/icons/information-icon.svg" alt="">
-                        <h3>3. See Details</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <h3>3. Get the Details</h3>
+                        <p>Let's check café amenities, operating hours, menus, and other helpful information before we visit.</p>
                     </div>
 
                     <!-- Feature 4 -->
-                    <div class="feature-card">
+                    <div class="box-style box-opacity-effect">
                         <img src="images/icons/review-feature-icon.svg" alt="">
-                        <h3>4. Review</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                        <h3>4. Share Our Experience</h3>
+                        <p>We can rate and review cafés to help fellow café hunters make informed choices.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Kapesta Brand -->
-            <section class="container about-brand">
-                <div class="about-brand-content">
-                    <h2>The Meaning Behind Our Name</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
-                    <br />
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Voluptas dolorem fuga placeat maxime duis dignissimos atque reprehenderit autem tempore voluptas et. Magna cum quos facilis amet atque ut.</p>
-                </div>
-                <div class="about-brand-image">
-                    <img src="images/photos/about-us-brand-image.jpg" alt="taglinepic">
-                </div>
-            </section>
+            <div class="section-background">
+                <section class="container about-brand">
+                    <div>
+                        <h2 class="content-heading">The Meaning Behind Our Name</h2>
+                        <p>For us, Kapesta is about more than finding a place to grab coffee. It's about discovering a spot where we can feel comfortable, focus on our tasks, and enjoy our own café experience.</p>
+                        <br />
+                        <p>That's the heart of our tagline, "Find Your Timpla." We all have different preferences, and we're here to help each of us find a café that feels just right.</p>
+                    </div>
+                    <div class="about-brand-image">
+                        <img src="images/photos/about-us-brand-image.jpg" alt="">
+                    </div>
+                </section>
+            </div>
 
             <!-- Kapesta Team -->
-            <section class="container about-team">
-                <h2>Meet the team</h2>
-
+            <section class="container">
+                <h2 class="section-heading">Meet Our Team</h2>
+                
+                <!-- Member Cards -->
                 <div class="team-grid">
                     <!-- Member 1 -->
                     <div class="team-card">
                         <img src="images/photos/test-member-pic.png" alt="member1">
-                        <h3>Irish S. Villanueva</h3>
+                        <h3>Villanueva</h3>
                         <p>Developer</p>
                         <p>2nd Year BSIT Student</p>
                     </div>
@@ -132,7 +140,7 @@
                     <!-- Member 2 -->
                     <div class="team-card">
                         <img src="images/photos/test-member-pic2.png" alt="member1">
-                        <h3>Irish S. Villanueva</h3>
+                        <h3>Villanueva</h3>
                         <p>Developer</p>
                         <p>2nd Year BSIT Student</p>
                     </div>
@@ -140,17 +148,67 @@
                     <!-- Member 3 -->
                     <div class="team-card">
                         <img src="images/photos/test-member-pic.png" alt="member1">
-                        <h3>Irish S. Villanueva</h3>
+                        <h3>Villanueva</h3>
                         <p>Developer</p>
                         <p>2nd Year BSIT Student</p>
                     </div>
                 </div>
             </section>
 
+            <!-- Kapesta Social -->
+            <div class="section-background">
+                <section class="container about-social">
+                    <h2 class="section-heading">Let's Stay Connected</h2>
+
+                    <!-- Social Links -->
+                    <div class="about-social-grid">
+                        <!-- Facebook -->
+                        <a href="#" target="_blank" title="Visit Kapesta's Facebook Page">
+                            <div class="social-links">
+                                <div class="social-link-image">
+                                    <img src="images//icons/facebook-logo-brown.svg" alt="">
+                                </div>
+                                <div class="social-link-content">
+                                    <h3>Facebook</h3>
+                                    <p>Kapesta Official Page</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="#" target="_blank" title="Visit Kapesta's Instagram Page">
+                            <div class="social-links">
+                                <div class="social-link-image">
+                                    <img src="images//icons/instagram-logo-brown.svg" alt="">
+                                </div>
+                                <div class="social-link-content">
+                                    <h3>Instagram</h3>
+                                    <p>@kapesta_official</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Twitter -->
+                        <a href="#" target="_blank" title="Visit Kapesta's Twitter Page">
+                            <div class="social-links">
+                                <div class="social-link-image">
+                                    <img src="images//icons/twitter-logo-brown.svg" alt="">
+                                </div>
+                                <div class="social-link-content">
+                                    <h3>Twitter</h3>
+                                    <p>@kapesta_official</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <p>Have thoughts or suggestions? We'd love to hear from you!</p>
+                </section>
+            </div>
+
             <!-- Call to Action -->
-            <section class="container about-action">
+            <section class="container cta-section">
                 <h2>Ready to Find Your Next Coffee Spot?</h2>
-                <p>Discover great cafes around you, explore recommendations, and find a place worth visiting.</p>
+                <p class="cta-description">Discover great cafes around you, explore recommendations, and find a place worth visiting.</p>
                 <a href="#" title="Explore cafes">Explore Cafes</a>
             </section>
         </main>
@@ -167,23 +225,23 @@
                     <hr />
                     
                     <!-- Social Media -->
-                    <div class="footer-social">
+                    <nav class="footer-social" aria-label="Social media links">
                         <a href="#" target="_blank" title="Visit Kapesta on Facebook">
-                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook">
+                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
                         </a>
 
-                        <a href="#" target="_blank" title="Follow Kapesta on Instagram">
-                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram">
+                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
                         </a>
 
-                        <a href="#" target="_blank" title="Follow Kapesta on Twitter">
-                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter">
+                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
                         </a>
-                    </div>
+                    </nav>
                 </div>
 
                 <!-- Footer Navigation -->
-                <nav class="footer-links">
+                <nav class="footer-links" aria-label="Footer navigation">
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Platform</h3>
                         <a href="#">Home</a>
