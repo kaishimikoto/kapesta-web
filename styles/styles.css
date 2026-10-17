@@ -72,12 +72,6 @@ a {
     color: inherit;
 }
 
-.container {
-    width: min(100%, 960px); 
-    margin: 0 auto;
-    padding: 80px 40px;
-}
-
 main {
     background-color: var(--color-bg);
 }
@@ -202,7 +196,7 @@ main p {
    ================================================================== */
 footer {
     background-color: var(--color-brown);
-    border-radius: 24px 24px 0 0;
+    border-radius: 10% 10% 0 0;
     color: var(--color-white);
     font-size: 0.875rem;
 }
@@ -210,6 +204,7 @@ footer {
 footer a {
     color: var(--color-white);
     text-decoration: none;
+    text-underline-offset: 4px;
 }
 
 footer a:hover {
@@ -289,36 +284,112 @@ footer a:hover {
 /* ==================================================================
    Shared Style
    ================================================================== */
+.hero-background {
+    background: linear-gradient(to top, var(--color-brown-dark), var(--color-brown));
+    border-radius: 0 0 10% 10%;
+}
 
-/* -------------------- Card Style ---------------------------------- */
-.mission-card, .feature-card, .contact-card, .form-style {
+.hero-background h1, .hero-background p {
+    color: var(--color-white);
+}
+
+.section-background {
+    background: #F0EBE2;
+}
+
+.container {
+    width: min(100%, 960px); 
+    margin: 0 auto;
+    padding: 120px 40px;
+}
+
+/* -------------------- Shared Box Style ---------------------------- */
+.box-style {
     background-color: var(--color-white);
     border-radius: 16px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+    padding: 40px;
 }
 
-/* -------------------- Heading Level 2 ----------------------------- */
-.about-mission h2, .about-features h2, .about-team h2, .contact-information h2, .contact-form h2, .contact-social h2 {
+.box-style img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+}
+
+.box-style p {
+    margin-top: 8px;
+}
+
+.box-opacity-effect {
+    border: 2px solid var(--color-white);
+    opacity: 0.9;
+    transition: transform var(--transition), border-color var(--transition),
+        opacity var(--transition);
+}
+
+.box-opacity-effect:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.50);
+    transform: scale(1.025);
+    border-color: var(--color-brown);
+    opacity: 1;
+}
+
+/* -------------------- Page Hero ----------------------------------- */
+.page-hero {
+    padding: 200px 40px 80px;
+}
+
+.hero-center {
+    text-align: center;
+}
+
+.hero-title h1 {
+    font-size: clamp(2.5rem, 5vw + 1rem, 6rem);
+}
+
+.hero-title-spaced h1 {
+    padding-bottom: 8px;
+}
+
+/* -------------------- Section Headings ---------------------------- */
+.section-heading {
     text-align: center;
     padding-bottom: 48px;
 }
 
-.about-story-content h2, .about-brand-content h2, .policy-introduction h2, .policy-section h2, .terms-introduction h2, .terms-section h2 {
+.content-heading {
     padding-bottom: 32px;
 }
 
-/* -------------------- Hero Section -------------------------------- */
-.contact-hero, .policy-hero, .conditions-hero {
+/* -------------------- Call to Action Section --------------- */
+.cta-section {
     text-align: center;
-    padding: 200px 40px 80px;
+    margin-bottom: 40px;
 }
 
-.about-hero-content h1, .contact-hero-content h1, .policy-hero h1, .conditions-hero h1 {
-    font-size: clamp(5rem, 4vw + 2rem, 6rem);
+.cta-section h2 {
+    margin-bottom: 8px;
 }
 
-.contact-hero-content h1, .policy-hero h1, .conditions-hero h1 {
-    padding-bottom: 8px;
+.cta-section a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 16px 32px;
+    background-color: var(--color-brown);
+    border-radius: 8px;
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    transition: background-color var(--transition);
+}
+
+.cta-section a:hover {
+    background-color: var(--color-brown-dark);
+}
+
+.cta-description {
+    margin-bottom: 48px;
 }
 
 /* ==================================================================
@@ -326,6 +397,17 @@ footer a:hover {
    ================================================================== */
 .form-style {
     padding: 48px 48px 80px;
+}
+
+/* -------------------- Form Heading -------------------------------- */
+.form-heading {
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.form-description {
+    text-align: center;
+    padding-bottom: 48px;
 }
 
 /* -------------------- Form Fields --------------------------------- */
@@ -358,15 +440,57 @@ footer a:hover {
     resize: none;
 }
 
+/* -------------------- Form Attachment ----------------------------- */
+.form-attachment {
+    margin-bottom: 32px;
+    border: 1px solid var(--color-border);
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.form-attachment input[type="file"]::file-selector-button {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    padding: 16px 24px;
+    margin-right: 16px;
+    background-color: var(--color-brown);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.form-attachment input[type="file"]::file-selector-button:hover {
+    background-color: var(--color-brown-dark);
+}
+
+.attachment-description {
+    margin: 16px 0;
+    font-size: 16px;
+}
+
 /* -------------------- Form Focus ---------------------------------- */
-.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
-    border-color: var(--color-brown);
+.form-field input:focus-visible, .form-field select:focus-visible, .form-field textarea:focus-visible, .form-style button:focus-visible {
+    border: 1px solid var(--color-brown);
     outline: none;
 }
 
+/* -------------------- Form Invalid --------------------------------- */
 .form-field input:user-invalid, .form-field select:user-invalid, .form-field textarea:user-invalid {
     border-color: var(--color-red);
     outline: none;
+}
+
+.form-error {
+    display: none;
+    font-size: 14px;
+    padding-top: 8px;
+    color: var(--color-red);
+}
+
+.form-field:has(input:user-invalid) .form-error, .form-field:has(select:user-invalid) .form-error, .form-field:has(textarea:user-invalid) .form-error, .report-form fieldset:has(input[type="checkbox"]:user-invalid) .form-error {
+    display: block;
 }
 
 /* -------------------- Form Row ------------------------------------ */
@@ -377,7 +501,7 @@ footer a:hover {
 }
 
 /* -------------------- Form Submit Button -------------------------- */
-.contact-form button, .report-form button {
+.form-style button {
     width: 100%;
     padding: 16px;
     border: none;
@@ -390,7 +514,7 @@ footer a:hover {
     transition: background-color var(--transition);
 }
 
-.contact-form button:hover, .report-form button:hover {
+.form-style button:hover {
     background-color: var(--color-brown-dark);
 }
 
@@ -416,8 +540,6 @@ footer a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    color: var(--color-white);
-    text-align: center;
 }
 
 .about-hero-content h1 {
@@ -432,8 +554,8 @@ footer a:hover {
 
 .about-hero-link {
     display: inline-block;
+    background-color: var(--color-white);
     padding: 16px 32px;
-    background-color: white;
     border-radius: 8px;
     color: var(--color-brown);
     text-decoration: none;
@@ -457,23 +579,19 @@ footer a:hover {
     gap: 40px;
 }
 
-.about-story-content p, .about-brand-content p {
-    text-align: justify;
-}
-
 .about-story-image, .about-brand-image {
     overflow: hidden;
     border-radius: 32px 0 32px 0;
 }
 
 .about-story-image img, .about-brand-image img {
-    width: 1000px;
-    height: 400px;
+    width: 62.5rem;
+    height: 25rem;
     object-fit: cover;
     transition: transform var(--transition);
 }
 
-.about-story-image:hover img, .about-brand-image:hover img {
+.about-story-image img:hover, .about-brand-image img:hover {
     transform: scale(1.15);
 }
 
@@ -483,14 +601,8 @@ footer a:hover {
 
 /* -------------------- Mission Section ----------------------------- */
 .mission-card {
-    padding: 48px;
     text-align: center;
     font-style: italic;
-    transition: transform var(--transition);
-}
-
-.mission-card:hover {
-    transform: scale(1.05);
 }
 
 /* -------------------- Features Section ---------------------------- */
@@ -498,28 +610,10 @@ footer a:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-}
-
-.feature-card {
-    padding: 40px;
     text-align: center;
-    transition: transform var(--transition);
-}
-
-.feature-card:hover {
-    transform: scale(1.05);
-}
-
-.feature-card img {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 16px;
 }
 
 /* -------------------- Team Section -------------------------------- */
-.about-team h2 {
-    text-transform: uppercase;
-}
 .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -540,7 +634,7 @@ footer a:hover {
 }
 
 .team-card img:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 
 .team-card h3 {
@@ -553,7 +647,6 @@ footer a:hover {
     font-weight: bold;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: var(--color-brown);
     margin-bottom: 8px;
 }
 
@@ -561,31 +654,45 @@ footer a:hover {
     font-size: 0.875rem;
 }
 
-/* -------------------- Call to Action ------------------------------ */
-.about-action {
+/* -------------------- Social Links Section ------------------------ */
+.about-social p {
     text-align: center;
 }
 
-.about-action h2 {
-    margin-bottom: 24px;
+.about-social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 16px;
 }
 
-.about-action p {
-    margin-bottom: 40px;
-}
-
-.about-action a {
-    display: inline-block;
-    padding: 16px 64px;
-    background-color: var(--color-brown);
-    color: var(--color-white);
-    border-radius: 8px;
+.about-social-grid a {
     text-decoration: none;
-    transition: background-color var(--transition);
 }
 
-.about-action a:hover {
-    background-color: var(--color-brown-dark);
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border: 2px solid rgba(72, 53, 36, 0.5);
+    border-radius: 16px;
+    padding: 24px;
+    opacity: 0.9;
+    transition: border-color var(--transition), opacity var(--transition);
+}
+
+.social-links:hover {
+    border-color: var(--color-brown);
+    opacity: 1;
+}
+
+.social-link-image img {
+    width: 48px;
+    height: 48px;
+}
+
+.social-link-content h3 {
+    margin-bottom: 4px;
 }
 
 /* ==================================================================
@@ -598,124 +705,37 @@ footer a:hover {
 
 /* -------------------- Contact Methods ----------------------------- */
 .contact-methods {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    padding-top: 40px;
+    padding: 40px 0;
 }
 
-.contact-card {
+.contact-methods a {
     display: flex;
+    min-width: 0;
+    text-decoration: none;
+}
+
+.contact-methods .box-style {
     flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    transition: transform var(--transition);
-}
-
-.contact-card:hover {
-    transform: scale(1.05);
-}
-
-.contact-card img {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-}
-
-.contact-card h3 {
-    margin-bottom: 8px;
-}
-
-.contact-card a {
-    color: var(--color-text);
-    text-decoration: none;
-}
-
-.contact-card a:hover {
-    color: var(--color-brown);
-    text-decoration: underline;
-}
-
-/* -------------------- Social Media -------------------------------- */
-.contact-social h3 {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.social-links img {
-    width: 32px;
-    height: 32px;
-}
-
-.social-links a {
-    text-decoration: none;
+    width: 100%;
+    min-width: 0;
 }
 
 /* ==================================================================
    Report Problem Page
    ================================================================== */
-.report-layout {
-    padding: 200px 40px 80px;
-}
-
-/* -------------------- Introduction -------------------------------- */
-.report-introduction {
-    text-align: center;
-    margin-bottom: 48px;
-}
-
-.report-introduction h1 {
-    margin-bottom: 8px;
-    font-size: 44px;
-}
-
-/* -------------------- Attachment ---------------------------------- */
-.form-attachment {
-    margin-bottom: 32px;
-    border: 1px solid var(--color-border);
-    padding: 24px;
-    border-radius: 8px;
-}
-
-.attachment-description {
-    margin: 16px 0;
-    font-size: 16px;
-}
-
-.report-form input[type="file"] {
-    font-size: 16px;
-}
-
-.report-form input[type="file"]::file-selector-button {
-    padding: 16px 24px;
-    margin-right: 16px;
-    background-color: var(--color-brown);
-    border: none;
-    border-radius: 8px;
-    color: var(--color-white);
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color var(--transition);
-}
-
-.report-form input[type="file"]::file-selector-button:hover {
-    background-color: var(--color-brown-dark);
-}
-
 /* -------------------- Confirmation -------------------------------- */
 .report-form fieldset {
     margin: 0 0 48px;
     padding: 24px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
+}
+
+.report-form fieldset:has(input[type="checkbox"]:user-invalid) {
+    border: 1px solid var(--color-red);
 }
 
 .report-form legend {
@@ -735,10 +755,6 @@ footer a:hover {
     margin-bottom: 16px;
 }
 
-.confirmation-option a {
-    color: var(--color-brown);
-}
-
 .confirmation-option a:hover {
     color: var(--color-brown-dark);
 }
@@ -746,61 +762,21 @@ footer a:hover {
 /* ==================================================================
    Privacy Policy Page
    ================================================================== */
-
-/* -------------------- Policy Layout ------------------------------- */
-   .policy-grid {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 40px;
-}
-
-/* -------------------- Table of Contents --------------------------- */
-.policy-navigation h2 {
-    font-size: 32px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-}
-
-.policy-navigation ol {
-    padding-left: 24px;
-    color: var(--color-brown);
-}
-
-.policy-navigation li {
-    padding-bottom: 8px;
-    font-size: 16px;
-}
-
-.policy-navigation a {
-    color: var(--color-brown);
-    text-decoration: none;
-    transition: color var(--transition);
-}
-
-.policy-navigation a:hover {
-    text-decoration: underline;
-    color: var(--color-brown-dark);
-}
-
-/* -------------------- Policy Content ------------------------------ */
-.policy-introduction {
-    padding-bottom: 48px;
-}
-
 .policy-section {
+    text-align: justify;
     padding: 48px 0;
 }
 
-/* ==================================================================
-   Terms and Conditions Page
-   ================================================================== */
-.terms-introduction {
-    padding-bottom: 48px;
+.policy-section ul {
+    margin-left: 40px;
 }
 
-.terms-section {
-    padding: 48px 0;
+.policy-heading h2 {
+    padding-bottom: 24px;
+}
+
+.policy-heading h3 {
+    padding: 24px 0 16px;
 }
 
 /* ==================================================================
@@ -811,7 +787,7 @@ footer a:hover {
 @media(max-width: 1024px) {
     /* -------------------- Global ---------------------------------- */
     .container {
-        padding: 64px 40px;
+        padding: 80px 40px;
     }
 
     /* -------------------- Header ---------------------------------- */
@@ -834,25 +810,31 @@ footer a:hover {
         gap: 56px;
     }
 
-    /* -------------------- Page Heroes ----------------------------- */
-    .contact-hero, .policy-hero, .conditions-hero, .report-layout {
-        padding: 180px 32px 64px;
+    /* -------------------- Page Hero ------------------------------- */
+    .page-hero {
+        padding: 180px 32px 74px;
     }
 
-    /* -------------------- Heading Level 2 ------------------------- */
-    .about-mission h2, .about-features h2, .about-team h2, .contact-information h2, .contact-form h2, .contact-social h2 {
+    /* -------------------- Section Headings ------------------------ */
+    .section-heading {
         padding-bottom: 32px;
     }
 
-    /* -------------------- About: Story & Tagline ------------------ */
+    /* -------------------- Buttons --------------------------------- */
+
+    .form-style button, .form-attachment input[type="file"]::file-selector-button, .cta-section a { 
+        font-size: 14px;
+    }
+
+    /* -------------------- About: Story & Brand ------------------ */
     .about-hero-content {
         top: 55%;
     }
-    
+
     .about-hero img {
-        height: 600px;
+        height: 37.5rem;
     }
-    
+
     .about-story, .about-brand {
         gap: 32px;
     }
@@ -862,7 +844,7 @@ footer a:hover {
 @media(max-width: 768px) {
     /* -------------------- Global ---------------------------------- */
     .container {
-        padding: 48px 32px;
+        padding: 64px 32px;
     }
 
     h2 {
@@ -949,61 +931,44 @@ footer a:hover {
         text-align: center;
     }
 
-    /* -------------------- Page Heroes ----------------------------- */
-    .contact-hero, .policy-hero, .conditions-hero, .report-layout {
-        padding: 120px 32px 32px;
+    /* -------------------- Shared Style ---------------------------- */
+    .box-style {
+        padding: 32px;
+    }
+
+    /* -------------------- Page Hero ------------------------------- */
+    .page-hero {
+        padding: 120px 32px 56px;
+    }
+
+    /* -------------------- General Form Style ---------------------- */
+    .form-style {
+        padding: 56px 32px;
+    }
+
+    /* -------------------- Form Row -------------------------------- */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
     /* -------------------- About - Hero ---------------------------- */
-    .about-hero-content h1, .contact-hero-content h1, .policy-hero h1, .conditions-hero h1 {
-        font-size: clamp(3rem, 6vw, 4.5rem);
-    }
-
     .about-hero-content {
         top: 60%;
     }
-    
+
     .about-hero img {
-        height: 500px;
+        height: 31.25rem;
     }
 
     .about-hero-content p {
         margin: 0 auto 32px;
     }
 
-    /* -------------------- About - Story & Tagline ----------------- */
-    .about-story, .about-brand {
-        flex-direction: column-reverse;
-        gap: 24px;
-    }
-
-    .about-story-image img, .about-brand-image img {
-        width: 768px;
-        height: 200px;
-        object-position: center 58%;
-    }
-
-    .about-story h2, .about-brand h2 {
-        text-align: center;
-    }
-
-    .about-story-content p, .about-brand-content p {
-        text-align: left;
-    }
-
-    /* -------------------- About - Mission ------------------------- */
-    .mission-card {
-        padding: 32px;
-    }
-
-    /* -------------------- About - Differences --------------------- */
+    /* -------------------- About - Features ------------------------ */
     .feature-grid {
         grid-template-columns: 1fr;
         gap: 32px;
-    }
-
-    .feature-card {
-        padding: 32px;
     }
 
     /* -------------------- About - Team ---------------------------- */
@@ -1016,55 +981,11 @@ footer a:hover {
         min-width: 40%;
     }
 
-    /* -------------------- About - Call to Action ------------------ */
-    .about-action a {
-        padding: 16px 48px;
-    }
-
     /* -------------------- Contact Information --------------------- */
-    
-    .contact-information h2 {
-        padding-bottom: 16px;
-    }
-
-    /* -------------------- Contact - Methods ----------------------- */
     .contact-methods {
-        flex-direction: column;
+        padding: 16px 0 40px;
+        grid-template-columns: repeat(1, 1fr);
         gap: 24px;
-    }
-
-    .contact-card {
-        padding: 32px;
-    }
-
-    /* -------------------- Contact - Form Row ---------------------- */
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .form-style {
-        padding: 32px 32px 56px;
-    }
-
-    /* -------------------- Report ---------------------------------- */
-    .report-introduction h1 {
-        font-size: 36px;
-    }
-
-    /* -------------------- Privacy - Table of Contents ------------- */
-    .policy-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .policy-navigation {
-        margin-bottom: 32px;
-        padding-bottom: 24px;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    .policy-navigation h2 {
-        font-size: 28px;
     }
 }
 
@@ -1072,7 +993,7 @@ footer a:hover {
 @media(max-width: 480px) {
     /* -------------------- Global ---------------------------------- */
     .container {
-        padding: 32px;
+        padding: 56px 16px;
     }
 
     h2 {
@@ -1081,7 +1002,7 @@ footer a:hover {
 
     /* -------------------- Footer ---------------------------------- */
     .footer-layout {
-        padding: 32px;
+        padding: 32px 20px;
         gap: 40px;
     }
 
@@ -1099,59 +1020,52 @@ footer a:hover {
         padding: 0 32px 24px;
     }
 
-    /* -------------------- Page Heroes ----------------------------- */
-    .about-hero-content h1, .contact-hero-content h1, .policy-hero h1, .conditions-hero h1 {
-        font-size: clamp(2.25rem, 8vw, 3rem);
+    /* -------------------- Shared Style ---------------------------- */
+    .box-style {
+        padding: 24px;
+    }
+
+    /* -------------------- Page Hero ------------------------------- */
+    .page-hero {
+        padding: 120px 32px 48px;
+    }
+
+    .hero-title h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    /* -------------------- General Form Style ---------------------- */
+    .form-style {
+        padding: 40px 24px;
     }
 
     /* -------------------- About - Hero ---------------------------- */
-    .contact-hero, .policy-hero, .conditions-hero, .report-layout {
-        padding: 120px 32px 40px;
-    }
-
     .about-hero-link {
         padding: 14px 28px;
     }
-    
+
     .about-hero img {
-        height: 400px;
+        height: 25rem;
     }
 
-    /* -------------------- About - Card ---------------------------- */
-    .mission-card, .feature-card {
-        padding: 24px;
-    }
-
-    .team-grid {
-        gap: 32px;
-    }
-
-    /* -------------------- About - Call to Action ------------------ */
-    .about-action a {
-        padding: 16px 32px;
-    }
-
-    /* -------------------- Contact: Methods & Social --------------- */
-    .contact-card {
-        padding: 24px;
-    }
-
-    .social-links {
+    /* -------------------- About - Story & Brand ------------------- */
+    .about-story, .about-brand {
+        flex-direction: column-reverse;
         gap: 24px;
     }
 
-    /* -------------------- Form Card (Contact & Report) ------------ */
-    .form-style {
-        padding: 24px 24px 40px;
+    .about-story h2, .about-brand h2 {
+        text-align: center;
     }
 
-    /* -------------------- Report ---------------------------------- */
-    .report-introduction h1 {
-        font-size: 28px;
+    .about-story-image img, .about-brand-image img {
+        width: 48rem;
+        height: 12.5rem;
+        object-position: center 58%;
     }
 
-    /* -------------------- Privacy --------------------------------- */
-    .policy-navigation h2 {
-        font-size: 24px;
+    /* -------------------- About - Team ---------------------------- */
+    .team-grid {
+        gap: 32px;
     }
 }
