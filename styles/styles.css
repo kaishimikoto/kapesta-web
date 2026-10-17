@@ -485,7 +485,6 @@ footer a:hover {
 .form-error {
     display: none;
     font-size: 14px;
-    padding-top: 8px;
     color: var(--color-red);
 }
 
