@@ -183,8 +183,6 @@ const cafe1 = new Cafe({
 
    // Amenities
 
-   // Amenities
-
    // Connectivity & Work Facilities
    wifiStrength: 3,
    powerOutletsNumber: 12,
