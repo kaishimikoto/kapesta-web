@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <title>Document</title>
+        <style>
+            .filterToggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--color-brown);
+                border-radius: 50%;
+                width: 48px;
+                height: 48px;
+                cursor: pointer;
+                transition: background-color var(--transition);
+            }
+
+            .filterToggle img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .filterToggle:hover {
+                background-color: var(--color-brown-dark);
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                z-index: 300;
+                inset: 0;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(4px);
+            }
+
+            .filter-box {
+                display: grid;
+                gap: 16px;
+                background: var(--color-white);
+                border-radius: 16px;
+                width: 100%;
+                max-width: 640px;
+                height: auto;
+                padding: 24px;
+                animation: dialogAppear var(--transition) forwards;
+            }
+
+            .filter-box.is-closing {
+                animation: dialogDisappear var(--transition) forwards;
+            }
+
+            .filter-box button {
+                padding: 8px 16px;
+                background: var(--color-white);
+                border: 1px solid var(--color-border);
+                border-radius: 8px;
+            }
+
+            .filter-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .filter-header img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .filter-box {
+                border: 1px solid var(--color-border);
+                border-radius: 16px;
+                padding: 16px;
+            }
+
+            .filter-box label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .barangay-layout select {
+                width: 100%;
+                border: 1px solid var(--color-border);
+                border-radius: 8px;
+                padding: 8px;
+                font-family: inherit;
+            }
+
+            .barangay-layout select:focus {
+                outline: none;
+                border: 1px solid var(--color-brown);
+            }
+
+            .price-layout input {
+                width: 100%;
+            }
+
+            #selectedPrice {
+                text-align: right;
+            }
+
+            .amenities-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+
+            .amenities-option {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .amenities-option button {
+                text-align: left;
+                transition: background-color var(--transition), color var(--transition);
+            }
+
+            .amenities-option button:hover {
+                border: 1px solid var(--color-brown);
+                background-color: var(--color-brown);
+                color: var(--color-white);
+            }
+
+            .amenities-option button:active {
+                background-color: var(--color-brown-dark);
+            }
+
+            .filter-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .filter-bottom-right {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+
+            #clearButton {
+                transition: background-color var(--transition), color var(--transition);
+            }
+            
+            #clearButton:hover {
+                background-color: var(--color-brown);
+                color: var(--color-white);
+            }
+
+            #applyButton {
+                border: 1px solid var(--color-brown);
+                background-color: var(--color-brown);
+                color: white;
+            }
+
+            #applyButton:hover {
+                background-color: var(--color-brown-dark);
+            }
+
+            .filter-header img, .barangay-layout select, .price-layout input, .filter-box button {
+                cursor: pointer;
+            }
+
+            @media(max-width: 768px) {
+                .filter-box {
+                    width: 95%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- Filter Toggle -->
+        <div class="filterToggle" onclick="toggleFilterSystem()">
+            <img src="images/icons/filter-white-icon.svg" alt="">
+        </div>
+
+        <!-- Cafe Filtering System -->
+        <div class="overlay" id="overlayFilter">
+            <div class="filter-box">
+                <!-- Filter Header -->
+                <div class="filter-header">
+                    <h3>ADVANCED FILTERS</h3>
+                    <img src="images/icons/exit-icon.svg" onclick="closeFilterSystem()" alt="">
+                </div>
+
+                <hr />
+
+                <!-- Select Barangay -->
+                <div class="filter-box barangay-layout">
+                    <!-- Select Barangay -->
+                    <label for="barangay">BARANGAY</label>
+                    <select id="barangay" name="barangay" onchange="selectBarangay()">
+                        <option value="allBrgy" selected>All barangays</option>
+                        <option value="brgy1">Barangay 1</option>
+                        <option value="brgy2">Barangay 2</option>
+                        <option value="brgy3">Barangay 3</option>
+                    </select>
+                </div>
+                
+                <!-- Select Maximum Price Range -->
+                <div class="filter-box price-layout">
+                    <label for="maxPrice">Maximum Price &lpar;₱0 - ₱500&rpar;</label>
+                    <input type="range" id="maxPrice" value="0" min="0" max="500" step="50" oninput="selectMaxPrice()">
+                    <p id="selectedPrice">₱0</p>
+                </div>
+
+                <!-- Select Amenities -->
+                <div class="filter-box">
+                    <!-- Amenities Header -->
+                    <div class="amenities-header">
+                        <p>Amenities</p>
+                        <p id="totalAmenitySelected">0 Selected</p>
+                    </div>
+                    
+                    <!-- Amenities Option -->
+                    <div class="amenities-option">
+                        <button type="button" id="amenity1" onclick="selectAmenity(0)">Air Condition</button>
+                        <button type="button" id="amenity2" onclick="selectAmenity(1)">Alfresco</button>
+                        <button type="button" id="amenity3" onclick="selectAmenity(2)">Minimal Noise</button>
+                        <button type="button" id="amenity4" onclick="selectAmenity(3)">Parking Available</button>
+                        <button type="button" id="amenity5" onclick="selectAmenity(4)">Pet Friendly</button>
+                        <button type="button" id="amenity6" onclick="selectAmenity(5)">Power Outlets</button>
+                        <button type="button" id="amenity7" onclick="selectAmenity(6)">Restroom Available</button>
+                        <button type="button" id="amenity8" onclick="selectAmenity(7)">Wi-Fi</button>
+                    </div>
+                </div>
+
+                <!-- Filter Bottom -->
+                <div class="filter-bottom">
+                    <button type="button" id="clearButton" onclick="clearFilter()">Clear all</button>
+                    <div class="filter-bottom-right">
+                        <p id="totalFilterSelected">0 Selected</p>
+                        <button type="button" id="applyButton" onclick="applyFilter(); closeFilterSystem();" >Apply filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
