@@ -246,3 +246,59 @@ function applyFilter() {
     console.log(`Chosen Price: ${userSelectedMaxPrice}`);
     console.log(`Chosen Amenity: ${userSelectedAmenity}`);
 }
+
+// ============== Carousel ===============/
+
+
+
+const cafeRows = document.querySelectorAll(".cafe-row");
+
+cafeRows.forEach(function(row) {
+    const viewport = row.querySelector(".cafes-viewport");
+    const container = row.querySelector(".cafes-container");
+    const leftButton = row.querySelector(".left-btn");
+    const rightButton = row.querySelector(".right-btn");
+
+    function getScrollAmount() {
+        const cafe = container.querySelector(".cafe-item");
+        const styles = getComputedStyle(container);
+        const gap = parseFloat(styles.columnGap) || 0;
+
+        return cafe.getBoundingClientRect().width + gap;
+    }
+
+    // Check whether each arrow should be visible
+    function updateButtons() {
+        const atStart = viewport.scrollLeft <= 1;
+
+        const atEnd =
+            viewport.scrollLeft + viewport.clientWidth >=
+            viewport.scrollWidth - 1;
+
+        leftButton.style.display = atStart ? "none" : "";
+        rightButton.style.display = atEnd ? "none" : "";
+    }
+
+    rightButton.addEventListener("click", function() {
+        viewport.scrollBy({
+            left: getScrollAmount(),
+            behavior: "smooth"
+        });
+    });
+
+    leftButton.addEventListener("click", function() {
+        viewport.scrollBy({
+            left: -getScrollAmount(),
+            behavior: "smooth"
+        });
+    });
+
+    // Update arrows as the carousel scrolls
+    viewport.addEventListener("scroll", updateButtons);
+
+    // Check again if the window is resized
+    window.addEventListener("resize", updateButtons);
+
+    // Set the correct arrows when the page first loads
+    updateButtons();
+});
