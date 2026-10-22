@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/explore-styles.css">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <header>
+            <div class="header-layout">
+                <!-- Website Logo / Mobile Menu -->
+                <div class="header-brand">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
+                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
+                    </button>
+                </div>
+
+                <!-- Main Navigation -->
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
+                    <ul class="header-main-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+
+                    <ul class="header-auth-links">
+                        <li><a href="login.html" class="header-login-link">Log in</a></li>
+                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Search bar -->
+            <form action="#" method="post" class="search-bar">
+
+                <button type="submit">
+                    <img src="icons/search.svg" alt="Search button" class="icons">
+                </button>
+
+                <input type="search" id="search-input" placeholder="Search for cafes">
+
+                <button type="button">
+                    <img src="icons/filter.svg" alt="Search button" class="icons">
+                </button>
+                
+            </form>
+
+            <h1>Discover Cafes</h1>
+            
+            <section class="cafe-row">
+
+                <h3>Available in Barangay</h3>
+
+                <button class="left-btn"><</button>
+
+                <div class="cafes-viewport">
+
+                    <div class="cafes-container">
+                        
+                        <!-- Cafe 1 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/coffee2.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 2 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/coffee1.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 3 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 4 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chncafe.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 5 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 6 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 7 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 8 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/scary-face.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
+                <button class="right-btn">></button>
+
+            </section>
+
+            <section class="cafe-row">
+
+                <h3>Available in Barangay</h3>
+
+                <button class="left-btn"><</button>
+
+                <div class="cafes-viewport">
+
+                    <div class="cafes-container">
+                        
+                        <!-- Cafe 1 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 2 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 3 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe1.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 4 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe2.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 5 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe3.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+                        
+                        <!-- Cafe 6 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 7 -->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe2.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="right-btn">></button>
+
+            </section>
+
+            <section class="cafe-row">
+
+                <h3>Available in Barangay</h3>
+
+                <button class="left-btn"><</button>
+
+                <div class="cafes-viewport">
+
+                    <div class="cafes-container">
+                        
+                        <!-- Cafe 1-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe3.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 2-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chncafe.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+                        
+                        <!-- Cafe 3-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 4-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 5-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/cafe3.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 6-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/chncafe.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 7-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/kate-laine-wtwP4tI0R08-unsplash.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 8-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/pexels-intitupac-5373242.jpg" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                        <!-- Cafe 9-->
+                        <div class="cafe-item">
+                            
+                            <div class="cafe-photo-container">
+                                <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-photo">
+                            </div>
+                            
+                            <div class="cafe-information">
+
+                                <div class="cafe-rating">
+                                    <img src="icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
+                            </div>
+
+                            <h4>Cafe Name</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="right-btn">></button>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <div class="footer-layout">
+                <!-- Website Information -->
+                <div class="footer-information">
+                    <div class="footer-information-logo">
+                        <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <hr />
+                    
+                    <!-- Social Media -->
+                    <nav class="footer-social" aria-label="Social media links">
+                        <a href="#" target="_blank" title="Visit Kapesta on Facebook">
+                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Platform</h3>
+                        <a href="index.html">Home</a>
+                        <a href="#">Explore Cafes</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Support</h3>
+                        <a href="report.html">Report an Issue</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Legal</h3>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms and Conditions</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <hr />
+                <small>&copy; 2026 Kapesta. All rights reserved.</small>
+            </div>
+        </footer>
+
+        <script src="scripts/scripts.js"></script>
+
+    </body>
+</html>
