@@ -34,6 +34,31 @@ if (navbar) {
     updateNav();
 }
 
+// ---------- Profile dropdown ----------
+{
+    const menu = document.querySelector('.profile-menu');
+
+    if (menu) {
+        const toggle = document.getElementById('profileToggle');
+
+        const setOpen = (open) => {
+            menu.classList.toggle('open', open);
+            toggle.setAttribute('aria-expanded', open);
+        };
+
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setOpen(!menu.classList.contains('open'));
+        });
+
+        // click anywhere else, or press Esc, to close
+        document.addEventListener('click', () => setOpen(false));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    }
+}
+
 // ---------- Cafe Spotlight slider ----------
 const track = document.querySelector('.slider-track');
 
