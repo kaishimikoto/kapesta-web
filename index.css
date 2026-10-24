@@ -21,6 +21,7 @@ body {
     z-index: 10;
     background: transparent;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    font-family: "Poppins", sans-serif;
 }
 
 .nav-hover-zone {
