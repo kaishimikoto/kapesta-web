@@ -49,10 +49,12 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
 .nav-links a {
+    display: inline-block;
     color: #C17F42;
     text-decoration: none;
     padding: 8px 10px;
@@ -65,6 +67,69 @@ body {
     color: #ffffff;
     background-color: #483524;
     border-bottom: 2px solid #C17F42;
+}
+
+/* ---------- Profile dropdown ---------- */
+.profile-menu {
+    position: relative;
+}
+
+.profile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    color: #C17F42;
+    font: inherit;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.profile-toggle:hover,
+.profile-menu.open .profile-toggle {
+    color: #ffffff;
+    background-color: #483524;
+}
+
+.caret {
+    font-size: 12px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 140px;
+    list-style: none;
+    background: #000;
+    border: 1px solid #483524;
+    border-radius: 8px;
+    padding: 6px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.profile-menu.open .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #E8C07D;
+}
+
+.profile-dropdown a:hover {
+    background-color: #483524;
+    color: #fff;
 }
 
 /* ---------- Hero / video ---------- */
