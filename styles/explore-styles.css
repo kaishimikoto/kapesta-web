@@ -8,7 +8,9 @@
 :root {
     /* ---------------- Color --------------------------------------- */
     --color-white: #FFFFFF;
-    --color-bg: #FAF9F6;
+    --color-bg: rgb(241, 239, 237);
+    --color-content-bg: rgb(251, 249, 247);
+    /*--color-bg: #FAF9F6;*/
     --color-brown: #483524;
     --color-brown-dark: #2E1F11;
     --color-text: #332719;
@@ -52,7 +54,7 @@ h2 {
     font-size: 2.5rem;
 }
 
-h3 {
+h3, caption {
     font-size: 1.25rem;
 }
 
@@ -342,9 +344,14 @@ main {
     border-radius: 12px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
     display: flex;
+    gap: 15px;
     flex-direction: column;
-    gap: 10px;
     position: relative;
+    background-color: var(--color-content-bg);
+}
+
+.cafe-row h3 {
+    margin-left: 28px;
 }
 
 /* The visible window for the cafe cards */
@@ -371,8 +378,8 @@ main {
     flex: 0 0 calc((100% - 48px) / 4);
     min-width: 0;
     display: flex;
+    gap: 4px;
     flex-direction: column;
-    gap: 5px;
     scroll-snap-align: start;
     box-sizing: border-box;
 }
@@ -401,6 +408,13 @@ main {
 /* Cafe details */
 .cafe-information {
     display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px;
+}
+
+.rating-location-container {
+    display: flex;
     justify-content: space-between;
     gap: 8px;
 }
@@ -411,7 +425,6 @@ main {
     align-items: center;
     gap: 5px;
     min-width: 0;
-    margin: 4px 0 8px;
 }
 
 .cafe-rating h5,
@@ -420,7 +433,7 @@ main {
 }
 
 .cafes-container p {
-    font-size: 12px;
+    font-size: 14px;
     text-align: left;
     line-height: 1.5;
 }
