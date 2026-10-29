@@ -379,6 +379,7 @@ main p {
 .videos video {
     display: block;
     width: 100%;
+    height: 250;
     aspect-ratio: 9 / 16;
     object-fit: cover;
     border-radius: 12px;
