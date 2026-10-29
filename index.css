@@ -404,7 +404,8 @@ main p {
 }
 
 .videos .description h3 {
-    color: var(--color-gold);
+    /*color: var(--color-gold);*/
+    color: #000;
     font-family: var(--font-body);
 }
 
