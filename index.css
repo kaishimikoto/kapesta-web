@@ -1,6 +1,6 @@
 /* ---------- Variables ---------- */
 :root {
-    --color-bg:     #000;
+    --color-bg:     #fff;
     --color-copper: #C17F42;
     --color-gold:   #E8C07D;
     --color-brown:  #483524;
@@ -483,9 +483,12 @@ main p {
 
 /* ---------- About Tagline -----------*/
 .about-tagline {
-    color: var(--color-gold);
     padding: 20px;
-    margin: 30px 30px;
+    margin: 50px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
     
 
