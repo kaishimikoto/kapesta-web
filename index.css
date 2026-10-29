@@ -553,6 +553,7 @@ main p {
 }
 
 .team-card img {
+    filter: grayscale(100%) contrast(1.1) brightness(0.70);
     width: 320px;
     height: auto;
     margin-bottom: 24px;
@@ -563,6 +564,7 @@ main p {
 
 .team-card img:hover {
     transform: scale(1.025);
+    filter: grayscale(0%) contrast(1.1) brightness(1);
 }
 
 .team-card h3 {
