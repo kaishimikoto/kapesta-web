@@ -245,28 +245,28 @@ const review3 = new Review(
 const review4 = new Review(
     "newUser",
     "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
+    "Nice coffee and good air conditioning. Perfect place to cram our case study.",
     ["pictures/coffee1.jpg"],
-    1
+    5
 );
 const review7 = new Review(
     "newUser",
     "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
+    "Ang bait ng owner nilibre po kami ng fries at coffee nung nag interview kami.",
     ["pictures/coffee1.jpg"],
-    1
+    5
 );
 const review6 = new Review(
     "newUser",
     "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
+    "Bakit lasang damo po yung matcha?",
     ["pictures/coffee1.jpg"],
     1
 );
 const review5 = new Review(
     "newUser",
     "2026-10-24",
-    "cri",
+    "My friend Raven came here last time and the fries were served frozen. Hindi man lang dinouble check ng staff bago i-serve.",
     ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
     2
 );
