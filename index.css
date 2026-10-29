@@ -93,7 +93,7 @@ main p {
 }
 
 .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 1);
 }
 
 .navbar.hide {
@@ -366,7 +366,7 @@ main p {
 
 /* ---------- Video Cards ---------- */
 .videos {
-    flex: 0 0 240px;
+    flex: 0 0 320px;
     padding: 10px;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -379,7 +379,7 @@ main p {
 .videos video {
     display: block;
     width: 100%;
-    height: 600px;
+    height: auto;
     aspect-ratio: 9 / 16;
     object-fit: cover;
     border-radius: 12px;
