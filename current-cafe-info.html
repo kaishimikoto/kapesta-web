@@ -62,8 +62,18 @@
                     <!-- Buttons -->
                     <div class="hero-buttons">
 
-                        <button type="button" class="heart-button"><img src="images/icons/heart.svg" alt="Favorite Icon" class="icon heart-icon"></button>
-                        <button type="button" class="leave-review-button"><img src="images/icons/review.svg" alt="Write a Review Icon" class="icon leave-review-icon"><a href="#reviews-section">Leave a Review</a></button>
+                        <button type="button" class="heart-button" id="favorite-button" aria-label="Add to favorites" aria-pressed="false">
+
+                            <img src="images/icons/heart-outline.svg" alt="" class="icon heart-icon">
+
+                        </button>
+
+                        <a href="#reviews-section" class="leave-review-button" id="leave-review-button">
+
+                            <img src="images/icons/review.svg" alt="" class="icon leave-review-icon">
+                            Leave a Review
+
+                        </a>
 
                     </div>
 
@@ -469,7 +479,7 @@
         </section>
 
         <!-- ========== REVIEWS SECTION ========== -->
-        <section class="reviews-section" id="reviews-section">
+        <section class="reviews-section" id="reviews-section" >
 
             <div class="reviews-header">
 
@@ -1049,6 +1059,8 @@
         </div>
 
         <script src="scripts/cafe-data.js"></script>
+        <script src="scripts/user-data.js"></script>
+        <script src="scripts/navigation.js"></script>
         <script src="scripts/cafe-info.js"></script>
         <script src="scripts/reviews.js"></script>
         <script src="scripts/cafe-gallery.js"></script>
