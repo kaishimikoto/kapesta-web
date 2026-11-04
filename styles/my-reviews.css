@@ -1,0 +1,640 @@
+/* ===========================
+    GLOBAL STYLES
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* ---------------- Color --------------------------------------- */
+    --color-white: #FFFFFF;
+    --color-bg: rgb(240, 235, 229);
+    --color-content-bg: rgb(251, 249, 247);
+    /*--color-bg: #FAF9F6;*/
+    --color-text: #58402c;
+    --color-brown-hover: #604935;
+    --color-light-brown: rgb(157, 104, 71);
+    --color-light-brown-hover: rgb(200, 149, 110);
+    --color-red: #CC0000;
+    --color-border: rgb(220, 214, 209);
+    
+
+    /* ---------------- Font Family --------------------------------- */
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Roboto", Arial, Helvetica, sans-serif;
+
+    /* ---------------- Motion -------------------------------------- */
+    --transition: 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+h3 {
+    font-family: var(--font-heading) !important;
+}
+
+caption {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+main p {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}   
+
+/* ==================================================================
+   Header Style
+   ================================================================== */
+.header-layout {
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: min(calc(100% - 80px), 1060px);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+/* -------------------- Brand (logo + mobile toggle) ---------------- */
+.header-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo img {
+    width: 160px;
+    height: 32px;
+}
+
+.header-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.header-menu-toggle img {
+    width: 18px;
+}
+
+.header-menu-toggle:hover {
+    background-color: var(--color-brown);
+}
+
+.header-menu-toggle:hover img {
+    filter: invert(100%);
+}
+
+/* -------------------- Navigation ---------------------------------- */
+.header-navigation {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.header-navigation ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.header-navigation a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.header-main-links a:hover {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+/* -------------------- Auth Links (Log in / Sign up) --------------- */
+.header-login-link {
+    margin-right: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.header-login-link:hover {
+    background-color: var(--color-bg);
+}
+
+.header-login-link:active {
+    background-color: var(--color-border);
+}
+
+.header-signup-link {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+.header-signup-link:hover, .header-signup-link:active {
+    background-color: var(--color-brown-dark);
+}
+
+/* ==================================================================
+   Footer Style
+   ================================================================== */
+footer {
+    background-color: var(--color-brown);
+    border-radius: 10% 10% 0 0;
+    color: var(--color-white);
+    font-size: 0.875rem;
+}
+
+footer a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------- Main Footer Layout -------------------------- */
+.footer-layout {
+    width: min(100%, 1140px);
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+/* -------------------- Footer Information -------------------------- */
+.footer-information {
+    max-width: 440px;
+}
+
+.footer-information-logo img {
+    width: 160px;
+    margin-bottom: 24px;
+}
+
+.footer-information hr {
+    margin: 24px 0;
+}
+
+/* -------------------- Footer Socials ------------------------------ */
+.footer-social {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-social img {
+    width: 32px;
+    height: 32px;
+}
+
+/* -------------------- Footer Links -------------------------------- */
+.footer-links {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-link-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.footer-nav-title {
+    margin: 0 0 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+/* -------------------- Footer Bottom ------------------------------- */
+.footer-bottom {
+    width: min(100%, 1140px); 
+    margin: 0 auto;
+    padding: 0 40px 24px;
+}
+
+.footer-bottom small {
+    display: block;
+    margin-top: 16px;
+}
+
+/* old */
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    box-sizing: border-box;
+    padding: 80px 0;
+}
+
+.icons {
+    height: 20px;
+    width: 20px;
+}
+
+.personal-info, .my-favorites, .my-reviews {
+    border-radius: 20px;
+    padding: 24px 40px;
+    width: 84%;
+    background-color: var(--color-content-bg);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+    box-sizing: border-box;
+}
+
+/* YUNG PROFILE HEADER NA GAWA KO */
+.profile-header {
+    background-image: url("../pictures/profile-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+
+    height: 50vh;
+    position: relative;
+}
+
+.profile-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.profile-photo {
+    position: absolute;
+    left: 8%;
+    bottom: -50px;
+}
+
+.edit-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.edit-button {
+    border: 1px solid white;
+    border-radius: 70px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #bfa088;
+}
+
+.profile-info {
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: calc(8% + 225px);
+}
+
+.profile-info h1 {
+    margin: 0 0 32px;
+}
+
+.bio {
+    margin: 8px auto;
+}
+
+/*     PERSONAL INFORMATION     */
+
+.personal-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.personal-info hr {
+    margin: 16px auto;
+}
+
+.edit-profile-button {
+    border: none;
+    border-radius: 10px;
+    background-color: #4E2609;
+    width: 12%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-profile-button:hover {
+    background-color: #6d3c19;
+}
+
+.edit-profile-button img {
+    filter: invert(1);
+}
+
+.info-container {
+    display: flex;
+}
+
+.info-label {
+    width: 16%;
+}
+
+.info-label p, .user-info p {
+    margin: 16px auto;
+}
+
+.user-info p {
+    background-color: rgb(255, 252, 250);
+    border-radius: 4px;
+    border: 1px solid rgb(171, 167, 164);
+    padding: 0px 80px 0px 80px;
+    color: rgb(181, 176, 173);
+}
+
+/*     MY FAVORITES     */
+
+.my-favorites {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.my-favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-all-button {
+    border: none;
+    border-radius: 10px;
+    background-color: #4E2609;
+    width: 12%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.view-all-button:hover {
+    background-color: #6d3c19;
+}
+
+.view-all-button img {
+    filter: invert(1);
+}
+
+.my-favorites hr {
+    margin: 8px 0;
+}
+
+.favorite-cafes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: start;
+    align-items: start;
+}
+
+.cafe {
+    cursor: pointer;
+}
+
+.cafe-pic {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}
+
+.cafe-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.favorite-cafe-rating, .favorite-cafe-location {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cafe h4 {
+    margin-top: 8px;
+}
+
+/*     REVIEWS SECTION     */
+
+.rating-stars {
+    height: 20px;
+}
+
+.my-reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-reviews hr {
+    margin: 24px auto;
+}
+
+.review {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.review-contents {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rating-and-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cafe-name-and-rating {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* ========================================
+   PROFILE PAGE - ADDITIONAL STYLES
+======================================== */
+
+.profile-empty-message {
+    padding: 20px 0;
+    color: #777;
+    text-align: center;
+}
+
+.rating-stars {
+    color: #e6a23c;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* Keep the View All links visually similar to the existing buttons. */
+
+a.view-all-button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* EDIT PROFILE MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+.edit-profile-modal {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close-modal-button {
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-buttons button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.clickable-review {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-review:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
