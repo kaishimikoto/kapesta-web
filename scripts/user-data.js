@@ -1,64 +1,157 @@
-// USER ACCOUNT DATA
+// ========================================
+// KAPESTA USER DATA (ONE DEMO ACCOUNT)
+// ========================================
 
-// Register the demo account
-function registerUser(firstName, lastName, username, email, password) {
+const demoUser = {
+    username: "alexsantos",
+    email: "alex@example.com",
+    profilePicture: "pictures/coffee1.jpg"
+};
 
+// Save the single demo account.
+// Passwords in localStorage are NOT secure.
+// Use fictional credentials for this school project only.
+
+function registerUser(username, email, password) {
     const user = {
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        email: email,
-        password: password,
-        profilePicture: "images/default-profile.png"
+        username,
+        email,
+        password,
+        profilePicture: "pictures/coffee1.jpg"
     };
 
     localStorage.setItem("kapestaUser", JSON.stringify(user));
+    localStorage.setItem("kapestaLoggedIn", "false");
 
-    alert("Account created successfully!");
+    return true;
 }
 
-// Check login credentials
-function loginUser(username, password) {
 
-    const savedUser = JSON.parse(
-        localStorage.getItem("kapestaUser")
-    );
+// Check login credentials
+function loginUser(usernameOrEmail, password) {
+    const savedUser = JSON.parse(localStorage.getItem("kapestaUser"));
 
     if (!savedUser) {
-        alert("No account found. Please register first.");
         return false;
     }
 
-    if (
-        (username === savedUser.username || username === savedUser.email) &&
-        password === savedUser.password
-    ) {
+    const usernameMatches =
+        usernameOrEmail === savedUser.username ||
+        usernameOrEmail === savedUser.email;
+
+    if (usernameMatches && password === savedUser.password) {
         localStorage.setItem("kapestaLoggedIn", "true");
         return true;
     }
 
-    alert("Incorrect username or password.");
     return false;
 }
 
-// Get the current logged-in user
+
+// Return the account only when the demo user is logged in
 function getCurrentUser() {
-
-    const isLoggedIn = localStorage.getItem("kapestaLoggedIn");
-
-    if (isLoggedIn !== "true") {
+    if (!isLoggedIn()) {
         return null;
     }
 
-    return JSON.parse(localStorage.getItem("kapestaUser"));
+    const user = localStorage.getItem("kapestaUser");
+
+    return user ? JSON.parse(user) : demoUser;
 }
+
 
 // Check if user is logged in
 function isLoggedIn() {
     return localStorage.getItem("kapestaLoggedIn") === "true";
 }
 
+
 // Log out
 function logoutUser() {
     localStorage.setItem("kapestaLoggedIn", "false");
+}
+
+// Update profile details without replacing the password
+function updateUserProfile(updatedDetails) {
+    const savedUser = localStorage.getItem("kapestaUser");
+
+    const currentUser = savedUser
+        ? JSON.parse(savedUser)
+        : { ...demoUser };
+
+    const oldUsername = currentUser.username;
+    const updatedUser = { ...currentUser, ...updatedDetails };
+
+    // Update usernames in saved reviews
+    if (updatedDetails.username) {
+        const allReviews = getAllSavedReviews();
+
+        allReviews.forEach(review => {
+            if (review.userName === oldUsername) {
+                review.userName = updatedDetails.username;
+            }
+        });
+
+        localStorage.setItem("kapestaReviews", JSON.stringify(allReviews));
+    }
+
+    localStorage.setItem("kapestaUser", JSON.stringify(updatedUser));
+
+    return true;
+}
+
+// ========================================
+// FAVORITE CAFES
+// Store café IDs, not complete café objects.
+// ========================================
+
+function getFavoriteCafeIds() {
+    return JSON.parse(localStorage.getItem("favoriteCafes")) || [];
+}
+
+
+function toggleFavoriteCafe(cafeId) {
+    const favoriteIds = getFavoriteCafeIds();
+    const id = Number(cafeId);
+
+    const alreadyFavorited = favoriteIds.includes(id);
+
+    const updatedIds = alreadyFavorited
+        ? favoriteIds.filter(savedId => savedId !== id)
+        : [...favoriteIds, id];
+
+    localStorage.setItem("favoriteCafes", JSON.stringify(updatedIds));
+
+    return !alreadyFavorited;
+}
+
+// GET ALL SAVED REVIEWS
+function getAllSavedReviews() {
+    return JSON.parse(localStorage.getItem("kapestaReviews")) || [];
+}
+
+// SAVE A NEW REVIEW
+function saveReview(cafeId, review) {
+    const allReviews = getAllSavedReviews();
+
+    const reviewData = {
+        id: Date.now(),
+        cafeId: Number(cafeId),
+        userName: review.userName,
+        date: review.date,
+        reviewMessage: review.reviewMessage,
+        photos: review.photos,
+        reviewRating: review.reviewRating
+    };
+
+    allReviews.unshift(reviewData);
+
+    localStorage.setItem("kapestaReviews", JSON.stringify(allReviews));
+}
+
+// GET REVIEWS FOR A SPECIFIC CAFE
+function getReviewsForCafe(cafeId) {
+    return getAllSavedReviews().filter(
+        review => Number(review.cafeId) === Number(cafeId)
+    );
 }
