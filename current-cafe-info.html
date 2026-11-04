@@ -76,14 +76,15 @@
         <!-- ======= CAFE GALLERY ======= -->
         <section class="gallery-container">
 
-            <h3>Cafe Photos</h3>
+            <h2>Cafe Photos</h2>
             
-            <button class="gallery-left-btn"><</button>
+            <button id="gallery-prev" class="gallery-left-btn">&#10094;</button>
             
             <div class="gallery-viewport">
 
-                <div class="gallery-photos">
+                <div class="gallery-photos" id="gallery-photos">
 
+                    <!--
                     <div class="gallery-item">
                         <img src="pictures/cafe3.jpg" alt="Cafe photo" class="cafe-picture">
                     </div>
@@ -99,7 +100,7 @@
                     <div class="gallery-item">
                         <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-picture">
                     </div>
-
+                    -->
                     <!--
                     <div class="gallery-item">
                         <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-picture">
@@ -135,7 +136,7 @@
 
             </div>
 
-            <button class="gallery-right-btn">></button>
+            <button id="gallery-next" class="gallery-right-btn">&#10095;</button>
 
         </section>
 
@@ -146,7 +147,7 @@
                 
                 <div class="cafe-items-container">
 
-                    <h3>Cafe Details</h3>
+                    <h2>Cafe Details</h2>
 
                     <div class="cafe-details-grid">
                         <div class="cafe-detail-item">
@@ -170,7 +171,7 @@
                         </div>
 
                         <div class="cafe-detail-item">
-                            <h4 id="menu">View Here</h4>
+                            <h4 id="menu"><a href="https://www.3rdspace.shop/menu" target="_blank">View Here</a></h4>
                             <p>Menu</p>
                         </div>
                     </div>
@@ -181,7 +182,7 @@
 
                 <div class="location-contact-container">
 
-                    <h3>Location and Contact</h3>
+                    <h2>Location and Contact</h2>
 
                     <!-- Address -->
                     <div class="contact-item">
@@ -222,26 +223,12 @@
                 
                 <div class="social-links-container">
 
-                    <h3>Social Links</h3>
+                    <h2>Social Links</h2>
 
-                    <div class="socials-icons-group">
-
-                        <div class="socials-item">
-                            <img src="images/icons/facebook.svg" alt="Facebook Icon" class="socials-icons">
-                            <p>Facebook</p>
-                        </div>
-
-                        <div class="socials-item">
-                            <img src="images/icons/instagram.svg" alt="Instagram Icon" class="socials-icons">
-                            <p>Instagram</p>
-                        </div>
-                        
-                         <div class="socials-item">
-                            <img src="images/icons/telegram.svg" alt="Telegram Icon" class="socials-icons">
-                            <p>Telegram</p>
-                        </div>
+                    <div class="socials-icons-group" id="socials-icons-group">
 
                     </div>
+
                 </div>
                 
                 
@@ -576,43 +563,118 @@
                     </div>
 
                 </div>
-                
-                <div class="reviews-actions">
 
-                    <form class="review-filter-form">
+                <hr>
 
-                        <select id="rating-filter" name="rating">
+                <div class="review-form-container">
 
-                            <option value="all">Filter by rating</option>
-                            <option value="5">5 stars</option>
-                            <option value="4">4 stars</option>
-                            <option value="3">3 stars</option>
-                            <option value="2">2 stars</option>
-                            <option value="1">1 star</option>
+                    <h2>Write a Review</h2>
 
-                        </select>
+                    <form id="review-form">
+
+                        <!-- Rating -->
+                        <label for="review-rating">
+                            How would you rate this cafe?
+                        </label>
+
+                        <div class="review-star-rating">
+                            <span class="star" data-value="1">☆</span>
+                            <span class="star" data-value="2">☆</span>
+                            <span class="star" data-value="3">☆</span>
+                            <span class="star" data-value="4">☆</span>
+                            <span class="star" data-value="5">☆</span>
+                        </div>
+
+
+                        <!-- Review Message -->
+                        <label for="review-message">
+                            Your review (optional)
+                        </label>
+
+                        <textarea
+                            id="review-message"
+                            name="reviewMessage"
+                            placeholder="Share your experience..."
+                            rows="5"
+                        ></textarea>
+
+                        <!-- Photo Upload -->
+                        <label for="review-photos">
+                            Add photos (optional)
+                        </label>
+
+                        <div class="upload-submit-btns">
+
+                            <div class="upload-file-btn">
+                                <input
+                                    type="file"
+                                    id="review-photos"
+                                    name="photos"
+                                    accept="image/*"
+                                    multiple
+                                >
+                            </div>
+
+                            <!-- Submit -->
+                            <button type="submit" id="submit-review-button">
+                                Submit review
+                            </button>
+
+                        </div>
+
+                        <p id="photo-count">0/8 photos selected</p>
+
+                        <div id="photo-preview-container"></div>
 
                     </form>
 
-                    <div class="reviews-buttons">
+                    <div class="success-modal" id="success-modal">
+                        <div class="success-modal-content">
 
-                        <button type="button" id="open-review-button" class="write-a-review-button">
-                            Write a review
-                            <img src="images/icons/review.svg" alt="View All" class="icon">
-                        </button>
+                            <div class="success-check">✓</div>
 
-                        <button type="button" class="view-all-button">
-                            View All
-                            <img src="images/icons/right-arrow.svg" alt="View All" class="icon">
-                        </button>
+                            <h2>Review Submitted!</h2>
 
+                            <p>Your review has been successfully submitted. Thank you for sharing your experience!</p>
+
+                            <button id="success-ok-button">OK</button>
+
+                        </div>
                     </div>
 
-                </div>
+                </div>    
 
             </div>
 
             <hr>
+
+            <div class="reviews-actions">
+
+                <form class="review-filter-form">
+
+                    <select id="rating-filter" name="rating">
+
+                        <option value="all">Filter by rating</option>
+                        <option value="5">5 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="2">2 stars</option>
+                        <option value="1">1 star</option>
+
+                    </select>
+
+                </form>
+
+                <div class="reviews-buttons">
+
+                    <button type="button" class="view-all-button">
+                        <a id="view-all" class="view-all-btn">View All</a>
+                        <img src="images/icons/right-arrow.svg" alt="View All" class="icon">
+                    </button>
+
+                </div>
+
+            </div>
 
             <div class="reviews-container">
 
@@ -627,277 +689,280 @@
         </section>
 
         <!-- ======= DISCOVER MORE ======= -->
-        <section class="cafe-row">
+        <!-- temporarily copied and renamed from explore but i am gonna make a recyclable template later -->
+        <section class="cafe-row discover-more-section">
 
-                <h2>Discover More Cafes in Barangay</h2>
+            <h2 id="discover-more-title"></h2>
 
-                <button class="left-btn"><</button>
+            <button class="left-btn">&lt;</button>
 
-                <div class="cafes-viewport">
+            <div class="cafes-viewport">
 
-                    <div class="cafes-container">
+                <div class="cafes-container" id="discover-more-container">
+                 </div>
+
+                <!-- Remove the hardcoded info
+                <div class="cafes-container">
+                    
+                    
+                    <div class="cafe-item">
                         
-                        <!-- Cafe 1 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/coffee2.jpg" alt="Cafe photo" class="cafe-photo">
+                        <div class="cafe-photo-container">
+                            <img src="pictures/coffee2.jpg" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
                             </div>
                             
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-                                </div>
-                                
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-                                
-                                
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
-
                             
-
+                            
                         </div>
 
-                        <!-- Cafe 2 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/coffee1.jpg" alt="Cafe photo" class="cafe-photo">
+                        
+
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/coffee1.jpg" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 3 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 4 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/chncafe.PNG" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/chncafe.PNG" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 5 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/chincafe.JPG" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 6 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/blckcoffee.PNG" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 7 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                   
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/cafe-background.jpg" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
 
-                        <!-- Cafe 8 -->
-                        <div class="cafe-item">
-                            
-                            <div class="cafe-photo-container">
-                                <img src="pictures/scary-face.jpg" alt="Cafe photo" class="cafe-photo">
+                    </div>
+
+                    
+                    <div class="cafe-item">
+                        
+                        <div class="cafe-photo-container">
+                            <img src="pictures/scary-face.jpg" alt="Cafe photo" class="cafe-photo">
+                        </div>
+                        
+                        <div class="cafe-information">
+
+                            <div class="rating-location-container">
+
+                                <div class="cafe-rating">
+                                    <img src="images/icons/star.svg" alt="Rating" class="icons">
+                                    <h5>5.0</h5>
+                                </div>
+
+                                <div class="cafe-location">
+                                    <img src="images/icons/location.svg" alt="Location" class="icons">
+                                    <h5>Barangay</h5>
+                                </div>
+
                             </div>
-                            
-                            <div class="cafe-information">
 
-                                <div class="rating-location-container">
+                            <div>
+                                <h4>Cafe Name</h4>
 
-                                    <div class="cafe-rating">
-                                        <img src="images/icons/star.svg" alt="Rating" class="icons">
-                                        <h5>5.0</h5>
-                                    </div>
-
-                                    <div class="cafe-location">
-                                        <img src="images/icons/location.svg" alt="Location" class="icons">
-                                        <h5>Barangay</h5>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <h4>Cafe Name</h4>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
-                                </div>
-
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...</p>
                             </div>
 
                         </div>
@@ -905,8 +970,11 @@
                     </div>
 
                 </div>
-                
-                <button class="right-btn">></button>
+                -->
+
+            </div>
+            
+            <button class="right-btn">&gt;</button>
 
         </section>
 
@@ -980,73 +1048,12 @@
             <button class="lightbox-next" id="lightbox-next">&#10095;</button>
         </div>
 
-        <!-- Write a Review Popup -->
-        <dialog id="review-dialog">
-            <div class="review-dialog-header">
-                <h2>Write a review</h2>
-                <button
-                    type="button"
-                    id="close-review-button"
-                    aria-label="Close review form"
-                >
-                    &times;
-                </button>
-            </div>
-
-            <hr>
-
-            <form id="review-form">
-                <!-- Rating -->
-                <label for="review-rating">
-                    How would you rate this cafe?
-                </label>
-
-                <select id="review-rating" name="rating" required>
-                    <option value="">Select a rating</option>
-                    <option value="5">5 stars</option>
-                    <option value="4">4 stars</option>
-                    <option value="3">3 stars</option>
-                    <option value="2">2 stars</option>
-                    <option value="1">1 star</option>
-                </select>
-
-                <!-- Review Message -->
-                <label for="review-message">
-                    Your review (optional)
-                </label>
-
-                <textarea
-                    id="review-message"
-                    name="reviewMessage"
-                    placeholder="Share your experience..."
-                    rows="5"
-                ></textarea>
-
-                <!-- Photo Upload -->
-                <label for="review-photos">
-                    Add photos (optional)
-                </label>
-
-                <input
-                    type="file"
-                    id="review-photos"
-                    name="photos"
-                    accept="image/*"
-                    multiple
-                >
-
-                <p> You can add up to 8 photos.</p>
-
-                <!-- Submit -->
-                <button type="submit" id="submit-review-button">
-                    Submit review
-                </button>
-            </form>
-        </dialog>
-
         <script src="scripts/cafe-data.js"></script>
         <script src="scripts/cafe-info.js"></script>
-        <script src="scripts/reviews.js"></script>  
+        <script src="scripts/reviews.js"></script>
+        <script src="scripts/cafe-gallery.js"></script>
+        <script src="scripts/discover-more.js"></script>
+        <script src="scripts/cafe-slider.js"></script>
     </body>
 
 </html>
