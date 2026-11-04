@@ -442,7 +442,7 @@ main {
 .left-btn,
 .right-btn {
     position: absolute;
-    top: 35%;
+    top: 30%;
     z-index: 2;
     font-size: 20px;
     padding: 8px 12px;
