@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kapesta | All Reviews</title>
+        <link rel="stylesheet" href="styles/all-cafe-reviews.css" type="text/css">
+    </head>
+    <body>
+        
+        <header>
+            <div class="header-layout">
+                <!-- Website Logo / Mobile Menu -->
+                <div class="header-brand">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
+                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
+                    </button>
+                </div>
+
+                <!-- Main Navigation -->
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
+                    <ul class="header-main-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+
+                    <ul class="header-auth-links">
+                        <li><a href="login.html" class="header-login-link">Log in</a></li>
+                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            
+            <!-- ======= HERO SECTION ======= -->
+            <section class="hero" id="hero">
+
+                <!-- Overview -->
+                <div class="hero-overview-container">
+
+                    <!-- Information -->
+                    <div class="hero-overview">
+
+                        <h1 id="cafe-name"></h1>
+
+                        <p id="cafe-desc"></p>
+
+                        <br>
+
+                        <div class="hero-rating-location">
+
+                            <div class="rating-container">
+                                <img src="images/icons/star.svg" alt="Star Icon" class="icon star">
+                                <p id="cafe-rating"></p>
+                            </div>
+                            
+                            <div class="location-container">
+                                <img src="images/icons/location.svg" alt="Location Icon" class="icon loc">
+                                <p id="cafe-loc"></p>
+                            </div>
+                            
+                        </div>
+
+                        <br>
+                        
+                        <!-- Buttons -->
+                        <div class="hero-buttons">
+
+                            <button type="button" class="heart-button"><img src="images/icons/heart.svg" alt="Favorite Icon" class="icon heart-icon"></button>
+                            <button type="button" class="leave-review-button"><img src="images/icons/review.svg" alt="Write a Review Icon" class="icon leave-review-icon"><a href="#reviews-section">Leave a Review</a></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========== REVIEWS SECTION ========== -->
+            <section class="reviews-section" id="reviews-section">
+
+                <div class="reviews-header">
+
+                    <h2>Cafe Reviews</h2>
+
+                    <div class="reviews-features">
+
+                        <div class="reviews-summary">
+                            <img src="images/icons/star.svg" alt="Average rating">
+                            <h2 id="average-rating">4.6</h2>
+                            <p id="review-count">Based on 5 reviews</p>
+                        </div>
+
+                        <div class="reviews-percentage">
+
+                            <div class="rating-row">
+
+                                <span class="rating-label">
+                                    5
+                                    <img src="images/icons/star.svg" alt="Star">
+                                </span>
+
+                                <div class="rating-bar">
+                                    <div class="rating-fill"></div>
+                                </div>
+
+                                <span class="rating-count">10</span>
+
+                            </div>
+
+                            <div class="rating-row">
+
+                                <span class="rating-label">
+                                    4
+                                    <img src="images/icons/star.svg" alt="Star">
+                                </span>
+
+                                <div class="rating-bar">
+                                    <div class="rating-fill"></div>
+                                </div>
+
+                                <span class="rating-count">10</span>
+
+                            </div>
+                            
+                            <div class="rating-row">
+
+                                <span class="rating-label">
+                                    3
+                                    <img src="images/icons/star.svg" alt="Star">
+                                </span>
+
+                                <div class="rating-bar">
+                                    <div class="rating-fill"></div>
+                                </div>
+
+                                <span class="rating-count">10</span>
+
+                            </div>
+                            
+                            <div class="rating-row">
+
+                                <span class="rating-label">
+                                    2
+                                    <img src="images/icons/star.svg" alt="Star">
+                                </span>
+
+                                <div class="rating-bar">
+                                    <div class="rating-fill"></div>
+                                </div>
+
+                                <span class="rating-count">10</span>
+
+                            </div>
+                            
+                            <div class="rating-row">
+
+                                <span class="rating-label">
+                                    1
+                                    <img src="images/icons/star.svg" alt="Star">
+                                </span>
+
+                                <div class="rating-bar">
+                                    <div class="rating-fill"></div>
+                                </div>
+
+                                <span class="rating-count">10</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="review-form-container">
+
+                        <h2>Write a Review</h2>
+
+                        <form id="review-form">
+
+                            <!-- Rating -->
+                            <label for="review-rating">
+                                How would you rate this cafe?
+                            </label>
+
+                            <div class="review-star-rating">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+
+
+                            <!-- Review Message -->
+                            <label for="review-message">
+                                Your review (optional)
+                            </label>
+
+                            <textarea
+                                id="review-message"
+                                name="reviewMessage"
+                                placeholder="Share your experience..."
+                                rows="5"
+                            ></textarea>
+
+                            <!-- Photo Upload -->
+                            <label for="review-photos">
+                                Add photos (optional)
+                            </label>
+                            <div class="upload-submit-btns">
+
+                                <div class="upload-file-btn">
+                                    <input
+                                        type="file"
+                                        id="review-photos"
+                                        name="photos"
+                                        accept="image/*"
+                                        multiple
+                                    >
+
+                                    
+                                </div>
+
+                                <!-- Submit -->
+                                <button type="submit" id="submit-review-button">
+                                    Submit review
+                                </button>
+
+                            </div>
+
+                            <p> You can add up to 8 photos.</p>
+
+                        </form>
+
+                        <div class="success-modal" id="success-modal">
+                            <div class="success-modal-content">
+
+                                <div class="success-check">✓</div>
+
+                                <h2>Review Submitted!</h2>
+
+                                <p>Your review has been successfully submitted. Thank you for sharing your experience!</p>
+
+                                <button id="success-ok-button">OK</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+
+                <hr>
+
+                <div class="reviews-actions">
+
+                    <form class="review-filter-form">
+
+                        <select id="rating-filter" name="rating">
+
+                            <option value="all">Filter by rating</option>
+                            <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 star</option>
+
+                        </select>
+
+                    </form>
+
+                    <div class="reviews-buttons">
+
+                        <button type="button" class="view-all-button">
+                            <a id="view-all" class="view-all-btn">View All</a>
+                            <img src="images/icons/right-arrow.svg" alt="View All" class="icon">
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="reviews-container">
+
+                    <div class="reviews-list" id="reviews-list">
+
+                        <p class="no-reviews-message" id="no-reviews-message">No reviews.</p>
+
+                    </div>
+                
+                </div>
+
+            </section>
+
+            <!-- ======= Lightbox ====== -->
+            <div class="lightbox" id="photo-lightbox">
+                <button class="lightbox-close" id="lightbox-close">&times;</button>
+
+                <button class="lightbox-prev" id="lightbox-prev">&#10094;</button>
+
+                <img src="" alt="Enlarged review photo" id="lightbox-image">
+
+                <button class="lightbox-next" id="lightbox-next">&#10095;</button>
+            </div>
+
+        </main>
+        
+        <footer>
+            <div class="footer-layout">
+                <!-- Website Information -->
+                <div class="footer-information">
+                    <div class="footer-information-logo">
+                        <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <hr />
+                    
+                    <!-- Social Media -->
+                    <nav class="footer-social" aria-label="Social media links">
+                        <a href="#" target="_blank" title="Visit Kapesta on Facebook">
+                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Platform</h3>
+                        <a href="index.html">Home</a>
+                        <a href="#">Explore Cafes</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Support</h3>
+                        <a href="report.html">Report an Issue</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Legal</h3>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms and Conditions</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <hr />
+                <small>&copy; 2026 Kapesta. All rights reserved.</small>
+            </div>
+        </footer>
+
+        <script src="scripts/cafe-data.js"></script>
+        <script src="scripts/cafe-info.js"></script>
+        <script>
+            /*
+            const params = new URLSearchParams(window.location.search);
+            const cafeId = params.get("id");
+            const selectedCafe = findCafeById(cafeId);
+
+            if (!selectedCafe) {
+                document.getElementById("reviews-list").textContent =
+                    "Cafe not found.";
+            }
+            */
+        </script>
+        <script src="scripts/reviews.js"></script>
+    </body>
+</html>
