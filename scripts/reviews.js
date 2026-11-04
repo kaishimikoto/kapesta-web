@@ -21,8 +21,7 @@ console.log("Cafe ID:", cafeId);
 console.log("Selected cafe:", selectedCafe);
 console.log("Selected cafe reviews:", selectedCafe?.listOfReviews);
 
-const isAllReviewsPage =
-    window.location.pathname.endsWith("all-reviews.html");
+const isAllReviewsPage = window.location.pathname.endsWith("all-cafe-reviews.html");
 
 // LIGHTBOX CODE //
 const lightbox = document.getElementById("photo-lightbox");
@@ -42,6 +41,16 @@ function openLightbox(photos, index) {
     currentIndex = index;
 
     lightboxImage.src = currentPhotos[currentIndex].src;
+
+    // Hide arrows if there's only one photo
+    if (currentPhotos.length <= 1) {
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
+    } else {
+        prevButton.style.display = "flex";
+        nextButton.style.display = "flex";
+    }
+
     lightbox.style.display = "flex";
 }
 
@@ -50,10 +59,13 @@ function closeLightbox() {
 }
 
 document.addEventListener("click", function(event) {
+
+    // Detect clicked review or gallery photo
     const photo = event.target.closest(
-        ".review-photo-item img, .review-photo-wrapper img"
+        ".review-photo-item img, .review-photo-wrapper img, .gallery-item img"
     );
 
+    // Detect review photo overlay
     const overlay = event.target.closest(
         ".photo-overlay, .review-photo-more"
     );
@@ -61,19 +73,26 @@ document.addEventListener("click", function(event) {
     if (!photo && !overlay) return;
 
     const clickedElement = photo || overlay;
-    const container = clickedElement.closest(".review-photos-container");
+
+    // Find the group containing the clicked photo
+    const container = clickedElement.closest(
+        ".review-photos-container, .gallery-photos"
+    );
 
     if (!container) return;
 
+    // Get all photos from that group only
     const photos = Array.from(container.querySelectorAll("img"));
 
-    if (photos.length === 0) return;
+    if (!photos.length) return;
 
+    // Open the lightbox
     if (overlay) {
         openLightbox(photos, Math.min(3, photos.length - 1));
     } else {
         openLightbox(photos, photos.indexOf(photo));
     }
+
 });
 
 if (closeButton) {
@@ -271,58 +290,61 @@ if (ratingFilter) {
         let filteredReviews;
 
         if (selectedRating === "all") {
-            // Reset to the initial display.
-            filteredReviews = isAllReviewsPage
-                ? selectedCafe.listOfReviews
-                : selectedCafe.listOfReviews.slice(0, 3);
+            filteredReviews = selectedCafe.listOfReviews;
         } else {
-            // Search the complete review list, not just visible cards.
             filteredReviews = selectedCafe.listOfReviews.filter(
                 review =>
                     String(review.reviewRating) === selectedRating
             );
+        }
 
-            // Limit matching reviews to three on the cafe page.
-            if (!isAllReviewsPage) {
-                filteredReviews = filteredReviews.slice(0, 3);
-            }
+        // Limit to 3 reviews ONLY on the cafe details page.
+        if (!isAllReviewsPage) {
+            filteredReviews = filteredReviews.slice(0, 3);
         }
 
         renderReviews(filteredReviews);
     });
 }
 
-console.log(selectedCafe.listOfReviews);
+// REVIEW FORM SUBMISSION
+const reviewForm = document.getElementById("review-form");
 
-// WRITE A REVIEW POPUP
-
-const reviewDialog = document.getElementById("review-dialog");
-const openReviewButton = document.getElementById("open-review-button");
-const closeReviewButton = document.getElementById("close-review-button");
-
-if (reviewDialog && openReviewButton && closeReviewButton) {
-
-    openReviewButton.addEventListener("click", function() {
-        reviewDialog.showModal();
-    });
-
-    closeReviewButton.addEventListener("click", function() {
-        reviewDialog.close();
-    });
-
+// Hide View All button on the All Reviews page
+if (isAllReviewsPage && reviewsButtons) {
+    reviewsButtons.style.display = "none";
 }
 
-// REVIEW FORM SUBMISSION
-
-const reviewForm = document.getElementById("review-form");
 const reviewPhotoInput = document.getElementById("review-photos");
+const successMessage = document.getElementById("review-success-message");
+
+const photoCount = document.getElementById("photo-count");
+const photoPreviewContainer = document.getElementById("photo-preview-container");
 
 if (reviewPhotoInput) {
     reviewPhotoInput.addEventListener("change", function() {
+
+        // Check photo limit
         if (this.files.length > 8) {
             alert("You can upload a maximum of 8 photos.");
             this.value = "";
         }
+
+        // Update photo count
+        photoCount.textContent = `${this.files.length}/8 photos selected`;
+
+        // Clear previous previews
+        photoPreviewContainer.innerHTML = "";
+
+        // Show selected photo previews
+        Array.from(this.files).forEach(file => {
+            const img = document.createElement("img");
+
+            img.src = URL.createObjectURL(file);
+            img.classList.add("photo-preview");
+
+            photoPreviewContainer.appendChild(img);
+        });
     });
 }
 
@@ -330,71 +352,103 @@ if (reviewForm) {
     reviewForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const rating = document.getElementById("review-rating").value;
         const message = document.getElementById("review-message").value.trim();
         const files = Array.from(reviewPhotoInput.files);
 
-        if (!rating) {
+        // Check if a rating was selected
+        if (selectedRating === 0) {
             alert("Please select a star rating.");
             return;
         }
 
+        // Check photo limit
         if (files.length > 8) {
             alert("You can upload a maximum of 8 photos.");
             return;
         }
 
+        // Get uploaded photos
         const photoPaths = files.map(file => URL.createObjectURL(file));
 
+        // Create the new review
         const newReview = new Review(
             "You",
             new Date().toLocaleDateString(),
-            message,
+            message,    
             photoPaths,
-            Number(rating)
+            selectedRating
         );
 
+        // Add review to the selected cafe
         selectedCafe.addReview(newReview);
 
-        console.log("Reviews after submission:", selectedCafe.listOfReviews);
-        console.log("Updated average:", selectedCafe.rating);
-        console.log("Updated review count:", selectedCafe.listOfReviews.length);
-
-        // Update the average rating and total review count
-        document.getElementById("average-rating").textContent =
-            selectedCafe.rating.toFixed(1);
-
-        const totalReviews = selectedCafe.listOfReviews.length;
-
-        document.getElementById("review-count").textContent =
-            `Based on ${totalReviews} ${totalReviews === 1 ? "review" : "reviews"}`;
-
-        // Update the rating distribution bars
+        // Update review summary and rating bars
+        updateReviewSummary();
         updateRatingBars();
 
-        const selectedRating = ratingFilter ? ratingFilter.value : "all";
+        // Refresh the displayed reviews
+        const currentFilter = ratingFilter ? ratingFilter.value : "all";
 
-        let reviewsToDisplay;
+        let reviewsToDisplay = selectedCafe.listOfReviews;
 
-        if (selectedRating === "all") {
-            reviewsToDisplay = isAllReviewsPage
-                ? selectedCafe.listOfReviews
-                : selectedCafe.listOfReviews.slice(0, 3);
-        } else {
-            reviewsToDisplay = selectedCafe.listOfReviews.filter(
-                review => String(review.reviewRating) === selectedRating
+        if (currentFilter !== "all") {
+            reviewsToDisplay = reviewsToDisplay.filter(
+                review => String(review.reviewRating) === currentFilter
             );
+        }
 
-            if (!isAllReviewsPage) {
-                reviewsToDisplay = reviewsToDisplay.slice(0, 3);
-            }
+        if (!isAllReviewsPage) {
+            reviewsToDisplay = reviewsToDisplay.slice(0, 3);
         }
 
         renderReviews(reviewsToDisplay);
 
+        // Clear the form
         reviewForm.reset();
-        reviewDialog.close();
 
-        alert("Thank you! Your review has been submitted.");
+        // Reset the clickable stars
+        selectedRating = 0;
+
+        document.querySelectorAll(".review-star-rating .star").forEach(star => {
+            star.textContent = "☆";
+            star.classList.remove("active");
+        });
+
+        // Show success message
+        successModal.style.display = "flex";
+
     });
 }
+
+// SUCCESS POPUP
+const successModal = document.getElementById("success-modal");
+const successOkButton = document.getElementById("success-ok-button");
+
+successOkButton.addEventListener("click", function() {
+    successModal.style.display = "none";
+});
+
+// Star rating
+const stars = document.querySelectorAll(".star");
+
+let selectedRating = 0;
+
+stars.forEach(function(star) {
+    star.addEventListener("click", function() {
+        selectedRating = Number(star.dataset.value);
+
+        stars.forEach(function(s) {
+            const starValue = Number(s.dataset.value);
+
+            if (starValue <= selectedRating) {
+                s.textContent = "★";
+                s.classList.add("active");
+            } else {
+                s.textContent = "☆";
+                s.classList.remove("active");
+            }
+        });
+
+        console.log("Selected rating:", selectedRating);
+    });
+});
