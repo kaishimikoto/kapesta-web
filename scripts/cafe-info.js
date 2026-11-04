@@ -2,6 +2,15 @@ const params = new URLSearchParams(window.location.search);
 const cafeId = params.get("id");
 
 const selectedCafe = findCafeById(cafeId);
+// View All Reviews Button
+const reviewsButtons = document.querySelector(".reviews-buttons");
+
+if (selectedCafe.listOfReviews.length === 0) {
+    reviewsButtons.style.display = "none";
+} else {
+    document.getElementById("view-all").href =
+        `all-cafe-reviews.html?id=${selectedCafe.id}`;
+}
 
 // Hero Information
 document.getElementById("cafe-name").textContent = selectedCafe.name;
@@ -34,6 +43,39 @@ document.getElementById("restroom").textContent = selectedCafe.restroomCount;
 document.getElementById("address").textContent = selectedCafe.location;
 document.getElementById("phone-number").textContent = selectedCafe.phone;
 document.getElementById("website").textContent = selectedCafe.website;
+
+// GET SOCIAL LINKS CONTAINER
+const socialsContainer = document.getElementById("socials-icons-group");
+
+// DISPLAY SOCIAL LINKS
+if (selectedCafe.socialLinks.length > 0) {
+
+    selectedCafe.socialLinks.forEach(function(social) {
+
+        const socialItem = document.createElement("a");
+
+        socialItem.className = "socials-item";
+        socialItem.href = social.url;
+        socialItem.target = "_blank";
+        socialItem.rel = "noopener noreferrer";
+
+        socialItem.innerHTML = `
+            <img src="images/icons/${social.platform.toLowerCase()}.svg"
+                 alt="${social.platform} Icon"
+                 class="socials-icons">
+
+            <p>${social.platform}</p>
+        `;
+
+        socialsContainer.appendChild(socialItem);
+
+    });
+
+} else {
+
+    socialsContainer.textContent = "No social links available.";
+
+}
 
 // Working Hours
 document.getElementById("monday").textContent = selectedCafe.workingHours.monday;
