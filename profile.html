@@ -3,44 +3,91 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" typ  e="text/css" href="styles/profile-styles.css">
+        <link rel="stylesheet" type="text/css" href="styles/profile-styles.css">
         <title>Profile | Kapesta</title>
     </head>
     <body>
-        <!-- NEW PROFILE HEADER UNG GAWA QUH-->
+        <header>
+            <div class="header-layout">
+                <!-- Website Logo / Mobile Menu -->
+                <div class="header-brand">
+                    <a href="#" class="header-logo">
+                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
+                    </a>
+                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
+                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
+                    </button>
+                </div>
+
+                <!-- Main Navigation -->
+                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
+                    <ul class="header-main-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+
+                    <ul class="header-auth-links">
+                        <li><a href="login.html" class="header-login-link">Log in</a></li>
+                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
         <!-- ========== PROFILE HEADER ========== -->
         <section class="profile-header">
 
             <!-- Profile Pic -->
-            <div class="profile-photo">
-                <img src="pictures/coffee1.jpg" alt="Profile picture" class="profile-pic">
+             <div class="profile-photo">
+                <img
+                    src="pictures/coffee1.jpg"
+                    alt="Profile picture"
+                    class="profile-pic"
+                    id="profile-picture"
+                >
 
-                <button type="button" class="edit-button">
-                    <img src="icons/edit.png" alt="Edit profile photo" class="edit-icon">
+                <button
+                    type="button"
+                    class="edit-button"
+                    id="edit-photo-button"
+                    aria-label="Edit profile photo"
+                >
+                    <img src="images/icons/edit.svg" alt="" class="edit-icon">
                 </button>
+
+                <input
+                    type="file"
+                    id="profile-photo-input"
+                    accept="image/*"
+                    hidden
+                >
+
             </div>
 
             <!-- User Profile Information -->
-                <div class="profile-info">
-                    <p>My Profile</p>
-                    <h1>Name of User</h1>
+            <div class="profile-info">
 
-                    <p>@username</p>
-                    <p class="bio">Tell something about yourself.</p>
-                </div>
+                <h1>My Profile</h1>
+
+                <p id="profile-username">@username</p>
+
+            </div>
             
         </section>
 
         <!-- ========== PAGE CONTENTS ========== -->
-
         <main class="contents">
-            <div class="personal-info">
+
+            <section class="personal-info">
 
                 <header class="personal-info-header">
-                    <h2>Personal Information</h2>
+                    <h2>Account Information</h2>
 
-                    <button type="button" class="edit-profile-button">
-                        <img src="icons/edit.png" alt="Edit" class="icons">
+                    <button type="button" class="edit-profile-button" id="edit-profile-button">
+                        <img src="images/icons/edit.svg" alt="Edit" class="icons">
                         Edit Profile
                     </button>
                 </header>
@@ -48,205 +95,120 @@
                 <hr>
                 
                 <div class="info-container">
+
                     <div class="info-label">
-                        <p class="first-name">First Name</p>
-                        <p class="last-name">Last Name</p>
+                        <p class="username">Username</p>
                         <p class="email">Email</p>
-                        <p class="phone-number">Phone Number</p>
                     </div>
 
                     <div class="user-info">
-                        <p class="first-name-value">First Name</p>
-                        <p class="last-name-value">Last Name</p>
-                        <p class="email-value">Email</p>
-                        <p class="phone-number-value">Phone Number</p>
+                        <p class="username-value" id="username">username</p>
+                        <p class="email-value" id="email">Email</p>
                     </div>
+
                 </div>
-            </div>
 
-
+            </section>
 
             <!-- ======= MY FAVORITES ======= -->
-            <div class="my-favorites">
+            <section class="my-favorites">
+
                 <header class="my-favorites-header">
+
                     <h2>My Favorites</h2>
 
-                    <button type="button" class="view-all-button">
+                    <a href="my-favorites.html" class="view-all-button">
                         View All
-                        <img src="icons/right-arrow.png" alt="View All" class="icons">
-                    </button>
+                        <img src="images/icons/right-arrow.svg" alt="" class="icons">
+                    </a>
+
                 </header>
 
                 <hr>
 
-                <div class="favorite-cafes">
+                <!-- JavaScript inserts up to 3 favorite cafe cards -->
+                <div class="favorite-cafes" id="favorite-cafes"></div>
 
-                    <div class="cafe">
-                        <img src="pictures/cafe1.jpg" alt="Cafe Name" class="cafe-pic">
+            </section>
 
-                        <div class="cafe-info">
-
-                            <div class="favorite-cafe-rating">
-                                <img src="icons/star.png" alt="Rating" class="icons">
-                                <h5>5.0</h5>
-                            </div>
-
-                            <div class="favorite-cafe-location">
-                                <img src="icons/location.png" alt="Location" class="icons">
-                                <h5>Barangay</h5>
-                            </div>
-
-                        </div>
-
-                        <h4>Cafe Name</h4>
-                    </div>
-                    
-                    <div class="cafe">
-                        <img src="pictures/cafe2.jpg" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="cafe-info">
-
-                            <div class="favorite-cafe-rating">
-                                <img src="icons/star.png" alt="Rating" class="icons">
-                                <h5>5.0</h5>
-                            </div>
-
-                            <div class="favorite-cafe-location">
-                                <img src="icons/location.png" alt="Location" class="icons">
-                                <h5>Barangay</h5>
-                            </div>
-
-                        </div>
-
-                        <h4>Cafe Name</h4>
-                    </div>
-
-                    <div class="cafe">
-                        <img src="pictures/coffee2.jpg" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="cafe-info">
-
-                            <div class="favorite-cafe-rating">
-                                <img src="icons/star.png" alt="Rating" class="icons">
-                                <h5>5.0</h5>
-                            </div>
-
-                            <div class="favorite-cafe-location">
-                                <img src="icons/location.png" alt="Location" class="icons">
-                                <h5>Barangay</h5>
-                            </div>
-
-                        </div>
-
-                        <h4>Cafe Name</h4>
-                    </div>
-
-                    <div class="cafe">
-                        <img src="pictures/cafe3.jpg" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="cafe-info">
-
-                            <div class="favorite-cafe-rating">
-                                <img src="icons/star.png" alt="Rating" class="icons">
-                                <h5>5.0</h5>
-                            </div>
-
-                            <div class="favorite-cafe-location">
-                                <img src="icons/location.png" alt="Location" class="icons">
-                                <h5>Barangay</h5>
-                            </div>
-
-                        </div>
-
-                        <h4>Cafe Name</h4>
-                    </div>
-                </div>
-            </div>
 
             <!-- ======= MY REVIEWS ======= -->
-            <div class="my-reviews">
+            <section class="my-reviews">
 
                 <header class="my-reviews-header">
+
                     <h2>My Reviews</h2>
 
-                    <button type="button" class="view-all-button">
+                    <a href="my-reviews.html" class="view-all-button">
                         View All
-                        <img src="icons/right-arrow.png" alt="View All" class="icons">
-                    </button>
+                        <img src="images/icons/right-arrow.svg" alt="" class="icons">
+                    </a>
+
                 </header>
 
                 <hr>
 
-                <div class="reviews-container">
-                    <div class="review">
+                <!-- JavaScript inserts up to 3 reviews written by this user here. -->
+                <div class="reviews-container" id="my-reviews"></div>
 
-                        <img src="pictures/chncafe.PNG" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="review-contents">
-
-                            <div class="rating-and-date">
-                                
-                                <div class="cafe-name-and-rating">
-                                    <h3>Cafe Name</h3>
-                                    <img src="icons/5-star-cropped.png" alt="Rating" class="rating-stars">
-                                </div>
-
-                                <h4>09/03/2026</h4>
-                            </div>
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="review">
-
-                        <img src="pictures/chincafe.JPG" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="review-contents">
-
-                            <div class="rating-and-date">
-                                
-                                <div class="cafe-name-and-rating">
-                                    <h3>Cafe Name</h3>
-                                    <img src="icons/5-star-cropped.png" alt="Rating" class="rating-stars">
-                                </div>
-
-                                <h4>09/03/2026</h4>
-                            </div>
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="review">
-
-                        <img src="pictures/blckcoffee.PNG" alt="Cafe Name" class="cafe-pic">
-
-                        <div class="review-contents">
-
-                            <div class="rating-and-date">
-                                
-                                <div class="cafe-name-and-rating">
-                                    <h3>Cafe Name</h3>
-                                    <img src="icons/5-star-cropped.png" alt="Rating" class="rating-stars">
-                                </div>
-
-                                <h4>09/03/2026</h4>
-                            </div>
-                            
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-
-                </div>
-                
-            </div>
+            </section>  
 
         </main>
+
+        <!-- ========== EDIT PROFILE MODAL ========== -->
+        <div class="modal-overlay" id="edit-profile-modal" hidden>
+
+            <div class="edit-profile-modal">
+
+                <div class="modal-header">
+                    <h2>Edit Profile</h2>
+
+                    <button type="button" id="close-modal-button"
+                        class="close-modal-button" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+
+                <form id="edit-profile-form">
+
+                    <div class="form-group">
+                        <label for="edit-username">Username</label>
+                        <input
+                            type="text"
+                            id="edit-username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input
+                            type="email"
+                            id="edit-email"
+                            required
+                        >
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" id="cancel-edit-button">
+                            Cancel
+                        </button>
+
+                        <button type="submit">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
         
+        <script src="scripts/cafe-data.js"></script>
+        <script src="scripts/user-data.js"></script>
+        <script src="scripts/navigation.js"></script>
+        <script src="scripts/review-display.js"></script>
+        <script src="scripts/profile.js"></script>
     </body>
 </html>
