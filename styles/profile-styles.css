@@ -77,6 +77,205 @@ body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
     color: var(--color-text);
+}   
+
+/* ==================================================================
+   Header Style
+   ================================================================== */
+.header-layout {
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: min(calc(100% - 80px), 1060px);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+/* -------------------- Brand (logo + mobile toggle) ---------------- */
+.header-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo img {
+    width: 160px;
+    height: 32px;
+}
+
+.header-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.header-menu-toggle img {
+    width: 18px;
+}
+
+.header-menu-toggle:hover {
+    background-color: var(--color-brown);
+}
+
+.header-menu-toggle:hover img {
+    filter: invert(100%);
+}
+
+/* -------------------- Navigation ---------------------------------- */
+.header-navigation {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.header-navigation ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.header-navigation a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.header-main-links a:hover {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+/* -------------------- Auth Links (Log in / Sign up) --------------- */
+.header-login-link {
+    margin-right: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.header-login-link:hover {
+    background-color: var(--color-bg);
+}
+
+.header-login-link:active {
+    background-color: var(--color-border);
+}
+
+.header-signup-link {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+.header-signup-link:hover, .header-signup-link:active {
+    background-color: var(--color-brown-dark);
+}
+
+/* ==================================================================
+   Footer Style
+   ================================================================== */
+footer {
+    background-color: var(--color-brown);
+    border-radius: 10% 10% 0 0;
+    color: var(--color-white);
+    font-size: 0.875rem;
+}
+
+footer a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------- Main Footer Layout -------------------------- */
+.footer-layout {
+    width: min(100%, 1140px);
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+/* -------------------- Footer Information -------------------------- */
+.footer-information {
+    max-width: 440px;
+}
+
+.footer-information-logo img {
+    width: 160px;
+    margin-bottom: 24px;
+}
+
+.footer-information hr {
+    margin: 24px 0;
+}
+
+/* -------------------- Footer Socials ------------------------------ */
+.footer-social {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-social img {
+    width: 32px;
+    height: 32px;
+}
+
+/* -------------------- Footer Links -------------------------------- */
+.footer-links {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-link-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.footer-nav-title {
+    margin: 0 0 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+/* -------------------- Footer Bottom ------------------------------- */
+.footer-bottom {
+    width: min(100%, 1140px); 
+    margin: 0 auto;
+    padding: 0 40px 24px;
+}
+
+.footer-bottom small {
+    display: block;
+    margin-top: 16px;
 }
 
 /* old */
@@ -204,11 +403,19 @@ body {
 }
 
 .info-label {
-    width: 40%;
+    width: 16%;
 }
 
 .info-label p, .user-info p {
     margin: 16px auto;
+}
+
+.user-info p {
+    background-color: rgb(255, 252, 250);
+    border-radius: 4px;
+    border: 1px solid rgb(171, 167, 164);
+    padding: 0px 80px 0px 80px;
+    color: rgb(181, 176, 173);
 }
 
 /*     MY FAVORITES     */
@@ -254,12 +461,19 @@ body {
 }
 
 .favorite-cafes {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: start;
+    align-items: start;
+}
+
+.cafe {
+    cursor: pointer;
 }
 
 .cafe-pic {
-    width: 250px;
+    width: 100%;
     height: 150px;
     object-fit: cover;
     object-position: center;
@@ -321,4 +535,96 @@ body {
     display: flex;
     gap: 15px;
     align-items: center;
+}
+
+/* ========================================
+   PROFILE PAGE - ADDITIONAL STYLES
+======================================== */
+
+.profile-empty-message {
+    padding: 20px 0;
+    color: #777;
+    text-align: center;
+}
+
+.rating-stars {
+    color: #e6a23c;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* Keep the View All links visually similar to the existing buttons. */
+
+a.view-all-button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* EDIT PROFILE MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+.edit-profile-modal {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close-modal-button {
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-buttons button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
