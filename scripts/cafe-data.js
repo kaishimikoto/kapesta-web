@@ -26,7 +26,9 @@ class Cafe {
       description = "",
       rating = 0,
       location = "",
+      barangay = "",
       coverImage = "",
+      photos = [],
 
       // Cafe Other Details
       averagePrice = "",
@@ -34,13 +36,15 @@ class Cafe {
       isPetFriendly = false,
       isRestroomAvailable = false,
       restroomCount = 0,
+      menu = "",
 
       // Cafe Location and Contact
       phone = "",
       website = "",
 
       // Cafe Social Links
-      socialLinks = {},
+      socialLinks = [],
+      /*socialLinks = {},*/
 
       // Working Hours
       workingHours = {},
@@ -75,7 +79,9 @@ class Cafe {
       this.name = name;
       this.description = description;
       this.location = location;
+      this.barangay = barangay;
       this.coverImage = coverImage;
+      this.photos = photos;
 
       // Cafe First Details
       this.averagePrice = averagePrice;
@@ -83,6 +89,7 @@ class Cafe {
       this.isPetFriendly = isPetFriendly;
       this.isRestroomAvailable = isRestroomAvailable;
       this.restroomCount = restroomCount;
+      this.menu = menu;
 
       // Cafe Location and Contact
       this.phone = phone;
@@ -128,7 +135,7 @@ class Cafe {
          throw new TypeError("Review must be a Review object.");
       }
 
-      this.listOfReviews.push(review);
+      this.listOfReviews.unshift(review); // unshift() adds the new review to the beginning of the array.
    }
 
    // Calculate Average Rating Based on Submitted Reviews
@@ -167,11 +174,21 @@ const cafe6 = new Cafe({
    website: "https://www.3rdspace.shop/",
 
    // Social Links
-   socialLinks: {
+   socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
+   /*socialLinks: {
       facebook: "https://www.facebook.com/",
       instagram: "https://www.instagram.com/",
       twitter: "https://www.twitter.com/"
-   },
+   },*/
 
    // Working Hours
    workingHours: {
@@ -245,28 +262,28 @@ const review3 = new Review(
 const review4 = new Review(
     "newUser",
     "2026-10-24",
-    "Nice coffee and good air conditioning. Perfect place to cram our case study.",
+    "PAKAWALAN MO NAKO ITWS",
     ["pictures/coffee1.jpg"],
-    5
+    1
 );
 const review7 = new Review(
     "newUser",
     "2026-10-24",
-    "Ang bait ng owner nilibre po kami ng fries at coffee nung nag interview kami.",
+    "PAKAWALAN MO NAKO ITWS",
     ["pictures/coffee1.jpg"],
-    5
+    1
 );
 const review6 = new Review(
     "newUser",
     "2026-10-24",
-    "Bakit lasang damo po yung matcha?",
+    "PAKAWALAN MO NAKO ITWS",
     ["pictures/coffee1.jpg"],
     1
 );
 const review5 = new Review(
     "newUser",
     "2026-10-24",
-    "My friend Raven came here last time and the fries were served frozen. Hindi man lang dinouble check ng staff bago i-serve.",
+    "cri",
     ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
     2
 );
@@ -281,22 +298,81 @@ const cafe1 = new Cafe({
   name: "3rd Space",
   description: "A cozy and modern café perfect for studying, working, and spending time with friends. Enjoy coffee, snacks, and a relaxing atmosphere.",
   location: "H. Concepcion",
-  coverImage: "pictures/coffee2.jpg",
+  barangay: "Sangitan",
+  coverImage: "images/3rdspace/3rdspace-photo16.jpg",
+
+  //possible options: 3, 5..? 6, 11, 12, 13, 15, 16
+
+  photos: [
+      "images/3rdspace/3rdspace-photo1.jpg",
+      "images/3rdspace/3rdspace-photo2.jpg",
+      "images/3rdspace/3rdspace-photo3.jpg",
+      "images/3rdspace/3rdspace-photo4.jpg",
+      "images/3rdspace/3rdspace-photo5.jpg",
+      "images/3rdspace/3rdspace-photo6.jpg",
+      "images/3rdspace/3rdspace-photo7.jpg",
+      "images/3rdspace/3rdspace-photo8.jpg",
+      "images/3rdspace/3rdspace-photo9.jpg",
+      "images/3rdspace/3rdspace-photo10.jpg",
+      "images/3rdspace/3rdspace-photo11.jpg",
+      "images/3rdspace/3rdspace-photo12.jpg",
+      "images/3rdspace/3rdspace-photo13.jpg",
+      "images/3rdspace/3rdspace-photo14.jpg",
+      "images/3rdspace/3rdspace-photo15.jpg",
+      "images/3rdspace/3rdspace-photo16.jpg",
+      "images/3rdspace/3rdspace-photo17.jpg",
+      "images/3rdspace/3rdspace-photo18.jpg",
+      "images/3rdspace/3rdspace-photo19.jpg",
+      "images/3rdspace/3rdspace-photo20.jpg",
+      "images/3rdspace/3rdspace-photo21.jpg",
+      "images/3rdspace/3rdspace-photo22.jpg",
+      "images/3rdspace/3rdspace-photo23.jpg",
+      "images/3rdspace/3rdspace-photo24.jpg",
+      "images/3rdspace/3rdspace-photo25.jpg",
+      "images/3rdspace/3rdspace-photo26.jpg",
+      "images/3rdspace/3rdspace-photo27.jpg"
+         /*
+        "pictures/cafe3.jpg",
+        "pictures/coffee1.jpg",
+        "pictures/chincafe.JPG",
+        "pictures/blckcoffee.PNG",
+        "pictures/cafe-background.jpg",
+        "pictures/blckcoffee.PNG",
+        "pictures/coffee2.jpg",
+        "pictures/kate-laine-wtwP4tI0R08-unsplash.jpg",
+        "pictures/pexels-intitupac-5373242.jpg",
+        "pictures/cafe3.jpg"*/
+    ],
 
   averagePrice: "₱100 - ₱150",
   seatCapacity: 20,
   isPetFriendly: true,
   isRestroomAvailable: true,
   restroomCount: 2,
+  menu: "https://www.3rdspace.shop/menu",
 
   phone: "0912 345 6789",
   website: "https://example.com/3rd-space",
 
-  socialLinks: {
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        },
+        {
+            platform: "Telegram",
+            url: "https://www.telegram.com"
+        }
+    ],
+  /*socialLinks: {
     facebook: "https://facebook.com/example",
     instagram: "https://instagram.com/example",
     twitter: ""
-  },
+  },*/
 
   workingHours: {
     monday: "8:00 AM - 12:00 AM",
@@ -362,7 +438,16 @@ const cafe2 = new Cafe({
   name: "Bean & Bloom Café",
   description: "A charming café surrounded by plants and warm wooden interiors. Ideal for casual dates, conversations, and enjoying specialty coffee.",
   location: "Downtown",
-  coverImage: "pictures/bean-and-bloom.jpg",
+  barangay: "Barangay mo hehe",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
 
   averagePrice: "₱120 - ₱220",
   seatCapacity: 35,
@@ -373,11 +458,16 @@ const cafe2 = new Cafe({
   phone: "0917 222 3344",
   website: "https://example.com/bean-and-bloom",
 
-  socialLinks: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    twitter: ""
-  },
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
 
   workingHours: {
     monday: "9:00 AM - 9:00 PM",
@@ -420,7 +510,16 @@ const cafe3 = new Cafe({
   name: "Study Grounds",
   description: "A study-focused café with reliable Wi-Fi, plenty of power outlets, comfortable seating, and a quiet environment for students and remote workers.",
   location: "University District",
-  coverImage: "pictures/study-grounds.jpg",
+  barangay: "Kapitan Pepe",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
 
   averagePrice: "₱80 - ₱160",
   seatCapacity: 50,
@@ -431,11 +530,16 @@ const cafe3 = new Cafe({
   phone: "0920 555 6677",
   website: "https://example.com/study-grounds",
 
-  socialLinks: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    twitter: ""
-  },
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
 
   workingHours: {
     monday: "7:00 AM - 11:00 PM",
@@ -475,7 +579,16 @@ const cafe4 = new Cafe({
   name: "Midnight Brew",
   description: "A late-night coffee spot with moody lighting, comfortable couches, and a relaxed atmosphere for night owls and friends catching up after dark.",
   location: "City Center",
-  coverImage: "pictures/midnight-brew.jpg",
+  barangay: "Sangitan",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
 
   averagePrice: "₱100 - ₱200",
   seatCapacity: 28,
@@ -486,11 +599,16 @@ const cafe4 = new Cafe({
   phone: "0933 444 5566",
   website: "https://example.com/midnight-brew",
 
-  socialLinks: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    twitter: ""
-  },
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
 
   workingHours: {
     monday: "2:00 PM - 2:00 AM",
@@ -530,7 +648,16 @@ const cafe5 = new Cafe({
   name: "Sunny Side Coffee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
-  coverImage: "pictures/sunny-side.jpg",
+  barangay: "Sangitan",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
 
   averagePrice: "₱90 - ₱180",
   seatCapacity: 40,
@@ -541,11 +668,223 @@ const cafe5 = new Cafe({
   phone: "0945 111 2233",
   website: "https://example.com/sunny-side",
 
-  socialLinks: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    twitter: ""
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
+
+  workingHours: {
+    monday: "7:00 AM - 8:00 PM",
+    tuesday: "7:00 AM - 8:00 PM",
+    wednesday: "7:00 AM - 8:00 PM",
+    thursday: "7:00 AM - 8:00 PM",
+    friday: "7:00 AM - 9:00 PM",
+    saturday: "7:00 AM - 9:00 PM",
+    sunday: "8:00 AM - 7:00 PM"
   },
+
+  wifiStrength: 2,
+  powerOutletsNumber: 5,
+
+  airConditioningLevel: 2,
+  noiseLevel: 3,
+  isOpenSpace: true,
+
+  isParkingAvailable: true,
+  parkingCapacity: 12,
+  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+
+  isHouseDeliveryAvailable: true,
+  isGrabDeliveryAvailable: false,
+  isTakeOutAvailable: true,
+
+  paymentMethods: {
+    cash: true,
+    gcash: true,
+    maya: true,
+    card: false
+  }
+});
+
+const cafe7 = new Cafe({
+  id: 7,
+  name: "oooffff",
+  description: "A bright s.",
+  location: "Residenct",
+  barangay: "Sangitan",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
+
+  averagePrice: "₱90 - ₱180",
+  seatCapacity: 40,
+  isPetFriendly: true,
+  isRestroomAvailable: true,
+  restroomCount: 2,
+
+  phone: "0945 111 2233",
+  website: "https://example.com/sunny-side",
+
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
+
+  workingHours: {
+    monday: "7:00 AM - 8:00 PM",
+    tuesday: "7:00 AM - 8:00 PM",
+    wednesday: "7:00 AM - 8:00 PM",
+    thursday: "7:00 AM - 8:00 PM",
+    friday: "7:00 AM - 9:00 PM",
+    saturday: "7:00 AM - 9:00 PM",
+    sunday: "8:00 AM - 7:00 PM"
+  },
+
+  wifiStrength: 2,
+  powerOutletsNumber: 5,
+
+  airConditioningLevel: 2,
+  noiseLevel: 3,
+  isOpenSpace: true,
+
+  isParkingAvailable: true,
+  parkingCapacity: 12,
+  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+
+  isHouseDeliveryAvailable: true,
+  isGrabDeliveryAvailable: false,
+  isTakeOutAvailable: true,
+
+  paymentMethods: {
+    cash: true,
+    gcash: true,
+    maya: true,
+    card: false
+  }
+});
+
+const cafe8 = new Cafe({
+  id: 8,
+  name: "Sunny Side Coffee",
+  description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
+  location: "Residential District",
+  barangay: "Sangitan",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
+
+  averagePrice: "₱90 - ₱180",
+  seatCapacity: 40,
+  isPetFriendly: true,
+  isRestroomAvailable: true,
+  restroomCount: 2,
+
+  phone: "0945 111 2233",
+  website: "https://example.com/sunny-side",
+
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
+
+  workingHours: {
+    monday: "7:00 AM - 8:00 PM",
+    tuesday: "7:00 AM - 8:00 PM",
+    wednesday: "7:00 AM - 8:00 PM",
+    thursday: "7:00 AM - 8:00 PM",
+    friday: "7:00 AM - 9:00 PM",
+    saturday: "7:00 AM - 9:00 PM",
+    sunday: "8:00 AM - 7:00 PM"
+  },
+
+  wifiStrength: 2,
+  powerOutletsNumber: 5,
+
+  airConditioningLevel: 2,
+  noiseLevel: 3,
+  isOpenSpace: true,
+
+  isParkingAvailable: true,
+  parkingCapacity: 12,
+  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+
+  isHouseDeliveryAvailable: true,
+  isGrabDeliveryAvailable: false,
+  isTakeOutAvailable: true,
+
+  paymentMethods: {
+    cash: true,
+    gcash: true,
+    maya: true,
+    card: false
+  }
+});
+
+const cafe9 = new Cafe({
+  id: 9,
+  name: "eeeeeeeeeee",
+  description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
+  location: "Residential District",
+  barangay: "Sangitan",
+  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  photos: [
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
+    ],
+
+  averagePrice: "₱90 - ₱180",
+  seatCapacity: 40,
+  isPetFriendly: true,
+  isRestroomAvailable: true,
+  restroomCount: 2,
+
+  phone: "0945 111 2233",
+  website: "https://example.com/sunny-side",
+
+  socialLinks: [
+        {
+            platform: "Facebook",
+            url: "https://www.facebook.com/example"
+        },
+        {
+            platform: "Instagram",
+            url: "https://www.instagram.com/example"
+        }
+    ],
 
   workingHours: {
     monday: "7:00 AM - 8:00 PM",
@@ -590,7 +929,11 @@ const cafes = [
   cafe2,
   cafe3,
   cafe4,
-  cafe5
+  cafe5,
+  cafe6,
+  cafe7,
+  cafe8,
+  cafe9
 ];
 
 /* =========================================
