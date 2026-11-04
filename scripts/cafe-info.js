@@ -25,6 +25,46 @@ if (cafeHero) {
       `linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent), url("${selectedCafe.coverImage}")`;
 }
 
+// ========================================
+// FAVORITE CAFÉ BUTTON
+// ========================================
+
+const favoriteButton = document.getElementById("favorite-button");
+
+function updateFavoriteButton() {
+    const favoriteIds = getFavoriteCafeIds();
+    const isFavorited = favoriteIds.includes(Number(selectedCafe.id));
+
+    const heartIcon = favoriteButton.querySelector(".heart-icon");
+
+    heartIcon.src = isFavorited
+        ? "images/icons/heart-filled.svg"
+        : "images/icons/heart-outline.svg";
+
+    favoriteButton.setAttribute("aria-pressed", isFavorited);
+    favoriteButton.setAttribute(
+        "aria-label",
+        isFavorited ? "Remove from favorites" : "Add to favorites"
+    );
+}
+
+favoriteButton.addEventListener("click", function () {
+
+    // Check if the user is logged in
+    if (!isLoggedIn()) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Toggle favorite only if logged in
+    toggleFavoriteCafe(selectedCafe.id);
+
+    updateFavoriteButton();
+});
+
+// Set heart appearance when the page loads
+updateFavoriteButton();
+
 // Cafe Details
 document.getElementById("average-price").textContent = selectedCafe.averagePrice;
 document.getElementById("seat-capacity").textContent = selectedCafe.seatCapacity;
@@ -130,3 +170,18 @@ if (selectedCafe) {
 } else {
   console.error("Cafe not found.");
 }
+
+// ========================================
+// LEAVE A REVIEW LOGIN CHECK
+// ========================================
+
+const leaveReviewButton = document.getElementById("leave-review-button");
+
+leaveReviewButton.addEventListener("click", function(event) {
+
+    if (!isLoggedIn()) {
+        event.preventDefault();
+        window.location.href = "login.html";
+    }
+
+}); 
