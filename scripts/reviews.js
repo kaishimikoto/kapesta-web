@@ -1,5 +1,15 @@
-// STAR RATING
+function convertImageToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
 
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+
+        reader.readAsDataURL(file);
+    });
+}
+
+// STAR RATING
 const starIcons = {
     1: "images/icons/1-star.svg",
     2: "images/icons/2-stars.svg",
@@ -20,6 +30,22 @@ const ratingFilter = document.getElementById("rating-filter");
 console.log("Cafe ID:", cafeId);
 console.log("Selected cafe:", selectedCafe);
 console.log("Selected cafe reviews:", selectedCafe?.listOfReviews);
+// LOAD SAVED REVIEWS FROM LOCAL STORAGE
+if (selectedCafe) {
+    const savedReviews = getReviewsForCafe(selectedCafe.id);
+
+    savedReviews.reverse().forEach(reviewData => {
+        const review = new Review(
+            reviewData.userName,
+            reviewData.date,
+            reviewData.reviewMessage,
+            reviewData.photos,
+            reviewData.reviewRating
+        );
+
+        selectedCafe.addReview(review);
+    });
+}
 
 const isAllReviewsPage = window.location.pathname.endsWith("all-cafe-reviews.html");
 
@@ -349,8 +375,13 @@ if (reviewPhotoInput) {
 }
 
 if (reviewForm) {
-    reviewForm.addEventListener("submit", function(event) {
+    reviewForm.addEventListener("submit", async function(event) { // We add async because converting images takes a little time.
         event.preventDefault();
+
+        if (!isLoggedIn()) {
+            window.location.href = "login.html";
+            return;
+        }
 
         const message = document.getElementById("review-message").value.trim();
         const files = Array.from(reviewPhotoInput.files);
@@ -368,11 +399,13 @@ if (reviewForm) {
         }
 
         // Get uploaded photos
-        const photoPaths = files.map(file => URL.createObjectURL(file));
+        const photoPaths = await Promise.all(
+            files.map(file => convertImageToBase64(file))
+        ); // That's the important change! Your existing new Review(...) can still use photoPaths without changing its structure.
 
         // Create the new review
         const newReview = new Review(
-            "You",
+            getCurrentUser().username,
             new Date().toLocaleDateString(),
             message,    
             photoPaths,
@@ -381,6 +414,9 @@ if (reviewForm) {
 
         // Add review to the selected cafe
         selectedCafe.addReview(newReview);
+
+        // Save review permanently in localStorage
+        saveReview(selectedCafe.id, newReview);
 
         // Update review summary and rating bars
         updateReviewSummary();
