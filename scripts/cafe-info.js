@@ -32,20 +32,24 @@ if (cafeHero) {
 const favoriteButton = document.getElementById("favorite-button");
 
 function updateFavoriteButton() {
+
+    if (!isLoggedIn()) {
+        favoriteButton.classList.remove("favorited");
+
+        // If you're using an image for the heart:
+        favoriteButton.querySelector("img").src = "images/icons/heart-outline.svg";
+
+        return;
+    }
+
     const favoriteIds = getFavoriteCafeIds();
     const isFavorited = favoriteIds.includes(Number(selectedCafe.id));
 
-    const heartIcon = favoriteButton.querySelector(".heart-icon");
+    favoriteButton.classList.toggle("favorited", isFavorited);
 
-    heartIcon.src = isFavorited
+    favoriteButton.querySelector("img").src = isFavorited
         ? "images/icons/heart-filled.svg"
         : "images/icons/heart-outline.svg";
-
-    favoriteButton.setAttribute("aria-pressed", isFavorited);
-    favoriteButton.setAttribute(
-        "aria-label",
-        isFavorited ? "Remove from favorites" : "Add to favorites"
-    );
 }
 
 favoriteButton.addEventListener("click", function () {
