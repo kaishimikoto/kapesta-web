@@ -1,0 +1,937 @@
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+:root {
+    /* Layout: side spacing used across the page */
+    --page-gutter: clamp(1rem, 5vw, 4rem);
+    /* Layout: space between every h2 and the content below it */
+    --heading-gap: 24px;
+
+    /* Colors */
+    --color-bg: #fff8f1;
+    --color-muted-orange: #f0ebe2;
+    --color-pastel-orange: #ddb895;
+    --color-copper: #C17F42;
+    --color-gold: #E8C07D;
+    --color-brown: #483524;
+    --color-brown-dark: #33261a;
+    --color-white: #fff;
+    --color-text: #483524;
+    --color-border: #e8ded4;
+
+    /* Fonts */
+    --font-nav: "Poppins", sans-serif;
+    --font-body: "Poppins", sans-serif;
+    --font-heading: "Poppins", serif;
+    --font-header: "Playfair Display", serif;
+
+    /* Motion */
+    --transition: 0.3s ease;
+}
+
+
+/* ==========================================================================
+   GLOBAL STYLES
+   ========================================================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Page background, body font and text color */
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--color-text);
+    line-height: 1.2;
+    padding-bottom: 20px;
+}
+
+/* Heading sizes */
+h2 {
+    font-size: 2.5rem;
+    padding-bottom: var(--heading-gap);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Divider lines (footer) */
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+/* Links inherit their parent's color */
+a {
+    color: inherit;
+}
+
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+/* Invisible strip at the top that reveals a hidden navbar on hover */
+.nav-hover-zone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    z-index: 11;
+}
+
+/* Navbar container (fixed at the top) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px var(--page-gutter);
+    background: transparent;
+    font-family: var(--font-nav);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Navbar after scrolling past the hero (class added by header.js) */
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Navbar slid out of view (class added by header.js) */
+.navbar.hide {
+    transform: translateY(-100%);
+}
+
+/* Logo image */
+.logo {
+    width: 10em;
+    height: 4em;
+}
+
+/* Nav links list */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Nav link items */
+.nav-links a {
+    display: inline-block;
+    padding: 8px 10px;
+    color: var(--color-copper);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Nav link hover state */
+.nav-links a:hover {
+    color: var(--color-white);
+    background-color: var(--color-brown);
+    border-bottom: 2px solid var(--color-copper);
+}
+
+/* Profile menu wrapper (anchor for the dropdown) */
+.profile-menu {
+    position: relative;
+}
+
+/* Profile button */
+.profile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    color: var(--color-copper);
+    font: inherit;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Profile button hover and open state */
+.profile-toggle:hover,
+.profile-menu.open .profile-toggle {
+    color: var(--color-white);
+    background-color: var(--color-brown);
+}
+
+/* Dropdown arrow */
+.caret {
+    font-size: 12px;
+}
+
+/* Profile dropdown (hidden by default) */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 140px;
+    padding: 6px 0;
+    list-style: none;
+    background: var(--color-brown-dark);
+    border: 1px solid var(--color-brown);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* Profile dropdown when open (class added by header.js) */
+.profile-menu.open .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown links */
+.profile-dropdown a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--color-gold);
+    text-decoration: none;
+}
+
+/* Dropdown link hover state */
+.profile-dropdown a:hover {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+/* Hero wrapper (full screen) */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background video */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Dark gradient over the video */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.55) 60%,
+            rgba(0, 0, 0, 0.65) 100%);
+    z-index: 1;
+}
+
+/* Hero text and button container (right aligned) */
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 0 var(--page-gutter);
+    text-align: right;
+    font-family: var(--font-header);
+    font-size: xx-large;
+}
+
+/* Hero headline */
+.content h1 {
+    font-family: var(--font-header);
+    color: var(--color-copper);
+    font-weight: 500;
+    line-height: 1.1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Highlighted word in the headline */
+.content h1 .highlight {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.15em;
+}
+
+/* Explore button */
+#Explore {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-white);
+    color: var(--color-brown);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+/* Explore button hover state */
+#Explore:hover {
+    background-color: var(--color-copper);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15);
+}
+
+/* Explore button pressed state */
+#Explore:active {
+    transform: translateY(1px);
+}
+
+/* Explore button keyboard focus */
+#Explore:focus-visible {
+    outline: 3px solid hsl(28, 33%, 21%);
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   CAFE SPOTLIGHT
+   ========================================================================== */
+
+/* Section wrapper (full-width muted band) */
+.cafe-spotlight {
+    position: relative;
+    max-width: 100%;
+    margin: 0 0 50px;
+    padding: 50px var(--page-gutter);
+    background-color: var(--color-muted-orange);
+}
+
+/* Section title and subtitle */
+.cafe-spotlight .title {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Slider wrapper (anchor for the prev/next buttons) */
+.slider {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Scrollable row of video cards */
+.slider-track {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 8px 60px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+/* Hide the scrollbar (Chrome, Safari, Edge) */
+.slider-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Extra space at the end of the track */
+.slider-track::after {
+    content: "";
+    flex: 0 0 40px;
+}
+
+/* Video card */
+.videos {
+    flex: 0 0 240px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+/* Video card hover border */
+.videos:hover {
+    border: 1px solid hsl(0, 0%, 20%);
+}
+
+/* Video (vertical 9:16) */
+.videos video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #111;
+}
+
+/* Video in fullscreen mode */
+.videos video:fullscreen,
+.videos video:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: contain;
+    border-radius: 0;
+    background: #000;
+}
+
+/* Cafe name under each video */
+.videos .description {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Prev and next buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--color-gold);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Slider button hover state */
+.slider-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+}
+
+/* Previous button position */
+.slider-btn.prev {
+    left: 0;
+}
+
+/* Next button position */
+.slider-btn.next {
+    right: 0;
+}
+
+/* Hide slider buttons on phones (swipe instead) */
+@media (max-width: 600px) {
+    .slider-btn {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   HOW KAPESTA WORKS
+   ========================================================================== */
+
+/* Section wrapper and Poppins font for everything inside */
+.how-it-works,
+.how-it-works h2,
+.how-it-works h3,
+.how-it-works p {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Section wrapper (centered, max width) */
+.how-it-works {
+    width: min(100%, 960px);
+    margin: 0 auto;
+    padding: 60px var(--page-gutter);
+}
+
+/* Section heading */
+.how-it-works .section-heading {
+    text-align: center;
+}
+
+/* Cards grid (2 columns, 4 cards) */
+.feature-grid {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+/* Card */
+.box-style {
+    padding: 20px;
+    background-color: var(--color-white);
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Card icon */
+.box-style img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+}
+
+/* Card title */
+.box-style h3 {
+    padding-bottom: 0;
+    font-size: 1rem;
+}
+
+/* Card text */
+.box-style p {
+    margin-top: 8px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+/* Card resting state (slightly faded) */
+.box-opacity-effect {
+    border: 2px solid var(--color-white);
+    opacity: 0.9;
+    transition: transform var(--transition), border-color var(--transition),
+        opacity var(--transition);
+}
+
+/* Card hover state */
+.box-opacity-effect:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(1.025);
+    border-color: var(--color-brown);
+    opacity: 1;
+}
+
+/* Stack the cards on tablets and phones */
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+}
+
+
+/* ==========================================================================
+   WHAT USERS SAY ABOUT KAPESTA
+   ========================================================================== */
+
+/* Section wrapper (full-width muted band) */
+.reviews-section {
+    margin: 60px 0;
+    padding: 80px var(--page-gutter);
+    background-color: var(--color-muted-orange);
+    text-align: center;
+}
+
+/* Section heading */
+.reviews-section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-brown-dark);
+}
+
+/* Row of review cards */
+.reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Review card: stars > photo + name > quote > "- Kapesta user" */
+.review-card {
+    flex: 0 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 14px 14px;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    color: var(--color-brown-dark);
+    text-align: center;
+}
+
+/* Star rating (first in the card) */
+.review-stars {
+    order: 1;
+    color: #f5b301;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+/* Reviewer name (second in the card) */
+.review-card figcaption {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Reviewer photo (circle above the name) */
+.review-card figcaption::before {
+    content: "";
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--color-pastel-orange);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hide the "· Kapesta user" text in the name (shown at the bottom instead) */
+.review-card figcaption span {
+    display: none;
+}
+
+/* Quote (third in the card) */
+.review-card blockquote {
+    order: 3;
+}
+
+/* Quote text */
+.review-card blockquote p {
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+/* "- Kapesta user" label pinned to the bottom of the card */
+.review-card::after {
+    content: "- Kapesta user";
+    order: 4;
+    margin-top: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Photo for review 1 */
+.review-card:nth-child(1) figcaption::before {
+    background-image: url("images/photos/fake-user1.jpg");
+}
+
+/* Photo for review 2 */
+.review-card:nth-child(2) figcaption::before {
+    background-image: url("images/photos/fake-user2.jpg");
+}
+
+/* Photo for review 3 */
+.review-card:nth-child(3) figcaption::before {
+    background-image: url("images/photos/fake-user3.jpg");
+}
+
+/* Photo for review 4 */
+.review-card:nth-child(4) figcaption::before {
+    background-image: url("images/photos/fake-user4.jpg");
+}
+
+/* Photo for review 5 */
+.review-card:nth-child(5) figcaption::before {
+    background-image: url("images/photos/fake-user5.jpg");
+}
+
+/* Phones: one card per row */
+@media (max-width: 600px) {
+    .reviews-section {
+        margin: 40px 0;
+        padding: 40px var(--page-gutter);
+    }
+
+    .review-card {
+        flex: 1 1 100%;
+        max-width: 320px;
+    }
+}
+
+
+/* ==========================================================================
+   CONNECT WITH KAPESTA (CTA)
+   ========================================================================== */
+
+/* Section wrapper */
+.connect-section {
+    margin: 120px var(--page-gutter);
+}
+
+/* Section title */
+.connect-title {
+    text-align: center;
+    padding-bottom: 32px;
+    color: var(--color-brown);
+}
+
+/* Three-card grid */
+.connect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+/* Card */
+.connect-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    color: var(--color-brown);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Card heading */
+.connect-card h2 {
+    font-size: 1.5rem;
+    color: var(--color-brown);
+}
+
+/* Card text */
+.connect-card p {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-brown);
+}
+
+/* Social links list (card 1) */
+.about-social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+/* Social link (removes underline) */
+.about-social-grid a {
+    text-decoration: none;
+}
+
+/* Social link box */
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    opacity: 0.9;
+    transition: border-color var(--transition), opacity var(--transition);
+}
+
+/* Social link box hover state */
+.social-links:hover {
+    border-color: var(--color-brown);
+    opacity: 1;
+}
+
+/* Social icon */
+.social-link-image img {
+    width: 48px;
+    height: 48px;
+}
+
+/* Social name */
+.connect-card .social-link-content h3 {
+    padding-bottom: 4px;
+    font-size: 0.9rem;
+    color: var(--color-brown);
+}
+
+/* Social handle */
+.connect-card .social-link-content p {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+
+/* Buttons (Explore / Send us a message), pinned to the card bottom */
+.connect-btn {
+    display: inline-block;
+    align-self: center;
+    margin-top: auto;
+    padding: 12px 28px;
+    border-radius: 8px;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+/* Button hover state */
+.connect-btn:hover {
+    background-color: var(--color-brown-dark);
+    transform: translateY(-1px);
+}
+
+/* Button pressed state */
+.connect-btn:active {
+    transform: translateY(1px);
+}
+
+/* Button keyboard focus */
+.connect-btn:focus-visible {
+    outline: 3px solid var(--color-copper);
+    outline-offset: 2px;
+}
+
+/* Tablets and phones: stack the cards */
+@media (max-width: 900px) {
+    .connect-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+/* Footer wrapper */
+footer {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    font-size: 0.875rem;
+}
+
+/* Footer links */
+footer a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+/* Footer link hover state */
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Main footer layout (info on the left, links on the right) */
+.footer-layout {
+    width: min(100%, 1140px);
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+/* Footer information block */
+.footer-information {
+    max-width: 440px;
+}
+
+/* Footer logo */
+.footer-information-logo img {
+    width: 160px;
+    margin-bottom: 24px;
+}
+
+/* Divider inside the information block */
+.footer-information hr {
+    margin: 24px 0;
+}
+
+/* Footer social icons row */
+.footer-social {
+    display: flex;
+    gap: 24px;
+}
+
+/* Footer social icon */
+.footer-social img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Footer link columns */
+.footer-links {
+    display: flex;
+    gap: 80px;
+}
+
+/* Single link column */
+.footer-link-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* Link column title */
+.footer-nav-title {
+    margin: 0 0 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+/* Footer bottom bar (divider and copyright) */
+.footer-bottom {
+    width: min(100%, 1140px);
+    margin: 0 auto;
+    padding: 0 40px 24px;
+}
+
+/* Copyright text */
+.footer-bottom small {
+    display: block;
+    margin-top: 16px;
+}
