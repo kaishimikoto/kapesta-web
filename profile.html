@@ -3,38 +3,40 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kapesta | Profile</title>
+        <link rel="stylesheet" type="text/css" href="styles/global.css">
         <link rel="stylesheet" type="text/css" href="styles/profile-styles.css">
         <title>Profile | Kapesta</title>
     </head>
     <body>
+        <!-- ========== NAV BAR ========== -->
+        <div class="nav-hover-zone"></div>
+
         <header>
-            <div class="header-layout">
-                <!-- Website Logo / Mobile Menu -->
-                <div class="header-brand">
-                    <a href="#" class="header-logo">
-                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
-                    </a>
-                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
-                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
-                    </button>
-                </div>
+            <nav class="navbar">
+                <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
 
-                <!-- Main Navigation -->
-                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
-                    <ul class="header-main-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                    </ul>
 
-                    <ul class="header-auth-links">
-                        <li><a href="login.html" class="header-login-link">Log in</a></li>
-                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
-                    </ul>
-                </nav>
-            </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="explore.html">EXPLORE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+
+
+                    <li class="profile-menu">
+                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                            PROFILE <span class="caret">&#9662;</span>
+                        </button>
+
+
+                        <ul class="profile-dropdown">
+                            <li><a href="login.html">Log in</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <!-- ========== PROFILE HEADER ========== -->
@@ -84,12 +86,16 @@
             <section class="personal-info">
 
                 <header class="personal-info-header">
+
                     <h2>Account Information</h2>
 
                     <button type="button" class="edit-profile-button" id="edit-profile-button">
+
                         <img src="images/icons/edit.svg" alt="Edit" class="icons">
                         Edit Profile
+
                     </button>
+
                 </header>
                 
                 <hr>
@@ -204,11 +210,84 @@
             </div>
 
         </div>
+
+        <!-- ========== REVIEW PHOTOS LIGHTBOX ========== -->
+        <div class="lightbox" id="photo-lightbox">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+
+            <button class="lightbox-prev" id="lightbox-prev">&#10094;</button>
+
+            <img src="" alt="Enlarged review photo" id="lightbox-image">
+
+            <button class="lightbox-next" id="lightbox-next">&#10095;</button>
+        </div>
         
+        <!-- ======= FOOTER ======= -->
+        <footer>
+            <div class="footer-layout">
+                <!-- Website Information -->
+                <div class="footer-information">
+                    <div class="footer-information-logo">
+                        <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <hr />
+                    
+                    <!-- Social Media -->
+                    <nav class="footer-social" aria-label="Social media links">
+                        <a href="#" target="_blank" title="Visit Kapesta on Facebook">
+                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
+                        </a>
+
+                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Platform</h3>
+                        <a href="index.html">Home</a>
+                        <a href="#">Explore Cafes</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Support</h3>
+                        <a href="report.html">Report an Issue</a>
+                    </div>
+
+                    <div class="footer-link-field">
+                        <h3 class="footer-nav-title">Legal</h3>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms and Conditions</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <hr />
+                <small>&copy; 2026 Kapesta. All rights reserved.</small>
+            </div>
+        </footer>
+
+        <script src="scripts/header.js"></script>
         <script src="scripts/cafe-data.js"></script>
         <script src="scripts/user-data.js"></script>
         <script src="scripts/navigation.js"></script>
+        <script src="scripts/header.js"></script>
+        <script src="scripts/favorite-display.js"></script>
         <script src="scripts/review-display.js"></script>
+        <script src="scripts/lightbox.js"></script>
         <script src="scripts/profile.js"></script>
     </body>
 </html>
