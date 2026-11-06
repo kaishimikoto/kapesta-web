@@ -1,104 +1,22 @@
 /* ===========================
-    GLOBAL STYLES
+    CAFE INFO STYLE
 =========================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-    /* ---------------- Color --------------------------------------- */
-    --color-white: #FFFFFF;
-    --color-bg: rgb(240, 235, 229);
-    --color-content-bg: rgb(251, 249, 247);
-    /*--color-bg: #FAF9F6;*/
-    --color-text: #58402c;
-    --color-brown-hover: #604935;
-    --color-light-brown: rgb(157, 104, 71);
-    --color-light-brown-hover: rgb(200, 149, 110);
-    --color-red: #CC0000;
-    --color-border: rgb(220, 214, 209);
-    
-
-    /* ---------------- Font Family --------------------------------- */
-    --font-heading: "Poppins", sans-serif;
-    --font-body: "Roboto", Arial, Helvetica, sans-serif;
-
-    /* ---------------- Motion -------------------------------------- */
-    --transition: 0.3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-h1, h2, h3 {
-    font-family: var(--font-heading);
-    line-height: 1.2;
-}
-
-h3 {
-    font-family: var(--font-heading) !important;
-}
-
-caption {
-    font-family: var(--font-heading);
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 12px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: var(--color-border);
-}
-
-main p {
-    font-size: 1.125rem;
-    color: var(--color-text);
-    line-height: 1.5;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-body);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-}
-
-/* ===========================
-    EXPLORE - GENERAL STYLE
-=========================== */
-
 .gallery-container {
     width: 84%;
     margin: 40px auto 40px auto;
 }
 
-.information, .reviews-section, .my-favorites, .cafe-row {
+.information, .reviews-section, .amenities-container, .cafe-row {
     width: 84%;
     margin: 80px auto;
 }
 
-.reviews-section, .my-favorites {
+.reviews-section {
     background-color: rgb(251, 249, 247);
 }
 
-.cafe-details, .location-contact, .working-hours, .amenities, .my-favorites, .cafe-row {
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+.cafe-details, .location-contact, .working-hours, .amenities, .reviews-section {
+    box-shadow: 0 3px 5px rgba(73, 54, 36, 0.5);
 }
 
 .heading-icon {
@@ -143,66 +61,9 @@ td:hover > * {
     transform: scale(1.05);
 }
 
-
-/* ===========================
------- NAV BAR ------
-=========================== */
-header {
-    width: 100%;
-    padding: 16px 100px;
-    border-bottom: 1px solid #B3B3B3;
-
-    position: absolute;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    background: transparent;
-}
-
-.header-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo img {
-    width: 160px;
-    display: block;
-}
-
-/* === Header Navigation === */
-.header-links ul {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.header-links a {
-    padding: 12px;
-    color: white;
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 8px;
-}
-
-.header-links a:hover {
-    border-color: #483524;
-}
-
-.header-links a:active {
-    color: white;
-    background-color: #483524;
-}
-
 /* ===========================
 ------ HERO SECTION ------
 =========================== */
-
 .hero {
     color: white;
 
@@ -223,20 +84,6 @@ header {
     max-width: 100%;
 }
 
-/*.hero {
-    color: white;
-
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.5)),
-        url("../pictures/cafe1.jpg");
-
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    position: relative;
-    max-width: 100%;
-}*/
-
 .hero-overview-container {
     width: 84%;
     margin-left: 8%;
@@ -247,19 +94,12 @@ header {
 
 .hero-overview {
     width: 50%;
-    /*
-    flex: 1;
-    margin-top: 200px;
-    text-align: left;
-    margin-left: 8%;
-    margin-right: 8%;
-    max-width: 40%;
-    */
 }
 
 .hero-overview h1 {
     margin-bottom: 24px;
     font-size: 56px;
+    color: white;
 }
 
 .hero-overview p {
@@ -323,15 +163,224 @@ header {
     background-color: rgb(200, 149, 110);
 }
 
-/*
-button:hover {
-    background-color: rgb(200, 149, 110);
-}*/
-
 button {
     cursor: pointer;
 }
 
+
+/* ==============================
+   RESPONSIVE CODE - HERO SECTION
+============================== */
+
+/* === Tablet === */
+@media (max-width: 768px) {
+    .hero-overview-container {
+        width: 88%;
+        margin-left: 6%;
+        margin-right: 6%;
+        padding-top: 120px;
+        padding-bottom: 32px;
+    }
+
+    .hero-overview {
+        width: 70%;
+    }
+
+    .hero-overview h1 {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+
+    .hero-rating-location {
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .hero-overview-container {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 100px;
+        padding-bottom: 28px;
+    }
+
+    .hero-overview {
+        width: 100%;
+    }
+
+    .hero-overview h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .hero-rating-location {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .hero-buttons {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .leave-review-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .heart-icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* ===========================
+------- CAFE PHOTOS ROW -------
+=========================== */
+
+.gallery-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Gallery viewport */
+.gallery-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Sliding photo track */
+.gallery-photos {
+    display: flex;
+    gap: 1.33%;
+    transition: transform 0.4s ease;
+}
+
+.gallery-left-btn, .gallery-right-btn {
+    position: absolute;
+    z-index: 2;
+    font-size: 20px;
+    padding: 8px 12px;
+    border: 1px solid #a99685;
+    background-color: #fffbf7;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+.gallery-left-btn {
+    top: 45%;
+    left: -20px;
+}
+
+.gallery-right-btn {
+    top: 45%;
+    right: -20px;
+}
+
+/* Hide arrows when there are no more photos */
+.gallery-left-btn:disabled,
+.gallery-right-btn:disabled {
+    display: none;
+}
+
+/* Individual photo container */
+.gallery-item {
+    position: relative;
+    flex: 0 0 24%;
+    height: 166px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+}
+
+/* Cafe photos */
+.cafe-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cafe-picture:hover {
+    transform: scale(1.05);
+}
+
+/* White overlay on hover */
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover {
+    cursor: pointer;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+
+/* ==============================
+   RESPONSIVE CODE - CAFE GALLERY
+============================== */
+
+/* === Tablet === */
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 32%;
+    }
+
+    .gallery-left-btn {
+        left: -12px;
+    }
+
+    .gallery-right-btn {
+        right: -12px;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .gallery-item {
+        flex: 0 0 48%;
+    }
+
+    .gallery-left-btn,
+    .gallery-right-btn {
+        font-size: 16px;
+        padding: 6px 9px;
+    }
+
+    .gallery-left-btn {
+        left: -8px;
+    }
+
+    .gallery-right-btn {
+        right: -8px;
+    }
+
+    .gallery-item {
+        height: 140px;
+    }
+}
 
 
 /* ===========================
@@ -531,109 +580,70 @@ button {
     border-bottom-right-radius: 12px;
 }
 
-/* ===========================
-------- CAFE PHOTOS ROW -------
-=========================== */
 
-/* ===========================
-   ------- CAFE PHOTOS ROW -------
-   =========================== */
+/* ==============================
+   RESPONSIVE CODE - CAFE INFORMATION
+============================== */
 
-.gallery-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+/* === Tablet === */
+@media (max-width: 768px) {
+    .information {
+        gap: 16px;
+    }
+
+    .cafe-info-container {
+        width: 55%;
+    }
+
+    .working-hours-container {
+        width: 45%;
+    }
+
+    .cafe-details-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .socials-icons-group {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
 }
 
-/* Gallery viewport */
-.gallery-viewport {
-    width: 100%;
-    overflow: hidden;
-}
+/* === Mobile === */
+@media (max-width: 480px) {
+    .information {
+        flex-direction: column;
+        gap: 32px;
+    }
 
-/* Sliding photo track */
-.gallery-photos {
-    display: flex;
-    gap: 1.33%;
-    transition: transform 0.4s ease;
-}
+    .cafe-info-container,
+    .working-hours-container {
+        width: 100%;
+    }
 
-/* Navigation buttons */
-.gallery-left-btn,
-.gallery-right-btn {
-    position: absolute;
-    top: 55%;
-    z-index: 2;
-    border-radius: 8px;
-    border: 1px solid gray;
-    background-color: rgb(241, 239, 237);
-    font-size: 24px;
-    color: #58402c;
-    cursor: pointer;
-}
+    .cafe-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-.gallery-left-btn {
-    left: -12px;
-}
+    .socials-icons-group {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
 
-.gallery-right-btn {
-    right: -12px;
-}
+    .contact-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 
-.gallery-left-btn:hover,
-.gallery-right-btn:hover {
-    color: #a27957;
-    cursor: pointer;
-}
+    .working-hours-container th,
+    .working-hours-container td {
+        padding: 8px;
+        font-size: 13px;
+    }
 
-/* Hide arrows when there are no more photos */
-.gallery-left-btn:disabled,
-.gallery-right-btn:disabled {
-    display: none;
-}
-
-/* Individual photo container */
-.gallery-item {
-    position: relative;
-    flex: 0 0 24%;
-    height: 166px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
-}
-
-/* Cafe photos */
-.cafe-picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.cafe-picture:hover {
-    transform: scale(1.05);
-}
-
-/* White overlay on hover */
-.gallery-item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.gallery-item:hover {
-    cursor: pointer;
-}
-
-.gallery-item:hover::after {
-    opacity: 1;
+    .zoom-text {
+        font-size: 13px;
+    }
 }
 
 /* ===========================
@@ -697,9 +707,9 @@ button {
     border-bottom-right-radius: 12px;
 }
 
- .amenities-container th:hover {
-    background-color: #604935;
- }
+.amenities-container th:hover {
+background-color: #604935;
+}
 
 .amenities-container td:hover {
     background-color: rgb(246, 239, 235);
@@ -709,1068 +719,60 @@ button {
     opacity: 0.35;
 }
 
-/* ===========================
----- REVIEWS SECTION ----
-=========================== */
-.reviews-section {
-    border-radius: 12px;
-    background-color: var(--color-content-bg);
-}
-
-/* Review header */
-.reviews-header {
-    padding: 32px 32px 0px 32px;
-}
-
-/* Reviews features */
-.reviews-features {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    padding: 0px 80px 16px 80px;
-}
-
-/* Reviews summary */
-.reviews-summary {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.reviews-summary img {
-    height: 32px;
-    height: 32px;
-}
-
-/* Reviews percentage */
-.reviews-percentage {
-    flex: 1;
-    min-width: 0;
-}
-
-.reviews-percentage img {
-    width: 16px;
-    height: 16px;
-}
-
-.rating-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.rating-label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-shrink: 0;
-    width: 35px;
-}
-
-.rating-bar {
-    flex: 1;
-    min-width: 0;
-    height: 10px;
-    background-color: #E9E0D7;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.rating-fill {
-    width: 60%;
-    height: 100%;
-    background-color: #B88755;
-    border-radius: 10px;
-}
-
-.rating-count {
-    flex: 0 0 25px;
-    text-align: right;
-}
-
-/* Review actions */
-.review-filter-form {
-    width: 50%;
-}
-
-.review-filter-form select {
-    padding: 10px 14px;
-    font-family: inherit;
-    font-size: 14px;
-    color: #4B3024;
-    background-color: var(--color-content-bg);
-    border: 1px solid #D8C8B8;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-}
-
-.review-filter-form select option {
-    color: var(--color-text);
-    background-color: #FFF8F0;
-}
-
-/* When the user clicks or tabs into the dropdown */
-.review-filter-form select:focus-visible {
-    border-color: #8B5E3C;
-    outline: 2px solid #D8B99B;
-    outline-offset: 2px;
-}
-
-.reviews-actions {
-    display: flex;
-    flex-direction: row;
-    padding: 0px 32px 24px 32px;
-}
-
-.reviews-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    gap: 12px;
-    width: 50%;
-}
-
-.reviews-buttons button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    border: none;
-    border-radius: 8px;
-    background-color: var(--color-text);
-    font-size: 16px;
-    color: var(--color-content-bg);
-    padding: 8px 16px;
-}
-
-.reviews-buttons img {
-    filter: invert(1);
-}
-
-.reviews-buttons button:hover {
-    background-color: var(--color-brown-hover);
-}
-
-/* WRITE A REVIEW BUTTON */
-#open-review-button {
-    padding: 12px 22px;
-    background-color: #6f4e37;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#open-review-button:hover {
-    background-color: #573b2a;
-}
-
-/* FORM LAYOUT */
-#review-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#review-form label {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-/* star rating */
-.star {
-    font-size: 40px;
-    color: #ccc;
-    cursor: pointer;
-}
-
-.star.active {
-    color: #ffc107;
-}
-
-.review-star-rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    line-height: 1;
-    font-size: 250px;
-}   
-
-#review-form select,
-#review-form textarea {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #d8cec3;
-    border-radius: 7px;
-    background-color: white;
-    color: #333;
-    font-family: inherit;
-    font-size: 14px;
-}
-
-#review-form input[type="file"] {
-    background-color: white;
-    padding: 8px;
-    border: 1px solid #d8cec3;
-    border-radius: 7px;
-    color: #333; 
-    width: 100%;
-}
-
-#review-form button[type="submit"] {
-    padding: 8px;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-#submit-review-button {
-    width: 15%;
-}
-
-.upload-file-btn {
-    width: 20%;
-}
-
-.upload-submit-btns {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-#review-form select {
-    cursor: pointer;
-}
-
-#review-form textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-#review-form select:focus,
-#review-form textarea:focus,
-#review-form input[type="file"]:focus {
-    outline: 2px solid #b89575;
-    outline-offset: 2px;
-}
-
-#review-form p {
-    margin: 0;
-    color: #777;
-    font-size: 12px;
-}
-
-/* STYLE THE PHOTO UPLOAD BUTTON */
-
-#review-photos {
-    font-family: inherit;
-    font-size: 14px;
-    color: #555;
-}
-
-#review-photos::file-selector-button {
-    padding: 9px 15px;
-    margin-right: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--color-text);
-    color: white;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#review-photos::file-selector-button:hover {
-    background-color: var(--color-brown-hover);
-}
-
-#photo-count {
-    font-size: 13px;
-    color: #777;
-    margin-top: 8px;
-}
-
-#photo-preview-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.photo-preview {
-    width: 75px;
-    height: 75px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-/* SUBMIT BUTTON */
-#submit-review-button {
-    border: none;
-    border-radius: 8px;
-    background-color: var(--color-text);
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#submit-review-button:hover {
-    background-color: var(--color-brown-hover);
-}
-
-/* REVIEW SUCCESS POPUP */
-.success-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-
-    justify-content: center;
-    align-items: center;
-}
-
-.success-modal-content {
-    background: white;
-    width: 350px;
-    max-width: 90%;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.success-check {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: #e8f1e5;
-    color: #66865b;
-    font-size: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 15px;
-}
-
-.success-modal-content h2 {
-    margin-bottom: 10px;
-}
-
-.success-modal-content p {
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-#success-ok-button {
-    background: #754c32;
-    color: white;
-    border: none;
-    padding: 12px 35px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#success-ok-button:hover {
-    background: #5d3b27;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 480px) {
-    #review-dialog {
-        width: 88%;
-        padding: 20px;
-    }
-
-    .review-dialog-header h2 {
-        font-size: 21px;
-    }
-}
-
-
-/* Reviews */
-.no-reviews-message {
-    display: none;
-    margin: auto;
-}
-
-.reviews-container {
-    padding: 0px 32px 32px 32px;
-}
-
-.review {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.review-photos-container {
-    flex: 0 0 30%;
-    flex-shrink: 0;
-    height: 180px;
-    display: grid;
-    gap: 4px;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.review-photos-container img {
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-    object-fit: cover;
-    cursor: pointer;
-}
-
-.review-photo-item {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-    overflow: hidden;
-}
-
-.photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* No photos */
-.review-photos-container.hidden {
-    display: none;
-}
-
-/* 1 photo */
-.photos-1 {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-/* 2 photos */
-.photos-2 {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-}
-
-/* 3 photos */
-.photos-3 {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1.7fr 1fr;
-}
-
-.photos-3 img:first-child {
-    grid-column: 1 / -1;
-}
-
-/* 4 photos or more */
-.photos-4, .photos-5, .photos-6, .photos-7, .photos-8 {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-
-.photos-5 img:nth-child(n+5) {
-    display: none;
-}
-
-.review-photo-more img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.review-photo-more {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.review-photo-more span {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-/* Lightbox */
-.lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.lightbox img {
-    max-width: 80%;
-    max-height: 80vh;
-    object-fit: contain;
-}
-
-.lightbox button {
-    position: absolute;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 36px;
-    cursor: pointer;
-}
-
-.lightbox-close {
-    top: 20px;
-    right: 30px;
-}
-
-.lightbox-prev {
-    left: 25px;
-}
-
-.lightbox-next {
-    right: 25px;
-}
-
-
-
-.reviews-section hr {
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-
-.review-contents {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 16px;
-}
-
-.rating-info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.username-rating-date {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.star-rating {
-    height: 16px;
-}
-
-.user-profile {
-    border-radius: 8px;
-    height: 25px;
-    width: 25px;
-}
-
-
-.review-photo-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-    overflow: hidden;
-}
-
-.review-photo-wrapper > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.review-photo-more {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.55);
-    cursor: pointer;
-}
-
-.review-photo-more span {
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-/* ===========================
------- DISCOVER MORE ------
-=========================== */
-/* Each barangay row */
-.cafe-row {
-    box-sizing: border-box;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
-    display: flex;
-    gap: 15px;
-    flex-direction: column;
-    position: relative;
-    background-color: var(--color-content-bg);
-}
-
-.cafe-row h3 {
-    margin-left: 28px;
-}
-
-/* The visible window for the cafe cards */
-.cafes-viewport {
-    margin: 0 28px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-}
-
-.cafes-viewport::-webkit-scrollbar {
-    display: none;
-}
-
-/* Keep all cards in one horizontal line */
-.cafes-container {
-    display: flex;
-    gap: 16px;
-}
-
-/* Four cards visible on desktop */
-.cafe-item {
-    flex: 0 0 calc((100% - 48px) / 4);
-    min-width: 0;
-    display: flex;
-    gap: 4px;
-    flex-direction: column;
-    scroll-snap-align: start;
-    box-sizing: border-box;
-}
-
-/* Photos */
-.cafe-photo-container {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.cafe-photo {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.cafe-photo:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-/* Cafe details */
-.cafe-information {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 8px;
-}
-
-.rating-location-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.cafe-rating,
-.cafe-location {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    min-width: 0;
-}
-
-.cafe-rating h5,
-.cafe-location h5 {
-    margin: 0;
-}
-
-.cafes-container p {
-    font-size: 14px;
-    text-align: left;
-    line-height: 1.5;
-}
-
-/* Left and right arrow buttons */
-.left-btn,
-.right-btn, .gallery-left-btn, .gallery-right-btn {
-    position: absolute;
-    z-index: 2;
-    font-size: 20px;
-    padding: 8px 12px;
-    border: 1px solid #a99685;
-    background-color: #fffbf7;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.left-btn:hover,
-.right-btn:hover, .gallery-left-btn, .gallery-right-btn {
-    transform: scale(1.05);
-    background-color: #fff;
-}
-
-.left-btn {
-    top: 35%;
-    left: 35px;
-}
-
-.right-btn {
-    top: 35%;
-    right: 35px;
-}
-
-.gallery-left-btn {
-    top: 45%;
-    left: -20px;
-}
-
-.gallery-right-btn {
-    top: 45%;
-    right: -20px;
-}
-
-/* === Footer === */
-footer {
-    width: 100%;
-    padding: 48px 100px 16px;
-    color: white;
-    background-color: #483524;
-    margin-top: 50px; /* dagdag ko lang to */
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-/* === Main footer Layout === */
-.footer-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-    padding-bottom: 48px;
-}
-
-/* === Footer Information === */
-.footer-information {
-    max-width: 440px;
-}
-
-.footer-information-logo img {
-    width: 160px;
-    display: block;
-    margin-bottom: 24px;
-}
-
-.footer-information p {
-    margin: 0 0 24px;
-}
-
-/* === Footer - Social Media === */
-.footer-social {
-    margin-top: 8px;
-    display: flex;
-    gap: 18px;
-}
-
-.footer-social img {
-    width: 32px;
-    height: 32px;
-    display: block;
-}
-
-/* === Footer Links === */
-.footer-links {
-    display: flex;
-    gap: 80px;
-}
-
-.footer-link-field {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-}
-
-.footer-nav-title {
-    font-weight: bold;
-    margin: 0 0 32px;
-}
-
-.footer-link-field a:hover {
-    text-decoration: underline;
-}
-
-/* === Footer Bottom === */
-.footer-bottom hr {
-    margin: 8px;
-}
-
-.footer-bottom small {
-    display: block;
-    margin-top: 16px;
-}
 
 /* ==============================
-    RESPONSIVE CODE
+   RESPONSIVE CODE - AMENITIES
 ============================== */
-@media (max-width: 1200px) {
-    /* === Header === */
-    header {
-        padding: 14px 80px;
-    }
-
-    .header-logo img {
-        width: 150px;
-    }
-
-    /* === Header Navigation === */
-    .header-links ul {
-        gap: 20px;
-    }
-
-    .header-links a {
-        padding: 10px;
-    }
-
-    /* === Footer === */
-    footer {
-        padding: 44px 80px 16px;
-    }
-
-    .footer-layout {
-        gap: 64px;
-    }
-
-    /* === Footer Links === */
-    .footer-links {
-        gap: 64px;
-    }
-}
-
-/* === Tablet or Small Desktop === */
-@media (max-width: 992px) {
-    /* === Header === */
-    header {
-        padding: 14px 60px;
-    }
-
-    .header-logo img {
-        width: 140px;
-    }
-
-    /* === Header Navigation === */
-    .header-links ul {
-        gap: 16px;
-    }
-
-    .header-links a {
-        padding: 8px;
-        font-size: 15px;
-    }
-
-    /* === Footer === */
-    footer {
-        padding: 40px 60px 16px;
-    }
-
-    /* === Main footer Layout === */
-    .footer-layout {
-        gap: 48px;
-    }
-
-     /* === Footer Information === */  
-    .footer-information-logo img {
-        width: 140px;
-    }
-
-    /* === Footer Links === */
-    .footer-links {
-        gap: 48px;
-    }
-}
 
 /* === Tablet === */
 @media (max-width: 768px) {
-    /* === Header === */
-    header {
-        padding: 12px 40px;
+    .amenities-container {
+        width: 84% !important;
+        margin: auto;
     }
 
-    .header-logo img {
-        width: 120px;
-    }
-
-    /* === Header Navigation === */
-    .header-links ul {
-        gap: 8px;
-    }
-
-    .header-links a {
-        padding: 6px;
+    .amenities-container th,
+    .amenities-container td {
+        padding: 9px 6px;
         font-size: 14px;
     }
 
-    /* === Footer === */
-    footer {
-        padding: 40px 40px 16px;
-        text-align: center;
+    .cell-content {
+        gap: 5px;
+        font-size: 13px;
+        flex-wrap: wrap;
     }
 
-    /* === Main footer Layout === */
-    .footer-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 80px;
-    }
-
-    /* === Footer Information === */  
-    .footer-information-logo img {
-        width: 120px;
-        margin: 0 auto 24px;
-    }
-
-    /* === Footer Social === */
-    .footer-social {
-        justify-content: center;
-    }
-    
-    .footer-social img {
-        width: 24px;
-        height: 24px;
-    }
-
-    /* === Footer Links === */
-    .footer-links {
-        width: 100%;
-        justify-content: space-around;
-    }
-
-    .footer-link-field {
-        align-items: center;
-    }
-    
-    .footer-nav-title {
-        margin-bottom: 20px;
+    .amenities-container .icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
 /* === Mobile === */
 @media (max-width: 480px) {
-    /* === Temporary Header CSS === */
-    header {
-        padding: 12px 24px;
+    .amenities-container {
+        width: 95%;
+        overflow-x: auto;
     }
 
-    .header-logo img {
-        width: 110px;
+    .amenities-container table {
+        min-width: 550px;
     }
 
-    .header-links ul {
-        gap: 4px 8px;
-    }
-
-    .header-links a {
-        font-size: 13px;
-    }
-    
-    /* === Footer === */
-    footer {
-        padding: 24px 24px 16px;
+    .amenities-container th,
+    .amenities-container td {
+        padding: 8px 5px;
         font-size: 12px;
     }
 
-    /* === Main footer Layout === */
-    .footer-layout {
-        padding-bottom: 40px;
-        gap: 56px;
+    .cell-content {
+        gap: 4px;
+        font-size: 12px;
     }
 
-    /* === Footer Information === */
-    .footer-information {
-        max-width: 320px;
-    }
-
-    .footer-information-logo img {
-        width: 110px;
-    }
-
-    .footer-information p {
-        margin-bottom: 20px;
-    }
-
-    /* === Footer Social Media === */
-    .footer-social {
-        gap: 12px;
-    }
-
-    .footer-social img {
-        width: 20px;
-        height: 20px;
-    }
-
-    /* === Footer Links === */
-    .footer-links {
-        gap: 32px;
-    }
-
-    .footer-nav-title {
-        margin-bottom: 16px;
-    }
-
-    .footer-link-field {
-        gap: 12px;
+    .amenities-container .icon {
+        width: 16px;
+        height: 16px;
     }
 }
