@@ -3,39 +3,40 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/global.css">
         <link rel="stylesheet" type="text/css" href="styles/explore-styles.css">
         <title>Kapesta | Explore</title>
     </head>
     <body>
 
+        <!-- NAV BAR -->
+        <div class="nav-hover-zone"></div>
+
         <header>
-            <div class="header-layout">
-                <!-- Website Logo / Mobile Menu -->
-                <div class="header-brand">
-                    <a href="#" class="header-logo">
-                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
-                    </a>
-                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
-                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
-                    </button>
-                </div>
+            <nav class="navbar">
+                <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
 
-                <!-- Main Navigation -->
-                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
-                    <ul class="header-main-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <a href="/kapesta-web/profile.html" id="profile-nav-link">Profile</a>
-                    </ul>
 
-                    <ul class="header-auth-links">
-                        <li><a href="login.html" class="header-login-link">Log in</a></li>
-                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
-                    </ul>
-                </nav>
-            </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="explore.html">EXPLORE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+
+
+                    <li class="profile-menu">
+                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                            PROFILE <span class="caret">&#9662;</span>
+                        </button>
+
+
+                        <ul class="profile-dropdown">
+                            <li><a href="login.html">Log in</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <main>
@@ -54,7 +55,7 @@
                 
             </form>
 
-            <h2>Discover Cafes</h2>
+            <h1>Discover Cafes</h1>
             
             <div id="barangay-rows-container"></div>
 
@@ -92,7 +93,7 @@
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Platform</h3>
                         <a href="index.html">Home</a>
-                        <a href="explore.html">Explore Cafes</a>
+                        <a href="#">Explore Cafes</a>
                         <a href="about.html">About Us</a>
                         <a href="contact.html">Contact Us</a>
                     </div>
@@ -117,6 +118,10 @@
             </div>
         </footer>
 
+        <script src="scripts/header.js"></script>
+        <script src="scripts/user-data.js"></script>
+        <script src="scripts/navigation.js"></script>
+        <script src="scripts/header.js"></script>
         <script src="scripts/cafe-data.js"></script>
         <script src="scripts/explore.js"></script>
         <script src="scripts/cafe-slider.js"></script>
