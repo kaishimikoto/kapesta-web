@@ -658,29 +658,13 @@ a {
     font-weight: 600;
 }
 
-/* Photo for review 1 */
-.review-card:nth-child(1) figcaption::before {
-    background-image: url("styles/images/photos/fake-user1.jpg");
-}
-
-/* Photo for review 2 */
-.review-card:nth-child(2) figcaption::before {
-    background-image: url("styles/images/photos/fake-user2.jpg");
-}
-
-/* Photo for review 3 */
-.review-card:nth-child(3) figcaption::before {
-    background-image: url("styles/images/photos/fake-user3.jpg");
-}
-
-/* Photo for review 4 */
-.review-card:nth-child(4) figcaption::before {
-    background-image: url("styles/images/photos/fake-user4.jpg");
-}
-
-/* Photo for review 5 */
-.review-card:nth-child(5) figcaption::before {
-    background-image: url("styles/images/photos/fake-user5.jpg");
+/* Reviewer photo (circle above the name) */
+.review-card figcaption img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--color-pastel-orange);
 }
 
 /* Phones: one card per row */
