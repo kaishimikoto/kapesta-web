@@ -939,3 +939,31 @@ footer a:hover {
     display: block;
     margin-top: 16px;
 }
+
+/* -------------------- Footer ---------------------------------- */
+@media(max-width: 768px) {
+    .footer-layout {
+        flex-direction: column;
+        gap: 48px;
+        padding: 48px 24px;
+        align-items: center;
+    }
+
+    .footer-information {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-information-logo img {
+        margin: 0 auto 24px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        padding: 0 24px 24px;
+        text-align: center;
+    }
+}
