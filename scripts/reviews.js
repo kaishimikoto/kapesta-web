@@ -35,7 +35,7 @@ if (selectedCafe) {
     const savedReviews = getReviewsForCafe(selectedCafe.id);
 
     savedReviews.reverse().forEach(reviewData => {
-        const review = new Review(
+        const review =   new Review(
             reviewData.userName,
             reviewData.date,
             reviewData.reviewMessage,
@@ -43,124 +43,14 @@ if (selectedCafe) {
             reviewData.reviewRating
         );
 
+        // Preserve the saved review ID
+        review.id = reviewData.id;
+
         selectedCafe.addReview(review);
     });
 }
 
 const isAllReviewsPage = window.location.pathname.endsWith("all-cafe-reviews.html");
-
-// LIGHTBOX CODE //
-const lightbox = document.getElementById("photo-lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
-
-const closeButton = document.getElementById("lightbox-close");
-const prevButton = document.getElementById("lightbox-prev");
-const nextButton = document.getElementById("lightbox-next");
-
-let currentPhotos = [];
-let currentIndex = 0;
-
-function openLightbox(photos, index) {
-    if (!photos.length) return;
-
-    currentPhotos = photos;
-    currentIndex = index;
-
-    lightboxImage.src = currentPhotos[currentIndex].src;
-
-    // Hide arrows if there's only one photo
-    if (currentPhotos.length <= 1) {
-        prevButton.style.display = "none";
-        nextButton.style.display = "none";
-    } else {
-        prevButton.style.display = "flex";
-        nextButton.style.display = "flex";
-    }
-
-    lightbox.style.display = "flex";
-}
-
-function closeLightbox() {
-    lightbox.style.display = "none";
-}
-
-document.addEventListener("click", function(event) {
-
-    // Detect clicked review or gallery photo
-    const photo = event.target.closest(
-        ".review-photo-item img, .review-photo-wrapper img, .gallery-item img"
-    );
-
-    // Detect review photo overlay
-    const overlay = event.target.closest(
-        ".photo-overlay, .review-photo-more"
-    );
-
-    if (!photo && !overlay) return;
-
-    const clickedElement = photo || overlay;
-
-    // Find the group containing the clicked photo
-    const container = clickedElement.closest(
-        ".review-photos-container, .gallery-photos"
-    );
-
-    if (!container) return;
-
-    // Get all photos from that group only
-    const photos = Array.from(container.querySelectorAll("img"));
-
-    if (!photos.length) return;
-
-    // Open the lightbox
-    if (overlay) {
-        openLightbox(photos, Math.min(3, photos.length - 1));
-    } else {
-        openLightbox(photos, photos.indexOf(photo));
-    }
-
-});
-
-if (closeButton) {
-    closeButton.addEventListener("click", closeLightbox);
-}
-
-if (nextButton) {
-    nextButton.addEventListener("click", function() {
-        if (currentPhotos.length === 0) return;
-
-        currentIndex = (currentIndex + 1) % currentPhotos.length;
-        lightboxImage.src = currentPhotos[currentIndex].src;
-    });
-}
-
-if (prevButton) {
-    prevButton.addEventListener("click", function() {
-        if (currentPhotos.length === 0) return;
-
-        currentIndex =
-            (currentIndex - 1 + currentPhotos.length) %
-            currentPhotos.length;
-
-        lightboxImage.src = currentPhotos[currentIndex].src;
-    });
-}
-
-if (lightbox) {
-    lightbox.addEventListener("click", function(event) {
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-    });
-}
-
-document.addEventListener("keydown", function(event) {
-    if (!lightbox || lightbox.style.display !== "flex") return;
-
-    if (event.key === "Escape") closeLightbox();
-    if (event.key === "ArrowRight" && nextButton) nextButton.click();
-    if (event.key === "ArrowLeft" && prevButton) prevButton.click();
-});
 
 // AVERAGE RATING AND REVIEW COUNT
 
@@ -200,7 +90,6 @@ function updateReviewSummary() {
 }
 
 // RATING PERCENTAGE BARS
-
 function updateRatingBars() {
     const total = selectedCafe.listOfReviews.length;
     const ratingRows = document.querySelectorAll(".rating-row");
@@ -227,7 +116,6 @@ function updateRatingBars() {
 }
 
 // RENDER REVIEWS
-
 function renderReviews(reviewsToDisplay) {
     // Remove existing review cards and dividers.
     // Keep the no-reviews message element.
@@ -274,11 +162,54 @@ function renderReviews(reviewsToDisplay) {
                             class="star-rating"
                         >
                     </div>
-                    <h4>${review.date}</h4>
+
+                    <div class="date-and-delete">
+                        <h4>${review.date}</h4>
+                    </div>
                 </div>
                 <p>${review.reviewMessage}</p>
             </div>
         `;
+
+        // Add delete button only if this review belongs to the logged-in user
+        const ratingInfo = reviewCard.querySelector(".rating-info");
+
+        const deleteButton = createReviewDeleteButton(review, function() {
+
+            // Remove the deleted review from the café's in-memory list
+            selectedCafe.listOfReviews = selectedCafe.listOfReviews.filter(
+                savedReview => Number(savedReview.id) !== Number(review.id)
+            );
+
+            // Update the café's rating and rating bars
+            updateReviewSummary();
+            updateRatingBars();
+
+            // Keep the currently selected rating filter
+            const currentFilter = ratingFilter ? ratingFilter.value : "all";
+
+            let reviewsToDisplay = selectedCafe.listOfReviews;
+
+            if (currentFilter !== "all") {
+                reviewsToDisplay = reviewsToDisplay.filter(
+                    savedReview =>
+                        String(savedReview.reviewRating) === currentFilter
+                );
+            }
+
+            // Keep the 3-review limit on the Café Info page
+            if (!isAllReviewsPage) {
+                reviewsToDisplay = reviewsToDisplay.slice(0, 3);
+            }
+
+            renderReviews(reviewsToDisplay);
+        });
+
+        const dateAndDelete = reviewCard.querySelector(".date-and-delete");
+
+        if (deleteButton && dateAndDelete) {
+            dateAndDelete.appendChild(deleteButton);
+        }
 
         reviewsList.appendChild(reviewCard);
 
