@@ -25,7 +25,7 @@ function createFavoriteCafeCard(cafe) {
     rating.classList.add("favorite-cafe-rating");
 
     const starIcon = document.createElement("img");
-    starIcon.src = "icons/star.png";
+    starIcon.src = "images/icons/star.svg";
     starIcon.alt = "Rating";
     starIcon.classList.add("icons");
 
@@ -38,7 +38,7 @@ function createFavoriteCafeCard(cafe) {
     location.classList.add("favorite-cafe-location");
 
     const locationIcon = document.createElement("img");
-    locationIcon.src = "icons/location.png";
+    locationIcon.src = "images/icons/location.svg";
     locationIcon.alt = "Location";
     locationIcon.classList.add("icons");
 
