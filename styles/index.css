@@ -562,7 +562,7 @@ a {
    WHAT USERS SAY ABOUT KAPESTA
    ========================================================================== */
 
-/* Section wrapper (full-width muted band) */
+/* Section wrapper */
 .reviews-section {
     margin: 60px 0;
     padding: 80px var(--page-gutter);
@@ -574,9 +574,10 @@ a {
 .reviews-section h2 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     color: var(--color-brown-dark);
+    margin-bottom: 28px;
 }
 
-/* Row of review cards */
+/* Review cards container */
 .reviews-grid {
     display: flex;
     flex-wrap: wrap;
@@ -587,91 +588,110 @@ a {
     margin: 0 auto;
 }
 
-/* Review card: stars > photo + name > quote > "- Kapesta user" */
+/* Individual review card */
 .review-card {
     flex: 0 1 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+
     padding: 16px 14px 14px;
+
     background-color: var(--color-white);
     border: none;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
     color: var(--color-brown-dark);
     text-align: center;
 }
 
-/* Star rating (first in the card) */
+/* Star rating */
 .review-stars {
-    order: 1;
     color: #f5b301;
     font-size: 1rem;
     letter-spacing: 2px;
+    line-height: 1.4;
+    flex-shrink: 0;
 }
 
-/* Reviewer name (second in the card) */
-.review-card figcaption {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-
-/* Reviewer photo (circle above the name) */
-.review-card figcaption::before {
-    content: "";
+/* Reviewer profile picture */
+.review-avatar {
+    display: block;
     width: 64px;
     height: 64px;
-    border-radius: 50%;
-    background-color: var(--color-pastel-orange);
-    background-size: cover;
-    background-position: center;
-}
+    min-width: 64px;
 
-/* Hide the "· Kapesta user" text in the name (shown at the bottom instead) */
-.review-card figcaption span {
-    display: none;
-}
-
-/* Quote (third in the card) */
-.review-card blockquote {
-    order: 3;
-}
-
-/* Quote text */
-.review-card blockquote p {
-    font-size: 0.7rem;
-    line-height: 1.5;
-}
-
-/* "- Kapesta user" label pinned to the bottom of the card */
-.review-card::after {
-    content: "- Kapesta user";
-    order: 4;
-    margin-top: auto;
-    font-size: 0.7rem;
-    font-weight: 600;
-}
-
-/* Reviewer photo (circle above the name) */
-.review-card figcaption img {
-    width: 64px;
-    height: 64px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center;
+
     background-color: var(--color-pastel-orange);
 }
 
-/* Phones: one card per row */
+/* Reviewer name */
+.review-card figcaption {
+    margin: 0;
+    padding: 0;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: var(--color-brown-dark);
+    text-align: center;
+}
+
+/* Review quotation */
+.review-card blockquote {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+/* Review text */
+.review-card blockquote p {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* Kapesta user label */
+.review-user-label {
+    margin-top: auto;
+    padding-top: 8px;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-brown-dark);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Tablets */
+@media (max-width: 900px) {
+    .reviews-grid {
+        gap: 20px;
+    }
+
+    .review-card {
+        flex: 0 1 200px;
+    }
+}
+
+/* Phones */
 @media (max-width: 600px) {
     .reviews-section {
         margin: 40px 0;
         padding: 40px var(--page-gutter);
+    }
+
+    .reviews-section h2 {
+        margin-bottom: 24px;
     }
 
     .review-card {
