@@ -4,38 +4,39 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kapesta | All Reviews</title>
+        <link rel="stylesheet" href="styles/global.css" type="text/css">
         <link rel="stylesheet" href="styles/all-cafe-reviews.css" type="text/css">
     </head>
     <body>
         
+        <!-- NAV BAR -->
+        <div class="nav-hover-zone"></div>
+
         <header>
-            <div class="header-layout">
-                <!-- Website Logo / Mobile Menu -->
-                <div class="header-brand">
-                    <a href="#" class="header-logo">
-                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
-                    </a>
-                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
-                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
-                    </button>
-                </div>
+            <nav class="navbar">
+                <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
 
-                <!-- Main Navigation -->
-                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
-                    <ul class="header-main-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                    </ul>
 
-                    <ul class="header-auth-links">
-                        <li><a href="login.html" class="header-login-link">Log in</a></li>
-                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
-                    </ul>
-                </nav>
-            </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="explore.html">EXPLORE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+
+
+                    <li class="profile-menu">
+                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                            PROFILE <span class="caret">&#9662;</span>
+                        </button>
+
+
+                        <ul class="profile-dropdown">
+                            <li><a href="login.html">Log in</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <main>
@@ -375,9 +376,13 @@
             </div>
         </footer>
 
+        <script src="scripts/header.js"></script>
         <script src="scripts/cafe-data.js"></script>
         <script src="scripts/user-data.js"></script>
+        <script src="scripts/navigation.js"></script>
+        <script src="scripts/header.js"></script>
         <script src="scripts/cafe-info.js"></script>
+        <script src="scripts/review-display.js"></script>
         <script src="scripts/reviews.js"></script>
         
     </body>
