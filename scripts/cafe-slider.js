@@ -9,21 +9,58 @@ cafeRows.forEach(function(row) {
     const leftButton = row.querySelector(".left-btn");
     const rightButton = row.querySelector(".right-btn");
 
-    function getScrollAmount() {
+    if (!viewport || !container || !leftButton || !rightButton) return;
 
-        const cafe = container.querySelector(".cafe-item");
+    const cafes = Array.from(container.querySelectorAll(".cafe-item"));
 
-        if (!cafe) return 0;
+    function getSnapPosition() {
+        const styles = getComputedStyle(viewport);
+        const padding = parseFloat(styles.scrollPaddingLeft) || 0;
 
-        const styles = getComputedStyle(container);
-        const gap = parseFloat(styles.columnGap) || 0;
-
-        return cafe.getBoundingClientRect().width + gap;
+        return viewport.getBoundingClientRect().left
+            + viewport.clientLeft
+            + padding;
     }
 
-    // CHECK WHETHER EACH ARROW SHOULD BE VISIBLE
-    function updateButtons() {
+    function getCurrentCafeIndex() {
+        const snapPosition = getSnapPosition();
 
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        cafes.forEach(function(cafe, index) {
+            const distance = Math.abs(
+                cafe.getBoundingClientRect().left - snapPosition
+            );
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        return closestIndex;
+    }
+
+    function scrollToCafe(index) {
+        const cafe = cafes[index];
+
+        if (!cafe) return;
+
+        const targetPosition =
+            viewport.scrollLeft +
+            cafe.getBoundingClientRect().left -
+            getSnapPosition();
+
+        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+
+        viewport.scrollTo({
+            left: Math.max(0, Math.min(targetPosition, maxScroll)),
+            behavior: "smooth"
+        });
+    }
+
+    function updateButtons() {
         const atStart = viewport.scrollLeft <= 1;
 
         const atEnd =
@@ -34,27 +71,22 @@ cafeRows.forEach(function(row) {
         rightButton.style.display = atEnd ? "none" : "";
     }
 
-    // NEXT CAFE
     rightButton.addEventListener("click", function() {
+        const currentIndex = getCurrentCafeIndex();
 
-        viewport.scrollBy({
-            left: getScrollAmount(),
-            behavior: "smooth"
-        });
-
+        if (currentIndex < cafes.length - 1) {
+            scrollToCafe(currentIndex + 1);
+        }
     });
 
-    // PREVIOUS CAFE
     leftButton.addEventListener("click", function() {
+        const currentIndex = getCurrentCafeIndex();
 
-        viewport.scrollBy({
-            left: -getScrollAmount(),
-            behavior: "smooth"
-        });
-
+        if (currentIndex > 0) {
+            scrollToCafe(currentIndex - 1);
+        }
     });
 
-    // UPDATE ARROWS
     viewport.addEventListener("scroll", updateButtons);
     window.addEventListener("resize", updateButtons);
 
