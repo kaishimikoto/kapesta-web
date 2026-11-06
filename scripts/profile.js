@@ -32,7 +32,7 @@ function displayUserInformation(user) {
 function displayFavoriteCafes() {
     const container = document.getElementById("favorite-cafes");
     const favoriteIds = getFavoriteCafeIds();
-    const viewAllButton = document.querySelector(".view-all-button");
+    const viewAllButton = document.querySelector(".my-favorites-header .view-all-button");
 
     viewAllButton.style.display = favoriteIds.length >= 5 ? "inline-block" : "none";
 
