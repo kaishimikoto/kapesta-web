@@ -25,13 +25,13 @@ barangays.forEach(function(barangay) {
     cafeRow.innerHTML = `
         <h3>Available in ${barangay}</h3>
 
-        <button class="left-btn">&lt;</button>
+        <button class="left-btn">&#10094;</button>
 
         <div class="cafes-viewport">
             <div class="cafes-container"></div>
         </div>
 
-        <button class="right-btn">&gt;</button>
+        <button class="right-btn">&#10095;</button>
     `;
 
     barangayRowsContainer.appendChild(cafeRow);
@@ -79,7 +79,6 @@ barangays.forEach(function(barangay) {
         `;
 
         container.appendChild(cafeCard);
-
     });
 
 });
