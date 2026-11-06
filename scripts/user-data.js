@@ -1,33 +1,33 @@
+
 // ========================================
 // KAPESTA USER DATA (ONE DEMO ACCOUNT)
 // ========================================
 
+// DEMO ACCOUNT CREDENTIALS
 const demoUser = {
-    username: "alexsantos",
-    email: "alex@example.com",
+    username: "demouser",
+    email: "demo@kapesta.com",
+    password: "kapesta123",
     profilePicture: "pictures/coffee1.jpg"
 };
 
-// Save the single demo account.
-// Passwords in localStorage are NOT secure.
-// Use fictional credentials for this school project only.
+// Automatically create the demo account if it doesn't exist
+function initializeDemoUser() {
+    const savedUser = localStorage.getItem("kapestaUser");
 
-function registerUser(username, email, password) {
-    const user = {
-        username,
-        email,
-        password,
-        profilePicture: "pictures/coffee1.jpg"
-    };
-
-    localStorage.setItem("kapestaUser", JSON.stringify(user));
-    localStorage.setItem("kapestaLoggedIn", "false");
-
-    return true;
+    if (!savedUser) {
+        localStorage.setItem("kapestaUser", JSON.stringify(demoUser));
+        localStorage.setItem("kapestaLoggedIn", "false");
+    }
 }
 
+initializeDemoUser();
 
-// Check login credentials
+
+// ========================================
+// LOGIN
+// ========================================
+
 function loginUser(usernameOrEmail, password) {
     const savedUser = JSON.parse(localStorage.getItem("kapestaUser"));
 
@@ -36,8 +36,8 @@ function loginUser(usernameOrEmail, password) {
     }
 
     const usernameMatches =
-        usernameOrEmail === savedUser.username ||
-        usernameOrEmail === savedUser.email;
+        usernameOrEmail.trim().toLowerCase() === savedUser.username.toLowerCase() ||
+        usernameOrEmail.trim().toLowerCase() === savedUser.email.toLowerCase();
 
     if (usernameMatches && password === savedUser.password) {
         localStorage.setItem("kapestaLoggedIn", "true");
@@ -48,7 +48,10 @@ function loginUser(usernameOrEmail, password) {
 }
 
 
-// Return the account only when the demo user is logged in
+// ========================================
+// GET CURRENT USER
+// ========================================
+
 function getCurrentUser() {
     if (!isLoggedIn()) {
         return null;
@@ -56,22 +59,32 @@ function getCurrentUser() {
 
     const user = localStorage.getItem("kapestaUser");
 
-    return user ? JSON.parse(user) : demoUser;
+    return user ? JSON.parse(user) : null;
 }
 
 
-// Check if user is logged in
+// ========================================
+// CHECK LOGIN STATUS
+// ========================================
+
 function isLoggedIn() {
     return localStorage.getItem("kapestaLoggedIn") === "true";
 }
 
 
-// Log out
+// ========================================
+// LOGOUT
+// ========================================
+
 function logoutUser() {
     localStorage.setItem("kapestaLoggedIn", "false");
 }
 
-// Update profile details without replacing the password
+
+// ========================================
+// UPDATE PROFILE
+// ========================================
+
 function updateUserProfile(updatedDetails) {
     const savedUser = localStorage.getItem("kapestaUser");
 
@@ -100,9 +113,9 @@ function updateUserProfile(updatedDetails) {
     return true;
 }
 
+
 // ========================================
 // FAVORITE CAFES
-// Store café IDs, not complete café objects.
 // ========================================
 
 function getFavoriteCafeIds() {
@@ -125,12 +138,16 @@ function toggleFavoriteCafe(cafeId) {
     return !alreadyFavorited;
 }
 
-// GET ALL SAVED REVIEWS
+
+// ========================================
+// REVIEWS
+// ========================================
+
 function getAllSavedReviews() {
     return JSON.parse(localStorage.getItem("kapestaReviews")) || [];
 }
 
-// SAVE A NEW REVIEW
+
 function saveReview(cafeId, review) {
     const allReviews = getAllSavedReviews();
 
@@ -144,14 +161,53 @@ function saveReview(cafeId, review) {
         reviewRating: review.reviewRating
     };
 
+    review.id = reviewData.id;
+
     allReviews.unshift(reviewData);
 
     localStorage.setItem("kapestaReviews", JSON.stringify(allReviews));
 }
 
-// GET REVIEWS FOR A SPECIFIC CAFE
+
 function getReviewsForCafe(cafeId) {
     return getAllSavedReviews().filter(
         review => Number(review.cafeId) === Number(cafeId)
     );
+}
+
+
+// ========================================
+// DELETE REVIEW
+// ========================================
+
+function deleteReview(reviewId) {
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || !isLoggedIn()) {
+        return false;
+    }
+
+    const allReviews = getAllSavedReviews();
+
+    const reviewToDelete = allReviews.find(
+        review => Number(review.id) === Number(reviewId)
+    );
+
+    if (
+        !reviewToDelete ||
+        reviewToDelete.userName !== currentUser.username
+    ) {
+        return false;
+    }
+
+    const updatedReviews = allReviews.filter(
+        review => Number(review.id) !== Number(reviewId)
+    );
+
+    localStorage.setItem(
+        "kapestaReviews",
+        JSON.stringify(updatedReviews)
+    );
+
+    return true;
 }
