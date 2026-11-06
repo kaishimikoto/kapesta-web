@@ -27,7 +27,6 @@ function displayGallery() {
     updateGallery();
 }
 
-
 // UPDATE SLIDER POSITION
 function updateGallery() {
 
