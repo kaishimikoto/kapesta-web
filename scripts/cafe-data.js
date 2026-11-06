@@ -1,3 +1,5 @@
+const placeholderImg = "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=";
+
 /* =========================================
    Reusable Review Class Template
    ========================================= */
@@ -439,7 +441,7 @@ const cafe2 = new Cafe({
   description: "A charming café surrounded by plants and warm wooden interiors. Ideal for casual dates, conversations, and enjoying specialty coffee.",
   location: "Downtown",
   barangay: "Barangay mo hehe",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
+  coverImage: placeholderImg,
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
