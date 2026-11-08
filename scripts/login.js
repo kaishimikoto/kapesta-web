@@ -1,3 +1,4 @@
+console.log("LOGIN HANDLER RUNNING");
 
 document.addEventListener("DOMContentLoaded", function () {
 
