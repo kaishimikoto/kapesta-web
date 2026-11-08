@@ -1,13 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Check if user is logged in
     if (!isLoggedIn()) {
         window.location.href = "login.html";
         return;
     }
 
-    const container = document.getElementById("all-favorite-cafes");
+    const pageUser = getCurrentUser();
 
+    if (pageUser) {
+        document.getElementById("profile-picture").src =
+            pageUser.profilePicture || "pictures/coffee1.jpg";
+
+        document.getElementById("profile-username").textContent =
+            `@${pageUser.username}`;
+    }
+
+    const container = document.getElementById("all-favorite-cafes");
     container.replaceChildren();
 
     const favoriteIds = getFavoriteCafeIds();
@@ -16,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         favoriteIds.includes(Number(cafe.id))
     );
 
-    // Show empty message
     if (favoriteCafes.length === 0) {
         const emptyMessage = document.createElement("p");
 
@@ -28,9 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Display ALL favorite cafés
-    favoriteCafes.forEach(cafe => {
-        container.appendChild(createFavoriteCafeCard(cafe));
+    // Create the same row and viewport structure as Explore
+    const cafesContainer = document.createElement("div");
+    cafesContainer.className = "favorite-cafes-grid";
+    
+    container.appendChild(cafesContainer);
+
+    favoriteCafes.forEach(function(cafe) {
+        cafesContainer.appendChild(createFavoriteCafeCard(cafe));
     });
 
 });
