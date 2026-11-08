@@ -1,59 +1,54 @@
-// Create one favorite café card
-function createFavoriteCafeCard(cafe) {
-    const card = document.createElement("div");
-    card.classList.add("cafe");
+    // Display logged-in user's username in the profile header
+    const currentUser = getCurrentUser();
 
-    const image = document.createElement("img");
+    if (currentUser) {
+        document.getElementById("profile-username").textContent =
+            `@${currentUser.username}`;
+    }
 
-    // redirects to cafe info on click
-    card.addEventListener("click", function () {
-    window.location.href = `current-cafe-info.html?id=${cafe.id}`;
-    });
+    // Create one favorite café card using the same structure as Explore
+    function createFavoriteCafeCard(cafe) {
 
-    image.src =
-        cafe.coverImage ||
-        (cafe.photos && cafe.photos[0]) ||
-        "pictures/cafe1.jpg";
+        const cafeCard = document.createElement("div");
 
-    image.alt = cafe.name;
-    image.classList.add("cafe-pic");
+        cafeCard.className = "cafe-item";
 
-    const info = document.createElement("div");
-    info.classList.add("cafe-info");
+        cafeCard.innerHTML = `
+            <div class="cafe-photo-container">
+                <a href="current-cafe-info.html?id=${cafe.id}" class="cafe-card">
+                    <img src="${cafe.coverImage || "pictures/cafe-background.jpg"}"
+                        alt="${cafe.name}" class="cafe-photo">
+                </a>
+            </div>
 
-    const rating = document.createElement("div");
-    rating.classList.add("favorite-cafe-rating");
+            <div class="cafe-information">
 
-    const starIcon = document.createElement("img");
-    starIcon.src = "images/icons/star.svg";
-    starIcon.alt = "Rating";
-    starIcon.classList.add("icons");
+                <div class="rating-location-container">
 
-    const ratingText = document.createElement("h5");
-    ratingText.textContent = Number(cafe.rating || 0).toFixed(1);
+                    <div class="cafe-rating">
+                        <img src="images/icons/star.svg" alt="" class="icons">
+                        <h5>${Number(cafe.rating || 0).toFixed(1)}</h5>
+                    </div>
 
-    rating.append(starIcon, ratingText);
+                    <div class="cafe-location">
+                        <img src="images/icons/location.svg" alt="" class="icons">
+                        <h5>${cafe.location}</h5>
+                    </div>
 
-    const location = document.createElement("div");
-    location.classList.add("favorite-cafe-location");
+                </div>
 
-    const locationIcon = document.createElement("img");
-    locationIcon.src = "images/icons/location.svg";
-    locationIcon.alt = "Location";
-    locationIcon.classList.add("icons");
+                <div>
+                    <h4>${cafe.name}</h4>
+                    <p>${cafe.description}</p>
+                </div>
 
-    const locationText = document.createElement("h5");
-    locationText.textContent =
-        cafe.barangay || cafe.location || "Location unavailable";
+            </div>
+        `;
 
-    location.append(locationIcon, locationText);
+        // Make the entire card clickable
+        cafeCard.addEventListener("click", function() {
+            window.location.href = `current-cafe-info.html?id=${cafe.id}`;
+        });
 
-    info.append(rating, location);
-
-    const name = document.createElement("h4");
-    name.textContent = cafe.name;
-
-    card.append(image, info, name);
-
-    return card;
-}
+        return cafeCard;
+    }
