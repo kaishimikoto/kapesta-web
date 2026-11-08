@@ -216,7 +216,7 @@ footer a:hover {
 }
 
 .cafe-details, .location-contact, .working-hours, .amenities, .my-favorites, .cafe-row {
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+    box-shadow: var(--shadow-default);
 }
 
 .heading-icon {
@@ -311,20 +311,6 @@ td:hover > * {
     max-width: 100%;
 }
 
-/*.hero {
-    color: white;
-
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.5)),
-        url("../pictures/cafe1.jpg");
-
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    position: relative;
-    max-width: 100%;
-}*/
-
 .hero-overview-container {
     width: 84%;
     margin-left: 8%;
@@ -335,14 +321,6 @@ td:hover > * {
 
 .hero-overview {
     width: 50%;
-    /*
-    flex: 1;
-    margin-top: 200px;
-    text-align: left;
-    margin-left: 8%;
-    margin-right: 8%;
-    max-width: 40%;
-    */
 }
 
 .hero-overview h1 {
@@ -358,6 +336,10 @@ td:hover > * {
     display: flex;
     gap: 16px;
     max-width: 50%;
+}
+
+.hero * {
+    color: white;
 }
 
 .rating-container, .location-container {
@@ -410,11 +392,6 @@ td:hover > * {
 .leave-review-button:hover {
     background-color: rgb(200, 149, 110);
 }
-
-/*
-button:hover {
-    background-color: rgb(200, 149, 110);
-}*/
 
 button {
     cursor: pointer;
@@ -602,8 +579,6 @@ button {
 .lightbox-next {
     right: 25px;
 }
-
-
 
 .reviews-section hr {
     margin-top: 16px;
