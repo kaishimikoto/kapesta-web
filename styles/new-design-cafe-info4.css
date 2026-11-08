@@ -16,7 +16,7 @@
 }
 
 .cafe-details, .location-contact, .working-hours, .amenities, .reviews-section {
-    box-shadow: 0 3px 5px rgba(73, 54, 36, 0.5);
+    box-shadow: var(--shadow-default);
 }
 
 .heading-icon {
@@ -137,6 +137,14 @@ td:hover > * {
     width: 25px;
 }
 
+.heart-button:active {
+    transform: scale(1.2);
+}
+
+.heart-button {
+    transition: transform 0.2s ease;
+}
+
 .leave-review-button {
     background-color: rgb(157, 104, 71);
     display: flex;
@@ -165,79 +173,6 @@ td:hover > * {
 
 button {
     cursor: pointer;
-}
-
-
-/* ==============================
-   RESPONSIVE CODE - HERO SECTION
-============================== */
-
-/* === Tablet === */
-@media (max-width: 768px) {
-    .hero-overview-container {
-        width: 88%;
-        margin-left: 6%;
-        margin-right: 6%;
-        padding-top: 120px;
-        padding-bottom: 32px;
-    }
-
-    .hero-overview {
-        width: 70%;
-    }
-
-    .hero-overview h1 {
-        font-size: 42px;
-        margin-bottom: 20px;
-    }
-
-    .hero-rating-location {
-        max-width: 100%;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-}
-
-/* === Mobile === */
-@media (max-width: 480px) {
-    .hero-overview-container {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 100px;
-        padding-bottom: 28px;
-    }
-
-    .hero-overview {
-        width: 100%;
-    }
-
-    .hero-overview h1 {
-        font-size: 32px;
-        margin-bottom: 16px;
-    }
-
-    .hero-rating-location {
-        max-width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .hero-buttons {
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-
-    .leave-review-button {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .heart-icon {
-        width: 22px;
-        height: 22px;
-    }
 }
 
 /* ===========================
@@ -301,7 +236,7 @@ button {
     height: 166px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+    box-shadow: var(--shadow-default);
 }
 
 /* Cafe photos */
@@ -336,7 +271,6 @@ button {
 .gallery-item:hover::after {
     opacity: 1;
 }
-
 
 /* ==============================
    RESPONSIVE CODE - CAFE GALLERY
@@ -434,7 +368,7 @@ button {
 .cafe-detail-item {
     border: 1px solid rgb(171, 164, 159);
     border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-default);
     overflow-wrap: anywhere;
     /* This allows long text to wrap instead of pushing the other boxes out of shape */
     text-align: center;
@@ -534,7 +468,7 @@ button {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 12px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+    box-shadow: var(--shadow-default);
     background-color: rgb(251, 249, 247);
 }
 
@@ -660,7 +594,7 @@ button {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 12px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.50);
+    box-shadow: var(--shadow-default);
     background-color: rgb(251, 249, 247);
 }
 
@@ -717,6 +651,21 @@ background-color: #604935;
 
 .payment-unavailable {
     opacity: 0.35;
+}
+
+/* Page Specific Reviews Styles */
+.reviews-section hr {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.no-reviews-message {
+    display: none;
+    margin: auto;
+}
+
+.reviews-container {
+    padding: 0px 32px 32px 32px;
 }
 
 
