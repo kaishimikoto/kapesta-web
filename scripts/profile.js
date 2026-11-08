@@ -29,12 +29,16 @@ function displayUserInformation(user) {
 }
 
 // Display up to 3 favorite cafés
+
 function displayFavoriteCafes() {
     const container = document.getElementById("favorite-cafes");
     const favoriteIds = getFavoriteCafeIds();
-    const viewAllButton = document.querySelector(".my-favorites-header .view-all-button");
+    const viewAllButton = document.querySelector(
+        ".my-favorites-header .view-all-button"
+    );
 
-    viewAllButton.style.display = favoriteIds.length >= 5 ? "inline-block" : "none";
+    viewAllButton.style.display =
+        favoriteIds.length >= 5 ? "inline-flex" : "none";
 
     container.replaceChildren();
 
@@ -46,7 +50,6 @@ function displayFavoriteCafes() {
 
     if (cafesToShow.length === 0) {
         const emptyMessage = document.createElement("p");
-
         emptyMessage.classList.add("profile-empty-message");
         emptyMessage.textContent =
             "You haven't favorited any cafés yet.";
@@ -55,28 +58,47 @@ function displayFavoriteCafes() {
         return;
     }
 
+    // Create the same structure used in Explore
+    const viewport = document.createElement("div");
+    viewport.className = "cafes-viewport";
+
+    const cafesContainer = document.createElement("div");
+    cafesContainer.className = "cafes-container";
+
+    viewport.appendChild(cafesContainer);
+    container.appendChild(viewport);
+
     cafesToShow.forEach(cafe => {
-        container.appendChild(createFavoriteCafeCard(cafe));
+        cafesContainer.appendChild(createFavoriteCafeCard(cafe));
     });
 }
 
 // Display up to 3 reviews written by the user
+// Display up to 3 reviews written by the user
 function displayMyReviews(user) {
+
     const container = document.getElementById("my-reviews");
+
     const viewAllButton = document.querySelector(
         ".my-reviews-header .view-all-button"
     );
 
     container.replaceChildren();
 
-    const myReviews = getReviewsWrittenByUser(user);
+    // No user means no reviews
+    const myReviews = user
+        ? getReviewsWrittenByUser(user)
+        : [];
 
-    // Show View All only when there are 4 or more reviews
-    viewAllButton.style.display =
-        myReviews.length >= 4 ? "inline-flex" : "none";
+    // Show View All only if there are more than 3 reviews
+    if (viewAllButton) {
+        viewAllButton.style.display =
+            myReviews.length > 3 ? "inline-flex" : "none";
+    }
 
-    // Show empty message if user has no reviews
+    // Show empty message
     if (myReviews.length === 0) {
+
         const emptyMessage = document.createElement("p");
 
         emptyMessage.classList.add("profile-empty-message");
@@ -88,15 +110,15 @@ function displayMyReviews(user) {
     }
 
     // Display only the 3 newest reviews
-    const reviewsToShow = myReviews.slice(0, 3);
+    myReviews.slice(0, 3).forEach(({ cafe, review }, index, reviews) => {
 
-    reviewsToShow.forEach(({ cafe, review }, index) => {
         container.appendChild(createMyReviewCard(cafe, review));
 
-        if (index < reviewsToShow.length - 1) {
+        if (index < reviews.length - 1) {
             const divider = document.createElement("hr");
             container.appendChild(divider);
         }
+
     });
 }
 
@@ -112,8 +134,8 @@ if (!profileUser) {
     document.getElementById("favorite-cafes").innerHTML =
         '<p class="profile-empty-message">You haven\'t favorited any cafés yet.</p>';
 
-    document.getElementById("my-reviews").innerHTML =
-        '<p class="profile-empty-message">You haven\'t written any reviews yet.</p>';
+    // Handle empty reviews and hide View All
+    displayMyReviews(null);
 
 } else {
 
@@ -181,3 +203,100 @@ editProfileForm.addEventListener("submit", function (event) {
         alert("Unable to update profile. Please log in again.");
     }
 });
+
+// ========================================
+// PROFILE PICTURE
+// ========================================
+
+(function initializeProfilePicture() {
+
+    const photoButton = document.getElementById("edit-photo-button");
+    const photoInput = document.getElementById("profile-photo-input");
+    const profileImage = document.getElementById("profile-picture");
+
+    if (!photoButton || !photoInput || !profileImage) return;
+
+    // Load the user's saved profile picture
+    const user = getCurrentUser();
+
+    if (user && user.profilePicture) {
+        profileImage.src = user.profilePicture;
+    }
+
+    // Open file picker when edit button is clicked
+    photoButton.addEventListener("click", function() {
+        photoInput.click();
+    });
+
+    // Handle selected image
+    photoInput.addEventListener("change", function() {
+
+        const file = photoInput.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please select a valid image.");
+            photoInput.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+
+            const image = new Image();
+
+            image.onload = function() {
+
+                // Resize image to reduce localStorage usage
+                const canvas = document.createElement("canvas");
+
+                const maxSize = 600;
+
+                let width = image.width;
+                let height = image.height;
+
+                if (width > height && width > maxSize) {
+                    height = height * (maxSize / width);
+                    width = maxSize;
+                } else if (height > maxSize) {
+                    width = width * (maxSize / height);
+                    height = maxSize;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const context = canvas.getContext("2d");
+
+                context.drawImage(image, 0, 0, width, height);
+
+                const imageData = canvas.toDataURL("image/jpeg", 0.8);
+
+                try {
+
+                    // Save updated profile picture
+                    const saved = updateUserProfile({
+                        profilePicture: imageData
+                    });
+
+                    if (saved) {
+                        profileImage.src = imageData;
+                    }
+
+                } catch (error) {
+                    alert("Unable to save this image. Please choose a smaller image.");
+                }
+
+            };
+
+            image.src = event.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+})();
