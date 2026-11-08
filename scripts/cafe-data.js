@@ -156,139 +156,7 @@ class Cafe {
    }
 }
 
-// Sample Cafe Object: 3rd Space
-const cafe6 = new Cafe({
-   // Cafe header Information
-   id: 6,
-   name: "3rd Space",
-   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-   location: "Brgy. H Concepcion",
 
-   // Cafe First Details
-   averagePrice: "₱100 - ₱150",
-   seatCapacity: 20,
-   isPetFriendly: true,
-   isRestroomAvailable: true,
-   restroomCount: 2,
-
-   // Cafe Location and Contact
-   phone: "0912 345 6789",
-   website: "https://www.3rdspace.shop/",
-
-   // Social Links
-   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
-    ],
-   /*socialLinks: {
-      facebook: "https://www.facebook.com/",
-      instagram: "https://www.instagram.com/",
-      twitter: "https://www.twitter.com/"
-   },*/
-
-   // Working Hours
-   workingHours: {
-      monday: "8:00 AM - 12:00 AM",
-      tuesday: "8:00 AM - 12:00 AM",
-      wednesday: "8:00 AM - 12:00 AM",
-      thursday: "8:00 AM - 12:00 AM",
-      friday: "8:00 AM - 12:00 AM",
-      saturday: "8:00 AM - 12:00 AM",
-      sunday: "1:00 PM - 12:00 AM"
-   },
-
-   // Amenities
-
-   // Connectivity & Work Facilities
-   wifiStrength: 3,
-   powerOutletsNumber: 12,
-
-   // Comfort & Environment
-   airConditioningLevel: 2,
-   noiseLevel: 1,
-   isOpenSpace: true,
-
-   // Accessibility & Parking
-   isParkingAvailable: true,
-   parkingCapacity: 8,
-   allowedVehicles: ["Cars", "Motorcycles"],
-
-   // Service & Ordering
-   isHouseDeliveryAvailable: true,
-   isGrabDeliveryAvailable: true,
-   isTakeOutAvailable: true,
-
-   // Payment Methods
-   paymentMethods: {
-      cash: true,
-      gcash: true,
-      maya: true,
-      card: true
-   }
-});
-
-// Demo Reviews for 3rd Space
-// Review 1
-const review1 = new Review(
-   "haewon17",
-   "2026-10-15",
-   "The coffee was great, and the atmosphere was cozy. A nice place to relax with friends!",
-   ["pictures/chncafe.PNG", "pictures/coffee1.jpg"],
-   5
-);
-
-// Review 2
-const review2 = new Review(
-   "coffeeFan",
-   "2026-10-17",
-   "Good drinks and friendly staff. The seating area could be a little quieter during busy hours.",
-   [],
-   4
-);
-
-// Review 3
-const review3 = new Review(
-   "studyBuddy",
-   "2026-10-20",
-   "A comfortable place to study because of the Wi-Fi and power outlets. I would love more available seats.",
-   [],
-   4
-);
-
-const review4 = new Review(
-    "newUser",
-    "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
-    ["pictures/coffee1.jpg"],
-    1
-);
-const review7 = new Review(
-    "newUser",
-    "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
-    ["pictures/coffee1.jpg"],
-    1
-);
-const review6 = new Review(
-    "newUser",
-    "2026-10-24",
-    "PAKAWALAN MO NAKO ITWS",
-    ["pictures/coffee1.jpg"],
-    1
-);
-const review5 = new Review(
-    "newUser",
-    "2026-10-24",
-    "cri",
-    ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
-    2
-);
 
 /* =========================================
    SAMPLE CAFE DATA
@@ -300,7 +168,7 @@ const cafe1 = new Cafe({
   name: "3rd Space",
   description: "A cozy and modern café perfect for studying, working, and spending time with friends. Enjoy coffee, snacks, and a relaxing atmosphere.",
   location: "H. Concepcion",
-  barangay: "Sangitan",
+  barangay: "Sumacab Este",
   coverImage: "images/3rdspace/3rdspace-photo16.jpg",
 
   //possible options: 3, 5..? 6, 11, 12, 13, 15, 16
@@ -407,40 +275,14 @@ const cafe1 = new Cafe({
     maya: false,
     card: true
   }
-});''
-
-cafe1.addReview(review4);
-cafe1.addReview(review5);
-cafe1.addReview(review6);
-cafe1.addReview(review7);
-
-// Add Reviews to the 3rd Space Cafe Object
-cafe1.addReview(review1);
-cafe1.addReview(review2);
-cafe1.addReview(review3);
-
-const review8 = new Review(
-    "Alex",
-    "10/24/2026",
-    "The coffee was delicious!",
-    [],
-    5
-);
-
-const review9 = new Review(
-    "Jamie",
-    "10/24/2026",
-    "Nice atmosphere and friendly staff.",
-    [],
-    4
-);
+});
 
 const cafe2 = new Cafe({
   id: 2,
   name: "Bean & Bloom Café",
   description: "A charming café surrounded by plants and warm wooden interiors. Ideal for casual dates, conversations, and enjoying specialty coffee.",
   location: "Downtown",
-  barangay: "Barangay mo hehe",
+  barangay: "Sumacab Este",
   coverImage: placeholderImg,
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -503,9 +345,6 @@ const cafe2 = new Cafe({
     card: true
   }
 });
-
-cafe2.addReview(review8);
-cafe2.addReview(review9);
 
 const cafe3 = new Cafe({
   id: 3,
@@ -581,7 +420,7 @@ const cafe4 = new Cafe({
   name: "Midnight Brew",
   description: "A late-night coffee spot with moody lighting, comfortable couches, and a relaxed atmosphere for night owls and friends catching up after dark.",
   location: "City Center",
-  barangay: "Sangitan",
+  barangay: "Sumacab Este",
   coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -650,7 +489,7 @@ const cafe5 = new Cafe({
   name: "Sunny Side Coffee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
-  barangay: "Sangitan",
+  barangay: "Sumacab Este",
   coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -719,7 +558,7 @@ const cafe7 = new Cafe({
   name: "oooffff",
   description: "A bright s.",
   location: "Residenct",
-  barangay: "Sangitan",
+  barangay: "Mabini Homesite",
   coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -788,7 +627,7 @@ const cafe8 = new Cafe({
   name: "Sunny Side Coffee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
-  barangay: "Sangitan",
+  barangay: "Sumacab Este",
   coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -857,7 +696,7 @@ const cafe9 = new Cafe({
   name: "eeeeeeeeeee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
-  barangay: "Sangitan",
+  barangay: "Sumacab Este",
   coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
   photos: [
         "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
@@ -921,22 +760,965 @@ const cafe9 = new Cafe({
   }
 });
 
+// Demo Reviews for 3rd Space
+// Review 1
+const review1 = new Review(
+   "haewon17",
+   "2026-10-15",
+   "The coffee was great, and the atmosphere was cozy. A nice place to relax with friends!",
+   ["pictures/chncafe.PNG", "pictures/coffee1.jpg"],
+   5
+);
+
+// Review 2
+const review2 = new Review(
+   "coffeeFan",
+   "2026-10-17",
+   "Good drinks and friendly staff. The seating area could be a little quieter during busy hours.",
+   [],
+   4
+);
+
+// Review 3
+const review3 = new Review(
+   "studyBuddy",
+   "2026-10-20",
+   "A comfortable place to study because of the Wi-Fi and power outlets. I would love more available seats.",
+   [],
+   4
+);
+
+const review4 = new Review(
+    "newUser",
+    "2026-10-24",
+    "cri",
+    ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
+    2
+);
+
+const review5 = new Review(
+    "Alex",
+    "10/24/2026",
+    "The coffee was delicious!",
+    [],
+    5
+);
+
+const review6 = new Review(
+    "Jamie",
+    "10/24/2026",
+    "Nice atmosphere and friendly staff.",
+    [],
+    4
+);
+
+/* =====================================================
+   PLACEHOLDER CAFES — DEMO PURPOSES ONLY
+   All café names, descriptions, contact details,
+   amenities, and other information are fictional.
+   ===================================================== */
+
+// =====================================================
+// DEMO CAFES — PLACEHOLDER DATA ONLY
+// Café names and addresses are fictional demo entries.
+// =====================================================
+
+const cafe10 = new Cafe({
+    id: 10,
+    name: "The Daily Grind",
+    description: "A cozy café serving freshly brewed coffee and affordable pastries. A nice spot for casual meetups and study sessions.",
+    location: "Demo Street 1",
+    barangay: "Kapitan Pepe",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱150",
+    seatCapacity: 25,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Iced Drinks, Pastries, Sandwiches",
+    phone: "09171230010",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 8:00 PM",
+        tuesday: "8:00 AM - 8:00 PM",
+        wednesday: "8:00 AM - 8:00 PM",
+        thursday: "8:00 AM - 8:00 PM",
+        friday: "8:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "9:00 AM - 7:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 8,
+    airConditioningLevel: 2,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 5,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe11 = new Cafe({
+    id: 11,
+    name: "Bean There Café",
+    description: "A small neighborhood café offering classic espresso drinks and homemade snacks in a relaxed setting.",
+    location: "A. Valino Street",
+    barangay: "Aduas Centro",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱80 - ₱150",
+    seatCapacity: 18,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Espresso, Latte, Tea, Cookies",
+    phone: "09171230011",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "7:00 AM - 7:00 PM",
+        tuesday: "7:00 AM - 7:00 PM",
+        wednesday: "7:00 AM - 7:00 PM",
+        thursday: "7:00 AM - 7:00 PM",
+        friday: "7:00 AM - 8:00 PM",
+        saturday: "8:00 AM - 8:00 PM",
+        sunday: "Closed"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 4,
+    airConditioningLevel: 2,
+    noiseLevel: 1,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 3,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+const cafe12 = new Cafe({
+    id: 12,
+    name: "Little Cup Corner",
+    description: "A laid-back café with budget-friendly drinks, sweet treats, and comfortable seating.",
+    location: "Demo Street 2",
+    barangay: "Aduas Centro",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱70 - ₱130",
+    seatCapacity: 20,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Milk Tea, Coffee, Waffles, Cakes",
+    phone: "09171230012",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 8:00 PM",
+        tuesday: "9:00 AM - 8:00 PM",
+        wednesday: "9:00 AM - 8:00 PM",
+        thursday: "9:00 AM - 8:00 PM",
+        friday: "9:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "10:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 5,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: false,
+    parkingCapacity: 0,
+    allowedVehicles: [],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe13 = new Cafe({
+    id: 13,
+    name: "Morning Muse",
+    description: "A bright café serving breakfast meals, coffee, and refreshing drinks for early risers.",
+    location: "Demo Street 3",
+    barangay: "Mabini Homesite",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱120 - ₱200",
+    seatCapacity: 30,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 2,
+    menu: "Breakfast Meals, Coffee, Pasta, Sandwiches",
+    phone: "09171230013",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "6:30 AM - 8:00 PM",
+        tuesday: "6:30 AM - 8:00 PM",
+        wednesday: "6:30 AM - 8:00 PM",
+        thursday: "6:30 AM - 8:00 PM",
+        friday: "6:30 AM - 9:00 PM",
+        saturday: "7:00 AM - 9:00 PM",
+        sunday: "7:00 AM - 7:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 10,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 8,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: true }
+});
+
+const cafe14 = new Cafe({
+    id: 14,
+    name: "Café Solace",
+    description: "A peaceful café with soft lighting, comfortable chairs, and drinks perfect for a quiet afternoon.",
+    location: "Demo Street 4",
+    barangay: "Mabini Homesite",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱180",
+    seatCapacity: 22,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Matcha, Cakes, Pasta",
+    phone: "09171230014",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 8:00 PM",
+        tuesday: "9:00 AM - 8:00 PM",
+        wednesday: "9:00 AM - 8:00 PM",
+        thursday: "9:00 AM - 8:00 PM",
+        friday: "9:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "9:00 AM - 7:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 7,
+    airConditioningLevel: 2,
+    noiseLevel: 1,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 4,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+const cafe15 = new Cafe({
+    id: 15,
+    name: "Study Sip",
+    description: "A student-friendly café with reliable Wi-Fi, plenty of outlets, and affordable drinks.",
+    location: "Demo Street 5",
+    barangay: "Bitas",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱80 - ₱140",
+    seatCapacity: 35,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 2,
+    menu: "Coffee, Iced Tea, Rice Meals, Sandwiches",
+    phone: "09171230015",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 10:00 PM",
+        tuesday: "8:00 AM - 10:00 PM",
+        wednesday: "8:00 AM - 10:00 PM",
+        thursday: "8:00 AM - 10:00 PM",
+        friday: "8:00 AM - 10:00 PM",
+        saturday: "9:00 AM - 10:00 PM",
+        sunday: "9:00 AM - 8:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 18,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 10,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: true }
+});
+
+const cafe16 = new Cafe({
+    id: 16,
+    name: "Sugar & Steam",
+    description: "A dessert café known for sweet drinks, freshly baked goods, and cozy corners.",
+    location: "Demo Street 6",
+    barangay: "Bitas",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱170",
+    seatCapacity: 24,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Frappes, Coffee, Donuts, Waffles",
+    phone: "09171230016",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "10:00 AM - 9:00 PM",
+        tuesday: "10:00 AM - 9:00 PM",
+        wednesday: "10:00 AM - 9:00 PM",
+        thursday: "10:00 AM - 9:00 PM",
+        friday: "10:00 AM - 10:00 PM",
+        saturday: "10:00 AM - 10:00 PM",
+        sunday: "10:00 AM - 8:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 6,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 5,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe17 = new Cafe({
+    id: 17,
+    name: "The Cozy Mug",
+    description: "A welcoming café offering comfort food, warm beverages, and a relaxed atmosphere.",
+    location: "Demo Street 7",
+    barangay: "Kapitan Pepe",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱180",
+    seatCapacity: 28,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Hot Chocolate, Pasta, Pastries",
+    phone: "09171230017",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 8:00 PM",
+        tuesday: "8:00 AM - 8:00 PM",
+        wednesday: "8:00 AM - 8:00 PM",
+        thursday: "8:00 AM - 8:00 PM",
+        friday: "8:00 AM - 9:00 PM",
+        saturday: "8:00 AM - 9:00 PM",
+        sunday: "9:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 8,
+    airConditioningLevel: 2,
+    noiseLevel: 1,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 6,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: true }
+});
+
+const cafe18 = new Cafe({
+    id: 18,
+    name: "Brew Haven",
+    description: "A modern coffee shop with specialty drinks, comfortable seating, and a welcoming interior.",
+    location: "Demo Street 8",
+    barangay: "Kapitan Pepe",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱120 - ₱220",
+    seatCapacity: 40,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 2,
+    menu: "Specialty Coffee, Matcha, Cakes, Pasta",
+    phone: "09171230018",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 10:00 PM",
+        tuesday: "8:00 AM - 10:00 PM",
+        wednesday: "8:00 AM - 10:00 PM",
+        thursday: "8:00 AM - 10:00 PM",
+        friday: "8:00 AM - 10:00 PM",
+        saturday: "8:00 AM - 10:00 PM",
+        sunday: "9:00 AM - 9:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 12,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 12,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: true }
+});
+
+const cafe19 = new Cafe({
+    id: 19,
+    name: "Cloud Nine Coffee",
+    description: "A casual café serving iced coffee, refreshing beverages, and light meals in a friendly space.",
+    location: "Demo Street 9",
+    barangay: "Kapitan Pepe",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱90 - ₱160",
+    seatCapacity: 26,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Iced Coffee, Milk Tea, Fries, Sandwiches",
+    phone: "09171230019",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "10:00 AM - 9:00 PM",
+        tuesday: "10:00 AM - 9:00 PM",
+        wednesday: "10:00 AM - 9:00 PM",
+        thursday: "10:00 AM - 9:00 PM",
+        friday: "10:00 AM - 10:00 PM",
+        saturday: "10:00 AM - 10:00 PM",
+        sunday: "10:00 AM - 8:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 5,
+    airConditioningLevel: 2,
+    noiseLevel: 3,
+    isOpenSpace: true,
+    isParkingAvailable: true,
+    parkingCapacity: 5,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+const cafe20 = new Cafe({
+    id: 20,
+    name: "Espresso Express",
+    description: "A convenient coffee stop serving quick espresso drinks, pastries, and grab-and-go snacks.",
+    location: "Demo Street 10",
+    barangay: "Mabini Homesite",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱80 - ₱150",
+    seatCapacity: 16,
+    isPetFriendly: false,
+    isRestroomAvailable: false,
+    restroomCount: 0,
+    menu: "Espresso, Americano, Iced Coffee, Muffins",
+    phone: "09171230020",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "7:00 AM - 7:00 PM",
+        tuesday: "7:00 AM - 7:00 PM",
+        wednesday: "7:00 AM - 7:00 PM",
+        thursday: "7:00 AM - 7:00 PM",
+        friday: "7:00 AM - 8:00 PM",
+        saturday: "8:00 AM - 8:00 PM",
+        sunday: "8:00 AM - 6:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 3,
+    airConditioningLevel: 2,
+    noiseLevel: 2,
+    isOpenSpace: true,
+    isParkingAvailable: false,
+    parkingCapacity: 0,
+    allowedVehicles: [],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe21 = new Cafe({
+    id: 21,
+    name: "Brew & Bloom",
+    description: "A plant-inspired café with refreshing drinks, light meals, and a relaxing atmosphere.",
+    location: "Demo Street 11",
+    barangay: "Mabini Homesite",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱110 - ₱190",
+    seatCapacity: 32,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Fruit Tea, Pasta, Cakes",
+    phone: "09171230021",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 8:00 PM",
+        tuesday: "9:00 AM - 8:00 PM",
+        wednesday: "9:00 AM - 8:00 PM",
+        thursday: "9:00 AM - 8:00 PM",
+        friday: "9:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "9:00 AM - 7:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 7,
+    airConditioningLevel: 2,
+    noiseLevel: 1,
+    isOpenSpace: true,
+    isParkingAvailable: true,
+    parkingCapacity: 6,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+const cafe22 = new Cafe({
+    id: 22,
+    name: "Cup of Calm",
+    description: "A quiet café offering handcrafted drinks and simple meals for customers looking to unwind.",
+    location: "Demo Street 12",
+    barangay: "Magsaysay District",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱170",
+    seatCapacity: 20,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Latte, Tea, Cookies, Sandwiches",
+    phone: "09171230022",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 8:00 PM",
+        tuesday: "9:00 AM - 8:00 PM",
+        wednesday: "9:00 AM - 8:00 PM",
+        thursday: "9:00 AM - 8:00 PM",
+        friday: "9:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "10:00 AM - 7:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 6,
+    airConditioningLevel: 3,
+    noiseLevel: 1,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 4,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe23 = new Cafe({
+    id: 23,
+    name: "Roast Republic",
+    description: "A contemporary café serving strong coffee, filling meals, and freshly baked desserts.",
+    location: "Demo Street 13",
+    barangay: "Magsaysay District",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱130 - ₱230",
+    seatCapacity: 38,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 2,
+    menu: "Pour-over Coffee, Pasta, Rice Meals, Cakes",
+    phone: "09171230023",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 9:00 PM",
+        tuesday: "8:00 AM - 9:00 PM",
+        wednesday: "8:00 AM - 9:00 PM",
+        thursday: "8:00 AM - 9:00 PM",
+        friday: "8:00 AM - 10:00 PM",
+        saturday: "8:00 AM - 10:00 PM",
+        sunday: "9:00 AM - 8:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 14,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 10,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: true }
+});
+
+const cafe24 = new Cafe({
+    id: 24,
+    name: "Daily Dose",
+    description: "A neighborhood coffee shop with affordable drinks and quick snacks for everyday coffee lovers.",
+    location: "Demo Street 14",
+    barangay: "Sumacab Este",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱70 - ₱140",
+    seatCapacity: 18,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Milk Tea, Toast, Pastries",
+    phone: "09171230024",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "7:00 AM - 8:00 PM",
+        tuesday: "7:00 AM - 8:00 PM",
+        wednesday: "7:00 AM - 8:00 PM",
+        thursday: "7:00 AM - 8:00 PM",
+        friday: "7:00 AM - 9:00 PM",
+        saturday: "8:00 AM - 9:00 PM",
+        sunday: "8:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 5,
+    airConditioningLevel: 2,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 3,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe25 = new Cafe({
+    id: 25,
+    name: "The Reading Room Café",
+    description: "A book-inspired café with quiet seating, warm drinks, and a comfortable environment for reading.",
+    location: "Demo Street 15",
+    barangay: "Sumacab Este",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱100 - ₱180",
+    seatCapacity: 28,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Tea, Pancakes, Cakes",
+    phone: "09171230025",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "8:00 AM - 9:00 PM",
+        tuesday: "8:00 AM - 9:00 PM",
+        wednesday: "8:00 AM - 9:00 PM",
+        thursday: "8:00 AM - 9:00 PM",
+        friday: "8:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "9:00 AM - 8:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 12,
+    airConditioningLevel: 3,
+    noiseLevel: 1,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 5,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+const cafe26 = new Cafe({
+    id: 26,
+    name: "Honeycomb Café",
+    description: "A cheerful café offering sweet treats, refreshing drinks, and a bright, welcoming space.",
+    location: "Demo Street 16",
+    barangay: "Sumacab Norte",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱90 - ₱160",
+    seatCapacity: 24,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Waffles, Coffee, Milk Tea, Cheesecake",
+    phone: "09171230026",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 8:00 PM",
+        tuesday: "9:00 AM - 8:00 PM",
+        wednesday: "9:00 AM - 8:00 PM",
+        thursday: "9:00 AM - 8:00 PM",
+        friday: "9:00 AM - 9:00 PM",
+        saturday: "9:00 AM - 9:00 PM",
+        sunday: "10:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 6,
+    airConditioningLevel: 2,
+    noiseLevel: 2,
+    isOpenSpace: true,
+    isParkingAvailable: true,
+    parkingCapacity: 7,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe27 = new Cafe({
+    id: 27,
+    name: "Kapehan sa Kanto",
+    description: "A casual local café serving familiar Filipino snacks, affordable coffee, and refreshing drinks.",
+    location: "Demo Street 17",
+    barangay: "Sumacab Norte",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱60 - ₱130",
+    seatCapacity: 20,
+    isPetFriendly: true,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Filipino Snacks, Coffee, Iced Drinks, Rice Meals",
+    phone: "09171230027",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "7:00 AM - 8:00 PM",
+        tuesday: "7:00 AM - 8:00 PM",
+        wednesday: "7:00 AM - 8:00 PM",
+        thursday: "7:00 AM - 8:00 PM",
+        friday: "7:00 AM - 9:00 PM",
+        saturday: "7:00 AM - 9:00 PM",
+        sunday: "8:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 4,
+    airConditioningLevel: 1,
+    noiseLevel: 3,
+    isOpenSpace: true,
+    isParkingAvailable: true,
+    parkingCapacity: 4,
+    allowedVehicles: ["Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: false,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: false, card: false }
+});
+
+const cafe28 = new Cafe({
+    id: 28,
+    name: "Velvet Bean",
+    description: "A stylish café serving specialty coffee, blended drinks, and desserts in a modern setting.",
+    location: "Demo Street 18",
+    barangay: "Aduas Centro",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱120 - ₱220",
+    seatCapacity: 34,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 2,
+    menu: "Specialty Coffee, Frappes, Cakes, Pasta",
+    phone: "09171230028",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "9:00 AM - 9:00 PM",
+        tuesday: "9:00 AM - 9:00 PM",
+        wednesday: "9:00 AM - 9:00 PM",
+        thursday: "9:00 AM - 9:00 PM",
+        friday: "9:00 AM - 10:00 PM",
+        saturday: "9:00 AM - 10:00 PM",
+        sunday: "9:00 AM - 8:00 PM"
+    },
+    wifiStrength: 3,
+    powerOutletsNumber: 10,
+    airConditioningLevel: 3,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 8,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: true,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: true }
+});
+
+const cafe29 = new Cafe({
+    id: 29,
+    name: "Sunrise Coffee House",
+    description: "A relaxed café serving morning coffee, hearty snacks, and refreshing drinks throughout the day.",
+    location: "Demo Street 19",
+    barangay: "Kapitan Pepe",
+    coverImage: placeholderImg,
+    photos: [placeholderImg],
+    averagePrice: "₱90 - ₱170",
+    seatCapacity: 26,
+    isPetFriendly: false,
+    isRestroomAvailable: true,
+    restroomCount: 1,
+    menu: "Coffee, Hot Chocolate, Sandwiches, Pastries",
+    phone: "09171230029",
+    website: "",
+    socialLinks: [],
+    workingHours: {
+        monday: "6:30 AM - 8:00 PM",
+        tuesday: "6:30 AM - 8:00 PM",
+        wednesday: "6:30 AM - 8:00 PM",
+        thursday: "6:30 AM - 8:00 PM",
+        friday: "6:30 AM - 9:00 PM",
+        saturday: "7:00 AM - 9:00 PM",
+        sunday: "7:00 AM - 7:00 PM"
+    },
+    wifiStrength: 2,
+    powerOutletsNumber: 7,
+    airConditioningLevel: 2,
+    noiseLevel: 2,
+    isOpenSpace: false,
+    isParkingAvailable: true,
+    parkingCapacity: 5,
+    allowedVehicles: ["Cars", "Motorcycles"],
+    isHouseDeliveryAvailable: false,
+    isGrabDeliveryAvailable: true,
+    isTakeOutAvailable: true,
+    paymentMethods: { cash: true, gcash: true, maya: true, card: false }
+});
+
+// Add Reviews to the 3rd Space Cafe Object
+cafe1.addReview(review1);
+cafe1.addReview(review2);
+cafe1.addReview(review3);
+cafe1.addReview(review4);
+cafe1.addReview(review5);
+cafe1.addReview(review6);
+
 
 /* =========================================
    STORE ALL CAFES IN ONE ARRAY
    ========================================= */
 
 const cafes = [
-  cafe1,
-  cafe2,
-  cafe3,
-  cafe4,
-  cafe5,
-  cafe6,
-  cafe7,
-  cafe8,
-  cafe9
+    cafe1,
+    cafe2,
+    cafe3,
+    cafe4,
+    cafe5,
+    cafe7,
+    cafe8,
+    cafe9,
+    cafe10,
+    cafe11,
+    cafe12,
+    cafe13,
+    cafe14,
+    cafe15,
+    cafe16,
+    cafe17,
+    cafe18,
+    cafe19,
+    cafe20,
+    cafe21,
+    cafe22,
+    cafe23,
+    cafe24,
+    cafe25,
+    cafe26,
+    cafe27,
+    cafe28,
+    cafe29
 ];
+
+/* =========================================
+   WIFI DESCRIPTION
+   ========================================= */
+
+function getWifiDescription(level) {
+    if (level === 1) {
+        return "Weak";
+    } else if (level === 2) {
+        return "Moderate";
+    } else if (level === 3) {
+        return "Strong";
+    } else {
+        return "Unavailable";
+    }
+}
+
+
+/* =========================================
+   AIR CONDITIONING DESCRIPTION
+   ========================================= */
+
+function getAirconDescription(level) {
+    if (level === 1) {
+        return "Low";
+    } else if (level === 2) {
+        return "Moderate";
+    } else if (level === 3) {
+        return "Strong";
+    } else {
+        return "Unavailable";
+    }
+}
+
+
+/* =========================================
+   NOISE LEVEL DESCRIPTION
+   ========================================= */
+
+function getNoiseDescription(level) {
+    if (level === 1) {
+        return "Quiet";
+    } else if (level === 2) {
+        return "Moderate";
+    } else if (level === 3) {
+        return "Loud";
+    } else {
+        return "Not specified";
+    }
+}
+
+
+
 
 /* =========================================
    FIND A CAFE BY ITS ID
