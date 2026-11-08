@@ -11,7 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url('images/sign-in-bg.png'); ">
     
         <!-- ==========================================================================
              BACK TO HOME LINK
@@ -35,15 +35,30 @@
     
                 <!-- EMAIL -->
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address (demo@kapesta.com)" autocomplete="email"
-                    maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Enter a valid email, e.g. name@example.com"
-                    autofocus required>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email address (demo@kapesta.com)" 
+                    autocomplete="email"
+                    maxlength="254" 
+                    pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" 
+                    title="Enter a valid email, e.g. name@example.com"
+                    autofocus 
+                    required>
                 <span class="error" id="email-error" aria-live="polite"></span>
     
                 <!-- PASSWORD -->
                 <label for="pword">Password</label>
-                <input type="password" id="pword" name="pword" placeholder="Enter your password (kapesta123)"
-                    autocomplete="current-password" minlength="8" maxlength="64" required>
+                <input 
+                    type="password" 
+                    id="pword" 
+                    name="pword" 
+                    placeholder="Enter your password (kapesta123)"
+                    autocomplete="current-password" 
+                    minlength="8" 
+                    maxlength="64" 
+                    required>
                 <span class="error" id="pword-error" aria-live="polite"></span>
     
                 <input type="submit" value="Login">
@@ -61,7 +76,7 @@
     
             <!-- Side image -->
             <div class="login-image">
-                <img src="images/kate-laine-qqsicnkuRjE-unsplash.jpg" alt="A cup of coffee on a table">
+                <img src="images/kate-laine-qqsicnkuRjE-unsplash.jpg" alt="Login Side Image">
             </div>
         </div>
         <script src="scripts/login.js" defer></script>
