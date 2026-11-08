@@ -1,3 +1,13 @@
+const currentUser = getCurrentUser();
+
+if (currentUser) {
+    document.getElementById("profile-picture").src =
+        currentUser.profilePicture || "pictures/coffee1.jpg";
+
+    document.getElementById("profile-username").textContent =
+        currentUser.username ? `@${currentUser.username}` : "";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // Check if user is logged in
