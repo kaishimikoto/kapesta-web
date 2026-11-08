@@ -1,3 +1,11 @@
+// Display logged-in user's username in the profile header
+const reviewDisplayUser = getCurrentUser();
+
+if (reviewDisplayUser) {
+    document.getElementById("profile-username").textContent =
+        `@${reviewDisplayUser.username}`;
+}
+
 function createReviewDeleteButton(review, onDelete) {
     const currentUser = getCurrentUser();
 
@@ -152,7 +160,12 @@ function createMyReviewCard(cafe, review) {
     usernameRatingDate.classList.add("username-rating-date");
 
     const profileIcon = document.createElement("img");
-    profileIcon.src = "images/icons/user-profile.svg";
+
+    const loggedInUser = getCurrentUser();
+
+    profileIcon.src =
+        loggedInUser?.profilePicture || "images/icons/user-profile.svg";
+
     profileIcon.alt = "User profile image";
     profileIcon.classList.add("user-profile");
 
