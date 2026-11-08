@@ -244,27 +244,30 @@ button:active {
     color: var(--color-white);
 }
 
-/* ==================================================================
-   Footer Style
-   ================================================================== */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+/* Footer wrapper */
 footer {
     background-color: var(--color-brown);
-    border-radius: 10% 10% 0 0;
     color: var(--color-white);
     font-size: 0.875rem;
 }
 
+/* Footer links */
 footer a {
     color: var(--color-white);
     text-decoration: none;
     text-underline-offset: 4px;
 }
 
+/* Footer link hover state */
 footer a:hover {
     text-decoration: underline;
 }
 
-/* -------------------- Main Footer Layout -------------------------- */
+/* Main footer layout (info on the left, links on the right) */
 .footer-layout {
     width: min(100%, 1140px);
     margin: 0 auto;
@@ -275,37 +278,41 @@ footer a:hover {
     gap: 80px;
 }
 
-/* -------------------- Footer Information -------------------------- */
+/* Footer information block */
 .footer-information {
     max-width: 440px;
 }
 
+/* Footer logo */
 .footer-information-logo img {
     width: 160px;
     margin-bottom: 24px;
 }
 
+/* Divider inside the information block */
 .footer-information hr {
     margin: 24px 0;
 }
 
-/* -------------------- Footer Socials ------------------------------ */
+/* Footer social icons row */
 .footer-social {
     display: flex;
     gap: 24px;
 }
 
+/* Footer social icon */
 .footer-social img {
     width: 32px;
     height: 32px;
 }
 
-/* -------------------- Footer Links -------------------------------- */
+/* Footer link columns */
 .footer-links {
     display: flex;
     gap: 80px;
 }
 
+/* Single link column */
 .footer-link-field {
     display: flex;
     flex-direction: column;
@@ -313,6 +320,7 @@ footer a:hover {
     gap: 16px;
 }
 
+/* Link column title */
 .footer-nav-title {
     margin: 0 0 16px;
     font-size: 0.875rem;
@@ -322,16 +330,45 @@ footer a:hover {
     color: var(--color-white);
 }
 
-/* -------------------- Footer Bottom ------------------------------- */
+/* Footer bottom bar (divider and copyright) */
 .footer-bottom {
-    width: min(100%, 1140px); 
+    width: min(100%, 1140px);
     margin: 0 auto;
     padding: 0 40px 24px;
 }
 
+/* Copyright text */
 .footer-bottom small {
     display: block;
     margin-top: 16px;
+}
+
+/* -------------------- Footer ---------------------------------- */
+@media(max-width: 768px) {
+    .footer-layout {
+        flex-direction: column;
+        gap: 48px;
+        padding: 48px 24px;
+        align-items: center;
+    }
+
+    .footer-information {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-information-logo img {
+        margin: 0 auto 24px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        padding: 0 24px 24px;
+        text-align: center;
+    }
 }
 
 /* ==============================
