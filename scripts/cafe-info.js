@@ -131,11 +131,14 @@ document.getElementById("saturday").textContent = selectedCafe.workingHours.satu
 document.getElementById("sunday").textContent = selectedCafe.workingHours.sunday;
 
 // Amenities
-document.getElementById("wifi").textContent = selectedCafe.wifiStrength;
-document.getElementById("aircon").textContent = selectedCafe.airConditioningLevel;
+document.getElementById("wifi").textContent =
+    getWifiDescription(selectedCafe.wifiStrength);
+document.getElementById("aircon").textContent =
+    getAirconDescription(selectedCafe.airConditioningLevel);
 document.getElementById("outlets").textContent = selectedCafe.powerOutletsNumber;
 document.getElementById("alfresco").textContent = selectedCafe.isOpenSpace ? "Yes" : "No";
-document.getElementById("noise-level").textContent = selectedCafe.noiseLevel;
+document.getElementById("noise-level").textContent =
+    getNoiseDescription(selectedCafe.noiseLevel);
 document.getElementById("parking-availability").textContent = selectedCafe.isParkingAvailable ? "Yes" : "No";
 document.getElementById("house-delivery").textContent = selectedCafe.isHouseDeliveryAvailable ? "Yes" : "No";
 document.getElementById("parking-capacity").textContent = selectedCafe.parkingCapacity;
