@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/global.css">
         <link rel="stylesheet" type="text/css" href="styles/my-reviews.css">
-        <title>Document</title>
+        <title>Kapesta | My Reviews</title>
     </head>
     <body>
 
@@ -14,6 +15,7 @@
         <header>
             <nav class="navbar">
                 <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
+
 
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
@@ -37,14 +39,64 @@
             </nav>
         </header>
 
-        <main class="my-reviews-    page">
+        <!-- ========== PROFILE HEADER ========== -->
+        <section class="profile-page-header">
 
-            <h1>My Reviews</h1>
+            <!-- Profile Pic -->
+             <div class="profile-photo">
+                <img
+                    src="pictures/coffee1.jpg"
+                    alt="Profile picture"
+                    class="profile-pic"
+                    id="profile-picture"
+                >
 
-            <div id="all-my-reviews" class="reviews-container"></div>
+                <button
+                    type="button"
+                    class="edit-button"
+                    id="edit-photo-button"
+                    aria-label="Edit profile photo"
+                >
+                    <img src="images/icons/edit.svg" alt="" class="edit-icon">
+                </button>
+
+                <input
+                    type="file"
+                    id="profile-photo-input"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+            <!-- User Profile Information -->
+            <div class="profile-info">
+
+                <h1>My Profile</h1>
+
+                <p id="profile-username">@username</p>
+
+            </div>
+            
+        </section>
+
+        <main>
+
+            <div class="all-user-reviews">
+
+                <div class="my-reviews-page-heading">
+                    <h2>My Reviews</h2>
+                </div>
+
+                <div id="all-my-reviews" class="reviews-container"></div>
+
+            </div>
 
         </main>
 
+        <!-- ==========================================================================
+        FOOTER
+        ========================================================================== -->
         <footer>
             <div class="footer-layout">
                 <!-- Website Information -->
@@ -52,26 +104,26 @@
                     <div class="footer-information-logo">
                         <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+                    <p>Find Your Timpla.</p>
+    
                     <hr />
-                    
+    
                     <!-- Social Media -->
                     <nav class="footer-social" aria-label="Social media links">
                         <a href="#" target="_blank" title="Visit Kapesta on Facebook">
                             <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
                         </a>
-
+    
                         <a href="#" target="_blank" title="Visit Kapesta on Instagram">
                             <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
                         </a>
-
+    
                         <a href="#" target="_blank" title="Visit Kapesta on Twitter">
                             <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
                         </a>
                     </nav>
                 </div>
-
+    
                 <!-- Footer Navigation -->
                 <nav class="footer-links" aria-label="Footer navigation">
                     <div class="footer-link-field">
@@ -81,12 +133,12 @@
                         <a href="about.html">About Us</a>
                         <a href="contact.html">Contact Us</a>
                     </div>
-
+    
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Support</h3>
                         <a href="report.html">Report an Issue</a>
                     </div>
-
+    
                     <div class="footer-link-field">
                         <h3 class="footer-nav-title">Legal</h3>
                         <a href="privacy.html">Privacy Policy</a>
@@ -94,7 +146,7 @@
                     </div>
                 </nav>
             </div>
-
+    
             <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <hr />
@@ -102,7 +154,9 @@
             </div>
         </footer>
 
+        
         <script src="scripts/cafe-data.js"></script>
+        <script src="scripts/profile.js"></script>
         <script src="scripts/user-data.js"></script>
         <script src="scripts/navigation.js"></script>
         <script src="scripts/header.js"></script>
