@@ -1,430 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kapesta | Home</title>
-        <link rel="icon" type="image/png" href="images/kapesta-icon.png">
-        <link rel="stylesheet" type="text/css" href="styles/index.css">
-        <link rel="stylesheet" type="text/css" href="styles/header.css">
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap"
-            rel="stylesheet">
-    </head>
-    
-    <body>
-    
-        <!-- ==========================================================================
-             NAVBAR
-             ========================================================================== -->
-        <div class="nav-hover-zone"></div>
-    
-        <header>
-            <nav class="navbar">
-                <a href="index.html" class="logo-link">
-                    <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
-                </a>
 
-                <!-- Hamburger button (visible on mobile only) -->
-                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu"
-                    aria-expanded="false" aria-controls="navLinks">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-    
-                <ul class="nav-links">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="explore.html">EXPLORE</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-    
-                    <li class="profile-menu">
-                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
-                            PROFILE <span class="caret">&#9662;</span>
-                        </button>
-    
-                        <ul class="profile-dropdown">
-                            <li><a href="login.html">Log in</a></li>
-                            <li><a href="signup.html">Sign up</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    
-        <!-- ==========================================================================
-             HERO SECTION
-             ========================================================================== -->
-        <div class="hero-container">
-            <video autoplay muted loop playsinline poster="backup-image.jpg" class="bg-video">
-                <source src="videos/kapesta-bg-darkmode.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-    
-            <div class="overlay"></div>
-    
-            <div class="content">
-                <h1>Find Your<br><span class="highlight">Timpla</span><br>In Cabanatuan</h1>
-                <a href="explore.html"><button id="Explore">Explore</button></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapesta | Home</title>
+    <link rel="icon" type="image/png" href="images/kapesta-icon.png">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+            NAVBAR
+            ========================================================================== -->
+    <div class="nav-hover-zone"></div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo-link">
+                <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
+            </a>
+
+            <!-- Hamburger button (visible on mobile only) -->
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu"
+                aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="explore.html">EXPLORE</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+
+                <li class="profile-menu">
+                    <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                        <span id="profileLabel">PROFILE</span> <span class="caret">&#9662;</span>
+                    </button>
+
+                    <ul class="profile-dropdown" id="profileDropdown">
+                        <li><a href="login.html">Log in</a></li>
+                        <li><a href="signup.html">Sign up</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+            HERO SECTION
+            ========================================================================== -->
+    <div class="hero-container">
+        <video autoplay muted loop playsinline poster="backup-image.jpg" class="bg-video">
+            <source src="videos/kapesta-bg-darkmode.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h1>Find Your<br><span class="highlight">Timpla</span><br>In Cabanatuan</h1>
+            <a href="explore.html"><button id="Explore">Explore</button></a>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+            CAFE SPOTLIGHT
+            ========================================================================== -->
+    <section class="cafe-spotlight">
+        <div class="title">
+            <h2>Cafe Spotlight</h2>
+            <p>Watch, scroll, and find the cafe that fits your vibe.</p>
+        </div>
+
+        <div class="slider">
+            <button class="slider-btn prev" aria-label="Previous">&#10094;</button>
+
+            <div class="slider-track">
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/streetshack-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>Streetshack Cafe</h3>
+                    </div>
+                </div>
+
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/chin-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>CHIN Cafe</h3>
+                    </div>
+                </div>
+
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/okonomi-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>Okonomi Cafe</h3>
+                    </div>
+                </div>
+
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/3rdspace-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>3rd Space</h3>
+                    </div>
+                </div>
+
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/horti-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>Horti Cafe</h3>
+                    </div>
+                </div>
+
+                <div class="videos">
+                    <video controls preload="metadata">
+                        <source src="videos/laberean-reels.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="description">
+                        <h3>La Berean Cafe</h3>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-btn next" aria-label="Next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+            HOW KAPESTA WORKS
+            ========================================================================== -->
+    <section class="how-it-works">
+        <h2 class="section-heading">How Kapesta Works</h2>
+
+        <div class="feature-grid">
+            <!-- Feature 1 -->
+            <div class="box-style box-opacity-effect">
+                <img src="images/icons/browse-cafe-icon.svg" alt="">
+                <h3>1. Explore Cafés</h3>
+                <p>Let's discover cafés around Cabanatuan City and find new spots worth checking out.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="box-style box-opacity-effect">
+                <img src="images/icons/filter-icon.svg" alt="">
+                <h3>2. Find Your Fit</h3>
+                <p>We can narrow down our choices based on needs, preferred amenities, and budget.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="box-style box-opacity-effect">
+                <img src="images/icons/information-icon.svg" alt="">
+                <h3>3. Get the Details</h3>
+                <p>Let's check café amenities, operating hours, menus, and other helpful information before we visit.
+                </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="box-style box-opacity-effect">
+                <img src="images/icons/review-feature-icon.svg" alt="">
+                <h3>4. Share Our Experience</h3>
+                <p>We can rate and review cafés to help fellow café hunters make informed choices.</p>
             </div>
         </div>
-    
-        <!-- ==========================================================================
-             CAFE SPOTLIGHT
-             ========================================================================== -->
-        <section class="cafe-spotlight">
-            <div class="title">
-                <h2>Cafe Spotlight</h2>
-                <p>Watch, scroll, and find the cafe that fits your vibe.</p>
-            </div>
-    
-            <div class="slider">
-                <button class="slider-btn prev" aria-label="Previous">&#10094;</button>
-    
-                <div class="slider-track">
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/streetshack-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>Streetshack Cafe</h3>
-                        </div>
-                    </div>
-    
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/chin-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>CHIN Cafe</h3>
-                        </div>
-                    </div>
-    
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/okonomi-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>Okonomi Cafe</h3>
-                        </div>
-                    </div>
-    
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/3rdspace-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>3rd Space</h3>
-                        </div>
-                    </div>
-    
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/horti-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>Horti Cafe</h3>
-                        </div>
-                    </div>
-    
-                    <div class="videos">
-                        <video controls preload="metadata">
-                            <source src="videos/laberean-reels.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="description">
-                            <h3>La Berean Cafe</h3>
-                        </div>
-                    </div>
-                </div>
-    
-                <button class="slider-btn next" aria-label="Next">&#10095;</button>
-            </div>
-        </section>
-    
-        <!-- ==========================================================================
-             HOW KAPESTA WORKS
-             ========================================================================== -->
-        <section class="how-it-works">
-            <h2 class="section-heading">How Kapesta Works</h2>
-    
-            <div class="feature-grid">
-                <!-- Feature 1 -->
-                <div class="box-style box-opacity-effect">
-                    <img src="images/icons/browse-cafe-icon.svg" alt="">
-                    <h3>1. Explore Cafés</h3>
-                    <p>Let's discover cafés around Cabanatuan City and find new spots worth checking out.</p>
-                </div>
-    
-                <!-- Feature 2 -->
-                <div class="box-style box-opacity-effect">
-                    <img src="images/icons/filter-icon.svg" alt="">
-                    <h3>2. Find Your Fit</h3>
-                    <p>We can narrow down our choices based on needs, preferred amenities, and budget.</p>
-                </div>
-    
-                <!-- Feature 3 -->
-                <div class="box-style box-opacity-effect">
-                    <img src="images/icons/information-icon.svg" alt="">
-                    <h3>3. Get the Details</h3>
-                    <p>Let's check café amenities, operating hours, menus, and other helpful information before we visit.
-                    </p>
-                </div>
-    
-                <!-- Feature 4 -->
-                <div class="box-style box-opacity-effect">
-                    <img src="images/icons/review-feature-icon.svg" alt="">
-                    <h3>4. Share Our Experience</h3>
-                    <p>We can rate and review cafés to help fellow café hunters make informed choices.</p>
-                </div>
-            </div>
-        </section>
-    
-        <!-- ==========================================================================
+    </section>
+
+
+    <!-- ==========================================================================
             WHAT USERS SAY ABOUT KAPESTA
             ========================================================================== -->
-    
-        <section class="reviews-section" aria-labelledby="reviews-heading">
-            <h2 id="reviews-heading">What Users Say About Kapesta</h2>
-    
-            <div class="reviews-grid">
-    
-                <!-- Review 1 -->
-                <figure class="review-card">
-                    <div class="review-stars" role="img" aria-label="5 out of 5 stars">
-                        ★★★★★
-                    </div>
-    
-                    <img src="images/photos/fake-user1.jpg" alt="Amora Elyse Ledezma" class="review-avatar">
-    
-                    <figcaption>Amora Elyse Ledezma</figcaption>
-    
-                    <blockquote>
-                        <p>"Kapesta saved me so much time. I can check Wi-Fi and outlets before I leave home instead of
-                            guessing. Btw, found the prettiest little café today!! Adding this to my favorites ♡"</p>
-                    </blockquote>
-    
-                    <span class="review-user-label">- Kapesta user</span>
-                </figure>
-    
-    
-                <!-- Review 2 -->
-                <figure class="review-card">
-                    <div class="review-stars" role="img" aria-label="5 out of 5 stars">
-                        ★★★★★
-                    </div>
-    
-                    <img src="images/photos/fake-user2.jpg" alt="Via Rye Diaz" class="review-avatar">
-    
-                    <figcaption>Via Rye Diaz</figcaption>
-    
-                    <blockquote>
-                        <p>"Love that I can discover new cafés without having to search through multiple platforms."</p>
-                    </blockquote>
-    
-                    <span class="review-user-label">- Kapesta user</span>
-                </figure>
-    
-    
-                <!-- Review 3 -->
-                <figure class="review-card">
-                    <div class="review-stars" role="img" aria-label="5 out of 5 stars">
-                        ★★★★★
-                    </div>
-    
-                    <img src="images/photos/fake-user3.jpg" alt="Luna Valeria" class="review-avatar">
-    
-                    <figcaption>Luna Valeria</figcaption>
-    
-                    <blockquote>
-                        <p>"Super helpful ng Kapesta! Hindi na ako nag-iikot sa Cabanatuan para maghanap ng cafe na may
-                            maayos na Wi-Fi at saksakan."</p>
-                    </blockquote>
-    
-                    <span class="review-user-label">- Kapesta user</span>
-                </figure>
-    
-    
-                <!-- Review 4 -->
-                <figure class="review-card">
-                    <div class="review-stars" role="img" aria-label="5 out of 5 stars">
-                        ★★★★★
-                    </div>
-    
-                    <img src="images/photos/fake-user4.jpg" alt="Samantha Maureen Vera" class="review-avatar">
-    
-                    <figcaption>Samantha Maureen Vera</figcaption>
-    
-                    <blockquote>
-                        <p>"Having hours, menus, and amenities all in one place is great. It feels made for people who study
-                            in cafés."</p>
-                    </blockquote>
-    
-                    <span class="review-user-label">- Kapesta user</span>
-                </figure>
-    
-    
-                <!-- Review 5 -->
-                <figure class="review-card">
-                    <div class="review-stars" role="img" aria-label="5 out of 5 stars">
-                        ★★★★★
-                    </div>
-    
-                    <img src="images/photos/fake-user5.jpg" alt="Larkin Olivier Sanchez" class="review-avatar">
-    
-                    <figcaption>Larkin Olivier Sanchez</figcaption>
-    
-                    <blockquote>
-                        <p>"A practical platform. Especially useful when looking for cafés in unfamiliar locations."</p>
-                    </blockquote>
-    
-                    <span class="review-user-label">- Kapesta user</span>
-                </figure>
-    
+
+    <section class="reviews-section" aria-labelledby="reviews-heading">
+        <h2 id="reviews-heading">What Users Say About Kapesta</h2>
+
+        <div class="reviews-grid">
+
+            <!-- Review 1 -->
+            <figure class="review-card">
+                <div class="review-stars" role="img" aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <img src="images/photos/fake-user1.jpg" alt="Amora Elyse Ledezma" class="review-avatar">
+
+                <figcaption>Amora Elyse Ledezma</figcaption>
+
+                <blockquote>
+                    <p>"Kapesta saved me so much time. I can check Wi-Fi and outlets before I leave home instead of
+                        guessing. Btw, found the prettiest little café today!! Adding this to my favorites ♡"</p>
+                </blockquote>
+
+                <span class="review-user-label">- Kapesta user</span>
+            </figure>
+
+
+            <!-- Review 2 -->
+            <figure class="review-card">
+                <div class="review-stars" role="img" aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <img src="images/photos/fake-user2.jpg" alt="Via Rye Diaz" class="review-avatar">
+
+                <figcaption>Via Rye Diaz</figcaption>
+
+                <blockquote>
+                    <p>"Love that I can discover new cafés without having to search through multiple platforms."</p>
+                </blockquote>
+
+                <span class="review-user-label">- Kapesta user</span>
+            </figure>
+
+
+            <!-- Review 3 -->
+            <figure class="review-card">
+                <div class="review-stars" role="img" aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <img src="images/photos/fake-user3.jpg" alt="Luna Valeria" class="review-avatar">
+
+                <figcaption>Luna Valeria</figcaption>
+
+                <blockquote>
+                    <p>"Super helpful ng Kapesta! Hindi na ako nag-iikot sa Cabanatuan para maghanap ng cafe na may
+                        maayos na Wi-Fi at saksakan."</p>
+                </blockquote>
+
+                <span class="review-user-label">- Kapesta user</span>
+            </figure>
+
+
+            <!-- Review 4 -->
+            <figure class="review-card">
+                <div class="review-stars" role="img" aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <img src="images/photos/fake-user4.jpg" alt="Samantha Maureen Vera" class="review-avatar">
+
+                <figcaption>Samantha Maureen Vera</figcaption>
+
+                <blockquote>
+                    <p>"Having hours, menus, and amenities all in one place is great. It feels made for people who study
+                        in cafés."</p>
+                </blockquote>
+
+                <span class="review-user-label">- Kapesta user</span>
+            </figure>
+
+
+            <!-- Review 5 -->
+            <figure class="review-card">
+                <div class="review-stars" role="img" aria-label="5 out of 5 stars">
+                    ★★★★★
+                </div>
+
+                <img src="images/photos/fake-user5.jpg" alt="Larkin Olivier Sanchez" class="review-avatar">
+
+                <figcaption>Larkin Olivier Sanchez</figcaption>
+
+                <blockquote>
+                    <p>"A practical platform. Especially useful when looking for cafés in unfamiliar locations."</p>
+                </blockquote>
+
+                <span class="review-user-label">- Kapesta user</span>
+            </figure>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================================================
+            CONNECT WITH KAPESTA (CTA)
+            ========================================================================== -->
+    <section class="connect-section" aria-labelledby="connect-heading">
+        <h2 class="connect-title">Connect With Kapesta</h2>
+
+        <div class="connect-grid">
+
+            <!-- Card 1: Socials -->
+            <div class="connect-card">
+                <h2 id="connect-heading">Let's Stay Connected</h2>
+
+                <div class="about-social-grid">
+                    <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Facebook Page">
+                        <div class="social-links">
+                            <div class="social-link-image">
+                                <img src="images/icons/facebook-logo-brown.svg" alt="">
+                            </div>
+                            <div class="social-link-content">
+                                <h3>Facebook</h3>
+                                <p>Kapesta Official Page</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Instagram Page">
+                        <div class="social-links">
+                            <div class="social-link-image">
+                                <img src="images/icons/instagram-logo-brown.svg" alt="">
+                            </div>
+                            <div class="social-link-content">
+                                <h3>Instagram</h3>
+                                <p>@kapesta_official</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Twitter Page">
+                        <div class="social-links">
+                            <div class="social-link-image">
+                                <img src="images/icons/twitter-logo-brown.svg" alt="">
+                            </div>
+                            <div class="social-link-content">
+                                <h3>Twitter</h3>
+                                <p>@kapesta_official</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </section>
-    
-        <!-- ==========================================================================
-             CONNECT WITH KAPESTA (CTA)
-             ========================================================================== -->
-        <section class="connect-section" aria-labelledby="connect-heading">
-            <h2 class="connect-title">Connect With Kapesta</h2>
-    
-            <div class="connect-grid">
-    
-                <!-- Card 1: Socials -->
-                <div class="connect-card">
-                    <h2 id="connect-heading">Let's Stay Connected</h2>
-    
-                    <div class="about-social-grid">
-                        <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Facebook Page">
-                            <div class="social-links">
-                                <div class="social-link-image">
-                                    <img src="images/icons/facebook-logo-brown.svg" alt="">
-                                </div>
-                                <div class="social-link-content">
-                                    <h3>Facebook</h3>
-                                    <p>Kapesta Official Page</p>
-                                </div>
-                            </div>
-                        </a>
-    
-                        <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Instagram Page">
-                            <div class="social-links">
-                                <div class="social-link-image">
-                                    <img src="images/icons/instagram-logo-brown.svg" alt="">
-                                </div>
-                                <div class="social-link-content">
-                                    <h3>Instagram</h3>
-                                    <p>@kapesta_official</p>
-                                </div>
-                            </div>
-                        </a>
-    
-                        <a href="#" target="_blank" rel="noopener" title="Visit Kapesta's Twitter Page">
-                            <div class="social-links">
-                                <div class="social-link-image">
-                                    <img src="images/icons/twitter-logo-brown.svg" alt="">
-                                </div>
-                                <div class="social-link-content">
-                                    <h3>Twitter</h3>
-                                    <p>@kapesta_official</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-    
-                <!-- Card 2: Explore -->
-                <div class="connect-card">
-                    <h2>Ready To Find Your Next Coffee Shop?</h2>
-                    <p>Discover great cafes around you, explore recommendations, and find a place worth visiting.</p>
-                    <a href="explore.html" class="connect-btn" title="Explore cafes">Explore</a>
-                </div>
-    
-                <!-- Card 3: Message -->
-                <div class="connect-card">
-                    <h2>Have thoughts or suggestions?</h2>
-                    <p>We'd love to hear from you!<br><br>Tell us what's on your mind. Share your question, feedback, or
-                        concern below, and give us a few details so we can better understand how to help.</p>
-                    <a href="contact.html" class="connect-btn" title="Contact Kapesta">Send us a message</a>
-                </div>
-    
+
+            <!-- Card 2: Explore -->
+            <div class="connect-card">
+                <h2>Ready To Find Your Next Coffee Shop?</h2>
+                <p>Discover great cafes around you, explore recommendations, and find a place worth visiting.</p>
+                <a href="explore.html" class="connect-btn" title="Explore cafes">Explore</a>
             </div>
-        </section>
-    
-        <!-- ==========================================================================
-             FOOTER
-             ========================================================================== -->
-        <footer>
-            <div class="footer-layout">
-                <!-- Website Information -->
-                <div class="footer-information">
-                    <div class="footer-information-logo">
-                        <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
-                    </div>
-                    <p>Find Your Timpla.</p>
-    
-                    <hr />
-    
-                    <!-- Social Media -->
-                    <nav class="footer-social" aria-label="Social media links">
-                        <a href="#" target="_blank" title="Visit Kapesta on Facebook">
-                            <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
-                        </a>
-    
-                        <a href="#" target="_blank" title="Visit Kapesta on Instagram">
-                            <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
-                        </a>
-    
-                        <a href="#" target="_blank" title="Visit Kapesta on Twitter">
-                            <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
-                        </a>
-                    </nav>
+
+            <!-- Card 3: Message -->
+            <div class="connect-card">
+                <h2>Have thoughts or suggestions?</h2>
+                <p>We'd love to hear from you!<br><br>Tell us what's on your mind. Share your question, feedback, or
+                    concern below, and give us a few details so we can better understand how to help.</p>
+                <a href="contact.html" class="connect-btn" title="Contact Kapesta">Send us a message</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+            FOOTER
+            ========================================================================== -->
+    <footer>
+        <div class="footer-layout">
+            <!-- Website Information -->
+            <div class="footer-information">
+                <div class="footer-information-logo">
+                    <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
                 </div>
-    
-                <!-- Footer Navigation -->
-                <nav class="footer-links" aria-label="Footer navigation">
-                    <div class="footer-link-field">
-                        <h3 class="footer-nav-title">Platform</h3>
-                        <a href="index.html">Home</a>
-                        <a href="#">Explore Cafes</a>
-                        <a href="about.html">About Us</a>
-                        <a href="contact.html">Contact Us</a>
-                    </div>
-    
-                    <div class="footer-link-field">
-                        <h3 class="footer-nav-title">Support</h3>
-                        <a href="report.html">Report an Issue</a>
-                    </div>
-    
-                    <div class="footer-link-field">
-                        <h3 class="footer-nav-title">Legal</h3>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms and Conditions</a>
-                    </div>
+                <p>Find Your Timpla.</p>
+
+                <hr />
+
+                <!-- Social Media -->
+                <nav class="footer-social" aria-label="Social media links">
+                    <a href="#" target="_blank" title="Visit Kapesta on Facebook">
+                        <img src="images/icons/facebook-logo-white.svg" alt="Facebook Logo">
+                    </a>
+
+                    <a href="#" target="_blank" title="Visit Kapesta on Instagram">
+                        <img src="images/icons/instagram-logo-white.svg" alt="Instagram Logo">
+                    </a>
+
+                    <a href="#" target="_blank" title="Visit Kapesta on Twitter">
+                        <img src="images/icons/twitter-logo-white.svg" alt="Twitter Logo">
+                    </a>
                 </nav>
             </div>
-    
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <hr />
-                <small>&copy; 2026 Kapesta. All rights reserved.</small>
-            </div>
-        </footer>
-    
-        <script src="scripts/index.js" defer></script>
-        <script src="scripts/header.js" defer></script>
-        <script src="scripts/navigation.js"></script>
-    </body>
+
+            <!-- Footer Navigation -->
+            <nav class="footer-links" aria-label="Footer navigation">
+                <div class="footer-link-field">
+                    <h3 class="footer-nav-title">Platform</h3>
+                    <a href="index.html">Home</a>
+                    <a href="#">Explore Cafes</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+
+                <div class="footer-link-field">
+                    <h3 class="footer-nav-title">Support</h3>
+                    <a href="report.html">Report an Issue</a>
+                </div>
+
+                <div class="footer-link-field">
+                    <h3 class="footer-nav-title">Legal</h3>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms and Conditions</a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <hr />
+            <small>&copy; 2026 Kapesta. All rights reserved.</small>
+        </div>
+    </footer>
+    <script src="scripts/index.js" defer></script>
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/auth.js" defer></script>
+</body>
 
 </html>
