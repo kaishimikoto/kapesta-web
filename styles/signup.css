@@ -1,0 +1,515 @@
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Page: background photo, card centered on screen */
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 70px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #483524;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* BACK TO HOME LINK (top left) */
+
+.back-home {
+    position: absolute;
+    top: 20px;
+    left: clamp(1rem, 5vw, 4rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s ease;
+}
+
+.back-home:hover {
+    opacity: 0.75;
+}
+
+.back-home:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.back-home .back-arrow {
+    width: auto;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    /* forces the icon to white */
+}
+
+/* SIGN UP BOX */
+
+.signupform-box {
+    width: 70%;
+    max-width: 1000px;
+    min-height: 500px;
+
+    background: #ffffff;
+    border-radius: 24px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+}
+
+
+/* FORM */
+
+form {
+    width: 100%;
+    padding: 28px 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+}
+
+
+/* HEADER */
+
+header {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+header h1 {
+    margin: 0 0 7px;
+
+    font-size: clamp(21px, 2vw, 25px);
+    font-weight: bold;
+    color: #403329;
+}
+
+header p {
+    margin: 0;
+
+    font-size: clamp(10px, 1vw, 12px);
+    color: #222222;
+}
+
+/* GOOGLE BUTTON */
+
+.google-btn {
+    width: 100%;
+    height: 34px;
+
+    border: solid 1px #a5a5a5;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #000000;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+
+    cursor: pointer;
+}
+
+.google-btn:hover {
+    background: #483524;
+    color: #ffffff;
+}
+
+/* OR DIVIDER */
+
+.divider {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 5px 0;
+}
+
+.divider hr {
+    flex: 1;
+
+    border: none;
+    border-top: 1px solid #d0d0d0;
+}
+
+.divider span {
+    font-size: clamp(10px, 1vw, 12px);
+    color: #333333;
+}
+
+/* LABELS */
+
+label {
+    margin-bottom: 4px;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+    font-weight: bold;
+    color: #222222;
+}
+
+
+/* INPUT FIELDS */
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    height: 34px;
+
+    margin-bottom: 8px;
+
+    padding: 0 9px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #e5e0db;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+}
+
+input::placeholder {
+    color: #222222;
+}
+
+input:focus {
+    outline: 1px solid #777777;
+}
+
+/* Password field with the eye button */
+.password-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.password-wrapper input {
+    margin-bottom: 0;
+    padding-right: 44px;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: #5a4636;
+    cursor: pointer;
+}
+
+.password-wrapper .toggle-password:hover {
+    color: #000;
+}
+
+.password-wrapper .toggle-password svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+/* Hide the slashed eye by default, swap when the password is visible */
+.password-wrapper .toggle-password .icon-eye-off {
+    display: none;
+}
+
+.password-wrapper .toggle-password.is-visible .icon-eye {
+    display: none;
+}
+
+.password-wrapper .toggle-password.is-visible .icon-eye-off {
+    display: block;
+}
+
+/* Hide Edge's built-in reveal icon */
+input::-ms-reveal {
+    display: none;
+}
+
+/* Validation messages */
+.error {
+    display: block;
+    margin-bottom: 6px;
+    color: #d93025;
+    font-size: 0.75rem;
+}
+
+.error:empty {
+    display: none;
+    /* no gap when there's no error */
+}
+
+input.invalid {
+    outline: 1px solid #d93025;
+}
+
+
+/* CREATE ACCOUNT BUTTON */
+
+input[type="submit"] {
+    width: 100%;
+    height: 34px;
+
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #483524;
+    color: #ffffff;
+
+    font-size: clamp(10px, 1.3vw, 12px);
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #3b2b1d;
+}
+
+.terms {
+    font-size: 9px;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.terms a {
+    font-size: 9px;
+    color: #483524;
+    font-weight: bold;
+}
+
+
+/* LOGIN */
+
+.login {
+    margin-top: 10px;
+    text-align: center;
+
+    font-size: clamp(9px, 1vw, 12px);
+    color: #222222;
+}
+
+.login a {
+    color: #222222;
+    text-decoration: underline;
+}
+
+
+/* RIGHT SIDE IMAGE */
+
+/* RIGHT SIDE IMAGE */
+.signup-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.signup-image img {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Alert popup */
+.alert-modal {
+    width: min(90%, 360px);
+    padding: 24px;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.alert-modal::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.alert-modal h2 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    color: #403329;
+}
+
+.alert-modal p {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    color: #222;
+}
+
+.alert-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.alert-primary,
+.alert-close {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.alert-primary {
+    background: #483524;
+    color: #fff;
+    border: none;
+}
+
+.alert-primary:hover {
+    background: #3b2b1d;
+}
+
+.alert-close {
+    padding: 0;
+    background: #fff;
+    color: #000;
+    border: 1px solid #483524;
+}
+
+/* MOBILE RWD */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 60px 15px 20px;
+        align-items: flex-start;
+    }
+
+    .back-home {
+        top: 16px;
+        left: 15px;
+        gap: 6px;
+        font-size: 0.9rem;
+    }
+
+    .back-home .back-arrow {
+        height: 16px;
+    }
+
+    .signupform-box {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+
+        grid-template-columns: 1fr;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+    }
+
+    /* Form comes first */
+    form {
+        padding: 25px 20px;
+    }
+
+    header {
+        margin-bottom: 18px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+        height: 45px;
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+
+    /* Must come after the rule above */
+    .password-wrapper {
+        margin-bottom: 16px;
+    }
+
+    .password-wrapper input {
+        margin-bottom: 0;
+    }
+
+    input[type="submit"] {
+        height: 45px;
+        margin-top: 6px;
+
+        font-size: 14px;
+    }
+
+    .divider {
+        margin: 9px 0;
+    }
+
+    .divider span {
+        font-size: 11px;
+    }
+
+    .google-btn {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .login {
+        margin-top: 25px;
+        font-size: 11px;
+    }
+
+    /* Image becomes a smaller section */
+    .signup-image {
+        height: 180px;
+    }
+
+    .signup-image img {
+        border-radius: 10px;
+    }
+}
