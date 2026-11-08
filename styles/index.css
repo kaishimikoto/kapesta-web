@@ -170,6 +170,26 @@ a {
     position: relative;
 }
 
+/* "Signed in as" label (not clickable) */
+.dropdown-user {
+    display: block;
+    padding: 10px 16px;
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-break: break-all;
+    border-bottom: 1px solid var(--color-brown);
+}
+
+.dropdown-user strong {
+    color: var(--color-white);
+}
+
+/* Wider dropdown so emails fit */
+.profile-dropdown {
+    min-width: 180px;
+}
+
 /* Profile button */
 .profile-toggle {
     display: flex;
@@ -387,7 +407,7 @@ a {
 /* Extra space at the end of the track */
 .slider-track::after {
     content: "";
-    flex: 0 0 40px;
+    flex: 0 0 0px;
 }
 
 /* Video card */
@@ -507,7 +527,8 @@ a {
     }
 
     .slider-btn {
-        display: flex;              /* was: none */
+        display: flex;
+        /* was: none */
         align-items: center;
         justify-content: center;
         width: 36px;
@@ -603,6 +624,7 @@ a {
         max-width: 420px;
     }
 }
+
 
 
 /* ==========================================================================
@@ -746,6 +768,7 @@ a {
         max-width: 320px;
     }
 }
+
 
 
 /* ==========================================================================
@@ -985,6 +1008,143 @@ footer a:hover {
 .footer-bottom small {
     display: block;
     margin-top: 16px;
+}
+
+/*-----------RWD---------------*/
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: 1px solid var(--color-copper);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hamburger lines */
+.nav-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--color-copper);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Hamburger turns into an X when the menu is open */
+.navbar.menu-open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar.menu-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar.menu-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Solid navbar background while the menu is open */
+.navbar.menu-open {
+    background-color: rgba(0, 0, 0, 0.92);
+}
+
+/* Tablets and phones: hamburger menu */
+@media (max-width: 768px) {
+
+    /* Touch screens: no hover zone, and the navbar never slides away */
+    .nav-hover-zone {
+        display: none;
+    }
+
+    .navbar.hide {
+        transform: none;
+    }
+
+    /* Smaller logo */
+    .logo {
+        width: 8em;
+        height: 3.2em;
+    }
+
+    /* Show the hamburger button */
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Menu panel under the navbar (hidden until opened) */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 16px var(--page-gutter) 24px;
+        background: rgba(0, 0, 0, 0.92);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    /* Menu panel when open (class added by header.js) */
+    .navbar.menu-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Full-width, easy-to-tap links */
+    .nav-links a {
+        display: block;
+        padding: 12px 10px;
+    }
+
+    /* Profile section moves to the top, with a separator below it */
+    .profile-menu {
+        order: -1;
+        margin-bottom: 8px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(193, 127, 66, 0.5);
+    }
+
+    /* "PROFILE" becomes a plain label above Log in / Sign up */
+    .profile-toggle {
+        width: 100%;
+        padding: 8px 10px;
+        color: var(--color-gold);
+        pointer-events: none;
+    }
+
+    /* No dropdown arrow in the mobile menu */
+    .profile-toggle .caret {
+        display: none;
+    }
+
+    /* Log in / Sign up always visible, listed under PROFILE */
+    .profile-dropdown {
+        position: static;
+        min-width: 0;
+        padding: 0 0 0 10px;
+        background: none;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    /* Dropdown links */
+    .profile-dropdown a {
+        padding: 10px;
+    }
 }
 
 /* -------------------- Footer ---------------------------------- */
