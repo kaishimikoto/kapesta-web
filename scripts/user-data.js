@@ -117,11 +117,9 @@ function updateUserProfile(updatedDetails) {
 // ========================================
 // FAVORITE CAFES
 // ========================================
-
 function getFavoriteCafeIds() {
     return JSON.parse(localStorage.getItem("favoriteCafes")) || [];
 }
-
 
 function toggleFavoriteCafe(cafeId) {
     const favoriteIds = getFavoriteCafeIds();
