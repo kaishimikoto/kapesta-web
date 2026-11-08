@@ -126,6 +126,15 @@ function renderReviews(reviewsToDisplay) {
     reviewsToDisplay.forEach((review, index) => {
         const reviewCard = document.createElement("div");
 
+        const loggedInUser = getCurrentUser();
+
+        const reviewerPhoto =
+            loggedInUser &&
+            review.userName?.trim().toLowerCase() ===
+            loggedInUser.username?.trim().toLowerCase()
+                ? loggedInUser.profilePicture
+                : "images/icons/user-profile.svg";
+
         reviewCard.classList.add("review");
         reviewCard.dataset.stars = review.reviewRating;
 
@@ -151,7 +160,7 @@ function renderReviews(reviewsToDisplay) {
                 <div class="rating-info">
                     <div class="username-rating-date">
                         <img
-                            src="images/icons/user-profile.svg"
+                            src="${reviewerPhoto || "images/icons/user-profile.svg"}"
                             alt="User profile image"
                             class="user-profile"
                         >
