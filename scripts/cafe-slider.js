@@ -1,95 +1,121 @@
+
 // ============== CAFE SLIDERS ==============
 
-const cafeRows = document.querySelectorAll(".cafe-row");
+let cafeSliderResizeHandlers = [];
 
-cafeRows.forEach(function(row) {
+function initializeCafeSliders() {
 
-    const viewport = row.querySelector(".cafes-viewport");
-    const container = row.querySelector(".cafes-container");
-    const leftButton = row.querySelector(".left-btn");
-    const rightButton = row.querySelector(".right-btn");
+    // Remove old resize listeners
+    cafeSliderResizeHandlers.forEach(function(handler) {
+        window.removeEventListener("resize", handler);
+    });
 
-    if (!viewport || !container || !leftButton || !rightButton) return;
+    cafeSliderResizeHandlers = [];
 
-    const cafes = Array.from(container.querySelectorAll(".cafe-item"));
+    const cafeRows = document.querySelectorAll(".cafe-row");
 
-    function getSnapPosition() {
-        const styles = getComputedStyle(viewport);
-        const padding = parseFloat(styles.scrollPaddingLeft) || 0;
+    cafeRows.forEach(function(row) {
 
-        return viewport.getBoundingClientRect().left
-            + viewport.clientLeft
-            + padding;
-    }
+        const viewport = row.querySelector(".cafes-viewport");
+        const container = row.querySelector(".cafes-container");
+        const leftButton = row.querySelector(".left-btn");
+        const rightButton = row.querySelector(".right-btn");
 
-    function getCurrentCafeIndex() {
-        const snapPosition = getSnapPosition();
+        if (!viewport || !container || !leftButton || !rightButton) return;
 
-        let closestIndex = 0;
-        let closestDistance = Infinity;
+        const cafeCards = Array.from(
+            container.querySelectorAll(".cafe-item")
+        );
 
-        cafes.forEach(function(cafe, index) {
-            const distance = Math.abs(
-                cafe.getBoundingClientRect().left - snapPosition
-            );
+        // Get the exact left edge where cards should align
+        function getAlignmentPosition() {
+            const styles = getComputedStyle(viewport);
 
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestIndex = index;
+            return viewport.getBoundingClientRect().left
+                + viewport.clientLeft
+                + parseFloat(styles.paddingLeft);
+        }
+
+        // Find the card currently aligned with the viewport
+        function getCurrentCafeIndex() {
+
+            const alignmentPosition = getAlignmentPosition();
+
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            cafeCards.forEach(function(cafe, index) {
+
+                const distance = Math.abs(
+                    cafe.getBoundingClientRect().left - alignmentPosition
+                );
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            return closestIndex;
+        }
+
+        // Align the selected card exactly with the viewport
+        function scrollToCafe(index) {
+
+            const cafe = cafeCards[index];
+
+            if (!cafe) return;
+
+            const alignmentPosition = getAlignmentPosition();
+
+            const difference =
+                cafe.getBoundingClientRect().left - alignmentPosition;
+
+            viewport.scrollTo({
+                left: viewport.scrollLeft + difference,
+                behavior: "smooth"
+            });
+        }
+
+        // Show or hide arrows depending on scroll position
+        function updateButtons() {
+
+            const maxScroll =
+                viewport.scrollWidth - viewport.clientWidth;
+
+            const atStart = viewport.scrollLeft <= 1;
+            const atEnd = viewport.scrollLeft >= maxScroll - 2;
+
+            leftButton.style.display = atStart ? "none" : "";
+            rightButton.style.display = atEnd ? "none" : "";
+        }
+
+        rightButton.addEventListener("click", function() {
+
+            const currentIndex = getCurrentCafeIndex();
+
+            if (currentIndex < cafeCards.length - 1) {
+                scrollToCafe(currentIndex + 1);
             }
         });
 
-        return closestIndex;
-    }
+        leftButton.addEventListener("click", function() {
 
-    function scrollToCafe(index) {
-        const cafe = cafes[index];
+            const currentIndex = getCurrentCafeIndex();
 
-        if (!cafe) return;
-
-        const targetPosition =
-            viewport.scrollLeft +
-            cafe.getBoundingClientRect().left -
-            getSnapPosition();
-
-        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
-
-        viewport.scrollTo({
-            left: Math.max(0, Math.min(targetPosition, maxScroll)),
-            behavior: "smooth"
+            if (currentIndex > 0) {
+                scrollToCafe(currentIndex - 1);
+            }
         });
-    }
 
-    function updateButtons() {
-        const atStart = viewport.scrollLeft <= 1;
+        viewport.addEventListener("scroll", updateButtons);
 
-        const atEnd =
-            viewport.scrollLeft + viewport.clientWidth >=
-            viewport.scrollWidth - 1;
+        cafeSliderResizeHandlers.push(updateButtons);
 
-        leftButton.style.display = atStart ? "none" : "";
-        rightButton.style.display = atEnd ? "none" : "";
-    }
-
-    rightButton.addEventListener("click", function() {
-        const currentIndex = getCurrentCafeIndex();
-
-        if (currentIndex < cafes.length - 1) {
-            scrollToCafe(currentIndex + 1);
-        }
+        updateButtons();
     });
 
-    leftButton.addEventListener("click", function() {
-        const currentIndex = getCurrentCafeIndex();
-
-        if (currentIndex > 0) {
-            scrollToCafe(currentIndex - 1);
-        }
+    cafeSliderResizeHandlers.forEach(function(handler) {
+        window.addEventListener("resize", handler);
     });
-
-    viewport.addEventListener("scroll", updateButtons);
-    window.addEventListener("resize", updateButtons);
-
-    updateButtons();
-
-});
+}
