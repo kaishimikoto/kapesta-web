@@ -55,6 +55,10 @@ if (discoverMoreCafes.length > 0) {
             </div>
         `;
 
+        cafeCard.addEventListener("click", function() {
+            window.location.href = `current-cafe-info.html?id=${cafe.id}`;
+        });
+
         discoverMoreContainer.appendChild(cafeCard);
 
     });
@@ -65,6 +69,9 @@ if (discoverMoreCafes.length > 0) {
         "No other cafes available in this barangay yet.";
 
 }
+
+// Initialize the Discover More slider
+initializeCafeSliders();
 
 /* OLD
 // Change the heading
