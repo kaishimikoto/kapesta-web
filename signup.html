@@ -1,60 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up | Kapesta</title>
-        <link rel="stylesheet" href="signup.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="signupform-box">
-            <form action="#" method="post">
-                <header>
-                    <h1>SIGN UP FORM</h1>
-                    <p>Welcome to Kapesta! Let's create an account.</p>
-                </header>
 
-                <button type="button" class="google-btn">
-                    Create an account with Google
-                </button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Kapesta</title>
+    <link rel="icon" type="image/png" href="images/kapesta-icon.png">
+    <link rel="stylesheet" href="styles/signup.css">
 
-                <div class="divider">
-                    <hr>
-                    <span>OR</span>
-                    <hr>
-                </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+</head>
 
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address" autofocus required>
+<body style="background-image: url('images/sign-in-bg.png'); ">'
 
-                <label for="pword">Password</label>
-                <input type="password" id="pword" name="pword" placeholder="Enter your password" required>
+    <!-- ==========================================================================
+         BACK TO HOME LINK
+         ========================================================================== -->
+    <a href="index.html" class="back-home">
+        <img src="images/icons/back-arrow.png" alt="" class="back-arrow">
+        Back to Home
+    </a>
 
-                <label for="uname">Username</label>
-                <input type="text" id="uname" name="uname" placeholder="Enter your username" required>
+    <!-- ==========================================================================
+         SIGN UP CARD
+         ========================================================================== -->
+    <div class="signupform-box">
+        <form id="signup-form" action="#" method="post" novalidate>
+            <header>
+                <h1>SIGN UP FORM</h1>
+                <p>Welcome to Kapesta! Let's create an account.</p>
+            </header>
 
-                <input type="submit" value="Create an account">
+            <button type="button" class="google-btn">
+                Create an account with Google
+            </button>
 
-                <label class="terms">
-                    <input type="checkbox" name="terms" value="accepted" required>
-                    <span>
-                        By signing up, you agree to our
-                        <a href="terms.html">Terms and conditions</a>
-                        and
-                        <a href="privacypolicy.html">Privacy policy.</a>
-                    </span>
-                </label>
-
-                <p class="login">Already have an account? 
-                    <a href="login.html">Login</a>
-                </p>
-            </form>
-            <div class="signup-image">
-                <img src="images/rizky-subagja-1k7TnX5GAww-unsplash.jpg" alt="An image of a cafe">
+            <div class="divider">
+                <hr>
+                <span>OR</span>
+                <hr>
             </div>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email"
+                maxlength="254" autofocus required>
+            <span class="error" id="email-error" aria-live="polite"></span>
+
+            <label for="uname">Username</label>
+            <input type="text" id="uname" name="uname" placeholder="Enter your username" autocomplete="username"
+                minlength="3" maxlength="20" required>
+            <span class="error" id="uname-error" aria-live="polite"></span>
+
+            <label for="pword">Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="pword" name="pword" placeholder="Enter your password"
+                    autocomplete="new-password" minlength="8" maxlength="64" required>
+
+                <button type="button" class="toggle-password" aria-label="Show password" aria-pressed="false">
+                    <svg class="icon-eye" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+
+                    <svg class="icon-eye-off" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                    </svg>
+                </button>
+            </div>
+            <span class="error" id="pword-error" aria-live="polite"></span>
+            <span class="error" id="pword-error" aria-live="polite"></span>
+
+            <input type="submit" value="Create an account">
+
+            <label class="terms">
+                <input type="checkbox" id="terms" name="terms" value="accepted" required>
+                <span>
+                    By signing up, you agree to our
+                    <a href="terms.html">Terms and conditions</a>
+                    and
+                    <a href="privacypolicy.html">Privacy policy.</a>
+                </span>
+            </label>
+            <span class="error" id="terms-error" aria-live="polite"></span>
+
+            <p class="login">Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+        </form>
+
+        <div class="signup-image">
+            <img src="images/rizky-subagja-1k7TnX5GAww-unsplash.jpg" alt="Sign Up Side Image">
         </div>
-    </body>
+    </div>
+
+    <script src="scripts/signup.js" defer></script>
+    <script src="scripts/toggle-password.js" defer></script>
+    <script src="scripts/users.js" defer></script>
+    <script src="scripts/modal.js" defer></script>
+</body>
+
 </html>
