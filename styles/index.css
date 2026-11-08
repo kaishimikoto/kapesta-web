@@ -462,10 +462,57 @@ a {
     right: 0;
 }
 
-/* Hide slider buttons on phones (swipe instead) */
+/* ==========================================================================
+   CAFE SPOTLIGHT: RESPONSIVE (RWD)
+   ========================================================================== */
+
+/* Snap cards into place so button clicks and swipes land cleanly */
+.slider-track {
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 60px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.videos {
+    scroll-snap-align: start;
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .cafe-spotlight {
+        padding: 40px var(--page-gutter);
+    }
+}
+
+/* Phones: keep the buttons, just make them smaller */
 @media (max-width: 600px) {
+    .cafe-spotlight {
+        padding: 30px 12px;
+    }
+
+    .cafe-spotlight .title {
+        padding: 10px;
+    }
+
+    .slider-track {
+        gap: 12px;
+        padding: 8px 40px;
+        scroll-padding-inline: 40px;
+    }
+
+    /* Card scales with the screen instead of a fixed 240px */
+    .videos {
+        flex: 0 0 min(240px, 68vw);
+        padding: 6px;
+    }
+
     .slider-btn {
-        display: none;
+        display: flex;              /* was: none */
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
     }
 }
 
