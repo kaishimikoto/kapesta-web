@@ -2,42 +2,58 @@
 (function () {
     const label = document.getElementById('profileLabel');
     const dropdown = document.getElementById('profileDropdown');
+
     if (!label || !dropdown) return;
 
-    let user = null;
-    try {
-        user = JSON.parse(sessionStorage.getItem('kapestaUser'));
-    } catch (e) { }
+    if (!isLoggedIn()) return;
 
-    if (!user) return; // not logged in: keep the default Log in / Sign up
+    const user = getCurrentUser();
 
-    // Show the first name in the navbar button
+    if (!user) return;
+
+    // Show first name in navbar
     label.textContent = user.name.split(' ')[0].toUpperCase();
 
-    // Rebuild the dropdown: signed-in label + Log out
     dropdown.innerHTML = '';
 
+    // Signed in as
     const infoItem = document.createElement('li');
     const info = document.createElement('span');
+
     info.className = 'dropdown-user';
     info.append('Signed in as');
     info.appendChild(document.createElement('br'));
+
     const strong = document.createElement('strong');
-    strong.textContent = user.email;   // textContent keeps it safe
+    strong.textContent = user.email;
+
     info.appendChild(strong);
     infoItem.appendChild(info);
 
+    // My Profile
+    const profileItem = document.createElement('li');
+    const profileLink = document.createElement('a');
+
+    profileLink.href = 'profile.html';
+    profileLink.textContent = 'My Profile';
+
+    profileItem.appendChild(profileLink);
+
+    // Log out
     const logoutItem = document.createElement('li');
     const logout = document.createElement('a');
+
     logout.href = '#';
     logout.id = 'logoutBtn';
     logout.textContent = 'Log out';
+
     logout.addEventListener('click', (e) => {
         e.preventDefault();
-        sessionStorage.removeItem('kapestaUser');
+        logoutUser();
         window.location.href = 'index.html';
     });
+
     logoutItem.appendChild(logout);
 
-    dropdown.append(infoItem, logoutItem);
+    dropdown.append(infoItem, profileItem, logoutItem);
 })();
