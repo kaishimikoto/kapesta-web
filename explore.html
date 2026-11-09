@@ -10,37 +10,44 @@
     </head>
     <body>
 
-        <!-- NAV BAR -->
-        <div class="explore-hero">
-
-            <div class="nav-hover-zone"></div>
-
-            <header>
-                <nav class="navbar">
+        <!-- ==========================================================================
+        NAVBAR
+        ========================================================================== -->
+        <div class="nav-hover-zone"></div>
+    
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="logo-link">
                     <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
-
-
-                    <ul class="nav-links">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="explore.html">EXPLORE</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                        <li><a href="about.html">ABOUT</a></li>
-
-
-                        <li class="profile-menu">
-                            <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
-                                PROFILE <span class="caret">&#9662;</span>
-                            </button>
-
-
-                            <ul class="profile-dropdown">
-                                <li><a href="login.html">Log in</a></li>
-                                <li><a href="signup.html">Sign up</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </header>   
+                </a>
+    
+                <!-- Hamburger button (visible on mobile only) -->
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="navLinks">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+    
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="explore.html">EXPLORE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+    
+                    <li class="profile-menu">
+                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                            <span id="profileLabel">PROFILE</span> <span class="caret">&#9662;</span>
+                        </button>
+    
+                        <ul class="profile-dropdown" id="profileDropdown">
+                            <li><a href="login.html">Log in</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
             
             <div class="explore-hero-contents">
 
@@ -84,9 +91,13 @@
                     <label for="barangay">BARANGAY</label>
                     <select id="barangay" name="barangay" onchange="selectBarangay()">
                         <option value="allBrgy" selected>All barangays</option>
-                        <option value="Sangitan">Sangitan</option>
+                        <option value="Sumacab Este">Sumacab Este</option>
                         <option value="Kapitan Pepe">Kapitan Pepe</option>
-                        <option value="Barangay mo hehe">Barangay mo hehe</option>
+                        <option value="Mabini Homesite">Mabini Homesite</option>
+                        <option value="Aduas Centro">Aduas Centro</option>
+                        <option value="Bitas">Bitas</option>
+                        <option value="Magsaysay District">Magsaysay District</option>
+                        <option value="Sumacab Norte">Sumacab Norte</option>
                     </select>
                 </div>
                 
