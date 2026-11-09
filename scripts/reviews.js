@@ -30,6 +30,7 @@ const ratingFilter = document.getElementById("rating-filter");
 console.log("Cafe ID:", cafeId);
 console.log("Selected cafe:", selectedCafe);
 console.log("Selected cafe reviews:", selectedCafe?.listOfReviews);
+
 // LOAD SAVED REVIEWS FROM LOCAL STORAGE
 if (selectedCafe) {
     const savedReviews = getReviewsForCafe(selectedCafe.id);
@@ -53,7 +54,6 @@ if (selectedCafe) {
 const isAllReviewsPage = window.location.pathname.endsWith("all-cafe-reviews.html");
 
 // AVERAGE RATING AND REVIEW COUNT
-
 function updateReviewSummary() {
     const totalReviews = selectedCafe.listOfReviews.length;
 
@@ -237,7 +237,6 @@ function renderReviews(reviewsToDisplay) {
 }
 
 // INITIAL DISPLAY
-
 updateReviewSummary();
 updateRatingBars();
 
@@ -315,7 +314,7 @@ if (reviewPhotoInput) {
 }
 
 if (reviewForm) {
-    reviewForm.addEventListener("submit", async function(event) { // We add async because converting images takes a little time.
+    reviewForm.addEventListener("submit", async function(event) { // Add async because converting images takes a little time.
         event.preventDefault();
 
         if (!isLoggedIn()) {
