@@ -171,12 +171,23 @@ footer a:focus-visible {
         width: 104px;
     }
 
-    /* Predictable two-column grid; Legal sits on its own row below */
+    /* Three columns: Platform, Support, Legal */
     .footer-links {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px 12px;
         text-align: left;
+        justify-content: stretch;
+    }
+
+    .footer-link-field a {
+        font-size: 0.8125rem;
+        overflow-wrap: break-word;
+    }
+
+    .footer-nav-title {
+        font-size: 0.75rem;
+        letter-spacing: 0.25px;
     }
 
     .footer-bottom {
