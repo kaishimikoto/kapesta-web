@@ -99,22 +99,21 @@ class Cafe {
       this.location = location;
       this.barangay = barangay;
 
-      // 1. If no photos are provided, pick a unique set from the global gallery pool using the ID
-        if (photos && photos.length > 0) {
-            this.photos = photos;
-        } else {
-            // Offset the slice index using the cafe ID so different cafes get different photos!
-            const startIndex = (id * 2) % globalGalleryPool.length;
-            this.photos = [
-                globalGalleryPool[startIndex % globalGalleryPool.length],
-                globalGalleryPool[(startIndex + 1) % globalGalleryPool.length],
-                globalGalleryPool[(startIndex + 2) % globalGalleryPool.length],
-                globalGalleryPool[(startIndex + 3) % globalGalleryPool.length]
-            ];
-        }
+      // 1. If no photos are provided, pick a unique set of 8 from the global gallery pool using the ID
+      if (photos && photos.length > 0) {
+          this.photos = photos;
+      } else {
+          // Offset the slice index using the cafe ID so different cafes get different photos!
+          const startIndex = (id * 2) % globalGalleryPool.length;
+        
+          // Generates an array of 8 photos sequentially from the pool
+          this.photos = Array.from({ length: 8 }, (_, i) => 
+              globalGalleryPool[(startIndex + i) % globalGalleryPool.length]
+          );
+      }
 
-        // 2. Assign the cover image (use provided one, or fall back to a unique photo from the pool based on ID)
-        this.coverImage = coverImage || photoPool[id % photoPool.length];
+      // 2. Assign the cover image (use provided one, or fall back to a unique photo from the pool based on ID)
+      this.coverImage = coverImage || photoPool[id % photoPool.length];
 
       // Cafe First Details
       this.averagePrice = averagePrice;
@@ -187,11 +186,8 @@ class Cafe {
    }
 }
 
-
-
 /* =========================================
    SAMPLE CAFE DATA
-   Requires your existing Cafe and Review classes
    ========================================= */
 
 const cafe1 = new Cafe({
@@ -200,9 +196,7 @@ const cafe1 = new Cafe({
   description: "A cozy and modern café perfect for studying, working, and spending time with friends. Enjoy coffee, snacks, and a relaxing atmosphere.",
   location: "H. Concepcion",
   barangay: "Sumacab Este",
-  coverImage: "images/3rdspace/3rdspace-photo16.jpg",
-
-  //possible options: 3, 5..? 6, 11, 12, 13, 15, 16
+  coverImage: "images/3rdspace/3rdspace-photo1.jpg",
 
   photos: [
       "images/3rdspace/3rdspace-photo1.jpg",
@@ -232,18 +226,7 @@ const cafe1 = new Cafe({
       "images/3rdspace/3rdspace-photo25.jpg",
       "images/3rdspace/3rdspace-photo26.jpg",
       "images/3rdspace/3rdspace-photo27.jpg"
-         /*
-        "pictures/cafe3.jpg",
-        "pictures/coffee1.jpg",
-        "pictures/chincafe.JPG",
-        "pictures/blckcoffee.PNG",
-        "pictures/cafe-background.jpg",
-        "pictures/blckcoffee.PNG",
-        "pictures/coffee2.jpg",
-        "pictures/kate-laine-wtwP4tI0R08-unsplash.jpg",
-        "pictures/pexels-intitupac-5373242.jpg",
-        "pictures/cafe3.jpg"*/
-    ],
+  ],
 
   averagePrice: "₱100 - ₱150",
   seatCapacity: 20,
@@ -256,24 +239,10 @@ const cafe1 = new Cafe({
   website: "https://example.com/3rd-space",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        },
-        {
-            platform: "Telegram",
-            url: "https://www.telegram.com"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" },
+        { platform: "Telegram", url: "https://www.telegram.com" }
     ],
-  /*socialLinks: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    twitter: ""
-  },*/
 
   workingHours: {
     monday: "8:00 AM - 12:00 AM",
@@ -287,7 +256,6 @@ const cafe1 = new Cafe({
 
   wifiStrength: 3,
   powerOutletsNumber: 12,
-
   airConditioningLevel: 2,
   noiseLevel: 1,
   isOpenSpace: true,
@@ -308,6 +276,57 @@ const cafe1 = new Cafe({
   }
 });
 
+// Demo Reviews for 3rd Space
+// Review 1
+const review1 = new Review(
+   "haewon17",
+   "2026-10-15",
+   "The coffee was great, and the atmosphere was cozy. A nice place to relax with friends!",
+   ["pictures/chncafe.PNG", "pictures/coffee1.jpg"],
+   5
+);
+
+// Review 2
+const review2 = new Review(
+   "coffeeFan",
+   "2026-10-17",
+   "Good drinks and friendly staff. The seating area could be a little quieter during busy hours.",
+   [],
+   4
+);
+
+// Review 3
+const review3 = new Review(
+   "studyBuddy",
+   "2026-10-20",
+   "A comfortable place to study because of the Wi-Fi and power outlets. I would love more available seats.",
+   [],
+   4
+);
+
+const review4 = new Review(
+    "aespa",
+    "2026-10-24",
+    "The staff are very friendly and accomodating. Coffee was nice as well (:",
+    ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
+    5
+);
+
+const review5 = new Review(
+    "Alex",
+    "2026-10-8",
+    "The coffee was okay, the matcha was my favorite",
+    [],
+    4
+);
+
+// Add Reviews to the 3rd Space Cafe Object
+cafe1.addReview(review1);
+cafe1.addReview(review2);
+cafe1.addReview(review3);
+cafe1.addReview(review4);
+cafe1.addReview(review5);
+
 const cafe2 = new Cafe({
   id: 2,
   name: "Bean & Bloom Café",
@@ -325,14 +344,8 @@ const cafe2 = new Cafe({
   website: "https://example.com/bean-and-bloom",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
@@ -347,7 +360,6 @@ const cafe2 = new Cafe({
 
   wifiStrength: 2,
   powerOutletsNumber: 6,
-
   airConditioningLevel: 3,
   noiseLevel: 2,
   isOpenSpace: true,
@@ -385,14 +397,8 @@ const cafe3 = new Cafe({
   website: "https://example.com/study-grounds",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
@@ -407,7 +413,6 @@ const cafe3 = new Cafe({
 
   wifiStrength: 3,
   powerOutletsNumber: 30,
-
   airConditioningLevel: 3,
   noiseLevel: 1,
   isOpenSpace: false,
@@ -445,14 +450,8 @@ const cafe4 = new Cafe({
   website: "https://example.com/midnight-brew",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
@@ -467,7 +466,6 @@ const cafe4 = new Cafe({
 
   wifiStrength: 2,
   powerOutletsNumber: 8,
-
   airConditioningLevel: 3,
   noiseLevel: 2,
   isOpenSpace: false,
@@ -505,14 +503,8 @@ const cafe5 = new Cafe({
   website: "https://example.com/sunny-side",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
@@ -527,7 +519,6 @@ const cafe5 = new Cafe({
 
   wifiStrength: 2,
   powerOutletsNumber: 5,
-
   airConditioningLevel: 2,
   noiseLevel: 3,
   isOpenSpace: true,
@@ -548,56 +539,102 @@ const cafe5 = new Cafe({
   }
 });
 
-const cafe7 = new Cafe({
-  id: 7,
-  name: "oooffff",
-  description: "A bright s.",
-  location: "Residenct",
-  barangay: "Mabini Homesite",
+const cafe6 = new Cafe({
+  id: 6,
+  name: "Urban Grind",
+  description: "An industrial-chic café known for bold espresso blends, artisanal pastries, and a vibrant community vibe.",
+  location: "Maharlika Highway",
+  barangay: "Kapitan Pepe",
 
-  averagePrice: "₱90 - ₱180",
-  seatCapacity: 40,
+  averagePrice: "₱110 - ₱210",
+  seatCapacity: 32,
   isPetFriendly: true,
   isRestroomAvailable: true,
   restroomCount: 2,
 
-  phone: "0945 111 2233",
-  website: "https://example.com/sunny-side",
+  phone: "0918 999 1122",
+  website: "https://example.com/urban-grind",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
-    monday: "7:00 AM - 8:00 PM",
-    tuesday: "7:00 AM - 8:00 PM",
-    wednesday: "7:00 AM - 8:00 PM",
-    thursday: "7:00 AM - 8:00 PM",
-    friday: "7:00 AM - 9:00 PM",
-    saturday: "7:00 AM - 9:00 PM",
-    sunday: "8:00 AM - 7:00 PM"
+    monday: "8:00 AM - 10:00 PM",
+    tuesday: "8:00 AM - 10:00 PM",
+    wednesday: "8:00 AM - 10:00 PM",
+    thursday: "8:00 AM - 10:00 PM",
+    friday: "8:00 AM - 11:00 PM",
+    saturday: "8:00 AM - 11:00 PM",
+    sunday: "9:00 AM - 9:00 PM"
+  },
+
+  wifiStrength: 3,
+  powerOutletsNumber: 15,
+  airConditioningLevel: 3,
+  noiseLevel: 2,
+  isOpenSpace: false,
+
+  isParkingAvailable: true,
+  parkingCapacity: 10,
+  allowedVehicles: ["Cars", "Motorcycles"],
+
+  isHouseDeliveryAvailable: true,
+  isGrabDeliveryAvailable: true,
+  isTakeOutAvailable: true,
+
+  paymentMethods: {
+    cash: true,
+    gcash: true,
+    maya: true,
+    card: true
+  }
+});
+
+const cafe7 = new Cafe({
+  id: 7,
+  name: "Kape Heneral",
+  description: "A rustic heritage-inspired cafe offering local Filipino coffee blends, pastries, and a warm neighborhood ambiance.",
+  location: "Maharlika Highway",
+  barangay: "Mabini Homesite",
+
+  averagePrice: "₱110 - ₱190",
+  seatCapacity: 30,
+  isPetFriendly: true,
+  isRestroomAvailable: true,
+  restroomCount: 2,
+
+  phone: "0919 888 9900",
+  website: "https://example.com/kape-heneral",
+
+  socialLinks: [
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
+    ],
+
+  workingHours: {
+    monday: "8:00 AM - 9:00 PM",
+    tuesday: "8:00 AM - 9:00 PM",
+    wednesday: "8:00 AM - 9:00 PM",
+    thursday: "8:00 AM - 9:00 PM",
+    friday: "8:00 AM - 10:00 PM",
+    saturday: "8:00 AM - 10:00 PM",
+    sunday: "9:00 AM - 8:00 PM"
   },
 
   wifiStrength: 2,
-  powerOutletsNumber: 5,
-
+  powerOutletsNumber: 8,
   airConditioningLevel: 2,
-  noiseLevel: 3,
+  noiseLevel: 2,
   isOpenSpace: true,
 
   isParkingAvailable: true,
-  parkingCapacity: 12,
-  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+  parkingCapacity: 8,
+  allowedVehicles: ["Cars", "Motorcycles"],
 
   isHouseDeliveryAvailable: true,
-  isGrabDeliveryAvailable: false,
+  isGrabDeliveryAvailable: true,
   isTakeOutAvailable: true,
 
   paymentMethods: {
@@ -611,185 +648,114 @@ const cafe7 = new Cafe({
 const cafe8 = new Cafe({
   id: 8,
   name: "Moony Side Coffee",
-  description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
-  location: "Residential District",
+  description: "An evening-focused lounge and coffee house with ambient lighting, acoustic tunes, and rich espresso brews.",
+  location: "Commercial Strip",
   barangay: "Sumacab Este",
 
-  averagePrice: "₱90 - ₱180",
-  seatCapacity: 40,
-  isPetFriendly: true,
+  averagePrice: "₱130 - ₱240",
+  seatCapacity: 45,
+  isPetFriendly: false,
   isRestroomAvailable: true,
   restroomCount: 2,
 
-  phone: "0945 111 2233",
-  website: "https://example.com/sunny-side",
+  phone: "0928 333 4455",
+  website: "https://example.com/moony-side",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
-    monday: "7:00 AM - 8:00 PM",
-    tuesday: "7:00 AM - 8:00 PM",
-    wednesday: "7:00 AM - 8:00 PM",
-    thursday: "7:00 AM - 8:00 PM",
-    friday: "7:00 AM - 9:00 PM",
-    saturday: "7:00 AM - 9:00 PM",
-    sunday: "8:00 AM - 7:00 PM"
+    monday: "4:00 PM - 12:00 AM",
+    tuesday: "4:00 PM - 12:00 AM",
+    wednesday: "4:00 PM - 12:00 AM",
+    thursday: "4:00 PM - 12:00 AM",
+    friday: "4:00 PM - 1:00 AM",
+    saturday: "4:00 PM - 1:00 AM",
+    sunday: "4:00 PM - 11:00 PM"
   },
 
-  wifiStrength: 2,
-  powerOutletsNumber: 5,
-
-  airConditioningLevel: 2,
-  noiseLevel: 3,
-  isOpenSpace: true,
+  wifiStrength: 3,
+  powerOutletsNumber: 10,
+  airConditioningLevel: 3,
+  noiseLevel: 2,
+  isOpenSpace: false,
 
   isParkingAvailable: true,
-  parkingCapacity: 12,
-  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+  parkingCapacity: 10,
+  allowedVehicles: ["Cars", "Motorcycles"],
 
-  isHouseDeliveryAvailable: true,
-  isGrabDeliveryAvailable: false,
+  isHouseDeliveryAvailable: false,
+  isGrabDeliveryAvailable: true,
   isTakeOutAvailable: true,
 
   paymentMethods: {
     cash: true,
     gcash: true,
     maya: true,
-    card: false
+    card: true
   }
 });
 
 const cafe9 = new Cafe({
   id: 9,
   name: "No Label Coffee",
-  description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
-  location: "Residential District",
+  description: "A minimalist specialty coffee shop focusing on pour-overs, single-origin beans, and a quiet, distraction-free environment.",
+  location: "Main Avenue",
   barangay: "Sumacab Este",
 
-  averagePrice: "₱90 - ₱180",
-  seatCapacity: 40,
+  averagePrice: "₱140 - ₱250",
+  seatCapacity: 25,
   isPetFriendly: true,
   isRestroomAvailable: true,
-  restroomCount: 2,
+  restroomCount: 1,
 
-  phone: "0945 111 2233",
-  website: "https://example.com/sunny-side",
+  phone: "0999 777 8899",
+  website: "https://example.com/no-label",
 
   socialLinks: [
-        {
-            platform: "Facebook",
-            url: "https://www.facebook.com/example"
-        },
-        {
-            platform: "Instagram",
-            url: "https://www.instagram.com/example"
-        }
+        { platform: "Facebook", url: "https://www.facebook.com/example" },
+        { platform: "Instagram", url: "https://www.instagram.com/example" }
     ],
 
   workingHours: {
-    monday: "7:00 AM - 8:00 PM",
-    tuesday: "7:00 AM - 8:00 PM",
-    wednesday: "7:00 AM - 8:00 PM",
-    thursday: "7:00 AM - 8:00 PM",
-    friday: "7:00 AM - 9:00 PM",
-    saturday: "7:00 AM - 9:00 PM",
-    sunday: "8:00 AM - 7:00 PM"
+    monday: "10:00 AM - 8:00 PM",
+    tuesday: "10:00 AM - 8:00 PM",
+    wednesday: "10:00 AM - 8:00 PM",
+    thursday: "10:00 AM - 8:00 PM",
+    friday: "10:00 AM - 9:00 PM",
+    saturday: "10:00 AM - 9:00 PM",
+    sunday: "10:00 AM - 8:00 PM"
   },
 
-  wifiStrength: 2,
-  powerOutletsNumber: 5,
+  wifiStrength: 3,
+  powerOutletsNumber: 14,
+  airConditioningLevel: 3,
+  noiseLevel: 1,
+  isOpenSpace: false,
 
-  airConditioningLevel: 2,
-  noiseLevel: 3,
-  isOpenSpace: true,
-
-  isParkingAvailable: true,
-  parkingCapacity: 12,
-  allowedVehicles: ["Cars", "Motorcycles", "Bicycles"],
+  isParkingAvailable: false,
+  parkingCapacity: 0,
+  allowedVehicles: [],
 
   isHouseDeliveryAvailable: true,
-  isGrabDeliveryAvailable: false,
+  isGrabDeliveryAvailable: true,
   isTakeOutAvailable: true,
 
   paymentMethods: {
     cash: true,
     gcash: true,
     maya: true,
-    card: false
+    card: true
   }
 });
-
-// Demo Reviews for 3rd Space
-// Review 1
-const review1 = new Review(
-   "haewon17",
-   "2026-10-15",
-   "The coffee was great, and the atmosphere was cozy. A nice place to relax with friends!",
-   ["pictures/chncafe.PNG", "pictures/coffee1.jpg"],
-   5
-);
-
-// Review 2
-const review2 = new Review(
-   "coffeeFan",
-   "2026-10-17",
-   "Good drinks and friendly staff. The seating area could be a little quieter during busy hours.",
-   [],
-   4
-);
-
-// Review 3
-const review3 = new Review(
-   "studyBuddy",
-   "2026-10-20",
-   "A comfortable place to study because of the Wi-Fi and power outlets. I would love more available seats.",
-   [],
-   4
-);
-
-const review4 = new Review(
-    "newUser",
-    "2026-10-24",
-    "cri",
-    ["pictures/blckcoffee.PNG", "pictures/coffee1.jpg", "pictures/cafe2.jpg", "pictures/chincafe.JPG", "pictures/pexels-intitupac-5373242.jpg", "pictures/coffee1.jpg"],
-    2
-);
-
-const review5 = new Review(
-    "Alex",
-    "10/24/2026",
-    "The coffee was delicious!",
-    [],
-    5
-);
-
-const review6 = new Review(
-    "Jamie",
-    "10/24/2026",
-    "Nice atmosphere and friendly staff.",
-    [],
-    4
-);
 
 /* =====================================================
    PLACEHOLDER CAFES — DEMO PURPOSES ONLY
    All café names, descriptions, contact details,
    amenities, and other information are fictional.
    ===================================================== */
-
-// =====================================================
-// DEMO CAFES — PLACEHOLDER DATA ONLY
-// Café names and addresses are fictional demo entries.
-// =====================================================
 
 const cafe10 = new Cafe({
     id: 10,
@@ -1590,26 +1556,178 @@ const cafe29 = new Cafe({
     paymentMethods: { cash: true, gcash: true, maya: true, card: false }
 });
 
-const cafes = [
-    cafe1, cafe2, cafe3, cafe4, cafe5,
-    cafe7, cafe8, cafe9, cafe10, cafe11, cafe12, 
-    cafe13, cafe14, cafe15, cafe16, cafe17, cafe18, 
-    cafe19, cafe20, cafe21, cafe22, cafe23, cafe24, 
-    cafe25, cafe26, cafe27, cafe28, cafe29
-];
+// =========================================
+// DEMO REVIEWS FOR OTHER CAFÉS
+// =========================================
 
-// Add Reviews to the 3rd Space Cafe Object
-cafe1.addReview(review1);
-cafe1.addReview(review2);
-cafe1.addReview(review3);
-cafe1.addReview(review4);
-cafe1.addReview(review5);
-cafe1.addReview(review6);
+// --- Bean & Bloom Café (cafe2) ---
+const reviewBean1 = new Review(
+    "plantLover",
+    "2026-09-12",
+    "Absolutely gorgeous plant-filled interior. It feels like stepping into a mini greenhouse while enjoying a really smooth flat white.",
+    ["pictures/cafe2.jpg", "pictures/coffee1.jpg"],
+    5
+);
+
+const reviewBean2 = new Review(
+    "roan",
+    "2026-10-02",
+    "Loved the iced latte here! A bit crowded on Sunday afternoons though, so finding a table took a few minutes.",
+    [],
+    4
+);
+
+cafe2.addReview(reviewBean1);
+cafe2.addReview(reviewBean2);
+
+
+// --- Study Grounds (cafe3) ---
+const reviewStudy1 = new Review(
+    "mark_rems",
+    "2026-08-20",
+    "The ultimate study spot. Power outlets at almost every table and super fast Wi-Fi. Highly recommended for students.",
+    [],
+    5
+);
+
+const reviewStudy2 = new Review(
+    "Jamie",
+    "2026-09-05",
+    "It gets way too noisy during peak afternoon hours because of groups chatting loudly. Hard to focus sometimes, but the coffee is decent.",
+    [],
+    3
+);
+
+cafe3.addReview(reviewStudy1);
+cafe3.addReview(reviewStudy2);
+
+
+// --- Midnight Brew (cafe4) ---
+const reviewMidnight1 = new Review(
+    "nightOwl99",
+    "2026-10-18",
+    "Best late-night spot in the city when you need caffeine past midnight. Great moody ambiance and strong cold brew.",
+    ["pictures/blckcoffee.PNG"],
+    5
+);
+
+const reviewMidnight2 = new Review(
+    "coffeeFan",
+    "2026-10-22",
+    "Decent spot for a late-night talk, but the lighting is a bit too dim if you're trying to read or work.",
+    [],
+    3
+);
+
+cafe4.addReview(reviewMidnight1);
+cafe4.addReview(reviewMidnight2);
+
+
+// --- Sunny Side Coffee (cafe5) ---
+const reviewSunny1 = new Review(
+    "haewon17",
+    "2026-09-28",
+    "Super bright and cheerful place! The natural lighting makes it great for photos, and their pastries are amazing.",
+    ["pictures/pexels-intitupac-5373242.jpg", "pictures/coffee2.jpg"],
+    5
+);
+
+cafe5.addReview(reviewSunny1);
+
+// --- Urban Grind (cafe6) ---
+const reviewUrban1 = new Review(
+    "alex_c",
+    "2026-08-14",
+    "Strong espresso and the industrial aesthetic is top-notch. Staff are efficient too.",
+    [],
+    4
+);
+
+const reviewUrban2 = new Review(
+    "studyBuddy",
+    "2026-09-19",
+    "Good music, good vibes, but prices are a bit on the higher side compared to nearby spots.",
+    [],
+    3
+);
+
+const reviewUrban3 = new Review(
+    "roan",
+    "2026-10-05",
+    "Got their signature drink and it did not disappoint! Will definitely bring friends next time.",
+    ["pictures/chincafe.JPG"],
+    5
+);
+
+cafe6.addReview(reviewUrban1);
+cafe6.addReview(reviewUrban2);
+cafe6.addReview(reviewUrban3);
+
+
+// --- Kape Heneral (cafe7) ---
+const reviewHeneral1 = new Review(
+    "lola_b",
+    "2026-07-30",
+    "Love the local twist on traditional coffee drinks! Reminds me of home. Very cozy heritage vibe.",
+    ["pictures/chncafe.PNG"],
+    5
+);
+
+const reviewHeneral2 = new Review(
+    "mark_rems",
+    "2026-08-11",
+    "The barako coffee packs a real punch. Nice quiet spot away from the heavy highway traffic.",
+    [],
+    4
+);
+
+cafe7.addReview(reviewHeneral1);
+cafe7.addReview(reviewHeneral2);
+
+
+// --- Moony Side Coffee (cafe8) ---
+const reviewMoony1 = new Review(
+    "aespa",
+    "2026-10-10",
+    "So relaxing at night. The soft acoustic playlist in the background makes it a great unwind spot.",
+    [],
+    5
+);
+
+const reviewMoony2 = new Review(
+    "Jamie",
+    "2026-10-15",
+    "A bit pricey for the portion sizes, but the ambiance makes up for it.",
+    [],
+    3
+);
+
+cafe8.addReview(reviewMoony1);
+cafe8.addReview(reviewMoony2);
+
+
+// --- No Label Coffee (cafe9) ---
+const reviewNoLabel1 = new Review(
+    "alex_c",
+    "2026-10-01",
+    "Clean, minimalist, and the single-origin pour-over is absolute perfection. A true coffee lover's haven.",
+    ["pictures/coffee1.jpg", "pictures/blckcoffee.PNG"],
+    5
+);
+
+cafe9.addReview(reviewNoLabel1);
 
 
 /* =========================================
    STORE ALL CAFES IN ONE ARRAY
    ========================================= */
+const cafes = [
+    cafe1, cafe2, cafe3, cafe4, cafe5, cafe6,
+    cafe7, cafe8, cafe9, cafe10, cafe11, cafe12, 
+    cafe13, cafe14, cafe15, cafe16, cafe17, cafe18, 
+    cafe19, cafe20, cafe21, cafe22, cafe23, cafe24, 
+    cafe25, cafe26, cafe27, cafe28, cafe29
+];
 
 /* =========================================
    WIFI DESCRIPTION
@@ -1627,7 +1745,6 @@ function getWifiDescription(level) {
     }
 }
 
-
 /* =========================================
    AIR CONDITIONING DESCRIPTION
    ========================================= */
@@ -1643,7 +1760,6 @@ function getAirconDescription(level) {
         return "Unavailable";
     }
 }
-
 
 /* =========================================
    NOISE LEVEL DESCRIPTION
@@ -1662,8 +1778,6 @@ function getNoiseDescription(level) {
 }
 
 
-
-
 /* =========================================
    FIND A CAFE BY ITS ID
    ========================================= */
@@ -1671,147 +1785,3 @@ function getNoiseDescription(level) {
 function findCafeById(id) {
   return cafes.find(cafe => cafe.id === Number(id));
 }
-
-/* =========================================
-   yie
-   ========================================= */
-// Get the ID from the URL
-/*
-const params = new URLSearchParams(window.location.search);
-const cafeId = Number(params.get("id"));
-
-// Find the selected café
-const selectedCafe = cafes.find(cafe => cafe.id === cafeId);
-
-// Display its information
-if (selectedCafe) {
-    document.getElementById("cafeName").textContent =
-        selectedCafe.name;
-
-    document.getElementById("cafeImage").src =
-        selectedCafe.coverImage;
-
-    document.getElementById("cafeImage").alt =
-        selectedCafe.name;
-
-    document.getElementById("cafeLocation").textContent =
-        selectedCafe.location;
-
-    document.getElementById("cafeDescription").textContent =
-        selectedCafe.description;
-
-    document.getElementById("cafePrice").textContent =
-        selectedCafe.averagePrice;
-
-    document.getElementById("cafeRating").textContent =
-        selectedCafe.rating;
-} else {
-    document.getElementById("cafeName").textContent =
-        "Café not found";
-}
-
-console.log(selectedCafe);
-
-// output?
-document.getElementById("cafe-name").textContent = selectedCafe.name;
-
-document.getElementById("cafe-desc").textContent =
-    selectedCafe.description;
-
-document.getElementById("location").textContent =
-    selectedCafe.location;
-
-document.getElementById("average-price").textContent =
-    selectedCafe.averagePrice;
-
-document.getElementById("rating").textContent =
-    selectedCafe.rating;
-
-document.getElementById("cafeImage").src =
-    selectedCafe.coverImage;
-
-document.getElementById("cafeImage").alt =
-    selectedCafe.name;*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   TESTING
-   ========================================= */
-/*
-console.log("All Cafes:", cafes);
-
-console.log("Selected Cafe:", findCafeById(3));
-
-console.log("Selected Cafe Name:", findCafeById(3)?.name);
-
-console.log("Selected Cafe Rating:", findCafeById(3)?.rating);
-
-
-// Testing
-// Cafe Header Information
-console.log(`[Name]: ${cafe1.name}`);
-console.log(`[Description]: ${cafe1.description}`);
-console.log(`[rating]: ${cafe1.rating}`);
-console.log(`[Location]: ${cafe1.location}`);
-
-// Cafe First Details
-console.log(`[Average Price]: ${cafe1.averagePrice}`);
-console.log(`[Seat Capacity]: ${cafe1.seatCapacity}`);
-console.log(`[Is Pet Friendly]: ${cafe1.isPetFriendly}`);
-console.log(`[Is Restroom Available]: ${cafe1.isRestroomAvailable}`);
-console.log(`[Restroom Count]: ${cafe1.restroomCount}`);
-
-// Cafe Location and Contact
-console.log(`[Phone]: ${cafe1.phone}`);
-console.log(`[Website]: ${cafe1.website}`);
-
-// Social Links
-console.log(`[Facebook]: ${cafe1.socialLinks.facebook}`);
-console.log(`[Instagram]: ${cafe1.socialLinks.instagram}`);
-console.log(`[Twitter]: ${cafe1.socialLinks.twitter}`);
-
-// Working Hours
-console.log(`[Monday]: ${cafe1.workingHours.monday}`);
-console.log(`[Tuesday]: ${cafe1.workingHours.tuesday}`);
-console.log(`[Wednesday]: ${cafe1.workingHours.wednesday}`);
-console.log(`[Thursday]: ${cafe1.workingHours.thursday}`);
-console.log(`[Friday]: ${cafe1.workingHours.friday}`);
-console.log(`[Saturday]: ${cafe1.workingHours.saturday}`);
-console.log(`[Sunday]: ${cafe1.workingHours.sunday}`);
-
-// Connectivity & Work Facilities
-console.log(`[WiFi Strength]: ${cafe1.wifiStrength}`);
-console.log(`[Power Outlets Number]: ${cafe1.powerOutletsNumber}`);
-
-// Comfort & Environment
-console.log(`[Air Conditioning Level]: ${cafe1.airConditioningLevel}`);
-console.log(`[Noise Level]: ${cafe1.noiseLevel}`);
-console.log(`[Is Open Space]: ${cafe1.isOpenSpace}`);
-
-// Accessibility & Parking
-console.log(`[Is Parking Available]: ${cafe1.isParkingAvailable}`);
-console.log(`[Parking Capacity]: ${cafe1.parkingCapacity}`);
-console.log(`[Allowed Vehicles]: ${cafe1.allowedVehicles}`);
-
-// Service & Ordering
-console.log(`[Is House Delivery Available]: ${cafe1.isHouseDeliveryAvailable}`);
-console.log(`[Is Grab Delivery Available]: ${cafe1.isGrabDeliveryAvailable}`);
-console.log(`[Is Take Out Available]: ${cafe1.isTakeOutAvailable}`);
-
-// Payment Methods
-console.log(`[Cash]: ${cafe1.paymentMethods.cash}`);
-console.log(`[GCash]: ${cafe1.paymentMethods.gcash}`);
-console.log(`[Maya]: ${cafe1.paymentMethods.maya}`);
-console.log(`[Card]: ${cafe1.paymentMethods.card}`);*/
