@@ -1,4 +1,20 @@
-const placeholderImg = "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=";
+const photoPool = [
+    "https://images.unsplash.com/photo-1768405942827-4d15f4a1b32a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://plus.unsplash.com/premium_photo-1664970900025-1e3099ca757a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1772119044027-04e80adeda6b?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1567880905822-56f8e06fe630?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1569096651661-820d0de8b4ab?q=80&w=663&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1511081692775-05d0f180a065?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+];
+
+const globalGalleryPool = [
+    "https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://plus.unsplash.com/premium_photo-1663932464937-e677ddfc1d55?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+];
 
 /* =========================================
    Reusable Review Class Template
@@ -82,8 +98,23 @@ class Cafe {
       this.description = description;
       this.location = location;
       this.barangay = barangay;
-      this.coverImage = coverImage;
-      this.photos = photos;
+
+      // 1. If no photos are provided, pick a unique set from the global gallery pool using the ID
+        if (photos && photos.length > 0) {
+            this.photos = photos;
+        } else {
+            // Offset the slice index using the cafe ID so different cafes get different photos!
+            const startIndex = (id * 2) % globalGalleryPool.length;
+            this.photos = [
+                globalGalleryPool[startIndex % globalGalleryPool.length],
+                globalGalleryPool[(startIndex + 1) % globalGalleryPool.length],
+                globalGalleryPool[(startIndex + 2) % globalGalleryPool.length],
+                globalGalleryPool[(startIndex + 3) % globalGalleryPool.length]
+            ];
+        }
+
+        // 2. Assign the cover image (use provided one, or fall back to a unique photo from the pool based on ID)
+        this.coverImage = coverImage || photoPool[id % photoPool.length];
 
       // Cafe First Details
       this.averagePrice = averagePrice;
@@ -283,15 +314,6 @@ const cafe2 = new Cafe({
   description: "A charming café surrounded by plants and warm wooden interiors. Ideal for casual dates, conversations, and enjoying specialty coffee.",
   location: "Downtown",
   barangay: "Sumacab Este",
-  coverImage: placeholderImg,
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱120 - ₱220",
   seatCapacity: 35,
@@ -352,15 +374,6 @@ const cafe3 = new Cafe({
   description: "A study-focused café with reliable Wi-Fi, plenty of power outlets, comfortable seating, and a quiet environment for students and remote workers.",
   location: "University District",
   barangay: "Kapitan Pepe",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱80 - ₱160",
   seatCapacity: 50,
@@ -421,15 +434,6 @@ const cafe4 = new Cafe({
   description: "A late-night coffee spot with moody lighting, comfortable couches, and a relaxed atmosphere for night owls and friends catching up after dark.",
   location: "City Center",
   barangay: "Sumacab Este",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱100 - ₱200",
   seatCapacity: 28,
@@ -490,15 +494,6 @@ const cafe5 = new Cafe({
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
   barangay: "Sumacab Este",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱90 - ₱180",
   seatCapacity: 40,
@@ -559,15 +554,6 @@ const cafe7 = new Cafe({
   description: "A bright s.",
   location: "Residenct",
   barangay: "Mabini Homesite",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱90 - ₱180",
   seatCapacity: 40,
@@ -624,19 +610,10 @@ const cafe7 = new Cafe({
 
 const cafe8 = new Cafe({
   id: 8,
-  name: "Sunny Side Coffee",
+  name: "Moony Side Coffee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
   barangay: "Sumacab Este",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱90 - ₱180",
   seatCapacity: 40,
@@ -693,19 +670,10 @@ const cafe8 = new Cafe({
 
 const cafe9 = new Cafe({
   id: 9,
-  name: "eeeeeeeeeee",
+  name: "No Label Coffee",
   description: "A bright and airy café serving coffee, refreshing drinks, and light meals. Its spacious interior and natural lighting make it great for relaxed mornings.",
   location: "Residential District",
   barangay: "Sumacab Este",
-  coverImage: "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-  photos: [
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I=",
-        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=1024x1024&w=is&k=20&c=5aen6wD1rsiMZSaVeJ9BWM4GGh5LE_9h97haNpUQN5I="
-    ],
 
   averagePrice: "₱90 - ₱180",
   seatCapacity: 40,
@@ -829,8 +797,7 @@ const cafe10 = new Cafe({
     description: "A cozy café serving freshly brewed coffee and affordable pastries. A nice spot for casual meetups and study sessions.",
     location: "Demo Street 1",
     barangay: "Kapitan Pepe",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+
     averagePrice: "₱100 - ₱150",
     seatCapacity: 25,
     isPetFriendly: false,
@@ -869,8 +836,8 @@ const cafe11 = new Cafe({
     description: "A small neighborhood café offering classic espresso drinks and homemade snacks in a relaxed setting.",
     location: "A. Valino Street",
     barangay: "Aduas Centro",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱80 - ₱150",
     seatCapacity: 18,
     isPetFriendly: true,
@@ -909,8 +876,8 @@ const cafe12 = new Cafe({
     description: "A laid-back café with budget-friendly drinks, sweet treats, and comfortable seating.",
     location: "Demo Street 2",
     barangay: "Aduas Centro",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱70 - ₱130",
     seatCapacity: 20,
     isPetFriendly: false,
@@ -949,8 +916,8 @@ const cafe13 = new Cafe({
     description: "A bright café serving breakfast meals, coffee, and refreshing drinks for early risers.",
     location: "Demo Street 3",
     barangay: "Mabini Homesite",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱120 - ₱200",
     seatCapacity: 30,
     isPetFriendly: false,
@@ -989,8 +956,8 @@ const cafe14 = new Cafe({
     description: "A peaceful café with soft lighting, comfortable chairs, and drinks perfect for a quiet afternoon.",
     location: "Demo Street 4",
     barangay: "Mabini Homesite",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱100 - ₱180",
     seatCapacity: 22,
     isPetFriendly: true,
@@ -1029,8 +996,8 @@ const cafe15 = new Cafe({
     description: "A student-friendly café with reliable Wi-Fi, plenty of outlets, and affordable drinks.",
     location: "Demo Street 5",
     barangay: "Bitas",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱80 - ₱140",
     seatCapacity: 35,
     isPetFriendly: false,
@@ -1069,8 +1036,8 @@ const cafe16 = new Cafe({
     description: "A dessert café known for sweet drinks, freshly baked goods, and cozy corners.",
     location: "Demo Street 6",
     barangay: "Bitas",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱100 - ₱170",
     seatCapacity: 24,
     isPetFriendly: false,
@@ -1109,8 +1076,8 @@ const cafe17 = new Cafe({
     description: "A welcoming café offering comfort food, warm beverages, and a relaxed atmosphere.",
     location: "Demo Street 7",
     barangay: "Kapitan Pepe",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱100 - ₱180",
     seatCapacity: 28,
     isPetFriendly: true,
@@ -1149,8 +1116,8 @@ const cafe18 = new Cafe({
     description: "A modern coffee shop with specialty drinks, comfortable seating, and a welcoming interior.",
     location: "Demo Street 8",
     barangay: "Kapitan Pepe",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱120 - ₱220",
     seatCapacity: 40,
     isPetFriendly: false,
@@ -1189,8 +1156,8 @@ const cafe19 = new Cafe({
     description: "A casual café serving iced coffee, refreshing beverages, and light meals in a friendly space.",
     location: "Demo Street 9",
     barangay: "Kapitan Pepe",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱90 - ₱160",
     seatCapacity: 26,
     isPetFriendly: true,
@@ -1229,8 +1196,8 @@ const cafe20 = new Cafe({
     description: "A convenient coffee stop serving quick espresso drinks, pastries, and grab-and-go snacks.",
     location: "Demo Street 10",
     barangay: "Mabini Homesite",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱80 - ₱150",
     seatCapacity: 16,
     isPetFriendly: false,
@@ -1269,8 +1236,8 @@ const cafe21 = new Cafe({
     description: "A plant-inspired café with refreshing drinks, light meals, and a relaxing atmosphere.",
     location: "Demo Street 11",
     barangay: "Mabini Homesite",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱110 - ₱190",
     seatCapacity: 32,
     isPetFriendly: true,
@@ -1309,8 +1276,8 @@ const cafe22 = new Cafe({
     description: "A quiet café offering handcrafted drinks and simple meals for customers looking to unwind.",
     location: "Demo Street 12",
     barangay: "Magsaysay District",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱100 - ₱170",
     seatCapacity: 20,
     isPetFriendly: false,
@@ -1349,8 +1316,8 @@ const cafe23 = new Cafe({
     description: "A contemporary café serving strong coffee, filling meals, and freshly baked desserts.",
     location: "Demo Street 13",
     barangay: "Magsaysay District",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱130 - ₱230",
     seatCapacity: 38,
     isPetFriendly: false,
@@ -1389,8 +1356,8 @@ const cafe24 = new Cafe({
     description: "A neighborhood coffee shop with affordable drinks and quick snacks for everyday coffee lovers.",
     location: "Demo Street 14",
     barangay: "Sumacab Este",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱70 - ₱140",
     seatCapacity: 18,
     isPetFriendly: false,
@@ -1429,8 +1396,8 @@ const cafe25 = new Cafe({
     description: "A book-inspired café with quiet seating, warm drinks, and a comfortable environment for reading.",
     location: "Demo Street 15",
     barangay: "Sumacab Este",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱100 - ₱180",
     seatCapacity: 28,
     isPetFriendly: false,
@@ -1469,8 +1436,8 @@ const cafe26 = new Cafe({
     description: "A cheerful café offering sweet treats, refreshing drinks, and a bright, welcoming space.",
     location: "Demo Street 16",
     barangay: "Sumacab Norte",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱90 - ₱160",
     seatCapacity: 24,
     isPetFriendly: true,
@@ -1509,8 +1476,8 @@ const cafe27 = new Cafe({
     description: "A casual local café serving familiar Filipino snacks, affordable coffee, and refreshing drinks.",
     location: "Demo Street 17",
     barangay: "Sumacab Norte",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱60 - ₱130",
     seatCapacity: 20,
     isPetFriendly: true,
@@ -1549,8 +1516,8 @@ const cafe28 = new Cafe({
     description: "A stylish café serving specialty coffee, blended drinks, and desserts in a modern setting.",
     location: "Demo Street 18",
     barangay: "Aduas Centro",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱120 - ₱220",
     seatCapacity: 34,
     isPetFriendly: false,
@@ -1589,8 +1556,8 @@ const cafe29 = new Cafe({
     description: "A relaxed café serving morning coffee, hearty snacks, and refreshing drinks throughout the day.",
     location: "Demo Street 19",
     barangay: "Kapitan Pepe",
-    coverImage: placeholderImg,
-    photos: [placeholderImg],
+    
+    
     averagePrice: "₱90 - ₱170",
     seatCapacity: 26,
     isPetFriendly: false,
@@ -1623,6 +1590,14 @@ const cafe29 = new Cafe({
     paymentMethods: { cash: true, gcash: true, maya: true, card: false }
 });
 
+const cafes = [
+    cafe1, cafe2, cafe3, cafe4, cafe5,
+    cafe7, cafe8, cafe9, cafe10, cafe11, cafe12, 
+    cafe13, cafe14, cafe15, cafe16, cafe17, cafe18, 
+    cafe19, cafe20, cafe21, cafe22, cafe23, cafe24, 
+    cafe25, cafe26, cafe27, cafe28, cafe29
+];
+
 // Add Reviews to the 3rd Space Cafe Object
 cafe1.addReview(review1);
 cafe1.addReview(review2);
@@ -1635,37 +1610,6 @@ cafe1.addReview(review6);
 /* =========================================
    STORE ALL CAFES IN ONE ARRAY
    ========================================= */
-
-const cafes = [
-    cafe1,
-    cafe2,
-    cafe3,
-    cafe4,
-    cafe5,
-    cafe7,
-    cafe8,
-    cafe9,
-    cafe10,
-    cafe11,
-    cafe12,
-    cafe13,
-    cafe14,
-    cafe15,
-    cafe16,
-    cafe17,
-    cafe18,
-    cafe19,
-    cafe20,
-    cafe21,
-    cafe22,
-    cafe23,
-    cafe24,
-    cafe25,
-    cafe26,
-    cafe27,
-    cafe28,
-    cafe29
-];
 
 /* =========================================
    WIFI DESCRIPTION
