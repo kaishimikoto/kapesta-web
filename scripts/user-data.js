@@ -1,28 +1,57 @@
-
 // ========================================
-// KAPESTA USER DATA (ONE DEMO ACCOUNT)
+// KAPESTA USER DATA
 // ========================================
 
-// DEMO ACCOUNT CREDENTIALS
 const demoUser = {
-    username: "demouser",
-    email: "demo@kapesta.com",
-    password: "kapesta123",
+    username: "Roan Cochanco",
+    name: "Roan Cochanco",
+    email: "roancochanco@kapesta.com",
+    password: "kapesta@123",
     profilePicture: "pictures/coffee1.jpg"
 };
 
-// Automatically create the demo account if it doesn't exist
 function initializeDemoUser() {
     const savedUser = localStorage.getItem("kapestaUser");
 
     if (!savedUser) {
         localStorage.setItem("kapestaUser", JSON.stringify(demoUser));
         localStorage.setItem("kapestaLoggedIn", "false");
+        return;
+    }
+
+    const currentUser = JSON.parse(savedUser);
+
+    // Update the old demo account to Roan's account
+    if (
+        currentUser.email === "demo@kapesta.com" ||
+        currentUser.username === "demouser"
+    ) {
+        const oldUsername = currentUser.username;
+
+        const updatedUser = {
+            ...currentUser,
+            ...demoUser,
+            profilePicture: currentUser.profilePicture || demoUser.profilePicture
+        };
+
+        localStorage.setItem("kapestaUser", JSON.stringify(updatedUser));
+
+        // Preserve existing reviews and update their username
+        if (oldUsername !== demoUser.username) {
+            const reviews = getAllSavedReviews();
+
+            reviews.forEach(review => {
+                if (review.userName === oldUsername) {
+                    review.userName = demoUser.username;
+                }
+            });
+
+            localStorage.setItem("kapestaReviews", JSON.stringify(reviews));
+        }
     }
 }
 
 initializeDemoUser();
-
 
 // ========================================
 // LOGIN
