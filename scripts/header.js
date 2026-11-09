@@ -70,22 +70,76 @@ if (navbar) {
     }
 }
 
-// ---------- Profile dropdown (desktop) ----------
+// ---------- Profile dropdown ----------
 {
     const menu = document.querySelector('.profile-menu');
     const toggle = document.getElementById('profileToggle');
-    if (menu && toggle) {
+    const dropdown = document.getElementById('profileDropdown');
+    const profileLabel = document.getElementById('profileLabel');
+
+    if (menu && toggle && dropdown && profileLabel) {
+
+        // Display the correct dropdown based on login status
+        function updateProfileDropdown() {
+            dropdown.replaceChildren();
+
+            if (isLoggedIn()) {
+                const user = getCurrentUser();
+
+                if (user) {
+                    profileLabel.textContent = user.name || user.username;
+
+                    const signedIn = document.createElement('li');
+                    signedIn.textContent = `Signed in as ${user.email}`;
+                    dropdown.appendChild(signedIn);
+
+                    const profileItem = document.createElement('li');
+                    const profileLink = document.createElement('a');
+                    profileLink.href = 'profile.html';
+                    profileLink.textContent = 'My Profile';
+                    profileItem.appendChild(profileLink);
+                    dropdown.appendChild(profileItem);
+
+                    const logoutItem = document.createElement('li');
+                    const logoutButton = document.createElement('button');
+                    logoutButton.type = 'button';
+                    logoutButton.textContent = 'Log out';
+
+                    logoutButton.addEventListener('click', () => {
+                        logoutUser();
+                        window.location.href = 'index.html';
+                    });
+
+                    logoutItem.appendChild(logoutButton);
+                    dropdown.appendChild(logoutItem);
+                    return;
+                }
+            }
+
+            profileLabel.textContent = 'PROFILE';
+
+            dropdown.innerHTML = `
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+            `;
+        }
+
+        updateProfileDropdown();
+
         const setOpen = (open) => {
             menu.classList.toggle('open', open);
             toggle.setAttribute('aria-expanded', String(open));
         };
+
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             setOpen(!menu.classList.contains('open'));
         });
+
         document.addEventListener('click', (e) => {
             if (!menu.contains(e.target)) setOpen(false);
         });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') setOpen(false);
         });
