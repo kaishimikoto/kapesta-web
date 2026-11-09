@@ -153,7 +153,7 @@ main {
 }
 
 .filterToggle:hover {
-    background-color: var(--color-brown-dark);
+    background-color: var(--color-brown);
 }
 
 .overlay {
@@ -318,7 +318,7 @@ main {
 }
 
 #applyButton:hover {
-    background-color: var(--color-brown-dark);
+    background-color: var(--color-brown);
 }
 
 .filter-header img, .barangay-layout select, .price-layout input, .filter-box button {
