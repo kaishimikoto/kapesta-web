@@ -1033,10 +1033,14 @@ footer a:hover {
     }
 
     /* -------------------- General Form Style ---------------------- */
+    .form-grid {
+        display: block;
+    }
+    
     .form-style {
         padding: 56px 32px;
     }
-
+   
     /* -------------------- Form Row -------------------------------- */
     .form-row {
         grid-template-columns: 1fr;
