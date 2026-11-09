@@ -79,17 +79,18 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    // Success -> log in and go to the homepage
-    const existingUser = JSON.parse(localStorage.getItem("kapestaUser")) || {};
-
-    const kapestaUser = {
-        ...existingUser,
-        username: user.name,
+   // Success -> log in using the shared user-data system
+    if (!loginUser(user.email, user.password)) {
+        showError(pword, 'pword-error', 'Unable to log in. Please try again.');
+        return;
+    }
+    
+    sessionStorage.setItem('kapestaUser', JSON.stringify({
         name: user.name,
-        email: user.email,
-        password: user.password,
-        profilePicture: existingUser.profilePicture || "pictures/coffee1.jpg"
-    };
+        email: user.email
+    }));
+    
+    window.location.href = 'index.html';
 
     // Your existing pages use localStorage
     localStorage.setItem("kapestaUser", JSON.stringify(kapestaUser));
