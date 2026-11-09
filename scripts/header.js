@@ -87,9 +87,10 @@ if (navbar) {
                 const user = getCurrentUser();
 
                 if (user) {
-                    profileLabel.textContent = user.name || user.username;
+                    profileLabel.textContent = user.username;
 
                     const signedIn = document.createElement('li');
+                    signedIn.className = 'dropdown-user';
                     signedIn.textContent = `Signed in as ${user.email}`;
                     dropdown.appendChild(signedIn);
 
