@@ -771,54 +771,73 @@ footer a {
     text-underline-offset: 4px;
 }
 
-/* Footer link hover state */
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Visible focus for keyboard users */
+footer a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
 }
 
 /* Main footer layout (info on the left, links on the right) */
 .footer-layout {
     width: min(100%, 1140px);
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 40px);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 80px;
+    gap: clamp(32px, 5vw, 56px);
 }
 
 /* Footer information block */
 .footer-information {
-    max-width: 440px;
+    max-width: 320px;
 }
 
 /* Footer logo */
 .footer-information-logo img {
-    width: 160px;
-    margin-bottom: 24px;
+    display: block;
+    width: 120px;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.footer-information p {
+    margin: 0;
 }
 
 /* Divider inside the information block */
 .footer-information hr {
-    margin: 24px 0;
+    margin: 16px 0;
 }
 
 /* Footer social icons row */
 .footer-social {
     display: flex;
-    gap: 24px;
+    gap: 8px;
+    margin-left: -6px; /* offsets link padding so icons align with the text above */
+}
+
+/* Social link (padding creates a comfortable tap target) */
+.footer-social a {
+    display: inline-flex;
+    padding: 6px;
 }
 
 /* Footer social icon */
 .footer-social img {
-    width: 32px;
-    height: 32px;
+    display: block;
+    width: 24px;
+    height: 24px;
 }
 
 /* Footer link columns */
 .footer-links {
     display: flex;
-    gap: 80px;
+    gap: clamp(24px, 5vw, 56px);
 }
 
 /* Single link column */
@@ -826,12 +845,17 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 4px;
+}
+
+/* Column links (padding creates a comfortable tap target) */
+.footer-link-field a {
+    padding: 4px 0;
 }
 
 /* Link column title */
 .footer-nav-title {
-    margin: 0 0 16px;
+    margin: 0 0 4px;
     font-size: 0.875rem;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -843,23 +867,26 @@ footer a:hover {
 .footer-bottom {
     width: min(100%, 1140px);
     margin: 0 auto;
-    padding: 0 40px 24px;
+    padding: 0 clamp(20px, 4vw, 40px) 16px;
+}
+
+.footer-bottom hr {
+    margin: 0;
 }
 
 /* Copyright text */
 .footer-bottom small {
     display: block;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 
-/* -------------------- Footer ---------------------------------- */
-@media(max-width: 768px) {
+/* -------------------- Footer: tablet ---------------------------------- */
+@media (max-width: 900px) {
     .footer-layout {
         flex-direction: column;
-        gap: 48px;
-        padding: 48px 24px;
         align-items: center;
+        gap: 28px;
     }
 
     .footer-information {
@@ -868,15 +895,46 @@ footer a:hover {
     }
 
     .footer-information-logo img {
-        margin: 0 auto 24px;
+        margin: 0 auto 12px;
     }
 
     .footer-social {
         justify-content: center;
+        margin-left: 0;
+    }
+
+    /* Keep columns side by side instead of one tall stack */
+    .footer-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 16px;
     }
 
     .footer-bottom {
-        padding: 0 24px 24px;
         text-align: center;
+    }
+}
+
+/* -------------------- Footer: mobile ---------------------------------- */
+@media (max-width: 480px) {
+    .footer-layout {
+        padding: 28px 20px;
+        gap: 24px;
+    }
+
+    .footer-information-logo img {
+        width: 104px;
+    }
+
+    /* Predictable two-column grid; Legal sits on its own row below */
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 16px;
+        text-align: left;
+    }
+
+    .footer-bottom {
+        padding-bottom: 12px;
     }
 }
