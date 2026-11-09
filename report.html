@@ -14,35 +14,39 @@
                 NAVBAR
                 ========================================================================== -->
         <div class="nav-hover-zone"></div>
-        
+    
         <header>
-            <div class="header-layout">
-                <!-- Website Logo / Mobile Menu -->
-                <div class="header-brand">
-                    <a href="#" class="header-logo">
-                        <img src="images/icons/kapesta-logo.svg" alt="Kapesta Home">
-                    </a>
-                    <button type="button" class="header-menu-toggle" aria-label="Toggle navigation menu" aria-controls="header-navigation" aria-expanded="false" onclick="toggleHeaderMenu()">
-                        <img src="images/icons/hamburger-menu-icon.svg" alt="">
-                    </button>
-                </div>
-
-                <!-- Main Navigation -->
-                 <nav class="header-navigation" id="header-navigation" aria-label="Main navigation">
-                    <ul class="header-main-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Explore</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="#">Profile</a></li>
-                    </ul>
-
-                    <ul class="header-auth-links">
-                        <li><a href="login.html" class="header-login-link">Log in</a></li>
-                        <li><a href="signup.html" class="header-signup-link">Sign Up</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav class="navbar">
+                <a href="index.html" class="logo-link">
+                    <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
+                </a>
+    
+                <!-- Hamburger button (visible on mobile only) -->
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="navLinks">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+    
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="explore.html">EXPLORE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+    
+                    <li class="profile-menu">
+                        <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
+                            <span id="profileLabel">PROFILE</span> <span class="caret">&#9662;</span>
+                        </button>
+    
+                        <ul class="profile-dropdown" id="profileDropdown">
+                            <li><a href="login.html">Log in</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <main>
