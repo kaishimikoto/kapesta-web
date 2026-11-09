@@ -74,13 +74,6 @@ document.getElementById("average-price").textContent = selectedCafe.averagePrice
 document.getElementById("seat-capacity").textContent = selectedCafe.seatCapacity;
 document.getElementById("pet-friendly").textContent = selectedCafe.isPetFriendly ? "Yes" : "No";
 
-// Shortcut for
-/* if (selectedCafe.isPetFriendly) {
-    document.getElementById("pet-friendly").textContent = "Yes";
-} else {
-    document.getElementById("pet-friendly").textContent = "No";
-} */
-
 document.getElementById("restroom").textContent = selectedCafe.restroomCount;
 
 // Socials and Contact
