@@ -78,6 +78,7 @@ function isLoggedIn() {
 
 function logoutUser() {
     localStorage.setItem("kapestaLoggedIn", "false");
+    sessionStorage.removeItem("kapestaUser");
 }
 
 
