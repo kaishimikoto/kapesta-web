@@ -3,35 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="images/kapesta-icon.png">
         <link rel="stylesheet" type="text/css" href="styles/global.css">
         <link rel="stylesheet" type="text/css" href="styles/my-reviews.css">
         <title>Kapesta | My Reviews</title>
     </head>
     <body>
 
-        <!-- ========== NAV BAR ========== -->
+        <!-- ==========================================================================
+        NAVBAR
+        ========================================================================== -->
         <div class="nav-hover-zone"></div>
-
+    
         <header>
             <nav class="navbar">
-                <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
-
-
-                <ul class="nav-links">
+                <a href="index.html" class="logo-link">
+                    <img class="logo" src="images/kapesta-logo.png" alt="Kapesta Logo">
+                </a>
+    
+                <!-- Hamburger button (visible on mobile only) -->
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu"
+                    aria-expanded="false" aria-controls="navLinks">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+    
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="explore.html">EXPLORE</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <li><a href="about.html">ABOUT</a></li>
-
-
+    
                     <li class="profile-menu">
                         <button class="profile-toggle" id="profileToggle" aria-haspopup="true" aria-expanded="false">
-                            PROFILE <span class="caret">&#9662;</span>
+                            <span id="profileLabel">PROFILE</span> <span class="caret">&#9662;</span>
                         </button>
-
-
-                        <ul class="profile-dropdown">
+    
+                        <ul class="profile-dropdown" id="profileDropdown">
                             <li><a href="login.html">Log in</a></li>
                             <li><a href="signup.html">Sign up</a></li>
                         </ul>
@@ -156,12 +164,11 @@
         </footer>
 
         
-        <script src="scripts/cafe-data.js"></script>
-        <script src="scripts/profile.js"></script>
         <script src="scripts/user-data.js"></script>
-        <script src="scripts/navigation.js"></script>
+        <script src="scripts/cafe-data.js"></script>
         <script src="scripts/header.js"></script>
         <script src="scripts/review-display.js"></script>
         <script src="scripts/my-reviews.js"></script>
+
     </body>
 </html>     
