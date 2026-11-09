@@ -30,6 +30,7 @@
     /* ---------------- Motion -------------------------------------- */
     --transition: 0.3s ease;
 }
+
 /* ==================================================================
    Global Styles
    ================================================================== */
@@ -56,13 +57,9 @@ h1, h2, h3 {
     line-height: 1.2;
 }
 
-/*h3, caption {
-    font-size: 1.25rem;
-}*/
-
 caption {
     font-family: var(--font-heading);
-    font-size: 19px;
+    font-size: 24px;
     font-weight: 700;
     text-align: left;
     margin-bottom: 12px;
@@ -119,8 +116,9 @@ button:active {
     left: 0;
     width: 100%;
     height: 24px;
-    z-index: 11;
+    z-index: 9; /* below the navbar (10) so it can't cover the buttons */
 }
+
 
 /* ---------- Navbar ---------- */
 .navbar {
@@ -148,9 +146,7 @@ button:active {
 
 .logo {
     width: 10em;
-    height: auto;
-    object-fit: contain;
-    display: block;
+    height: 4em;
 }
 
 
@@ -214,7 +210,7 @@ button:active {
     position: absolute;
     top: 100%;
     right: 0;
-    min-width: 140px;
+    min-width: 180px;
     padding: 6px 0;
     list-style: none;
     background: var(--color-brown-dark);
@@ -243,6 +239,165 @@ button:active {
     background-color: var(--color-brown);
     color: var(--color-white);
 }
+
+.dropdown-user {
+    display: block;
+    padding: 10px 16px;
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-break: break-all;
+    border-bottom: 1px solid var(--color-brown);
+}
+
+.dropdown-user strong {
+    color: var(--color-white);
+}
+
+/*-----------RWD---------------*/
+
+@media (hover: none) {
+    .nav-hover-zone {
+        display: none;
+    }
+}
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: 1px solid var(--color-copper);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hamburger lines */
+.nav-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--color-copper);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Hamburger turns into an X when the menu is open */
+.navbar.menu-open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar.menu-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar.menu-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Solid navbar background while the menu is open */
+.navbar.menu-open {
+    background-color: rgba(0, 0, 0, 0.92);
+}
+
+/* Tablets and phones: hamburger menu */
+@media (max-width: 768px) {
+
+    /* Touch screens: no hover zone, and the navbar never slides away */
+    .nav-hover-zone {
+        display: none;
+    }
+
+    .navbar.hide {
+        transform: none;
+    }
+
+    /* Smaller logo */
+    .logo {
+        width: 8em;
+        height: 3.2em;
+    }
+
+    /* Show the hamburger button */
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Menu panel under the navbar (hidden until opened) */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: calc(100dvh - 80px);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 16px var(--page-gutter) 24px;
+        background: rgba(0, 0, 0, 0.92);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    /* Menu panel when open (class added by header.js) */
+    .navbar.menu-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Full-width, easy-to-tap links */
+    .nav-links a {
+        display: block;
+        padding: 12px 10px;
+    }
+
+    /* Profile section moves to the top, with a separator below it */
+    .profile-menu {
+        order: -1;
+        margin-bottom: 8px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(193, 127, 66, 0.5);
+    }
+
+    /* "PROFILE" becomes a plain label above Log in / Sign up */
+    .profile-toggle {
+        width: 100%;
+        padding: 8px 10px;
+        color: var(--color-gold);
+        pointer-events: none;
+    }
+
+    /* No dropdown arrow in the mobile menu */
+    .profile-toggle .caret {
+        display: none;
+    }
+
+    /* Log in / Sign up always visible, listed under PROFILE */
+    .profile-dropdown {
+        position: static;
+        min-width: 0;
+        padding: 0 0 0 10px;
+        background: none;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    /* Dropdown links */
+    .profile-dropdown a {
+        padding: 10px;
+    }
+}
+
 
 /* ==========================================================================
    FOOTER
@@ -371,6 +526,146 @@ footer a:hover {
     }
 }
 
+/* ===========================
+------ HERO SECTION ------
+=========================== */
+.hero {
+    color: white;
+    position: relative;
+    overflow: hidden; /* Hides the blurred edges from spilling out */
+    max-width: 100%;
+}
+
+/* Blurred Background Layer */
+.hero {
+    color: white;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    
+    /* KEEP YOUR JS DYNAMIC BACKGROUND WORKING HERE */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* The Overlay Layer: Blurs whatever is behind it (your .hero background image) and adds your gradients */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Your multi-layer gradient overlays */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.0)),
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.2),
+            transparent
+        );
+
+    /* THE BLUR EFFECT (blurs the parent's background image automatically) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(8px); /* Safari compatibility */
+
+    z-index: 1; /* Sits above the background image, below the text */
+}
+
+/* Push your text content forward so it stays sharp and readable */
+.hero-overview-container {
+    position: relative; 
+    z-index: 2;         /* Sits securely on top of the blurred overlay */
+    width: 84%;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-top: 160px;
+    padding-bottom: 24px;
+}
+
+/* Keep all your other existing styles below as they are... */
+.hero-overview {
+    width: 50%;
+}
+
+.hero-overview h1 {
+    margin-bottom: 24px;
+    font-size: 56px;
+    color: white;
+}
+
+.hero-overview p {
+    max-width: 100%;
+}
+
+.hero-rating-location {
+    display: flex;
+    gap: 16px;
+    max-width: 50%;
+}
+
+.rating-container, .location-container {
+    display: flex;
+    align-items: center;
+}
+
+.loc, .heart-icon, .leave-review-icon {
+    filter: invert(1);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 24px;
+}
+
+.heart-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.heart-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.heart-button:active {
+    transform: scale(1.2);
+}
+
+.leave-review-button {
+    background-color: rgb(157, 104, 71);
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.leave-review-button a {
+    text-decoration: none;
+    color: var(--color-bg);
+}
+
+.leave-review-icon {
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+.leave-review-button:hover {
+    background-color: rgb(200, 149, 110);
+}
+
+button {
+    cursor: pointer;
+}
+
 /* ==============================
    RESPONSIVE CODE - HERO SECTION
 ============================== */
@@ -398,6 +693,51 @@ footer a:hover {
         max-width: 100%;
         flex-wrap: wrap;
         gap: 12px;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .hero-overview-container {
+        width: 92%;
+        margin-left: 4%;
+        margin-right: 4%;
+        padding-top: 100px;
+        padding-bottom: 24px;
+    }
+
+    .hero-overview {
+        width: 100%;
+    }
+
+    .hero-overview h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .hero-overview p {
+        font-size: 14px;
+    }
+
+    .hero-rating-location {
+        max-width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .rating-container img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .location-container img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .hero-buttons {
+        gap: 16px;
+        align-items: center;
     }
 }
 
@@ -1427,6 +1767,10 @@ footer a:hover {
     }
 
     .upload-file-btn {
+        width: 100%;
+    }
+
+    .reviews-buttons button {
         width: 100%;
     }
 
