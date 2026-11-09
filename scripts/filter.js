@@ -213,21 +213,21 @@ function clearFilter() {
     updateFilterCount();
     updateAmenityCount.innerText = "0 Selected";
 
-    // Reset applied filters and refresh results
+    // FIX: Match the exact structure expected by explore.js
     userFilter = {
         userSelectedBarangay: "allBrgy",
         userSelectedMaxPrice: 0,
-        userSelectedAmenity: []
+        userSelectedAmenity: [false, false, false, false, false, false, false, false]
     };
 
     applyAllFilters();
 }
 
-// Apply Filter (Object)
+// FIX: Initialize with default values ("allBrgy") instead of null
 let userFilter = {
-    userSelectedBarangay: null,
+    userSelectedBarangay: "allBrgy",
     userSelectedMaxPrice: 0,
-    userSelectedAmenity: []
+    userSelectedAmenity: [false, false, false, false, false, false, false, false]
 };
 
 function applyFilter() {
