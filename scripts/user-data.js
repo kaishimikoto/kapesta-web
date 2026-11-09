@@ -3,7 +3,7 @@
 // ========================================
 
 const demoUser = {
-    username: "Roan Cochanco",
+    username: "roan",
     name: "Roan Cochanco",
     email: "roancochanco@kapesta.com",
     password: "kapesta@123",
