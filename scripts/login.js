@@ -92,11 +92,11 @@ form.addEventListener('submit', (e) => {
     
     window.location.href = 'index.html';
 
-    // Your existing pages use localStorage
+    // Existing pages use localStorage
     localStorage.setItem("kapestaUser", JSON.stringify(kapestaUser));
     localStorage.setItem("kapestaLoggedIn", "true");
 
-    // Keep her dropdown's sessionStorage data
+    // Keep dropdown's sessionStorage data
     sessionStorage.setItem("kapestaUser", JSON.stringify({
         name: user.name,
         email: user.email
