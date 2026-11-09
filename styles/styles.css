@@ -395,8 +395,18 @@ footer a:hover {
 /* ==================================================================
    General Form Styles
    ================================================================== */
+.contact-form {
+    margin: 120px clamp(1rem, 5vw, 4rem);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
 .form-style {
-    padding: 48px 48px 80px;
+    padding: 48px 48px;
 }
 
 /* -------------------- Form Heading -------------------------------- */
@@ -450,8 +460,7 @@ footer a:hover {
 
 .form-attachment input[type="file"]::file-selector-button {
     font-family: var(--font-heading);
-    font-size: 16px;
-    padding: 16px 24px;
+    padding: 8px 24px;
     margin-right: 16px;
     background-color: var(--color-brown);
     border: none;
@@ -477,19 +486,14 @@ footer a:hover {
 }
 
 /* -------------------- Form Invalid --------------------------------- */
-.form-field input:user-invalid, .form-field select:user-invalid, .form-field textarea:user-invalid {
-    border-color: var(--color-red);
-    outline: none;
-}
-
 .form-error {
-    display: none;
     font-size: 14px;
     color: var(--color-red);
+    margin-top: 5px;
 }
 
-.form-field:has(input:user-invalid) .form-error, .form-field:has(select:user-invalid) .form-error, .form-field:has(textarea:user-invalid) .form-error, .report-form fieldset:has(input[type="checkbox"]:user-invalid) .form-error {
-    display: block;
+.input-error {
+    border-color: var(--color-red) !important;
 }
 
 /* -------------------- Form Row ------------------------------------ */
@@ -816,12 +820,12 @@ footer a:hover {
 /* -------------------- Confirmation -------------------------------- */
 .report-form fieldset {
     margin: 0 0 48px;
-    padding: 24px;
+    padding: 8px 24px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
 }
 
-.report-form fieldset:has(input[type="checkbox"]:user-invalid) {
+.report-form fieldset.input-error {
     border: 1px solid var(--color-red);
 }
 
