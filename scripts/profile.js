@@ -74,7 +74,6 @@ function displayFavoriteCafes() {
 }
 
 // Display up to 3 reviews written by the user
-// Display up to 3 reviews written by the user
 function displayMyReviews(user) {
 
     const container = document.getElementById("my-reviews");
@@ -195,7 +194,11 @@ editProfileForm.addEventListener("submit", function (event) {
     const saved = updateUserProfile(updatedDetails);
 
     if (saved) {
-        displayUserInformation(getCurrentUser());
+        // Grab the newly updated user
+        const freshUser = getCurrentUser();
+        localStorage.setItem("currentUser", JSON.stringify(freshUser));
+
+        displayUserInformation(freshUser);
         closeEditProfileModal();
 
         alert("Profile updated successfully!");
@@ -282,6 +285,10 @@ editProfileForm.addEventListener("submit", function (event) {
                     });
 
                     if (saved) {
+                        // Refresh active session storage so header gets the new picture too
+                        const freshUser = getCurrentUser();
+                        localStorage.setItem("currentUser", JSON.stringify(freshUser));
+
                         profileImage.src = imageData;
                     }
 
