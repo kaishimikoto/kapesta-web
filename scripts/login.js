@@ -80,9 +80,26 @@ form.addEventListener('submit', (e) => {
     }
 
     // Success -> log in and go to the homepage
-    sessionStorage.setItem('kapestaUser', JSON.stringify({
+    const existingUser = JSON.parse(localStorage.getItem("kapestaUser")) || {};
+
+    const kapestaUser = {
+        ...existingUser,
+        username: user.name,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        profilePicture: existingUser.profilePicture || "pictures/coffee1.jpg"
+    };
+
+    // Your existing pages use localStorage
+    localStorage.setItem("kapestaUser", JSON.stringify(kapestaUser));
+    localStorage.setItem("kapestaLoggedIn", "true");
+
+    // Keep her dropdown's sessionStorage data
+    sessionStorage.setItem("kapestaUser", JSON.stringify({
         name: user.name,
         email: user.email
     }));
-    window.location.href = 'index.html';
+
+    window.location.href = "index.html";
 });
