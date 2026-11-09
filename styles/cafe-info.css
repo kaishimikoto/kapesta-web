@@ -1,0 +1,618 @@
+/* ===========================
+    CAFE INFO STYLE
+=========================== */
+.gallery-container {
+    width: 84%;
+    margin: 40px auto 40px auto;
+}
+
+.information, .reviews-section, .amenities-container, .cafe-row {
+    width: 84%;
+    margin: 80px auto;
+}
+
+.reviews-section {
+    background-color: rgb(251, 249, 247);
+}
+
+.cafe-details, .location-contact, .working-hours, .amenities, .reviews-section {
+    box-shadow: var(--shadow-default);
+}
+
+.heading-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.socials-icons {
+    height: 40px;
+    width: 40px;
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+    margin: auto 8px;
+}
+
+.icons {
+    height: 16px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Zoom text effect */
+td > * {
+    transition: transform 0.2s ease;
+}
+
+td:hover > * {
+    transform: scale(1.05);
+}
+
+.zoom-text {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.zoom-text:hover {
+    transform: scale(1.05);
+}
+
+/* === Tablet === */
+@media (max-width: 768px) {
+    .information, .reviews-section, .amenities-container, .cafe-row {
+        margin: 40px auto;
+    }
+}
+
+/* ===========================
+------- CAFE PHOTOS ROW -------
+=========================== */
+
+.gallery-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Gallery viewport */
+.gallery-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Sliding photo track */
+.gallery-photos {
+    display: flex;
+    gap: 1.33%;
+    transition: transform 0.4s ease;
+}
+
+.gallery-left-btn, .gallery-right-btn {
+    position: absolute;
+    z-index: 2;
+    font-size: 20px;
+    padding: 8px 12px;
+    border: 1px solid #a99685;
+    background-color: #fffbf7;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+.gallery-left-btn {
+    top: 45%;
+    left: -20px;
+}
+
+.gallery-right-btn {
+    top: 45%;
+    right: -20px;
+}
+
+/* Hide arrows when there are no more photos */
+.gallery-left-btn:disabled,
+.gallery-right-btn:disabled {
+    display: none;
+}
+
+/* Individual photo container */
+.gallery-item {
+    position: relative;
+    flex: 0 0 24%;
+    height: 166px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-default);
+}
+
+/* Cafe photos */
+.cafe-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cafe-picture:hover {
+    transform: scale(1.05);
+}
+
+/* White overlay on hover */
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover {
+    cursor: pointer;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* ==============================
+   RESPONSIVE CODE - CAFE GALLERY
+============================== */
+
+/* === Tablet === */
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 32%;
+    }
+
+    .gallery-left-btn {
+        left: -12px;
+    }
+
+    .gallery-right-btn {
+        right: -12px;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .gallery-item {
+        flex: 0 0 48%;
+    }
+
+    .gallery-left-btn,
+    .gallery-right-btn {
+        font-size: 16px;
+        padding: 6px 9px;
+    }
+
+    .gallery-left-btn {
+        left: -8px;
+    }
+
+    .gallery-right-btn {
+        right: -8px;
+    }
+
+    .gallery-item {
+        height: 140px;
+    }
+}
+
+
+/* ===========================
+------ CAFE INFORMATION ------
+=========================== */
+
+/* Text colors */
+.cafe-detail-item, .contact-item, .socials-item {
+    color: rgb(111, 84, 73);
+}
+
+.information {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.cafe-items-container, .location-contact-container, .social-links-container {
+  /* Keep each heading and its content together */
+  flex-shrink: 0;
+}
+
+.cafe-info-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cafe-info-break {
+    width: 100%;
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+.cafe-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cafe-details-grid {
+    /* "Create five equal-width columns, let them shrink when needed, and distribute the available space equally among them." */
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.cafe-detail-item {
+    border: 1px solid rgb(171, 164, 159);
+    border-radius: 8px;
+    box-shadow: var(--shadow-default);
+    overflow-wrap: anywhere;
+    /* This allows long text to wrap instead of pushing the other boxes out of shape */
+    text-align: center;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.3s ease;
+}
+
+.cafe-detail-item p {
+    font-size: 12px;
+}
+
+.cafe-detail p {
+    font-size: 14px;
+}
+
+.cafe-detail-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cafe-detail-item a:hover {
+    color: rgb(212, 166, 97);
+}
+
+.cafe-detail-item:hover {
+    color: #9a7c61;
+    background-color: rgb(243, 237, 231);
+    border: 1px solid rgb(134, 109, 91);
+    transform: scale(1.05);
+}
+
+/* Location and Contact */
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 8px 0;
+
+    /*
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 8px;
+    padding: 4px;
+    */
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.contact-item a:hover {
+    color: var(--color-light-brown);
+}
+
+.contact-heading {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Social Links */
+
+.socials-icons-group {
+    display: flex;
+    gap: 50px;
+}
+
+.socials-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.socials-item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ======= WORKING HOURS ======= */
+.working-hours-container {
+    width: 45%;
+    border-radius: 12px;
+}
+
+.working-hours-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-default);
+    background-color: rgb(251, 249, 247);
+}
+
+.table-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.working-hours-container th, .working-hours-container td {
+    border: 1px solid rgb(220, 214, 209);
+    padding: 12px;
+    text-align: center;
+
+    transition: transform 0.3s ease;
+}
+
+.working-hours-container th {
+    background-color: var(--color-text);
+    color: rgb(226, 217, 207);
+}
+
+.working-hours-container td {
+    background-color: (251, 249, 247);
+}
+
+.working-hours-container th:hover, .working-hours-container td:hover {
+    transform: scale(1.05);
+}
+
+.working-hours-container tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.working-hours-container tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.working-hours-container tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.working-hours-container tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* ==============================
+   RESPONSIVE CODE - CAFE INFORMATION
+============================== */
+/* === Tablet === */
+@media (max-width: 768px) {
+    .information {
+        gap: 16px;
+    }
+
+    .cafe-info-container {
+        width: 55%;
+    }
+
+    .working-hours-container {
+        width: 45%;
+    }
+
+    .cafe-details-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .socials-icons-group {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .information {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .cafe-info-container,
+    .working-hours-container {
+        width: 100%;
+    }
+
+    .cafe-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .socials-icons-group {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .contact-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .working-hours-container th,
+    .working-hours-container td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .zoom-text {
+        font-size: 13px;
+    }
+}
+
+/* ===========================
+---- AMENITIES ----
+=========================== */
+.amenities-container {
+    width: 84%;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.amenities-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow-default);
+    background-color: rgb(251, 249, 247);
+}
+
+.table-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.amenities-container th, .amenities-container td {
+    border: 1px solid rgb(220, 214, 209);
+    padding: 12px;
+    text-align: center;
+}
+
+.cell-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.cell-content {
+    flex-shrink: 0;
+}
+
+.amenities-container th {
+    background-color: #483524;
+    color: rgb(226, 217, 207);
+}
+
+.amenities-container tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.amenities-container tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.amenities-container tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.amenities-container tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+.amenities-container th:hover {
+background-color: #604935;
+}
+
+.amenities-container td:hover {
+    background-color: rgb(246, 239, 235);
+}
+
+.payment-unavailable {
+    opacity: 0.35;
+}
+
+/* Page Specific Reviews Styles */
+.reviews-section hr {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.no-reviews-message {
+    display: none;
+    margin: auto;
+}
+
+.reviews-container {
+    padding: 0px 32px 32px 32px;
+}
+
+
+/* ==============================
+   RESPONSIVE CODE - AMENITIES
+============================== */
+
+/* === Tablet === */
+@media (max-width: 768px) {
+    .amenities-container {
+        width: 84% !important;
+        margin: auto;
+    }
+
+    .amenities-container th,
+    .amenities-container td {
+        padding: 9px 6px;
+        font-size: 14px;
+    }
+
+    .cell-content {
+        gap: 5px;
+        font-size: 13px;
+        flex-wrap: wrap;
+    }
+
+    .amenities-container .icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* === Mobile === */
+@media (max-width: 480px) {
+    .amenities-container {
+        width: 95%;
+        overflow-x: auto;
+    }
+
+    .amenities-container table {
+        min-width: 550px;
+    }
+
+    .amenities-container th,
+    .amenities-container td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+
+    .cell-content {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .amenities-container .icon {
+        width: 16px;
+        height: 16px;
+    }
+}
