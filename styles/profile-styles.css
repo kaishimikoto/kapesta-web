@@ -150,7 +150,9 @@
 .profile-empty-message {
     padding: 20px 0;
     color: #777;
-    text-align: center;
+    font-size: 16px !important;
+    text-align: center !important;
+    width: 100%;
 }
 
 .rating-stars {
@@ -160,7 +162,6 @@
 }
 
 /* EDIT PROFILE MODAL */
-
 .modal-overlay {
     position: fixed;
     inset: 0;
