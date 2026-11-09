@@ -50,60 +50,63 @@
             </div>
 
             <!-- Contact Form -->
-            <section class="container">
+            <section class="contact-form">
                 <div class="box-style form-style">
                     <h2 class="form-heading">Send Us a Message</h2>
                     <p class="form-description">Tell us what's on your mind! Share your question, feedback, or concern below, and give us a few details so we can better understand how to help.</p>
-
-                    <form action="#" method="post" onsubmit="contactSubmitDialog(event)">
-                        <!-- Name Field -->
-                        <div class="form-field">
-                            <label for="name">Your Name<span aria-hidden="true">*</span></label>
-                            <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" title="Enter your full name (e.g., Juan Dela Cruz)" maxlength="100" required>
-                            <p class="form-error">Please enter your name.</p>
-                        </div>
-
-                        <!-- Email and Phone Field Row -->
-                        <div class="form-row">
-                            <!-- Email Field -->
+                    <form action="#" method="post" class="form-grid" id="contactForm">
+                        <div class="form-grid-container">
+                            <!-- Name Field -->
                             <div class="form-field">
-                                <label for="email">Your Email<span aria-hidden="true">*</span></label>
-                                <input type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" placeholder="you@example.com" title="Enter a valid email address (e.g., user@gmail.com)" required>
-                                <p class="form-error">Please enter a valid email address (e.g., juan@example.com).</p>
+                                <label for="name">Your Name<span aria-hidden="true">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" title="Enter your full name (e.g., Juan Dela Cruz)" maxlength="100">
+                                <p class="form-error" id="nameError"></p>
                             </div>
 
-                            <!-- Phone Field -->
+                            <!-- Email and Phone Field Row -->
+                            <div class="form-row">
+                                <!-- Email Field -->
+                                <div class="form-field">
+                                    <label for="email">Your Email<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="email" name="email" placeholder="you@example.com" title="Enter a valid email address (e.g., user@gmail.com)">
+                                    <p class="form-error" id="emailError"></p>
+                                </div>
+
+                                <!-- Phone Field -->
+                                <div class="form-field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="09123456789" title="Enter your phone number (e.g., 09123456789)">
+                                    <p class="form-error" id="phoneError"></p>
+                                </div>
+                            </div>
+
+                            <!-- Subject Field -->
                             <div class="form-field">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" pattern="09[0-9]{9}" placeholder="09123456789" title="Enter your phone number (e.g., 09123456789)">
-                                <p class="form-error">Please enter a valid 11-digit mobile number starting with 09.</p>
+                                <label for="subject">Subject<span aria-hidden="true">*</span></label>
+                                <select id="subject" name="subject" title="Select the reason for contacting">
+                                    <option value="" selected disabled>--- Select a reason ---</option>
+                                    <option value="general-inquiry">General Inquiry</option>
+                                    <option value="feedback-suggestion">Feedback or Suggestion</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="partnership-collaboration">Partnership or Collaboration</option>
+                                    <option value="report-problem">Report a Problem</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <p class="form-error" id="subjectError"></p>
                             </div>
                         </div>
 
-                        <!-- Subject Field -->
-                        <div class="form-field">
-                            <label for="subject">Subject<span aria-hidden="true">*</span></label>
-                            <select id="subject" name="subject" title="Select the reason for contacting" required>
-                                <option value="" selected disabled>--- Select a reason ---</option>
-                                <option value="general-inquiry">General Inquiry</option>
-                                <option value="feedback-suggestion">Feedback or Suggestion</option>
-                                <option value="technical-support">Technical Support</option>
-                                <option value="partnership-collaboration">Partnership or Collaboration</option>
-                                <option value="report-problem">Report a Problem</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <p class="form-error">Please select a subject.</p>
-                        </div>
+                        <div class="form-grid-container">
+                            <!-- Message Field -->
+                            <div class="form-field">
+                                <label for="message">Message<span aria-hidden="true">*</span></label>
+                                <textarea id="message" name="message" rows="10" maxlength="2000" placeholder="I would like to ask you about..." title="Enter a message between 20 and 2,000 characters."></textarea>
+                                <p class="form-error" id="messageError"></p>
+                            </div>
 
-                        <!-- Message Field -->
-                        <div class="form-field">
-                            <label for="message">Message<span aria-hidden="true">*</span></label>
-                            <textarea id="message" name="message" rows="10" minlength="20" maxlength="2000"  placeholder="I would like to ask you about..." title="Enter a message between 20 and 2,000 characters." required></textarea>
-                            <p class="form-error">Your message must contain at least 20 characters and cannot exceed 2,000 characters.</p>
+                            <!-- Submit Button -->
+                            <button type="submit">Send Message</button>
                         </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit">Send Message</button>
                     </form>
                 </div>
             </section>
@@ -160,7 +163,6 @@
                         <img src="images/icons/kapesta-logo-white.svg" alt="Kapesta">
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
                     <hr />
                     
                     <!-- Social Media -->
@@ -218,7 +220,139 @@
                 <button type="button" onclick="closeDialog()">Close</button>
             </div>
         </div>
+        <script>
+            const form = document.getElementById("contactForm");
 
-        <script src="scripts/script.js"></script>
+            // Get input elements
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const phoneInput = document.getElementById("phone");
+            const subjectInput = document.getElementById("subject");
+            const messageInput = document.getElementById("message");
+
+            // RegEx patterns
+            const emailPattern = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+            const phonePattern = /^09\d{9}$/;
+
+            nameInput.addEventListener("input", function() {
+                if (nameInput.value.trim() === "") {
+                    document.getElementById("nameError").textContent = "Please enter your name.";
+                    nameInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("nameError").textContent = "";
+                        nameInput.classList.remove("input-error");
+                    }
+            });
+
+            emailInput.addEventListener("input", function() {
+                const email = emailInput.value.trim();
+                if (email === "") {
+                    document.getElementById("emailError").textContent = "Please enter a valid email address.";
+                    emailInput.classList.add("input-error");
+                } 
+                    else if (!emailPattern.test(email)) {
+                        document.getElementById("emailError").textContent = "Please enter a valid email address (e.g., juan@example.com).";
+                        emailInput.classList.add("input-error");
+                    } 
+                        else {
+                            document.getElementById("emailError").textContent = "";
+                            emailInput.classList.remove("input-error");
+                        }
+            });
+
+            phoneInput.addEventListener("input", function() {
+                const phone = phoneInput.value.trim();
+                if (phone !== "" && !phonePattern.test(phone)) {
+                    document.getElementById("phoneError").textContent = "Please enter a valid 11-digit mobile number starting with 09.";
+                    phoneInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("phoneError").textContent = "";
+                        phoneInput.classList.remove("input-error");
+                    }
+            });
+
+            subjectInput.addEventListener("change", function() {
+                if (subjectInput.value === "") {
+                    document.getElementById("subjectError").textContent = "Please select a subject.";
+                    subjectInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("subjectError").textContent = "";
+                        subjectInput.classList.remove("input-error");
+                    }
+            });
+
+            messageInput.addEventListener("input", function() {
+                const message = messageInput.value.trim();
+                if (message.length < 20) {
+                    document.getElementById("messageError").textContent = "Your message must contain at least 20 characters and cannot exceed 2,000 characters.";
+                    messageInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("messageError").textContent = "";
+                        messageInput.classList.remove("input-error");
+                    }
+            });
+
+            // SUBMISSION VALIDATION (Final check on click)
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const phone = phoneInput.value.trim();
+                const subject = subjectInput.value;
+                const message = messageInput.value.trim();
+
+                let isValid = true;
+
+                // Check Name
+                if (name === "") {
+                    document.getElementById("nameError").textContent = "Please enter your name.";
+                    nameInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Email
+                if (email === "" || !emailPattern.test(email)) {
+                    document.getElementById("emailError").textContent = "Please enter a valid email address (e.g., juan@example.com).";
+                    emailInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Phone (if provided)
+                if (phone !== "" && !phonePattern.test(phone)) {
+                    document.getElementById("phoneError").textContent = "Please enter a valid 11-digit mobile number starting with 09.";
+                    phoneInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Subject
+                if (subject === "") {
+                    document.getElementById("subjectError").textContent = "Please select a subject.";
+                    subjectInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Message
+                if (message.length < 20) {
+                    document.getElementById("messageError").textContent = "Your message must contain at least 20 characters and cannot exceed 2,000 characters.";
+                    messageInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // If all fields are valid, show success dialog overlay
+                if (isValid) {
+                    document.getElementById("dialog-overlay").style.display = "flex";
+                }
+            });
+
+            function closeDialog() {
+                document.getElementById("dialog-overlay").style.display = "none";
+                form.reset();
+            }
+        </script>
     </body>
 </html>

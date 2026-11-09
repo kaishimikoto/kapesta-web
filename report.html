@@ -50,68 +50,71 @@
             </div>
 
             <!-- Report Form -->
-            <section class="container">
+            <section class="contact-form">
                 <div class="box-style form-style report-form">
                     <h2 class="form-heading">Tell Us What Happened</h2>
                     <p class="form-description">Help us understand what went wrong. Share the details below, and include a screenshot if it helps show the issue.</p>
-
-                    <form action="#" method="post" onsubmit="reportSubmitDialog(event)">
-                        <!-- Email -->
-                        <div class="form-field">
-                            <label for="email">Email<span aria-hidden="true">*</span></label>
-                            <input type="email" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" placeholder="you@example.com" title="Enter a valid email address (e.g., user@gmail.com)" required>
-                            <p class="form-error">Please enter a valid email address (e.g., juan@example.com).</p>
-                        </div>
-
-                        <!-- Report Category -->
-                        <div class="form-field">
-                            <label for="category">Category<span aria-hidden="true">*</span></label>
-                            <select id="category" name="category" title="Select the category that best describes the issue." required>
-                                <option value="" selected disabled>-- Select the type of issue --</option>
-                                <option value="technical">Technical Problem</option>
-                                <option value="incorrect-information">Incorrect or Outdated Information</option>
-                                <option value="account">Account or Login Problem</option>
-                                <option value="accessibility">Accessibility Issue</option>
-                                <option value="inappropriate-content">Inappropriate Content</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <p class="form-error">Please select a category for your report.</p>
-                        </div>
-
-                        <!-- Report Description -->
-                        <div class="form-field">
-                            <label for="description">Description<span aria-hidden="true">*</span></label>
-                            <textarea id="description" name="description" rows="7" minlength="20" maxlength="2000"  placeholder="What went wrong?" title="Describe the issue in 20 to 2,000 characters." required></textarea>
-                            <p class="form-error">Please enter a description between 20 and 2,000 characters.</p>
-                        </div>
-
-                        <!-- Report Attachment -->
-                        <div class="form-attachment">
-                            <label for="attachment">Attachments (Optional)</label>
-                            <p class="attachment-description">Have a screenshot or file that shows the issue? Attach it here to help us understand what happened. This step is optional.</p>
-                            <input type="file" id="attachment" name="attachment" accept=".png, .jpg, .jpeg, .webp, .pdf, .docx" multiple>
-                        </div>
-
-                        <!-- Report Confirmation -->
-                        <fieldset aria-describedby="confirmation-description">
-                            <legend>Confirmation<span aria-hidden="true">*</span></legend>
-                            <p class="confirmation-description">Before sending your report, please review the following statements.</p>
-
-                            <!-- Confirmation Options -->
-                            <div class="confirmation-option">
-                                <input type="checkbox" id="confirm1" name="accuracy-confirmation" value="true" required>
-                                <label for="confirm1">I confirm that the information in this report is accurate to the best of my knowledge.</label>
+                    <form action="#" method="post" class="form-grid" id="reportForm">
+                        <div class="form-grid-container">
+                            <!-- Email -->
+                            <div class="form-field">
+                                <label for="email">Email<span aria-hidden="true">*</span></label>
+                                <input type="text" id="email" name="email" placeholder="you@example.com" title="Enter a valid email address (e.g., user@gmail.com)">
+                                <p class="form-error" id="emailError"></p>
                             </div>
 
-                            <div class="confirmation-option">
-                                <input type="checkbox" id="confirm2" name="privacy-confirmation" value="true" required>
-                                <label for="confirm2">By submitting this report, you agree that the information provided may be used to investigate and resolve the reported issue. See our <a href="privacy.html" target="_blank" title="Go to Privacy Policy">Privacy Policy</a> for more information.</label>
+                            <!-- Report Category -->
+                            <div class="form-field">
+                                <label for="category">Category<span aria-hidden="true">*</span></label>
+                                <select id="category" name="category" title="Select the category that best describes the issue.">
+                                    <option value="" selected disabled>-- Select the type of issue --</option>
+                                    <option value="technical">Technical Problem</option>
+                                    <option value="incorrect-information">Incorrect or Outdated Information</option>
+                                    <option value="account">Account or Login Problem</option>
+                                    <option value="accessibility">Accessibility Issue</option>
+                                    <option value="inappropriate-content">Inappropriate Content</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <p class="form-error" id="categoryError"></p>
                             </div>
-                            <p class="form-error">Please confirm both statements before submitting your report.</p>
-                        </fieldset>
 
-                        <!-- Submit Button -->
-                        <button type="submit">Submit Report</button>
+                            <!-- Report Description -->
+                            <div class="form-field">
+                                <label for="description">Description<span aria-hidden="true">*</span></label>
+                                <textarea id="description" name="description" rows="7" maxlength="2000" placeholder="What went wrong?" title="Describe the issue in 20 to 2,000 characters."></textarea>
+                                <p class="form-error" id="descriptionError"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-container">
+                            <!-- Report Attachment -->
+                            <div class="form-attachment">
+                                <label for="attachment">Attachments (Optional)</label>
+                                <p class="attachment-description">Have a screenshot or file that shows the issue? Attach it here to help us understand what happened. This step is optional.</p>
+                                <input type="file" id="attachment" name="attachment" accept=".png, .jpg, .jpeg, .webp, .pdf, .docx" multiple>
+                            </div>
+
+                            <!-- Report Confirmation -->
+                            <fieldset aria-describedby="confirmation-description">
+                                <legend>Confirmation<span aria-hidden="true">*</span></legend>
+                                <p class="confirmation-description">Before sending your report, please review the following statements.</p>
+
+                                <!-- Confirmation Options -->
+                                <div class="confirmation-option">
+                                    <input type="checkbox" id="confirm1" name="accuracy-confirmation" value="true">
+                                    <label for="confirm1">I confirm that the information in this report is accurate to the best of my knowledge.</label>
+                                </div>
+
+                                <div class="confirmation-option">
+                                    <input type="checkbox" id="confirm2" name="privacy-confirmation" value="true">
+                                    <label for="confirm2">By submitting this report, you consent to the use of your information to investigate and resolve the issue. See our <a href="privacy.html" target="_blank" title="Go to Privacy Policy">Privacy Policy</a> for details.</label>
+                                </div>
+                                <p class="form-error" id="confirmError"></p>
+                            </fieldset>
+
+                            <!-- Submit Button -->
+                            <button type="submit">Submit Report</button>
+                        </div>
                     </form>
                 </div>
             </section>
@@ -190,7 +193,125 @@
                 <button type="button" onclick="closeDialog()">Close</button>
             </div>
         </div>
+        <script>
+            const form = document.getElementById("reportForm");
 
-        <script src="scripts/script.js"></script>
+            // Get input elements
+            const emailInput = document.getElementById("email");
+            const categoryInput = document.getElementById("category");
+            const descriptionInput = document.getElementById("description");
+            const confirm1Input = document.getElementById("confirm1");
+            const confirm2Input = document.getElementById("confirm2");
+            const reportFieldset = document.querySelector(".report-form fieldset");
+
+            // RegEx pattern
+            const emailPattern = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+
+            // Real-time validation listeners
+            emailInput.addEventListener("input", function() {
+                const email = emailInput.value.trim();
+                if (email === "" || !emailPattern.test(email)) {
+                    document.getElementById("emailError").textContent = "Please enter a valid email address (e.g., juan@example.com).";
+                    emailInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("emailError").textContent = "";
+                        emailInput.classList.remove("input-error");
+                    }
+            });
+
+            categoryInput.addEventListener("change", function() {
+                if (categoryInput.value === "") {
+                    document.getElementById("categoryError").textContent = "Please select a category for your report.";
+                    categoryInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("categoryError").textContent = "";
+                        categoryInput.classList.remove("input-error");
+                    }
+            });
+
+            descriptionInput.addEventListener("input", function() {
+                const description = descriptionInput.value.trim();
+                if (description.length < 20) {
+                    document.getElementById("descriptionError").textContent = "Please enter a description between 20 and 2,000 characters.";
+                    descriptionInput.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("descriptionError").textContent = "";
+                        descriptionInput.classList.remove("input-error");
+                    }
+            });
+
+            confirm1Input.addEventListener("change", checkConfirmations);
+            confirm2Input.addEventListener("change", checkConfirmations);
+
+            function checkConfirmations() {
+                const fieldsetProperty = document.querySelector(".report-form fieldset");
+                if (!confirm1Input.checked || !confirm2Input.checked) {
+                    document.getElementById("confirmError").textContent = "Please confirm both statements before submitting your report.";
+                    reportFieldset.classList.add("input-error");
+                } 
+                    else {
+                        document.getElementById("confirmError").textContent = "";
+                        reportFieldset.classList.remove("input-error");
+                    }
+            }
+
+            // SUBMISSION VALIDATION (Final check on click)
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const email = emailInput.value.trim();
+                const category = categoryInput.value;
+                const description = descriptionInput.value.trim();
+                const confirm1 = confirm1Input.checked;
+                const confirm2 = confirm2Input.checked;
+
+                let isValid = true;
+
+                // Check Email
+                if (email === "" || !emailPattern.test(email)) {
+                    document.getElementById("emailError").textContent = "Please enter a valid email address (e.g., juan@example.com).";
+                    emailInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Category
+                if (category === "") {
+                    document.getElementById("categoryError").textContent = "Please select a category for your report.";
+                    categoryInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Description
+                if (description.length < 20) {
+                    document.getElementById("descriptionError").textContent = "Please enter a description between 20 and 2,000 characters.";
+                    descriptionInput.classList.add("input-error");
+                    isValid = false;
+                }
+
+                // Check Confirmations
+                if (!confirm1 || !confirm2) {
+                    document.getElementById("confirmError").textContent = "Please confirm both statements before submitting your report.";
+                    reportFieldset.classList.add("input-error");
+                    isValid = false;
+                } 
+                    else {
+                        reportFieldset.classList.remove("input-error");
+                    }
+
+                // If all fields are valid, show success dialog overlay
+                if (isValid) {
+                    document.getElementById("dialog-overlay").style.display = "flex";
+                }
+            });
+
+            function closeDialog() {
+                document.getElementById("dialog-overlay").style.display = "none";
+                form.reset();
+                reportFieldset.classList.remove("input-error");
+            }
+        </script>
     </body>
 </html>
