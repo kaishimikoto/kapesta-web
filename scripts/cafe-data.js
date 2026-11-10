@@ -1570,7 +1570,7 @@ const reviewBean1 = new Review(
 );
 
 const reviewBean2 = new Review(
-    "roan",
+    "misskonasiya",
     "2026-10-02",
     "Loved the iced latte here! A bit crowded on Sunday afternoons though, so finding a table took a few minutes.",
     [],
@@ -1652,7 +1652,7 @@ const reviewUrban2 = new Review(
 );
 
 const reviewUrban3 = new Review(
-    "roan",
+    "misskonasiya",
     "2026-10-05",
     "Got their signature drink and it did not disappoint! Will definitely bring friends next time.",
     ["pictures/chincafe.JPG"],
