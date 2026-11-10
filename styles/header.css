@@ -98,21 +98,32 @@
 }
 
 
-/* ---------- Profile Dropdown ---------- */
+/* ---------- Profile Dropdown (Restored for Desktop) ---------- */
+/* ==========================================================================
+   DROPDOWN CONTAINER (Solid Dark Background across ALL pages)
+   ========================================================================== */
 .profile-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
-    min-width: 180px;
-    padding: 6px 0;
+    min-width: 200px;
+    padding: 8px 0;
+    margin: 0;
     list-style: none;
-    background: var(--color-brown-dark);
-    border: 1px solid var(--color-brown);
+    
+    /* Solid background fix - prevents transparency glitches */
+    background-color: #261914 !important;
+    background-color: var(--color-brown-dark, #261914) !important;
+    
+    border: 1px solid var(--color-brown, #5c3a21);
     border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 1000;
 }
 
 .profile-menu.open .profile-dropdown {
@@ -121,32 +132,55 @@
     transform: translateY(0);
 }
 
-.profile-dropdown a {
-    display: block;
-    padding: 10px 16px;
-    color: var(--color-gold);
-    text-decoration: none;
-}
-
-.profile-dropdown a:hover {
-    background-color: var(--color-brown);
-    color: var(--color-white);
-}
-
+/* ==========================================================================
+   DROPDOWN USER INFORMATION HEADER
+   ========================================================================== */
 .dropdown-user {
     display: block;
     padding: 10px 16px;
-    color: var(--color-gold);
-    font-size: 0.8rem;
+    color: #ffffff !important; /* Forces crisp white text */
+    font-size: 0.85rem;
     line-height: 1.4;
     word-break: break-all;
-    border-bottom: 1px solid var(--color-brown);
+    border-bottom: 1px solid var(--color-brown, #5c3a21);
 }
 
-.dropdown-user strong {
-    color: var(--color-white);
+.dropdown-user strong,
+.dropdown-user span {
+    color: #ffffff !important;
 }
 
+/* ==========================================================================
+   DROPDOWN LINKS & LOGOUT BUTTON (Enforces unified button look)
+   ========================================================================== */
+.profile-dropdown a,
+.profile-dropdown button,
+.profile-dropdown .logout-btn {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px 16px !important;
+    margin: 0 !important;
+    
+    text-align: left !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    
+    color: var(--color-gold, #d4af37) !important;
+    font-family: inherit !important;
+    font-size: 0.9rem !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+}
+
+/* Hover States for links & logout button */
+.profile-dropdown a:hover,
+.profile-dropdown button:hover,
+.profile-dropdown .logout-btn:hover {
+    background-color: var(--color-brown, #5c3a21) !important;
+    color: #ffffff !important;
+}
 /*-----------RWD---------------*/
 
 @media (hover: none) {
