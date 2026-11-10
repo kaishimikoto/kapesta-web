@@ -21,7 +21,7 @@ main {
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 50vh;
+    height: 60vh;
     position: relative;
 } 
 
@@ -113,25 +113,12 @@ main {
 }
 
 /* Each barangay row */
-.cafe-row {
-    width: 100%;
-    margin: 12px 0 32px;
-    padding: 24px 12px;
-    background-color: var(--color-content-bg);
+.cafe-row:first-child {
+    margin: 36px 0px 48px 0px;
 }
 
 .cafe-row {
-    position: relative;
-    isolation: isolate;
-}
-
-.cafe-row::before {
-    content: "";
-    position: absolute;
-    inset: -10px;
-    background: inherit;
-    filter: blur(15px);
-    z-index: -1;
+    margin: 48px 0px 48px 0px;
 }
 
 /* FILTER */
@@ -153,7 +140,7 @@ main {
 }
 
 .filterToggle:hover {
-    background-color: var(--color-brown);
+    background-color: var(--color-brown-dark);
 }
 
 .overlay {
@@ -318,7 +305,7 @@ main {
 }
 
 #applyButton:hover {
-    background-color: var(--color-brown);
+    background-color: var(--color-brown-dark);
 }
 
 .filter-header img, .barangay-layout select, .price-layout input, .filter-box button {
