@@ -10,9 +10,16 @@
    Custom Properties
    ================================================================== */
 :root {
+        /* Layout: side spacing used across the page */
+    --page-gutter: clamp(1rem, 5vw, 4rem);
+    /* Layout: space between every h2 and the content below it */
+    --heading-gap: 24px;
+
     /* ---------------- Color --------------------------------------- */
     --color-white: #FFFFFF;
     --color-bg: rgb(247, 242, 237);
+    --color-muted-orange: #f0ebe2;
+    --color-pastel-orange: #ddb895;
     --color-content-bg: #fffbf7;
     /*--color-bg: #FAF9F6; ke reben*/
     --color-brown: #483524;
@@ -21,7 +28,8 @@
     --color-brown-hover: #604935;
     --color-light-brown: rgb(157, 104, 71);
     --color-light-brown-hover: rgb(200, 149, 110);
-    --color-copper: #C07C3C;
+    --color-copper: #C17F42;
+    --color-gold: #E8C07D;
     --color-red: #CC0000;
     --color-border: rgb(220, 214, 209);
     --placeholder-img: url("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png");
@@ -31,6 +39,12 @@
     /* ---------------- Font Family --------------------------------- */
     --font-heading: "Poppins", sans-serif;
     --font-body: "Roboto", Arial, Helvetica, sans-serif;
+
+    /* Fonts */
+    --font-nav: "Poppins", sans-serif;
+    --font-body: "Poppins", sans-serif;
+    --font-heading: "Poppins", serif;
+    --font-header: "Playfair Display", serif;
 
     /* ---------------- Motion -------------------------------------- */
     --transition: 0.3s ease;
@@ -121,9 +135,8 @@ button:active {
     left: 0;
     width: 100%;
     height: 24px;
-    z-index: 9; /* below the navbar (10) so it can't cover the buttons */
+    z-index: 9;
 }
-
 
 /* ---------- Navbar ---------- */
 .navbar {
@@ -141,8 +154,10 @@ button:active {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.85);
+/* Fixes the background inconsistency across pages */
+.navbar.scrolled,
+.navbar.menu-open {
+    background-color: rgba(0, 0, 0, 0.92);
 }
 
 .navbar.hide {
@@ -153,7 +168,6 @@ button:active {
     width: 10em;
     height: 4em;
 }
-
 
 /* ---------- Nav Links ---------- */
 .nav-links {
@@ -178,7 +192,6 @@ button:active {
     background-color: var(--color-brown);
     border-bottom: 2px solid var(--color-copper);
 }
-
 
 /* ---------- Profile Menu ---------- */
 .profile-menu {
@@ -209,22 +222,23 @@ button:active {
     font-size: 12px;
 }
 
-
-/* ---------- Profile Dropdown ---------- */
+/* ---------- Profile Dropdown (Restored for Desktop) ---------- */
 .profile-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
-    min-width: 180px;
+    min-width: 190px;
     padding: 6px 0;
     list-style: none;
-    background: var(--color-brown-dark);
+    background-color: #261914 !important; /* Solid dark brown fallback */
+    background-color: var(--color-brown-dark, #261914);
     border: 1px solid var(--color-brown);
     border-radius: 8px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 100;
 }
 
 .profile-menu.open .profile-dropdown {
@@ -233,22 +247,34 @@ button:active {
     transform: translateY(0);
 }
 
-.profile-dropdown a {
+/* Dropdown Links & Logout Button Styles */
+.profile-dropdown a,
+.profile-dropdown button,
+.profile-dropdown .logout-btn {
     display: block;
+    width: 100%;
     padding: 10px 16px;
+    text-align: left;
+    background: none;
+    border: none;
     color: var(--color-gold);
+    font: inherit;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.profile-dropdown a:hover {
+.profile-dropdown a:hover,
+.profile-dropdown button:hover,
+.profile-dropdown .logout-btn:hover {
     background-color: var(--color-brown);
     color: var(--color-white);
 }
 
+/* Logged-in user info display */
 .dropdown-user {
     display: block;
     padding: 10px 16px;
-    color: var(--color-gold);
+    color: var(--color-white); /* Fixed: made text white */
     font-size: 0.8rem;
     line-height: 1.4;
     word-break: break-all;
@@ -259,13 +285,14 @@ button:active {
     color: var(--color-white);
 }
 
-/*-----------RWD---------------*/
+/*-----------RWD (Mobile View)---------------*/
 
 @media (hover: none) {
     .nav-hover-zone {
         display: none;
     }
 }
+
 /* Hamburger button (hidden on desktop) */
 .nav-toggle {
     display: none;
@@ -281,7 +308,6 @@ button:active {
     cursor: pointer;
 }
 
-/* Hamburger lines */
 .nav-toggle span {
     display: block;
     height: 2px;
@@ -290,7 +316,6 @@ button:active {
     transition: transform 0.3s ease, opacity 0.2s ease;
 }
 
-/* Hamburger turns into an X when the menu is open */
 .navbar.menu-open .nav-toggle span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -303,15 +328,8 @@ button:active {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Solid navbar background while the menu is open */
-.navbar.menu-open {
-    background-color: rgba(0, 0, 0, 0.92);
-}
-
 /* Tablets and phones: hamburger menu */
 @media (max-width: 768px) {
-
-    /* Touch screens: no hover zone, and the navbar never slides away */
     .nav-hover-zone {
         display: none;
     }
@@ -320,18 +338,15 @@ button:active {
         transform: none;
     }
 
-    /* Smaller logo */
     .logo {
         width: 8em;
         height: 3.2em;
     }
 
-    /* Show the hamburger button */
     .nav-toggle {
         display: flex;
     }
 
-    /* Menu panel under the navbar (hidden until opened) */
     .nav-links {
         position: absolute;
         top: 100%;
@@ -351,20 +366,17 @@ button:active {
         transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     }
 
-    /* Menu panel when open (class added by header.js) */
     .navbar.menu-open .nav-links {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
 
-    /* Full-width, easy-to-tap links */
     .nav-links a {
         display: block;
         padding: 12px 10px;
     }
 
-    /* Profile section moves to the top, with a separator below it */
     .profile-menu {
         order: -1;
         margin-bottom: 8px;
@@ -372,7 +384,6 @@ button:active {
         border-bottom: 1px solid rgba(193, 127, 66, 0.5);
     }
 
-    /* "PROFILE" becomes a plain label above Log in / Sign up */
     .profile-toggle {
         width: 100%;
         padding: 8px 10px;
@@ -380,25 +391,27 @@ button:active {
         pointer-events: none;
     }
 
-    /* No dropdown arrow in the mobile menu */
     .profile-toggle .caret {
         display: none;
     }
 
-    /* Log in / Sign up always visible, listed under PROFILE */
-    .profile-dropdown {
-        position: static;
-        min-width: 0;
-        padding: 0 0 0 10px;
-        background: none;
-        border: none;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
+    /* Isolated fix: Only make profile dropdown static on MOBILE screens */
+    @media (max-width: 768px) {
+        .profile-dropdown {
+            position: static;
+            min-width: 0;
+            padding: 0 0 0 10px;
+            background: none;
+            border: none;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
     }
 
-    /* Dropdown links */
-    .profile-dropdown a {
+    .profile-dropdown a,
+    .profile-dropdown button,
+    .profile-dropdown .logout-btn {
         padding: 10px;
     }
 }
@@ -415,6 +428,10 @@ footer {
     font-size: 0.875rem;
 }
 
+footer hr {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
 /* Footer links */
 footer a {
     color: var(--color-white);
@@ -422,54 +439,73 @@ footer a {
     text-underline-offset: 4px;
 }
 
-/* Footer link hover state */
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Visible focus for keyboard users */
+footer a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
 }
 
 /* Main footer layout (info on the left, links on the right) */
 .footer-layout {
     width: min(100%, 1140px);
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 40px);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 80px;
+    gap: clamp(32px, 5vw, 56px);
 }
 
 /* Footer information block */
 .footer-information {
-    max-width: 440px;
+    max-width: 320px;
 }
 
 /* Footer logo */
 .footer-information-logo img {
-    width: 160px;
-    margin-bottom: 24px;
+    display: block;
+    width: 120px;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.footer-information p {
+    margin: 0;
 }
 
 /* Divider inside the information block */
 .footer-information hr {
-    margin: 24px 0;
+    margin: 16px 0;
 }
 
 /* Footer social icons row */
 .footer-social {
     display: flex;
-    gap: 24px;
+    gap: 8px;
+    margin-left: -6px; /* offsets link padding so icons align with the text above */
+}
+
+/* Social link (padding creates a comfortable tap target) */
+.footer-social a {
+    display: inline-flex;
+    padding: 6px;
 }
 
 /* Footer social icon */
 .footer-social img {
-    width: 32px;
-    height: 32px;
+    display: block;
+    width: 24px;
+    height: 24px;
 }
 
 /* Footer link columns */
 .footer-links {
     display: flex;
-    gap: 80px;
+    gap: clamp(24px, 5vw, 56px);
 }
 
 /* Single link column */
@@ -477,14 +513,21 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 4px;
+}
+
+/* Column links (padding creates a comfortable tap target) */
+.footer-link-field a {
+    padding: 4px 0;
 }
 
 /* Link column title */
 .footer-nav-title {
-    margin: 0 0 16px;
+    margin: 0 0 4px;
+    padding: 0; 
     font-size: 0.875rem;
     font-weight: bold;
+    line-height: 1.3;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: var(--color-white);
@@ -494,22 +537,26 @@ footer a:hover {
 .footer-bottom {
     width: min(100%, 1140px);
     margin: 0 auto;
-    padding: 0 40px 24px;
+    padding: 0 clamp(20px, 4vw, 40px) 16px;
+}
+
+.footer-bottom hr {
+    margin: 0;
 }
 
 /* Copyright text */
 .footer-bottom small {
     display: block;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
-/* -------------------- Footer ---------------------------------- */
-@media(max-width: 768px) {
+
+/* -------------------- Footer: tablet ---------------------------------- */
+@media (max-width: 900px) {
     .footer-layout {
         flex-direction: column;
-        gap: 48px;
-        padding: 48px 24px;
         align-items: center;
+        gap: 28px;
     }
 
     .footer-information {
@@ -518,16 +565,82 @@ footer a:hover {
     }
 
     .footer-information-logo img {
-        margin: 0 auto 24px;
+        margin: 0 auto 12px;
     }
 
     .footer-social {
         justify-content: center;
+        margin-left: 0;
+    }
+
+    /* Keep columns side by side instead of one tall stack */
+    .footer-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 16px;
     }
 
     .footer-bottom {
-        padding: 0 24px 24px;
         text-align: center;
+    }
+}
+
+/* -------------------- Footer: mobile ---------------------------------- */
+@media (max-width: 600px) {
+    footer .footer-layout {
+        padding: 24px 16px;
+        gap: 20px;
+    }
+
+    footer .footer-information-logo img {
+        width: 96px;
+        margin-bottom: 8px;
+    }
+
+    footer .footer-information p {
+        font-size: 0.8125rem;
+    }
+
+    footer .footer-information hr {
+        margin: 12px 0;
+    }
+
+    /* Three equal columns in one row */
+    footer .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+    }
+
+    footer .footer-link-field {
+        gap: 0;
+    }
+
+    /* Column titles */
+    footer .footer-nav-title {
+        margin: 0 0 6px;
+        font-size: 0.6875rem; /* 11px */
+        line-height: 1.3;
+        letter-spacing: 0.25px;
+    }
+
+    /* Column links */
+    footer .footer-link-field a {
+        padding: 5px 0;
+        font-size: 0.6875rem; /* 11px */
+        line-height: 1.3;
+        overflow-wrap: break-word;
+    }
+
+    footer .footer-bottom {
+        padding: 0 16px 12px;
+    }
+
+    footer .footer-bottom small {
+        font-size: 0.6875rem;
+        margin-top: 10px;
     }
 }
 
@@ -2008,4 +2121,254 @@ button {
 
 .edit-profile-button img, .view-all-button img {
     filter: invert(1);
+}
+
+/* ===========================
+---- ALL CAFE REVIEWS ----
+=========================== */
+
+/* Reviews */
+.no-reviews-message {
+    display: none;
+    margin: auto;
+}
+
+.reviews-container {
+    padding: 0px 32px 32px 32px;
+}
+
+.review {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.review-photos-container {
+    flex: 0 0 30%;
+    flex-shrink: 0;
+    height: 180px;
+    display: grid;
+    gap: 4px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.review-photos-container img {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.review-photo-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* No photos */
+.review-photos-container.hidden {
+    display: none;
+}
+
+/* 1 photo */
+.photos-1 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* 2 photos */
+.photos-2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+}
+
+/* 3 photos */
+.photos-3 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1.7fr 1fr;
+}
+
+.photos-3 img:first-child {
+    grid-column: 1 / -1;
+}
+
+/* 4 photos or more */
+.photos-4, .photos-5, .photos-6, .photos-7, .photos-8 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.photos-5 img:nth-child(n+5) {
+    display: none;
+}
+
+.review-photo-more img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-photo-more {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.review-photo-more span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Delete button */
+.review-delete-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.review-delete-button img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.review-delete-button:hover {
+    opacity: 0.65;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.lightbox button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 30px;
+}
+
+.lightbox-prev {
+    left: 25px;
+}
+
+.lightbox-next {
+    right: 25px;
+}
+
+.reviews-section hr {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.review-contents {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px;
+}
+
+.rating-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.username-rating-date {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.star-rating {
+    height: 16px;
+}
+
+.user-profile {
+    border-radius: 8px;
+    height: 25px;
+    width: 25px;
+}
+
+
+.review-photo-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.review-photo-wrapper > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-photo-more {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+}
+
+.review-photo-more span {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
 }
